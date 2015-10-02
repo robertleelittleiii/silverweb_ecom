@@ -1,0 +1,7 @@
+<ul class="style-image-items jcarousel-skin-tango">
+<% @collection_product_list.each_with_index do |product, index| %>
+
+<li class="style-image-item"><%= link_to(image_tag(product.primary_image.blank? ? "interface/empty_s_p.jpg" : product.primary_image.image_url(:collection_list).to_s, :width=>"90px" ),{:controller=>:site, :action=>:product_detail, :id=>product.id}) %></li>
+
+<% end %>
+</ul>

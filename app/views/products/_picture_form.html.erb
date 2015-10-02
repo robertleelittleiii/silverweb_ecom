@@ -1,0 +1,19 @@
+<br>
+<p>
+    <b>Location:</b><br>
+    <%=ajax_select("title","picture",@picture,(@image_locations + ["n/a"]+[@picture.title]).uniq, "Choose Location...")%> <br>
+</p>
+<br>
+
+<p>
+    <b>Is Image Visible:</b><br>
+    <%=editablecheckboxedit("active_flag", @picture, "Visible")%>
+  </p>
+
+<p>
+    <b>Description:</b><br>
+    <%=editablefieldcreate("description", @picture)%>
+</p>
+
+
+

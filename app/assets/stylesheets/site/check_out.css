@@ -1,0 +1,158 @@
+/* 
+    Document   : check_out
+    Created on : Apr 19, 2013, 5:04:36 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+/*Shopping Cart CSS*/
+
+.cart-item-size-color {
+    font-size: 9px;
+    text-align: center;
+}
+
+.cart-item-title {
+    font-size: 14pt;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.cart-item-description {
+    font-size: 10pt;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 40px;
+}
+
+.item-price {
+    font-size: 9pt;
+}
+
+.item-price-info {
+    font-size: 7pt;
+
+
+}
+.cart-header {
+    background-color: lightGrey;
+    font-weight: bolder;
+    font-size: 12px;
+    font-variant: small-caps;
+    border: lightgray 3px solid;
+    border-image: initial;
+    height: 35PX;
+}
+
+.cart-title {
+    font-family: sans-serif;
+    text-align: left;
+    font-size: 33pt;
+    padding-left: 10px;
+    font-weight: bolder;
+}
+
+.nav-cart-bottom {
+
+}
+
+.nav-cart-left {
+    padding-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+
+    float:left;
+}
+
+.nav-cart-right {
+    padding-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+
+    float:right;
+}
+
+.nav-cart-bottom {
+    height: 40px;
+    background: lightgray;
+    position: relative;
+    Width: 1010px;
+    padding-top: 10px;
+    margin-top: 20px;
+
+}
+
+.cart-summary {
+    width: 50%;
+    position: relative;
+    min-height: 200px;
+    float: right;
+}
+
+.cart-summary-header {
+    background: lightgray;
+    margin: 10px 10px 0px 10px;
+}
+
+.cart-summary-body {
+    margin: 0px 10px 10px 10px;
+}
+
+.cart-shipping {
+    width: 50%;
+    position: relative;
+    float: left;
+    min-height: 200px;
+}
+.cart-header-font {
+    font-variant: small-caps;
+    font-size: 14pt;
+    font-weight: bolder;
+
+}
+.cart-shipping-header {
+    background: lightgray;
+    margin: 10px 10px 0px 10px;
+}
+
+.cart-shipping-body {
+    margin: 0px 10px 10px 10px;
+
+}
+.cart-summary-section {
+    display: inline-block;
+    width: 1010px;
+}
+
+.cart-summary-price {
+    float: right;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+#cart-summary-price {
+    color:red;
+
+}
+
+.cart-sumamry-row {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 90%;
+    height: 20px;
+    margin-top: 0px;
+    border-bottom: lightgray dotted 1px;
+}
+
+.cart-summary-title {
+    float:left;
+
+    font-style: oblique;
+    font-size: 13px;
+}

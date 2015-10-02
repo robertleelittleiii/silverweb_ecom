@@ -1,4 +1,4 @@
-app\:about=List versions of all Rails frameworks and the environment
+app\:about=Loading Silverweb Ecommerce Module...\nList versions of all Rails frameworks and the environment
 app\:assets\:clean[keep]=Remove old compiled assets
 app\:assets\:clobber=Remove compiled assets
 app\:assets\:environment=Load asset compile environment
@@ -72,6 +72,7 @@ app\:rails\:update\:configs=
 app\:railties\:install\:migrations=
 app\:routes=Print out all defined routes in match order, with names. Target specific controller with CONTROLLER=x.
 app\:secret=Generate a cryptographically secure secret key (this is typically used to generate a secret for cookie sessions).
+app\:silverweb_ecom_engine\:install\:migrations=Copy migrations from silverweb_ecom_engine to application
 app\:test=Runs all tests in test folder
 app\:test\:all=Run tests quickly by merging all types and not resetting db
 app\:test\:all\:db=Run tests quickly, but also reset db

@@ -1,0 +1,19 @@
+/* 
+    Document   : product_detail
+    Created on : Apr 17, 2013, 1:52:01 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+
+#product-thumbs {
+display: inline-block;
+float: left;
+width: 415px;
+position: relative;
+z-index: 2;
+padding-left: 1px;
+padding-top: 5px;
+}

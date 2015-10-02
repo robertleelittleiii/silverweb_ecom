@@ -1,0 +1,15 @@
+{"sEcho": <%= params[:sEcho] || -1 %>,
+ "iTotalRecords": <%= @total_objects %>,
+ "iTotalDisplayRecords": <%= @total_objects %>,
+ "aaData":[ 
+<% @objects.each do |retailer| %>
+  [
+   "<%= retailer.company_name%> <div id='retailer-id' class='hidden-item'> <%= retailer.id%></div> ",
+   "<%= retailer.company_street_1 %>",
+   "<%= retailer.company_city %>",
+   "<%= retailer.company_state %>",
+   "<%= retailer.company_zip %>",
+   "<%=link_to(image_tag('interface/delete.png', :border=>"0", :class=>"delete-image"),{ :action=>:delete_ajax, :id=>retailer.id},{  :confirm => "Are you sure?", :id=>"delete-retailer-item", :remote=>true}).gsub(/\\|"/) { |c| "\\#{c}" } %>"
+  ] <% if @objects.last != retailer then %> , <% end %>
+<% end %>
+]}

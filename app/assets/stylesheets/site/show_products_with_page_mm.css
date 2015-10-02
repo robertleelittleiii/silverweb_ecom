@@ -1,0 +1,178 @@
+/* 
+    Document   : show_products_with_page
+    Created on : May 4, 2013, 11:36:43 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+img.product-image {
+display: table-cell;
+margin: auto;
+width: initial;
+display: inline-block;
+}
+
+div.product-float {
+display: table-cell;
+vertical-align: middle;
+position: absolute;
+top: 0;
+overflow: hidden;
+width: 242px;
+height: 182px;
+}
+
+
+div.product-item {
+border: dotted transparent 1px;
+width: 240px;
+height: 180px;
+display: inline-block;
+float: left;
+margin-right: 0px;
+margin: initial;
+margin-right: 8px;
+padding-bottom: 72px;
+}
+
+
+div.product-picture {
+margin: 0px 0px 0px 0px;
+height: 182px;
+position: relative;
+width: 242px;
+}
+
+div#edit-product {
+position: absolute;
+z-index: 20;
+width: 32px;
+height: 32px;
+MARGIN-TOP: 3px;
+margin-left: 10px;
+border-image: initial;
+}
+
+div#product-list {
+display: inline-block;
+position: absolute;
+top: 20px;
+left: 0px;
+width: 1000px;
+}
+
+div#content {
+position: relative;
+display: inline-block;
+margin-top: 0px;
+min-height: 475px;
+width: 725px	9;
+width: 1024px;
+}
+
+div#page-body {
+position: relative;
+border-image: none;
+webkit-border-image: none;
+border-left: 2px black;
+right: 0px;
+margin-top:0px;
+padding-left: 0px;
+display: inline-block;
+font-size: 14px;
+}
+
+div#edit-pages-product {
+top: 10px !important;
+position: absolute!important;
+left: 10px!important;
+z-index: 20!important;
+}
+
+div#page-display {
+width: 1024px; 
+}
+
+#collection-list-bottom {
+display: inline-block;
+position: relative;
+width: 100%;
+background-color: #00509c;
+height: 25px;
+font-family: 'Chalkduster';
+}
+
+#collection-list-bottom li {
+display: inline-block;
+list-style: none;
+padding-right: 34px;
+}
+
+#collection-list-bottom li a {
+color: white;
+text-decoration: none;
+text-transform: none;
+font-size: 11px;
+font-weight: normal;
+}
+
+#collection-list-bottom ul {
+margin-top: 0px;
+margin-bottom: 0px;
+
+
+}
+
+div#product-block .product-row {
+display: inline-block;
+margin-bottom: 15px;
+margin-top: 4px;
+margin-left: 0px;
+height: 180px;
+padding-bottom: 45px;
+width: 1024px;
+}
+
+#collection-list-bottom li.selected {
+color: white;
+text-decoration: underline;
+text-transform: none;
+font-size: 11px;
+font-weight: bold;
+}
+    
+div#product-block {
+min-height: 330px;
+margin-left: 20px;
+margin-right: -20px;
+}
+
+
+div img.handle {
+position: absolute;
+top: 144px;
+left: 5px;
+}
+
+
+div.pagination-div {
+width: 1024px;
+bottom: 15px;
+color: #ab7c53;
+padding-left:0px;
+}
+
+div.pagination-div nav.pagination {
+color: #ab7c53  !important;
+width: 1024px !important;
+position:relative !important;
+}
+
+nav.pagination span a {
+color: #ab7c53 !important;
+}

@@ -1,0 +1,77 @@
+<div id="attr-pages" class="hidden-item">
+    <div id="full-screen">false</div>
+    <div id="admin-active"><%=  @admin_active=admin_active() || "" %></div>
+    <div id="page_number"><%=@the_page%></div>
+</div>
+Horizontal
+<div id="product-list">
+    <% if @products.count > 0 then %>
+      <div id="product-block">
+          <%  @products.each_with_index do |product, counter|  %>
+
+            <% if @admin_active=="false" then %>
+              <%  if(counter % 4) == 0 %>
+                <%  if counter  > 1 %>
+              </div>
+            <% end %>  
+            <div class="product-row">
+              <% end %>  
+            <% end %>  
+
+
+            <div class="product-item" id="product_<%=product.id%>">
+                <%=  product_edit_div(product)%>
+
+                <div id="item-id" class="hidden-item">
+                    <%=product.id%>
+                    <%=link_to(product.product_name.html_safe, {:action=>:product_detail, :id=>product.id}, :class=>"product-detail-link") %>
+
+                </div>
+                <div class="product-picture">
+                    <div class="product-float">
+                        <%= image_tag(product.pictures.where(:active_flag=>true)[0].blank? ? "empty_s.jpg" : product.pictures.where(:active_flag=>true)[0].image_url(:store_list_horizontal).to_s,:class=>"product-image") rescue "" %>
+
+                        <div class="info-block">
+                            <%=product.product_name%></br>
+                            <%=product.sheet_name%></br>
+                        </div>
+
+                        <% if @admin_active=="true" then %>
+                          <%= image_tag("interface/handle.png",:class=>"handle") %>
+                        <% end %>
+
+                    </div>
+                </div>
+    <%#*<div class="product-name">%>
+    <%#=link_to(product.product_name.html_safe, {:action=>:product_detail, :id=>product.id}, :class=>"product-detail-link") %>
+    <%#*</div>%>
+    <%#*<div class="product-price">%>
+    <%# if product.discount_available then%>
+    <%#*Save <span id="product-discount"> <%=product.discount.to_s + "%" % > </span> : < %=number_to_currency(product.price) % >%>
+    <%# else %>
+    <%#=number_to_currency(product.msrp) %>
+    <%#  end %>        
+    <%#*</div>%>
+            </div>
+          <% end %>
+
+      </div>
+  </div>
+  <div class="pagination-div">  
+      <div class="product-counts">
+          Showing <%=@product_first%> to <%=@product_last%> of <%=@product_count%>
+      </div>
+      <%=paginate @products%>
+  </div>
+  </div>
+
+<%else%>
+  </br>
+  </br>
+  </br>
+  <center>
+      NO PRODUCTS FOUND IN CATEGORY !
+  </center>
+<%end%>
+
+

@@ -1,0 +1,21 @@
+[
+ <% @retailers.each do |retailer| %>
+  {
+  "id":"<%= retailer.id%>",
+  "name":"<%= retailer.company_name.html_safe rescue ''%>",
+  "lat":"<%= retailer.latitude%>",
+  "lng":"<%= retailer.longitude%>",
+  "address":"<%= retailer.company_street_1%>",
+  "address2":"<%= retailer.company_street_2%>",
+  "city":"<%= retailer.company_city%>",
+  "state":"<%= retailer.company_state%>",
+  "postal":"<%= retailer.company_zip%>",
+  "phone":"<%= retailer.company_phone%>",
+  "web":"<%= retailer.company_website%>",
+  "hours1":"<%= retailer.company_hours_1%>",
+  "hours2":"<%= retailer.company_hours_2%>",
+  "hours3":"<%= retailer.company_hours_3%>"
+  }
+  <% if @retailers.last != retailer then %> , <% end %>
+<% end %>
+]

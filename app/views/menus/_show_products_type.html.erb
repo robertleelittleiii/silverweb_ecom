@@ -1,0 +1,47 @@
+<script>
+  require("menus/show_products_type");
+  menus_show_products_type_callDocumentReady();
+  </script>
+  
+  
+
+  <div class="ecom-show-products-menu">
+    <p>
+        <b>Product List Format:</b><br>
+        <%=ajax_select("rawhtml","menu",@menu, SilverwebEcom::Config.PRODUCT_LIST_LAYOUTS + build_product_list_templates)%>
+    </p>
+     <b>Page to Include</b><br>
+          <%=ajax_select("page_id","menu",@menu, @page_list)%>
+        </p>
+        
+    
+    <fieldset class="address-legend" >
+    <legend class="address-lable">Products in List</legend>
+    <table  class="address-table">
+      <tbody>
+        <tr>
+          <td>
+
+            Department: </br>
+            <%#=ajax_select2("department_id","product",@product, create_menu_list("Top Menu"))%>            
+            <%=create_group_checks_live("department_id", @menu, create_menu_list("Top Menu",false),"department",{:class=>"department-check"} )%>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Category: </br>             
+            <div id="category-div">
+              <%=render(:partial=>"category_div")%>  
+            </div>
+          
+
+<%#=create_group_checks_live("category_id", @product, create_menu_list("Top Menu"),"category" )%>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
+    
+   
+</div>

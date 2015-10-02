@@ -1,0 +1,16 @@
+{"sEcho": <%= params[:sEcho] || -1 %>,
+ "iTotalRecords": <%= @total_objects %>,
+ "iTotalDisplayRecords": <%= @total_objects %>,
+ "aaData":[
+<% @objects.each do |product_detail| %>  <% @product_detail = product_detail %>
+  [
+   "<%=json_clean(editablecheckboxedit("sku_active",@product_detail,""))%><div id='detail-id' class='hidden-item'><%=@product_detail.id%></div>",
+   "<%=json_clean(editablefieldcreate("inventory_key",@product_detail,"xxxx-xxx",{}))%>",
+   "<%=json_clean(ajax_select("size","product_detail",@product_detail, ([@product_detail.size]+@sizes).uniq))%>",
+   "<%=json_clean(ajax_select_combo("color","product_detail",@product_detail, ([@product_detail.color]+@system_colors).uniq,'Please Select...', {:class=>"combobox"}))%>",
+   "<%=json_clean(editablefieldcreate("units_in_stock",@product_detail))%>",
+   "<%=json_clean(editablefieldcreate("units_on_order",@product_detail))%>",
+   "<%=json_clean(link_to(image_tag('interface/delete.png', :border=>"0"),{ :action=>:destroy, :controller=>:product_details, :id=>@product_detail.id},{  :on_click=>" $j('#loader_progress').show();", 'confirm' => 'Are you sure?', 'method' => :delete , :id=>"delete-product_detail", :title=>"Delete Item", :remote=>true}))%> <%=json_clean(link_to(image_tag('interface/browse.png', :border=>"0"),{ :action=>:duplicate_record, :controller=>:product_details, :old_id=>@product_detail.id},{  :on_click=>" $j('#loader_progress').show();",  :id=>"duplicate-product_detail",:title=>"Duplicate Item", :remote=>true}))%>"
+   ] <% if @objects.last != @product_detail then %> , <% end %>
+<% end %>
+]}

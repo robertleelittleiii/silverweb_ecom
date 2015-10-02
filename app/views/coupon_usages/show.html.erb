@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Coupon:</b>
+  <%= @coupon_usage.coupon_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @coupon_usage.user_id %>
+</p>
+
+<p>
+  <b>Usage count:</b>
+  <%= @coupon_usage.usage_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_coupon_usage_path(@coupon_usage) %> |
+<%= link_to 'Back', coupon_usages_path %>

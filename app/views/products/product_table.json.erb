@@ -1,0 +1,15 @@
+{"sEcho": <%= params[:sEcho] || -1 %>,
+ "iTotalRecords": <%= @total_objects %>,
+ "iTotalDisplayRecords": <%= @total_objects %>,
+ "aaData":[ 
+<% @objects.each do |product| %>
+  [
+   "<%= product.supplier_product_id%> <div id='product-id' class='hidden-item'> <%= product.id%></div> ",
+   "<div <%=(product.product_active ? '' : "style='color:red;'")%>> <%= product.product_name %> </div>",
+   "<%= truncate(product.product_description.to_s.gsub(/<\/?[^>]+>|(\r\n|\n|\r)|&nbsp;/, '').html_safe, :length => 17) %>",
+   "<%=main_image_preview(product.pictures.first) %>", 
+   "<center><div class='delete-product-item'><%=image_tag('interface/delete.png', :border=>'0').gsub("\"", "'").html_safe() %></div> </center>"
+  ] <% if @objects.last != product then %> , <% end %>
+<% end %>
+]}
+

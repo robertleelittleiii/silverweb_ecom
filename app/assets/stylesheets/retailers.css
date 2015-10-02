@@ -1,0 +1,13 @@
+/* 
+    Document   : retailers
+    Created on : Apr 15, 2014, 12:31:57 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+@import "tables.css"; 
+
+root { 
+    display: block;
+}
+

@@ -7,17 +7,18 @@ require "silverweb_ecom/version"
 Gem::Specification.new do |s|
   s.name        = "silverweb_ecom"
   s.version     = SilverwebEcom::VERSION
-  s.authors     = [""]
-  s.email       = [""]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SilverwebEcom."
-  s.description = "TODO: Description of SilverwebEcom."
+  s.authors     = ["Robert Lee Little III"]
+  s.email       = ["rob@silverwebsystems.com"]
+  s.homepage    = "http://www.silverwebsystems.com/"
+  s.summary     = "This is an ecommerce gem that plugs into the silverweb cms gem."
+  s.description = "An ecommerse gem that sits on top of the silverweb_cms."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.3"
+  s.add_dependency "rails", "~> 4.2.0"
+  s.add_dependency 'silverweb_cms'
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "mysql"
 end

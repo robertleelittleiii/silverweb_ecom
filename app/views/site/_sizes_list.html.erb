@@ -1,0 +1,35 @@
+CHOOSE SIZE </br>
+<%#=select_tag("size", options_from_collection_for_select(@product_sizes, "id", "size"), :prompt => "Choose a Size.")%>
+<% selected=0  %>
+<% 
+  puts("start")
+  sizes =  ["N/S"] + Settings.inventory_size_list.split(",") rescue [""]
+  if sizes.length > 0 then 
+    puts("product_sizes: #{@product_sizes.inspect } product_sizes_array: #{@product_size_array.inspect}")
+  sizes.each_with_index do |each_item, counter|
+    puts("each_item: #{each_item}, counter: #{counter}, in ps: #{@product_sizes.include?(each_item)} ")
+
+    if  @product_size_array.include?(each_item)==true then
+      product_size_item = @product_sizes.where(:size=>each_item).first
+
+      puts("product_size_item: #{product_size_item.inspect},product_size_item[0]: #{product_size_item.units_in_stock}")
+
+      if product_size_item.units_in_stock.to_i > 0 and selected==0 then
+        selected=1
+        size_selected=true
+      else
+        size_selected=false
+      end rescue size_selected=false
+
+      puts("***each_item: #{each_item}, counter: #{counter} ")
+    end
+    %>
+      <div class="<%=(size_selected ? 'size-selected ': '')+ (product_size_item.units_in_stock.to_i> 0 ? "product-size-item" : "product-size-inactive") rescue ""%>">
+        <%=each_item%>
+      </div>
+
+    <%
+    end
+  end
+puts("end")
+%>

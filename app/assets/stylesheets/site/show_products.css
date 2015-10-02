@@ -1,0 +1,111 @@
+/* 
+    Document   : show_products
+    Created on : Apr 19, 2013, 4:27:13 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+div#content {
+position: relative;
+display: inline-block;
+margin-top: 0px;
+min-height: 475px;
+width: 725px	9;
+width: 725px;
+float: right;
+}
+
+#page-middle-left {
+position: relative;
+display: inline-block;
+float: left;
+width: 290px;
+}
+
+div.product-picture {
+margin: 15px 0px 0px 0px;
+height: 267px;
+position: relative;
+}
+
+div.product-item {
+border: dotted transparent 1px;
+width: 170px;
+height: 270px;
+display: inline-block;
+float: left;
+margin-right: 0px;
+margin: initial;
+position:relative;
+}
+
+div#edit-product {
+position: absolute;
+z-index: 20;
+width: 32px;
+height: 32px;
+MARGIN-TOP: 15px;
+margin-left: 15px;
+border-image: initial;
+cursor: pointer;
+}
+
+img.handle {
+position: absolute;
+top: 247px;
+left: 15px;
+}
+
+ul#left-nav li.top-nav a:hover {
+color: #1b4d4b;
+}
+
+ul#left-nav li a {
+color: #42a5a4;
+font-size: 17px;
+text-shadow: none;
+font-weight: normal;
+text-transform: none;
+font-family: Chalkduster;
+text-align: right;
+}
+
+div#section-name {
+font-family: Chalkduster;
+color: #42a5a4;
+font-weight: bold;
+font-size: 29px;
+text-decoration: none;
+text-shadow: none;
+font-weight: normal;
+text-transform: none;
+left: 0px;
+top: 15px;
+position: absolute;
+z-index: 200;
+}
+
+ul#left-nav {
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-left: -46px;
+margin-top: 100px;
+bottom: 0px;
+}
+
+li.left-nav-selected {
+color: #42a5a4;
+text-decoration:underline;
+font-size: 17px;
+text-shadow: none;
+font-weight: normal;
+text-transform: none;
+font-family: Chalkduster;
+text-align: right;
+}

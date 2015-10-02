@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 1, 2015, 7:39:36 PM
+    Author     : rlittle
+*/
+/* div.ecom-show-products-menu { */
+    
+   div.ecom-show-products-menu .address-lable {
+        background: transparent;
+        border-width: 1px;
+        border-style: none;
+        border-color: grey;
+        padding: 2px;
+        margin: 2px;
+        font-weight: bold;
+        font-size: 16px;  
+        color:black;
+
+    }
+
+div.ecom-show-products-menu .address-legend {
+    background: #707B7D;
+    padding: 15px;
+    background-color: #E8E8E8;
+    margin: 10px;
+}
+
+
+
+    div.ecom-show-products-menu .address-table td{
+        background-color: white;
+        border-color:black;
+        border-style:dotted;
+        border-width:.5px;
+
+        overflow: hidden;
+        height:30px;
+
+        font-weight: bold;
+        color:gray;
+
+    }
+   div.ecom-show-products-menu .address-table tr{
+        height:20px;
+
+    }
+
+   div.ecom-show-products-menu .address-table{
+        width:100%;
+        margin-top:-15px;
+
+    }
+
+
+
+
+
+  div.ecom-show-products-menu  .div-category {
+        display: inline-block;
+        border: 1px lightgray dotted;
+        padding: 3px;
+        margin: 4px;
+        border-image: initial;
+    }
+
+  div.ecom-show-products-menu  .div-department {
+        display: inline-block;
+        border: 1px lightgray dotted;
+        padding: 3px;
+        margin: 4px;
+        border-image: initial;
+    }
+
+
+  div.ecom-show-products-menu  fieldset.department {
+        margin: 5px 10px 5px 10px;
+    }
+/* }    */

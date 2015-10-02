@@ -1,0 +1,67 @@
+<div class="myaccountblock">
+  <div align="center">
+    <!-- START:flash -->
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+    <!-- END:flash -->
+  </div>
+
+  <div id="site-pref-list">
+    <div class="myaccountheader">Order</div>
+    <div class="myaccountsection">
+      <div class="myaccountheading">Listing</div>
+      <div class="myaccountcontent">
+
+        <center><%#= link_to 'New Order', :action=>:create_empty_record,:typeofrecord=>"order" %></center>
+        <table width ="100%"cellpadding="5" cellspacing="0">
+          <tr>
+            <th width="30%">
+              Order No.
+            </th>
+            <th width="30%">
+              Order Date
+            </th>
+            <th width="30%">
+              Ship Date
+            </th>
+            <th width="5%">
+              Status
+            </th>
+            <th width="5%">--</th>
+          </tr>
+        </table>
+        <hr>
+
+        <%  @orders.each do |order| %>
+          <div class="hr"></div>
+          <table width ="100%"cellpadding="5" cellspacing="0">
+            <tr class="list-table" valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>"  onclick = "window.location.href ='<%=url_for(:controller => 'orders', :id => order.id,  :action => 'order_success')%>' "  style = "cursor:pointer" >
+              <td align="left"  width="30%">
+                <span class="list-title"><%=  order.id.to_s.rjust(10, '0')%></span>
+              </td>
+              <td align="left" width="30%">
+                <span class="list-title"><%= order.created_at.strftime('%m/%d/%Y') rescue "n/a" %></span>
+              </td>
+              <td align="left" width="25%">
+                <span class="list-title"><%= order.shipped_date.strftime('%m/%d/%Y') rescue "n/a" %></span>
+              </td>
+              <td align="left" width="5%">
+               <span class="list-title"><%= (order.transactions[0].success ? "<span style='color:green;'>Success</span>" : "<span style='color:red;font-size:9pt'>Fail</br> Auth: #{order.transactions[0].authorization}</br> Msg: #{order.transactions[0].params.to_yaml.split("\n").join("</br>")}</span>").html_safe rescue "n/a" %></span>
+              </td>
+              <td align="left" width="10%">
+                <span class="list-title"><%= link_to image_tag("site/pdf.png",{:width=>"20px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>order.id},{:title=>"generate PDF"} %></span>
+                 <span class="list-title"><%= link_to image_tag("site/email.png",{:width=>"25px"}), {:action=>:resend_invoice, :order_id=>order.id},{:title=>"re email order", :confirm=>"Are you sure that you wish to resend the invoice?"} %></span>
+             </td>
+
+            </tr>
+          </table>
+  <%#*<div align="right" class="image-delete-list" >%>
+  <%#=link_to image_tag ("interface/Button-Delete.png", :border=>"0") , order,:on_click=>"", :confirm => 'Are you sure?', :method => :delete %>
+  <%#*</div>%>
+        <% end %>
+        <div class="hr"></div>
+      </div>
+    </div>
+    <center><%#= link_to 'New Order', :action=>:create_empty_record,:typeofrecord=>"order" %></center>
+  </div>

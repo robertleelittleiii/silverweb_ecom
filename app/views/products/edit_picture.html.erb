@@ -1,0 +1,50 @@
+<div class="hidden-item" id="picture-id"><%=@picture.id%></div>
+<div class="hidden-item">
+    <div id="as_window"><%=params[:as_window]%></div>
+    <div id="dialog-height">325</div>
+    <div id="dialog-width">600</div>
+    <div id="dialog-name">Edit Picture (<%=@picture.image.current_path.split("/").last%>)</div>
+</div>
+
+<div class="cms-block" Align="Left">
+    <div align="center">
+        <!-- START:flash -->
+        <% if notice -%>
+          <div id="notice"><%= notice  %></div>
+        <% end -%>
+        <!-- END:flash -->
+
+        <% if @picture.errors.any? %>
+          <div id="error_explanation">
+              <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+              <ul>
+                  <% @picture.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+              </ul>
+          </div>
+        <% end %>
+
+    </div>
+
+    <%  if not params[:as_window] then%>
+      <div class="cms-header">Edit Picture</div>
+    <% end %>
+
+    <div class="cms-section">
+          <div class="cms-content">
+
+            <%= render 'picture_form' %>
+
+        </div>
+        </p>
+    </div>
+    <%  if not params[:as_window] then%>
+
+    <%= link_to 'Show', @picture %> |
+    <%= link_to 'Back', pictures_path %>
+    <% end %>
+
+</div>
+

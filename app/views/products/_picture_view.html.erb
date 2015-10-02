@@ -1,0 +1,40 @@
+
+<%picture=@picture if picture.blank?%>
+
+<div id="picture_<%=picture.id.to_s%>" data-id='image_<%=picture.id.to_s%>' class="file-list-item">
+    <div class="file-delete-icon ui-icon ui-icon-closethick">
+<%#= link_to('X',{ :controller=>:pictures, :id=>picture.id, :action=>:destroy} , { :method => :delete, :confirm => 'Are you sure?' , :remote=>true})%>
+        <%= link_to 'X', picture,  method: :delete, remote:true, data: { confirm: "Are you sure?" }, class: 'picture-delete'%>
+
+    </div> 
+    <div class="file-item"> 
+        <div id="logo-links" class="<%=picture.file_type[1..-1] rescue ""%>">
+            <%=link_to('', :controller=>"pictures", :action => "download_file", :id=>picture.id, :title=>"Download File") %> 
+        </div>
+        <div class="file-title"><%=truncate(picture.file_name, length: 12) rescue "file not found"%> 
+
+        </div>
+    </div> 
+
+    <div class="file-block">
+        <div class="hover-block">
+            <div class="ui-button">
+                <%= link_to("Edit", {action: :edit_picture, controller: :products, picture_id: picture.id, as_window: true} , remote: true,  class: "edit-picture-product") %>
+              </div>
+              <%#*<div class="ui-button">%>
+                <%#= link_to("Insert", {controller: "pictures", action: "insert_image", as_window: true, id: picture.id} , remote: true,  class: "insert-image")  rescue ""%>
+                <%#= link_to("Insert", {controller: "pictures", action: "insert", as_window: true, id: picture.id} , remote: true,  class: "insert-picture")  rescue ""%>
+              <%#*</div>%>
+          </div>
+          <div class="picture-item">
+              <div class="picture-float-center">
+                  <%= picture.file_type==".pdf" ? (image_tag(picture.image_url(:pdf_preview).to_s)) : (image_tag(picture.image_url(:preview).to_s)) rescue ""%>
+              </div>
+          </div>
+        
+         <div class="picture-info">
+             <%= picture.title.to_s %>
+         </div>
+      </div>
+
+  </div> 

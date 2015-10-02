@@ -1,0 +1,8 @@
+
+<%# return if (not defined?(picture_list).nil?) %>
+<% @pictures = picture_list if @pictures.blank? %>
+
+<% @pictures.each do |picture| %>
+<% puts("---------->  picture.file_name(): '#{picture.file_name()}'") %>
+<%= render(:partial=>"picture_view.html" , :locals=>{:picture=>picture}) if not picture.file_name.blank? %>
+<% end if not @pictures.blank?%>

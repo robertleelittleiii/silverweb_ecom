@@ -1,0 +1,38 @@
+<div class="myaccountblock">
+  <div align="center">
+    <!-- START:flash -->
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
+    <% end -%>
+    <!-- END:flash -->
+  </div>
+
+  <div id="site-pref-list">
+    <h1  class="myaccountheader">Coupon</h1>
+
+    <center><%= link_to 'New Coupon', :action=>:create_empty_record,:typeofrecord=>"coupon" %></center>
+
+    <%  @coupons.each do |coupon| %>
+      <div class="hr"></div>
+      <table width ="100%"cellpadding="5" cellspacing="0">
+        <tr class="list-table" valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>"  onclick = "window.location.href ='<%=url_for(:controller => 'coupons', :id => coupon.id,  :action => 'edit')%>' "  style = "cursor:pointer" >
+          <td width="400" align="left">
+            <span class="list-title"><%= coupon.description %></span>
+          </td>
+          <td align="left">
+            <span class="list-title"><%= coupon.start_date %></span>
+          </td>
+          <td align="left">
+            <span class="list-title"><%= coupon.end_date %></span>
+          </td>
+        </tr>
+      </table>
+      <div align="right" class="image-delete-list" >
+        <%=link_to image_tag ("interface/Button-Delete.png", :border=>"0") , coupon,:on_click=>"", :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    <% end %>
+    <div class="hr"></div>
+
+  </div>
+  <center><%= link_to 'New Coupon', :action=>:create_empty_record,:typeofrecord=>"coupon" %></center>
+</div>

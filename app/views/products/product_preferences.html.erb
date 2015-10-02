@@ -1,0 +1,67 @@
+<div class="hidden-item">
+    <div id="as_window"><%=params[:request_type]=="window"%></div>
+    <div id="dialog-height">400</div>
+    <div id="dialog-width">650</div>
+    <div id="dialog-name">Product Settings</div>
+</div>
+
+
+<div id="product-settings-tabs">
+    <ul>
+        <li><a href="#product-settings-tab">View Settings</a></li>
+        <li><a href="#product-images-tab">Product Swatches</a></li>
+        <li><a href="#product-social-tools-tab">Social Sharing Tool</a></li>
+        <li><a href="#product-utilities-tab">Utilities</a></li>
+    </ul>
+    
+    <div id="product-settings-tab">
+        <div class="cms-content">
+            <p>
+            <p>
+                <b>Products per Page (Number):</b><br>
+                <%=editablefieldcreate("products_per_page", @settings)%>
+            </p>
+            <p> 
+                <b>Search Products per Page (Number):</b><br>
+                <%=editablefieldcreate("search_products_per_page", @settings)%>
+            </p> 
+
+
+        </div>
+
+
+    </div>
+    <div id="product-images-tab">
+        <div class="cms-content">
+
+            <div id="product-images">
+                <%= render :partial=>"image_swatch_section" %>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-social-tools-tab">
+        <div class="cms-content">
+            <p>
+                <b>Social Share Javascript(from site):</b><br>
+                <%=editablefieldcreate("product_javascript_social_share", @settings, "javascript code", {:sanitize=>false})%>
+            </p>
+            <p>
+                <b>Social Share Buttons(from site):</b><br>
+                <%=editablefieldcreate("product_button_block_social_share", @settings,"button code", {:sanitize=>false})%>
+            </p>
+
+        </div>
+
+    </div>
+    
+    
+<div id="product-utilities-tab">
+        <div class="cms-content">
+            <p><b> Click this link to reprocess images:</b></br>
+        <%=link_to 'Reproces product images', {:controller => 'products', :action => 'reprocess_product_images'}, :id=>"process-image-button", :remote=>true%>
+      </p>
+        </div>
+</div>
+
+</div>

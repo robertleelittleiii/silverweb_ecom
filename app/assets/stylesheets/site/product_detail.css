@@ -1,0 +1,653 @@
+/* 
+    Document   : product_detail
+    Created on : Apr 17, 2013, 1:52:01 PM
+    Author     : rlittle
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+/* div {
+    border: dotted black 0px !important;
+}*/
+
+
+#product-left-image {
+    width: 258px;
+    display: inline-block;
+    position: relative;
+    float:left;
+}
+
+.zoomPad {
+    /* min-height: 420px; */
+}
+/*Product detail page */
+
+#product-header {
+margin-top: 0px;
+}
+
+#product-thumbs {
+    display: inline-block;
+    float: left;
+    width: 140px;
+    position: relative;
+    z-index: 2;
+    padding-left: 5px;
+}
+
+.product-thumb {
+    float: left;
+    margin: 0px 3px 3px 0px;
+}
+
+.product-thumb-item {
+    text-decoration: none;
+
+}
+
+#product-image-border {
+    width: 343px;
+    height: 400px;
+    border: white 2px solid;
+    z-index: 500;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+#product-main-image {
+    width: 268px;
+    display: block;
+    position: relative;
+    float: left;
+}
+
+.zoomThumbActive img {
+    /* border: 1px dotted black;
+    margin: 0px;
+    padding: 3px;
+    border-image: initial; */
+}
+
+
+#supplier-product-id {
+color: gray;
+font-variant: small-caps;
+text-align: left;
+position: relative;
+font-size: 15px;
+font-family: open_sanslight;
+padding-bottom: 6px;
+}
+
+#distributor-info {
+    font-size:32pt;
+    color:darkgray;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+#product-info-block {
+font-family: CenturyGothic;
+display: inline-block;
+width: 324px;
+margin-left: 15px;
+}
+
+#product-name {
+font-size: 13pt;
+font-weight: bolder;
+margin-top: 5px;
+font-family: Chalkduster;
+/* border-bottom: 1px black solid; */
+padding-bottom: 4px;
+color: #01b4b3;
+}
+
+.cart-coupon-header {
+    background: lightgray;
+    margin: 10px 10px 0px 10px;
+}
+
+#product-price {
+    font-size: 16px;
+    margin-top: 0px;
+    font-family: open_sanslight;
+    color: #01b4b3;
+}
+
+#product-description {
+    font-size: 10pt;
+    text-align: justify;
+    margin: 0px 0px 5px 0px;
+    border-image: initial;
+    max-height: 280px;
+    overflow: auto;
+    font-family: open_sanslight;
+    font-weight: normal;
+}
+
+#product-top {
+    width: 700px;
+    display: block;
+    position: relative;
+    float: left;
+    margin-left: 130px;
+}
+
+.color-swatch-item {
+font-size: 9px;
+display: inline-block;
+vertical-align: top;
+text-align: center;
+margin-top: 10px;
+margin-left: 0px;
+font-weight: normal;
+margin-bottom: 10px;
+}
+
+.product-legend {
+    font-size: 13px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+#product-colors {
+font-size: 12px;
+font-family: open_sanslight;
+/* color: #01b4b3;*/
+margin-top: 10px;
+margin-bottom: 10px;
+border-bottom: 2px #01b4b3 solid;
+padding-bottom: 14px;
+}
+
+.swatch-selected {
+    border: 4px black solid !important;
+    padding: 1px !important;
+}
+
+.product-swatch {
+border: 1px grey solid;
+padding: 4px;
+-webkit-transition: all .4s ease-in-out;
+-moz-transition: all .4s ease-in-out;
+-o-transition: all .4s ease-in-out;
+-ms-transition: all .4s ease-in-out;
+background-color: white;
+}
+
+.transition {
+    -webkit-transform: scale(2); 
+    -moz-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    z-index:20;
+}  
+/*  */
+
+.product-size-item {
+border: 0px grey solid;
+font-size: 10pt !important;
+font-variant: small-caps;
+padding: 2px;
+text-align: center;
+margin: 5px;
+display: inline-block;
+border-image: initial;
+padding: 2px 4px 2px 4px;
+font-weight: normal;
+}
+
+.product-size-inactive {
+background-color: #ddd;
+border: 1px grey solid !important;
+font-size: 10pt !important;
+font-variant: small-caps;
+padding: 2px;
+text-align: center;
+margin: 3px;
+display: inline-block;
+border-image: initial;
+padding: 2px 4px 2px 4px;
+font-weight: bold;
+}
+
+#product-size-items div.product-size-item {
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+#product-size {
+    font-size: 12px;
+    margin-top: 5px;
+    font-family: open_sanslight;
+    /* color: #01b4b3;*/
+    border-bottom: 2px #01b4b3 solid;
+    padding-bottom: 14px;
+
+}   
+#product-size div.size-message {
+background-color: rgb(215, 235, 230);
+padding: 5px;
+margin-top: 5px;
+text-align: center;
+font-size: 8px;
+font-style: normal;
+margin-bottom: 10px;
+color: black;
+font-family: Verdana;
+}
+
+#product-body {
+    min-height: 510px;
+}
+
+input#quantity {
+    background: #DDD;
+    margin-left: 10px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.size-selected {
+border: 0px black solid !important;
+padding: 1px 4px 1px 4px !important;
+background: yellow;
+COLOR: initial;
+font-weight: bold;
+border-image: initial;
+}
+
+.product-size-item:hover {
+    cursor:pointer;
+
+}
+
+.product-swatch:hover {
+    cursor:pointer;
+
+}
+
+#add-to-cart-div {
+    display: inline-block;
+
+    position: relative;
+}
+
+#product-quantity {
+font-size: 12px;
+margin-top: 5px;
+font-family: open_sanslight;
+border-bottom: 2px solid #01b4b3;
+padding-bottom: 8px;
+}
+
+
+#total-cost {
+    /* display: inline-block;  */
+    min-width: 100px;
+    min-height: 50px;
+    vertical-align: top;
+}
+
+#cart-form {
+    display: inline-block;
+    min-width: 100px;
+    vertical-align: top;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.addthis_toolbox.addthis_default_style a iframe, .addthis_toolbox.addthis_default_style a div {
+    width: 82px !important;
+}
+
+
+.addthis_toolbox.addthis_default_style {
+    width: 330px;
+    margin-left: -10px;
+}
+
+
+.addthis_toolbox {
+    margin-left: 0px;
+    margin-top: 20px;
+}
+
+
+
+#total-cost-dollars {
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#add-to-cart-section {
+    display: inline-block;
+    position: relative;
+    padding-left:10px;
+}
+
+#add-to-cart-section a {
+    color: #01b4b3;
+    font-size: 11px;
+    text-decoration: none;
+    font-family: Chalkduster;
+
+}
+
+#add-to-wishlist-section {
+   /* display: inline-block; */
+    display:hidden;
+    position: relative;
+    padding-left:10px;
+}
+
+#add-to-wishlist-section a {
+    color: #01b4b3;
+    font-size: 11px;
+    text-decoration: none;
+    font-family: Chalkduster;
+
+
+}
+div#product-tag-line-text {
+color: white;
+font-size: 18px;
+margin-top: 2px;
+}
+
+
+#see-more-styles {
+    width: 300px;
+    padding-top: 15px;
+}
+
+#see-more-styles div#more-styles-images {
+    height: 120px;
+    overflow: hidden;
+}
+
+div#more-styles-images img {
+    padding-left: 1px;
+}
+
+#see-more-styles div#more-styles-nav {
+    color: #01b4b3;
+    font-size: 11px;
+    text-decoration: none;
+    font-family: Chalkduster;
+    text-align: center;
+    padding-top: 5px;
+}
+
+#product-image-block {
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+#product-left-pane {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 680px;
+}
+
+
+#edit-product {
+    position: absolute;
+    z-index: 20;
+    width: 20px;
+    height: 20px;
+    MARGIN-TOP: 20px;
+    margin-left: 20px;
+    border-image: initial;
+}
+
+.cart-item-title a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+#edit-slider {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    width: 20px;
+    height: 20px;
+}
+
+.cart-shipping-body a {
+    text-align: right;
+    font-size: 7pt;
+    text-decoration: none;
+    margin-left: -400px;
+    color: black;
+    border-image: initial;
+}
+
+/* carousel configuration */
+
+div#more-styles-images.style-carousel div {
+display: inline-block;
+}
+
+
+
+.jcarousel-skin-tango .jcarousel-container {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+   border-radius: 10px;
+    background: #F0F6F9;
+    border: 1px solid #346F97;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal {
+    width: 300px;
+    /* padding: 20px 40px;*/
+}
+
+.jcarousel-skin-tango .jcarousel-container-vertical {
+    width: 75px;
+    height: 245px;
+    padding: 40px 20px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip {
+    overflow: hidden; 
+}
+
+.jcarousel-skin-tango .jcarousel-clip-horizontal {
+    width:  300px;
+    height: 120px;
+}
+
+.jcarousel-skin-tango .jcarousel-clip-vertical {
+    width:  90pxpx;
+    height: 245px;
+}
+
+.jcarousel-skin-tango .jcarousel-item {
+    width: 90px;
+    height: 140px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal {
+	margin-left: 0;
+    margin-right: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+    margin-right: 0;
+}
+
+.jcarousel-skin-tango .jcarousel-item-vertical {
+    margin-bottom: 10px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-horizontal {
+    position: absolute;
+    top: 43px;
+    right: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(next-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-next-horizontal {
+    left: 5px;
+    right: auto;
+    background-image: url(prev-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal {
+    position: absolute;
+    top: 43px;
+    left: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(prev-horizontal.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-direction-rtl .jcarousel-prev-horizontal {
+    left: auto;
+    right: 5px;
+    background-image: url(next-horizontal.png);
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:hover, 
+.jcarousel-skin-tango .jcarousel-prev-horizontal:focus {
+    background-position: -32px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal:active {
+    background-position: -64px 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+/**
+ *  Vertical Buttons
+ */
+.jcarousel-skin-tango .jcarousel-next-vertical {
+    position: absolute;
+    bottom: 5px;
+    left: 43px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(next-vertical.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-next-vertical:hover,
+.jcarousel-skin-tango .jcarousel-next-vertical:focus {
+    background-position: 0 -32px;
+}
+
+.jcarousel-skin-tango .jcarousel-next-vertical:active {
+    background-position: 0 -64px;
+}
+
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical,
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical:hover,
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical:focus,
+.jcarousel-skin-tango .jcarousel-next-disabled-vertical:active {
+    cursor: default;
+    background-position: 0 -96px;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-vertical {
+    position: absolute;
+    top: 5px;
+    left: 43px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(prev-vertical.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-vertical:hover,
+.jcarousel-skin-tango .jcarousel-prev-vertical:focus {
+    background-position: 0 -32px;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-vertical:active {
+    background-position: 0 -64px;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical,
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical:hover,
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical:focus,
+.jcarousel-skin-tango .jcarousel-prev-disabled-vertical:active {
+    cursor: default;
+    background-position: 0 -96px;
+}
+
+#product-cart {
+padding-top: 10px;
+}
+
+#product-tag-line-text a {
+text-decoration: none;
+color: inherit;
+}
+
+#product-tag-line-text a:hover {
+text-decoration: none;
+color: grey;
+}
+
+div#product-tag-line {
+text-align: center;
+background-color: #01b4b3;
+position: relative;
+display: inline-block;
+width: 669px;
+margin-top: 4px;
+height: 35px;
+font-family: chalkduster;
+}
