@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.0"
   s.add_dependency 'silverweb_cms'
+  s.add_dependency "ssl_requirement"
 
   s.add_development_dependency "mysql"
 end
