@@ -111,7 +111,8 @@ module SilverwebEcom
         config.to_prepare do
           SiteController.send(:include, SilverwebEcom::ControllerExtensions::SiteControllerExtensions)
           MenusController.send(:include, SilverwebEcom::ControllerExtensions::MenusControllerExtensions)
-        end
+
+         end
     
 
   end

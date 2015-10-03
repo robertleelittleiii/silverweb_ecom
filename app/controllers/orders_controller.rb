@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
  
-  include SslRequirement  if ENV['RAILS_ENV']=="production"
+    include ::SslRequirement if ENV['RAILS_ENV']=="production"
 
   ssl_required :enter_order  if ENV['RAILS_ENV']=="production"
   
