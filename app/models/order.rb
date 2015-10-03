@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
     :credit_card_type, :cc_number, :cc_expires, :cc_verification
   
   # validate_on_create :validate_card
-   validates_with :validate_card, on: :create
+   validates_with validate_card, on: :create
   
   composed_of :cc_expires, class_name: "DateTime",
     mapping: %w(Time to_s),
