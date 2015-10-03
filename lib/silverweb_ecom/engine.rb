@@ -1,6 +1,7 @@
 module SilverwebEcom
   class Engine < ::Rails::Engine
-    
+        require 'geocoder'
+
   # load all local migrations
     initializer :append_migrations do |app|
       unless app.root.to_s.match root.to_s
