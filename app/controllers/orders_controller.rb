@@ -1,8 +1,24 @@
 class OrdersController < ApplicationController
  
-    include ::SslRequirement if ENV['RAILS_ENV']=="production"
+  #  include ::SslRequirement if ENV['RAILS_ENV']=="production"
 
-  ssl_required :enter_order  if ENV['RAILS_ENV']=="production"
+  # ssl_required :enter_order  if ENV['RAILS_ENV']=="production"
+  
+  before_filter :force_ssl, :only => [:enter_order]
+
+  
+  def force_ssl(options = {})
+  host = options.delete(:host)
+  unless request.ssl? or Rails.env.development?
+    redirect_options = {:protocol => 'https://', :status => :moved_permanently}
+    redirect_options.merge!(:host => host) if host
+    flash.keep
+    redirect_to redirect_options and return
+  else
+    true
+  end
+end
+
   
   # GET /orders
   # GET /orders.json

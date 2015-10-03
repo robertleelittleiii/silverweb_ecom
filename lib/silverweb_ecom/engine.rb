@@ -1,7 +1,7 @@
 module SilverwebEcom
   class Engine < ::Rails::Engine
         require 'geocoder'
-        require 'ssl_requirement'
+#        require 'ssl_requirement'
         
   # load all local migrations
     initializer :append_migrations do |app|
