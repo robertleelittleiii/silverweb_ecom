@@ -25,6 +25,11 @@
                 <b>Search Products per Page (Number):</b><br>
                 <%=editablefieldcreate("search_products_per_page", @settings)%>
             </p> 
+            
+             <p>
+                <b>Default Template:(leave blank for default)</b><br>
+                <%=ajax_select("product_template_name","settings",@settings, @template_types, "Choose Template...")%><br><br>
+            </p>
 
 
         </div>

@@ -209,9 +209,12 @@ module SilverwebEcom
           end
     
           session[:parent_menu_id] = 0
-          @page_template = (not @product.custom_layout.blank?) ? "product_detail-" + @product.custom_layout : "product_detail" rescue "product_detail" 
-          @java_script_custom = @product.custom_layout ? @page_template + ".js" : "" rescue ""
-          @style_sheet_custom = @product.custom_layout ? @page_template + ".css" : "" rescue ""
+          
+          @page_template = (not @product.custom_layout.blank?) ? "product_detail-" + @product.custom_layout : ("product_detail-" + Settings.product_template_name rescue "product_detail") rescue "product_detail" 
+          
+          
+          @java_script_custom = (@page_template != "product_detail")  ? @page_template + ".js" : "" rescue ""
+          @style_sheet_custom = (@page_template != "product_detail") ? @page_template + ".css" : "" rescue ""
           @page_name = @product.product_name rescue "'Home' not found!!"
     
           @collection_product_list = Product.all()

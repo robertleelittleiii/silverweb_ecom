@@ -279,17 +279,17 @@ function mycarousel_initCallback(carousel) {
 
 
 $(document).ready(function(){
-   // require("jquery.jcarousel.js");
-    
-    $("ul.style-image-items").jcarousel({
-      scroll: 3,
-      wrap: 'circular',
-        initCallback: mycarousel_initCallback,
-        // 'list': 'ul.style-image-items',
-        // This tells jCarousel NOT to autobuild prev/next buttons
-      buttonNextHTML: null,
-        buttonPrevHTML: null
-     });  
+// require("jquery.jcarousel.js");
+
+//    $("ul.style-image-items").jcarousel({
+//        scroll: 3,
+//        wrap: 'circular',
+//        initCallback: mycarousel_initCallback,
+//        // 'list': 'ul.style-image-items',
+//        // This tells jCarousel NOT to autobuild prev/next buttons
+//        buttonNextHTML: null,
+//        buttonPrevHTML: null
+//    });  
     
     
     bindSwatchClick();

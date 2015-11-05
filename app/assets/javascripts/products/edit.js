@@ -118,7 +118,7 @@ function bind_file_upload_to_upload_form()
             data.context = $(tmpl("template-upload", file));
             // $("div.progress").progressbar();
             $('#images').fadeIn();
-            $('#images').append(data.context);
+            $('#images').prepend(data.context);
             var jqXHR = data.submit()
                     .success(function (result, statusText, jqXHR) {
 
@@ -242,7 +242,7 @@ function render_picture(picture_id) {
         data: "class_name=product&id=" + picture_id,
         success: function (data)
         {
-            $("div#images").append(data).hide().fadeIn();
+            $("div#images").prepend(data).hide().fadeIn();
 
             max_images = $('#max-images').text();
 

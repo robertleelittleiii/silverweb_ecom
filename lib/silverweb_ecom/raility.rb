@@ -61,8 +61,8 @@ module SilverwebEcom
         end       
   
         version :view do
-          process :resize_to_fill => [ 320, 441]
-          # process :outliner
+          process :resize_to_fill => [320, 441]
+          # process :outliner 
         end
 
         version :view_h do

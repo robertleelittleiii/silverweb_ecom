@@ -347,6 +347,22 @@ def add_image_system
   def product_preferences
     @settings = Settings.all 
     @all_pictures = SystemImages.all.order(:created_at)
+    
+   @template_types = [] # TEMPLATE_TYPES
+    
+    paths = ActionController::Base.view_paths
+    template_types = [["B L A N K",""]]
+    paths.each do |the_view_path|
+      templates = Dir.glob(the_view_path.to_path+ "/site/product_detail-*")
+      
+      templates.each do |template|
+        template_name = template.split("/").last.split("-").drop(1).join("-").split(".").first
+        template_types << [template_name + " Template",template_name] if not template_name.blank?
+      end
+    end
+    
+    @template_types = template_types
+    
     params[:action_name]="add_image_system"
 #    if request.put?
 #      render nothing: true

@@ -57,6 +57,11 @@ app\:doc\:rails=
 app\:doc\:reapp=
 app\:doc\:rerails=
 app\:environment=
+app\:geocode\:all=Geocode all objects without coordinates.
+app\:geocoder\:maxmind\:geolite\:download=Download MaxMind GeoLite City data
+app\:geocoder\:maxmind\:geolite\:extract=Extract (unzip) MaxMind GeoLite City data
+app\:geocoder\:maxmind\:geolite\:insert=Load/refresh MaxMind GeoLite City data
+app\:geocoder\:maxmind\:geolite\:load=Download and load/refresh MaxMind GeoLite City data
 app\:log\:clear=Truncates all *.log files in log/ to zero bytes (specify which logs with LOGS=test,development)
 app\:middleware=Prints out your Rack middleware stack
 app\:notes=Enumerate all annotations (use notes:optimize, :fixme, :todo for focus)
