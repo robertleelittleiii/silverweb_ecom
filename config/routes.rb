@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       get "duplicate_record"
       get "product_details_table"
       get "delete_ajax"
-
+      delete "delete" 
     end
   end
 
@@ -65,6 +65,7 @@ Rails.application.routes.draw do
       post "update_checkbox_tag"
       post "add_image"
       get "edit_picture"
+      get "edit_picture_swatch"
       post "update_image_order"
       get "product_preferences"
       post "add_image_system"

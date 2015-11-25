@@ -193,7 +193,7 @@ background-color: white;
 
 .product-size-item {
 border: 0px grey solid;
-font-size: 10pt !important;
+font-size: 10pt;
 font-variant: small-caps;
 padding: 2px;
 text-align: center;

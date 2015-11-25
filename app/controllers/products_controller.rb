@@ -239,6 +239,16 @@ def add_image_system
     end
   end
   
+   def edit_picture_swatch
+    @picture = Picture.find(params[:picture_id])
+       @image_locations = ["Slider", "Primary","Cover", "Before", "Custom", "-"]  
+     
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @picture} 
+    end
+  end
+  
   def update_checkbox_tag
     @product=Product.find(params[:id])
     @tag_name=params[:tag_name] || "tag_list"

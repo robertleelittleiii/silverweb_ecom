@@ -81,7 +81,7 @@ class ProductDetailsController < ApplicationController
     @product_detail.destroy
 
     respond_to do |format|
-      format.html { redirect_to product_details_url }
+      format.html { head :ok }
       format.json { head :ok }
     end
   end

@@ -95,12 +95,15 @@ function updateImages() {
 
     //  alert("color changed");
     var $product_id = $("#product-id").text();
-    $("#loader_progress").show();
+    $("body").css("cursor", "progress");
+// $("#loader_progress").show();
 
     $.post('/products/render_image_section/' + $product_id, function (data)
     {
         $('.imagesection').html(data);
-        $("#loader_progress").hide();
+        $("body").css("cursor", "default");
+
+        // $("#loader_progress").hide();
         styleizefilebutton();
         bindImageChage();
         disableSelectOptionsSeperators();
@@ -254,7 +257,7 @@ function render_picture(picture_id) {
                 }
 
             }
-            
+
             bind_file_upload_to_upload_form();
             bindDeleteImage();
             bind_mouseover();
@@ -288,42 +291,42 @@ function bind_download_to_files()
             });
 }
 function bindPicturesSort() {
-    
-    
+
+
     $('div#images').sortable({
-    dropOnEmpty: false,
-    handle: 'div.file-item',
-    cursor: '-webkit-grabbing',
-    items: 'div.file-list-item',
-    opacity: 0.4,
-    scroll: true,
-    tolerance: "pointer",
-    update: function(){
-        console.log($(this));
-      $.ajax({
-        url: '/products/update_image_order',
-        type: 'post',
-        data: $(this).sortable('serialize'),
-        dataType: 'json',
-        complete: function(request){
+        dropOnEmpty: false,
+        handle: 'div.file-item',
+        cursor: '-webkit-grabbing',
+        items: 'div.file-list-item',
+        opacity: 0.4,
+        scroll: true,
+        tolerance: "pointer",
+        update: function () {
+            console.log($(this));
+            $.ajax({
+                url: '/products/update_image_order',
+                type: 'post',
+                data: $(this).sortable('serialize'),
+                dataType: 'json',
+                complete: function (request) {
+                }
+            });
         }
-      });
-    }
-  });
-  
-  }
-  
-  function bindDeleteImage() {
+    });
+
+}
+
+function bindDeleteImage() {
     $('a.picture-delete').unbind().bind('ajax:beforeSend', function () {
-         // alert("ajax:before");  
+        // alert("ajax:before");  
     }).bind('ajax:success', function () {
         console.log($(this).parent().parent());
-       $(this).parent().parent().remove();
-       //  alert("ajax:success");  
+        $(this).parent().parent().remove();
+        //  alert("ajax:success");  
     }).bind('ajax:failure', function () {
-      //    alert("ajax:failure");    
+        //    alert("ajax:failure");    
     }).bind('ajax:complete', function () {
-      //   alert("ajax:complete"); 
+        //   alert("ajax:complete"); 
     });
 
 }
@@ -331,19 +334,19 @@ function bindPicturesSort() {
 //  Picture management routines
 
 function initialize_edit_button()
-        {
-            $("a.edit-picture-product").unbind()
-                    .bind("ajax:beforeSend", function(evt, xhr, settings) {
-                 //alert("ajax:beforeSend");
+{
+    $("a.edit-picture-product").unbind()
+            .bind("ajax:beforeSend", function (evt, xhr, settings) {
+                //alert("ajax:beforeSend");
             })
-                    .bind("ajax:success", function(evt, data, status, xhr) {
+            .bind("ajax:success", function (evt, data, status, xhr) {
                 // alert("ajax:success");
                 edit_picture_dialog(data);
             })
-                    .bind('ajax:complete', function(evt, xhr, status) {
-                 //alert("ajax:complete");
+            .bind('ajax:complete', function (evt, xhr, status) {
+                //alert("ajax:complete");
             })
-                    .bind("ajax:error", function(evt, xhr, status, error) {
+            .bind("ajax:error", function (evt, xhr, status, error) {
                 //  alert("ajax:error");
 
                 var $form = $(this),
@@ -355,10 +358,10 @@ function initialize_edit_button()
                     console.log(xhr);
                     console.log(status);
                     console.log(error);
-                    
+
                     errors = $.parseJSON(xhr.responseText);
                     console.log(errors);
-                    
+
                 } catch (err) {
                     // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
                     errors = {
@@ -377,28 +380,28 @@ function initialize_edit_button()
                 }
 
                 errorText += "</ul>";
-                    console.log(errorText);
+                console.log(errorText);
 
                 // Insert error list into form
                 setUpNotifier("error.png", "Warning", errorText);
             });
 
-        }
-        
-        
-        
-        function edit_picture_dialog(data) {
+}
+
+
+
+function edit_picture_dialog(data) {
 
     // alert("ajax:success");
-        picture_edit_dialog = createAppDialog(data, "edit-picture", {}, "");
-        
-        picture_edit_dialog.dialog({
-                    close: function (event, ui) {
-                      picture_id = $("div#picture-id").text().trim();
-                      value =   $("select#picture_title").val();
-                      $("div#picture_" + picture_id + " div.picture-info").text(value);
-                    }
-                });
+    picture_edit_dialog = createAppDialog(data, "edit-picture", {}, "");
+
+    picture_edit_dialog.dialog({
+        close: function (event, ui) {
+            picture_id = $("div#picture-id").text().trim();
+            value = $("select#picture_title").val();
+            $("div#picture_" + picture_id + " div.picture-info").text(value);
+        }
+    });
 
     //initialize_save_button();
     //$('.datepicker').datepicker();
@@ -435,7 +438,7 @@ function initialize_edit_button()
 }
 
 function activate_buttons() {
-    
+
     $("div.ui-button a").button();
 }
 
@@ -444,14 +447,14 @@ function bind_mouseover()
 
     $("div.file-block")
             .unbind("mouseenter").mouseenter(function () {
-                $(this).parent().find("div.hover-block").fadeIn();
-                // console.log("fadeIn");
-            })
+        $(this).parent().find("div.hover-block").fadeIn();
+        // console.log("fadeIn");
+    })
             .unbind("mouseleave").mouseleave(function () {
-                 $(this).parent().find("div.hover-block").fadeOut();
-               //   console.log("fadeOut");
-           });
-           }
+        $(this).parent().find("div.hover-block").fadeOut();
+        //   console.log("fadeOut");
+    });
+}
 
 
 function wait(msecs)
@@ -514,6 +517,10 @@ function buildproductDetailsListTable() {
             });
 
             bindChangeColor();
+            ui_ajax_select();
+            bindDeleteProductDetail();
+            bindDuplicateProductDetail();
+
 
             //bindClicktoProductTableRow();
         }
@@ -600,7 +607,9 @@ function updateBestinplaceImageTitles() {
 
 function refreshProductDetails() {
     productDetailsTable.fnDraw(true);
-    $("#loader_progress").hide();
+    $("body").css("cursor", "default");
+
+    //   $("#loader_progress").hide();
 
 //    var $product_id = $("#product-id").text();
 //    $("#loader_progress").hide();
@@ -628,27 +637,48 @@ function bindProductDetailNew()
 
     });
 
-    $('#duplicate-product_detail').on('ajax:success', function (xhr, data, status) {
-        refreshProductDetails();
-
-    }).on('ajax:beforeSend', function (e, xhr, settings) {
-        xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
-        $("#loader_progress").show();
-
-    });
 
 
-    $('#delete-product_detail').on('ajax:success', function (xhr, data, status) {
-        $("#loader_progress").show();
-        theTarget = this.parentNode.parentNode;
-        var aPos = productDetailsTable.fnGetPosition(theTarget);
-        productDetailsTable.fnDeleteRow(aPos);
-        $("#loader_progress").hide();
-    });
+
 
 
 }
 ;
+
+function bindDeleteProductDetail() {
+    $('.delete-product_detail').on('ajax:success', function (xhr, data, status) {
+        refreshProductDetails();
+        // $("#loader_progress").show();
+//        theTarget = this.parentNode.parentNode;
+//        var aPos = productDetailsTable.fnGetPosition(theTarget);
+//        productDetailsTable.fnDeleteRow(aPos);
+        //  $("#loader_progress").hide();
+        $("body").css("cursor", "default");
+
+    }).on('ajax:beforeSend', function (e, xhr, settings) {
+        //xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
+        // $("#loader_progress").show();
+        $("body").css("cursor", "progress");
+
+    });
+    ;
+
+}
+
+function bindDuplicateProductDetail() {
+
+    $('.duplicate-product_detail').on('ajax:success', function (xhr, data, status) {
+        refreshProductDetails();
+        // alert("duplicated");
+
+    }).on('ajax:beforeSend', function (e, xhr, settings) {
+        //xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
+        // $("#loader_progress").show();
+        $("body").css("cursor", "progress");
+
+    });
+}
+
 
 function bindBlurToDepartmentPopup() {
 
@@ -661,7 +691,7 @@ function bindBlurToDepartmentPopup() {
             $.post('/products/render_category_div?id=' + $product_id, function (data)
             {
                 $('#category-div').html(data);
-                $("#loader_progress").hide();
+                // $("#loader_progress").hide();
                 //bindBlurToDepartmentPopup();
             });
         }, 100);
@@ -676,7 +706,7 @@ function bindBlurToDepartmentPopup() {
             $.post('/products/render_category_div?id=' + $product_id, function (data)
             {
                 $('#category-div').html(data);
-                $("#loader_progress").hide();
+                // $("#loader_progress").hide();
                 //bindBlurToDepartmentPopup();
             });
         }, 100);
@@ -688,12 +718,15 @@ function updateImages() {
 
     //  alert("color changed");
     var $product_id = $("#product-id").text();
-    $("#loader_progress").show();
+    // $("#loader_progress").show();
+    $("body").css("cursor", "progress");
 
     $.post('/products/render_image_section/' + $product_id, function (data)
     {
         $('.imagesection').html(data);
-        $("#loader_progress").hide();
+        $("body").css("cursor", "default");
+
+        //  $("#loader_progress").hide();
         styleizefilebutton();
         bindImageChage();
         disableSelectOptionsSeperators();
@@ -709,12 +742,14 @@ function BestInPlaceCallBack(input) {
     {
         //  alert("color changed");
         var $product_id = $("#product-id").text();
-        $("#loader_progress").show();
+        $("body").css("cursor", "progress");
+//$("#loader_progress").show();
 
         $.post('/products/render_image_section/' + $product_id, function (data)
         {
             $('.imagesection').html(data);
-            $("#loader_progress").hide();
+            $("body").css("cursor", "default");
+            // $("#loader_progress").hide();
             styleizefilebutton();
             bindImageChage();
 
@@ -741,7 +776,7 @@ function bindChangeColor() {
         var $detail_id = $(this).parent().parent().find("#detail-id").text();
         var value = $(this).val();
         console.log($detail_id);
-     //   "/products/update_ajax/1?field=color&pointer_class=ProductDetail"
+        //   "/products/update_ajax/1?field=color&pointer_class=ProductDetail"
         $.ajax({
             url: '/product_details/' + $detail_id,
             data: {"product_detail": {"color": value}},
@@ -759,7 +794,9 @@ function bindChangeColor() {
 
 function test() {
     $('#details_color').bind("change", function () {
-        $("#loader_progress").show();
+        $("body").css("cursor", "progress");
+
+        // $("#loader_progress").show();
 
         wait(5000);
         updateImages();
@@ -802,7 +839,8 @@ function updateCategoryDiv() {
     $.post('/products/render_category_div?id=' + $product_id, function (data)
     {
         $('#category-div').html(data);
-        $("#loader_progress").hide();
+        $("body").css("cursor", "default");
+// $("#loader_progress").hide();
         // setupCheckboxes(".category-check");
     });
 }
@@ -827,4 +865,4 @@ function set_up_save_callback() {
                 $('iframe.preview').attr("src", $('iframe.preview').attr("src"));
 
             });
-            }
+}

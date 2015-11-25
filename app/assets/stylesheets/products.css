@@ -265,3 +265,22 @@ div#imgPreviewContainer {
 a.button-link {
     margin:20px;
 }
+
+div.hover-block div#field_title {
+    margin: 20px auto;
+    display: block;
+    padding-left: 0px;
+    width: 100px;
+    text-align: center;
+    padding-top: 0px;
+    background-color: rgba(255, 255, 255, 0.93);
+    border: dotted black 1px;
+}
+
+div.hover-block input.best_in_place_adj {
+    width: 0px;
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}

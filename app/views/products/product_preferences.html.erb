@@ -13,7 +13,7 @@
         <li><a href="#product-social-tools-tab">Social Sharing Tool</a></li>
         <li><a href="#product-utilities-tab">Utilities</a></li>
     </ul>
-    
+
     <div id="product-settings-tab">
         <div class="cms-content">
             <p>
@@ -25,8 +25,13 @@
                 <b>Search Products per Page (Number):</b><br>
                 <%=editablefieldcreate("search_products_per_page", @settings)%>
             </p> 
-            
-             <p>
+
+            <p>
+                <b>Size List (please seperate by ",")</b><br>
+                <%=editablefieldcreate("inventory_size_list", @settings)%>
+            </p>
+
+            <p>
                 <b>Default Template:(leave blank for default)</b><br>
                 <%=ajax_select("product_template_name","settings",@settings, @template_types, "Choose Template...")%><br><br>
             </p>
@@ -59,14 +64,14 @@
         </div>
 
     </div>
-    
-    
-<div id="product-utilities-tab">
+
+
+    <div id="product-utilities-tab">
         <div class="cms-content">
             <p><b> Click this link to reprocess images:</b></br>
-        <%=link_to 'Reproces product images', {:controller => 'products', :action => 'reprocess_product_images'}, :id=>"process-image-button", :remote=>true%>
-      </p>
+                <%=link_to 'Reproces product images', {:controller => 'products', :action => 'reprocess_product_images'}, :id=>"process-image-button", :remote=>true%>
+            </p>
         </div>
-</div>
+    </div>
 
 </div>
