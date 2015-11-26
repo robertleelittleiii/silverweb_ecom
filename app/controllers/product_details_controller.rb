@@ -171,7 +171,7 @@ class ProductDetailsController < ApplicationController
     
 
   def total_objects(params={})
-    @total_objects = ProductDetail.count
+    @total_objects = ProductDetail.where(product_id: [params[:product_id]]).where(conditions).count
   end
 
   def datatable_columns(column_id)
