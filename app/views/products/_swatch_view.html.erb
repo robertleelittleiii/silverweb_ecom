@@ -19,8 +19,10 @@
     <div class="file-block">
         <div class="hover-block">
             <div class="ui-button">
-                <%= link_to("Edit", {action: :edit_picture, controller: :products, picture_id: picture.id, as_window: true} , remote: true,  class: "edit-picture-product") %>
+                <%= link_to("Edit", {action: :edit_picture_swatch, controller: :products, picture_id: picture.id, as_window: true} , remote: true,  class: "edit-picture-product") %>
               </div>
+                <%=editablefieldcreate("title", picture)%>
+
               <%#*<div class="ui-button">%>
                 <%#= link_to("Insert", {controller: "pictures", action: "insert_image", as_window: true, id: picture.id} , remote: true,  class: "insert-image")  rescue ""%>
                 <%#= link_to("Insert", {controller: "pictures", action: "insert", as_window: true, id: picture.id} , remote: true,  class: "insert-picture")  rescue ""%>

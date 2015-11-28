@@ -10,7 +10,7 @@
           
           <%= hidden_div_if((@all_pictures.empty?) , :id=>"images") %>
 
-          <%= render(:partial => "picture_list", :object => @all_pictures) %>
+          <%= render(:partial => "swatch_list", :object => @all_pictures) %>
           
 
           <%="</div>".html_safe %>
