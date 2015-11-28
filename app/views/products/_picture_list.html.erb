@@ -4,5 +4,5 @@
 
 <% @pictures.each do |picture| %>
 <% puts("---------->  picture.file_name(): '#{picture.file_name()}'") %>
-<%= render(:partial=>"swatch_view.html" , :locals=>{:picture=>picture}) if not picture.file_name.blank? %>
+<%= render(:partial=>"picture_view.html" , :locals=>{:picture=>picture}) if not picture.file_name.blank? %>
 <% end if not @pictures.blank?%>
