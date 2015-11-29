@@ -5,7 +5,7 @@
 
 
 $(document).ready(function(){
-    $("#product-list").width("100%");
+  //  $("#product-list").width("100%");
     
 //    $("#page-middle-left").hide();
     bindClickToProductItem();

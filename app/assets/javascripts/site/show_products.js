@@ -24,13 +24,13 @@ $(document).ready(function(){
     bindClickToProductItem();
     
     // check for full screen and adjust layout
-    if ($("#full-screen").html().trim() == "true")
-    {
-        $("div#page-middle-left").hide();
-        $("div#content").width("100%");
-        $('#Content').css('background',"white")
-
-    }
+    //if ($("#full-screen").html().trim() == "true")
+    //{
+    //    $("div#page-middle-left").hide();
+    //    $("div#content").width("100%");
+    //    $('#Content').css('background',"white")
+    //}
+    
     if ($('#slides').length > 0 )
     {
     $('#slides').slides({

@@ -56,13 +56,14 @@ $("#page-middle-left").hide();
     bindClickToProductItem();
 
 // check for full screen and adjust layout
-    if ($("#full-screen").html().trim() == "true")
+   // if ($("#full-screen").html().trim() == "true")
     {
-        $("div#page-middle-left").hide();
-        $("div#content").width("100%");
-        $('#Content').css('background',"white")
-
-    }
+    //    $("div#page-middle-left").hide();
+    //    $("div#content").width("100%");
+    //    $('#Content').css('background',"white")
+//
+   // }
+   
     $('#slides').slides({
         preload: true,
         preloadImage: '/images/interface/loading.gif',
