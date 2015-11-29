@@ -57,7 +57,7 @@ $("#page-middle-left").hide();
 
 // check for full screen and adjust layout
    // if ($("#full-screen").html().trim() == "true")
-    {
+ //   {
     //    $("div#page-middle-left").hide();
     //    $("div#content").width("100%");
     //    $('#Content').css('background',"white")
