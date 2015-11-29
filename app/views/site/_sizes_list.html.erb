@@ -7,7 +7,7 @@ CHOOSE SIZE </br>
   if sizes.length > 0 then 
     puts("product_sizes: #{@product_sizes.inspect } product_sizes_array: #{@product_size_array.inspect}")
   sizes.each_with_index do |each_item, counter|
-    puts("each_item: #{each_item}, counter: #{counter}, in ps: #{@product_sizes.include?(each_item)} ")
+    puts("each_item: #{each_item}, counter: #{counter}, in ps: #{@product_size_array.include?(each_item)} ")
 
     if  @product_size_array.include?(each_item)==true then
       product_size_item = @product_sizes.where(:size=>each_item).first
@@ -22,14 +22,14 @@ CHOOSE SIZE </br>
       end rescue size_selected=false
 
       puts("***each_item: #{each_item}, counter: #{counter} ")
-    end
     %>
       <div class="<%=(size_selected ? 'size-selected ': '')+ (product_size_item.units_in_stock.to_i> 0 ? "product-size-item" : "product-size-inactive") rescue ""%>">
         <%=each_item%>
       </div>
 
     <%
-    end
+     end
+   end
   end
 puts("end")
 %>
