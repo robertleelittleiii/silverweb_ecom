@@ -43,4 +43,13 @@ module ProductsHelper
     end
     return returnval.html_safe
   end
+  
+  def get_share_code_product
+    if not Settings.product_javascript_social_share.blank?  then
+      return (CGI.unescapeHTML(Settings.product_javascript_social_share) + CGI.unescapeHTML(Settings.product_button_block_social_share)).html_safe
+      #+ Settings.blog_button_block_social_share.html_safe
+    else
+    return ""
+    end
+  end
 end
