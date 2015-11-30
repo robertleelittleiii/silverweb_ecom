@@ -23,8 +23,21 @@ $(document).ready(function () {
     }
 });
 
-function products_edit_callDocumentReady() {
-    $("#product-tabs").tabs();
+function products_edit_callDocumentReady() {    
+    $("#product-tabs").tabs({
+        activate: function (event, ui) {
+            if ($(ui.newTab[0]).find('a').text() == "Preview")
+            {
+                console.log("updated!")
+                
+                $('iframe.preview').each(function () {
+                    this.contentWindow.location.reload(true)
+                });
+            }
+
+        }
+    });
+    
     require("jquery-ui-combobox.js");
     requireCss("jquery-ui-combobox.css");
 

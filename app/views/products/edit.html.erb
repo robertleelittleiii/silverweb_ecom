@@ -33,6 +33,7 @@
         <li><a href="#store-layout">Layout</a></li>
         <li><a href="#inventory">Inventory</a></li>
         <li><a href="#images-tab">Images</a></li>
+        <li><a href="#preview-tab">Preview</a></li>
     </ul>
     <div id="information-tab">
         <div class="cms-content">
@@ -76,6 +77,21 @@
       <%= render :partial=>"image_section" %>
       </div>
       </div>
+    </div>
+    <div id="preview-tab">
+        <div class="cms-content">
+            <div class="display-area">
+                <div style="display:inline-block; width:600px">
+                    <b>Full Screen:</b><br>
+                    <iframe class="preview" src="<%=url_for(:controller=> :site, :action=>:product_detail, :id=>@product, :only_path=>true)%>" align="left" width="1024" height="800"></iframe>
+                </div>
+                <div style="display:inline-block; width:200px">
+                    <b>Mobile:</b><br>
+                    <iframe class="preview" src="<%=url_for(:controller=> :site, :action=>:product_detail, :id=>@product, :only_path=>true)%>" align="left" width="400" height="800"></iframe>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 

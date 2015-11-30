@@ -284,3 +284,26 @@ div.hover-block input.best_in_place_adj {
     margin-right: 0px;
     padding: 0px;
 }
+
+iframe.preview{
+  -moz-transform: scale(0.5, 0.5); 
+  -webkit-transform: scale(0.5, 0.5); 
+  -o-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5); 
+  -moz-transform-origin: top left;
+  -webkit-transform-origin: top left;
+  -o-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  margin-bottom:-300px;
+  display:inline-block;
+  position:relitive;
+
+}
+
+.display-area {
+display: inline-block;
+padding: 50px;
+padding-bottom: 0px;
+}
