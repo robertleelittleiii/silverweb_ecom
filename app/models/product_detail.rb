@@ -19,7 +19,7 @@ class ProductDetail < ActiveRecord::Base
       begin
         SystemImages.all.where(title: self.color).first.image_url.to_s
       rescue 
-        "/images/site/blank.png"
+        "blank.png"
       end
     end
 
