@@ -231,7 +231,7 @@ def add_image_system
     
    def edit_picture
     @picture = Picture.find(params[:picture_id])
-       @image_locations = ["Slider", "Primary","Cover", "Before", "Custom", "-"]  
+        @image_locations = ["Slider", "Primary","Product List", "-"]  
      
     respond_to do |format|
       format.html # index.html.erb
@@ -241,7 +241,7 @@ def add_image_system
   
    def edit_picture_swatch
     @picture = Picture.find(params[:picture_id])
-       @image_locations = ["Slider", "Primary","Cover", "Before", "Custom", "-"]  
+    @image_locations = ["Slider", "Primary","Product List", "-"]  
      
     respond_to do |format|
       format.html # index.html.erb
@@ -372,6 +372,21 @@ def add_image_system
     end
     
     @template_types = template_types
+    
+    @template_list_types = []
+     paths = ActionController::Base.view_paths
+    template_list_types = [["B L A N K",""]]
+    paths.each do |the_view_path|
+      templates = Dir.glob(the_view_path.to_path+ "/site/show_products-*")
+      
+      templates.each do |template|
+        template_name = template.split("/").last.split("-").drop(1).join("-").split(".").first
+        template_list_types << [template_name + " Template",template_name] if not template_name.blank?
+      end
+    end
+    
+    
+    @template_list_types = template_list_types
     
     params[:action_name]="add_image_system"
 #    if request.put?

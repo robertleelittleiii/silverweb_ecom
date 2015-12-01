@@ -47,7 +47,7 @@ module SilverwebEcom
       module InstanceMethods
         
       
-        #before_filter :find_cart, :except => :empty_cart
+ #       before_filter :find_cart, :except => :empty_cart
 
         def show_products
           puts("in show products...")
@@ -106,8 +106,10 @@ module SilverwebEcom
     
           @product_last = params[:page].blank? ? @products.length : ((params[:page].to_i*@products_per_page) - @products_per_page) + @products.length || @products.length
 
-          @action_template = params[:template].blank? ? "show_products.html" :  params[:template]
+     #     @action_template = params[:template].blank? ? "show_products.html" :  params[:template]
 
+          @action_template = Settings.product_list_template_name.blank? ? "show_products" : "show_products-" + Settings.product_list_template_name rescue "show_products"
+          
           respond_to do |format|
             format.html { render :action=>@action_template}
             format.xml  { render :xml => @products }
@@ -275,7 +277,7 @@ module SilverwebEcom
           @product_detail=ProductDetail.where(:product_id=>params[:id], :color=>params[:color], :size=>params[:size]).first()
           # puts("Product in Add: #{@product_detail.product.inspect}")
           #  puts("Product Detail In Add: #{@product_detail.inspect}")
-          inventory_item_description=params.map {|k,vs| vs.map {|v| "#{k}:#{v}"}}.join(",")
+          # inventory_item_description = params.map {|k,vs| vs.map {|v| "#{k}:#{v}"}}.join(",")
           begin
             @current_item = @cart.add_product(@product_detail.product, @product_detail, params[:quantity])
             puts("Quantity Ordered: #{@current_item.quantity.inspect}")
