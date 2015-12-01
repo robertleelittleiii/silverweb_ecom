@@ -1,4 +1,5 @@
-class CartItem
+class CartItem 
+  include ActiveModel::Conversion
   
   attr_reader :product, :product_detail, :quantity
 
@@ -10,6 +11,11 @@ class CartItem
     @quantity = quantity.to_i
   end
 
+ 
+  def persisted?
+    return true
+  end
+  
   def increment_quantity(quantity=1)
     @quantity += quantity.to_i
     @quantity = product_detail.units_in_stock if @quantity > product_detail.units_in_stock

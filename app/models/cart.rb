@@ -1,6 +1,7 @@
-class Cart
+class Cart 
 
   extend ActiveModel::Naming
+  include ActiveModel::Conversion
   
   attr_reader :items, :id, :coupon_code, :user_id, :shipping_type
   
@@ -14,6 +15,10 @@ class Cart
     @user_id=user_id
   end
 
+  def persisted?
+    return true
+  end
+  
   def item_with_largest_price
     puts("************************ item_with_largest_price First item  ***********************")
 
@@ -52,8 +57,8 @@ class Cart
     @cart_object = Rails.cache.fetch(cart_object_id, expires_in: 24.hours) {Cart.new(cart_object_id, user_id)}
     @cart_items  = Rails.cache.fetch(cart_object_id+"items", expires_in: 24.hours) {[]}
    
-    @cart=@cart_object.dup   
-    @cart.items.replace (@cart_items.dup)
+    @cart=@cart_object.dup  
+    @cart.items.replace (@cart_items.dup) rescue []
    
    
     #   puts("Before: #{cart_object_id}")

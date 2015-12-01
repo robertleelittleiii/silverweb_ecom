@@ -13,7 +13,7 @@ function producteditClickBinding(selector) {
     $(selector).unbind("click").one("click", function (event) {
         event.stopPropagation();
         console.log($(this).find('#product-id').text());
-        var product_id = $(this).parent().parent().find('#item-id').text();
+        var product_id = $(this).parent().find('#item-id').text();
         if (product_id === "")
         {
             var product_id = $(this).find('#product-id').text();
@@ -43,7 +43,12 @@ function producteditClickBinding(selector) {
                                 show_product(product_id);
                             }
                         }
-                        tinyMCE.editors[0].destroy();
+                        
+                        if(typeof tinyMCE.editors[0] != "undefined")
+                        {
+                            tinyMCE.editors[0].destroy();
+                        }
+                        
                         $('div#edit-product-dialog').html("");
                         $('div#edit-product-dialog').dialog("destroy");
                         producteditClickBinding(selector);

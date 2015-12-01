@@ -1,7 +1,7 @@
 module SilverwebEcom
   module ControllerExtensions
   
-    module MenusControllerExtensions
+   module MenusControllerExtensions
     
       def self.included(base)
         base.send(:include, InstanceMethods)
@@ -265,9 +265,9 @@ module SilverwebEcom
   
   
         def add_to_cart
-          user =  User.find_by_id(session[:user_id])
+          # user =  User.find_by_id(session[:user_id])
 
-          @cart=Cart.get_cart("cart"+session[:session_id], user.id)
+          @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id])
 
           #    @cart = Cart.get_cart(session[:cart])
           #    session[:cart] = @cart.id
@@ -311,10 +311,10 @@ module SilverwebEcom
 
   
         def show_cart
-          user =  User.find_by_id(session[:user_id])
+        #  user =  User.find_by_id(session[:user_id])
 
           # @cart = (session[:cart] ||= Cart.new)
-          @cart=Cart.get_cart("cart"+session[:session_id], user.id)
+          @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id])
           #   @cart = Cart.get_cart(session[:cart])
           #    puts("cart id: #{@cart.id}")
 
@@ -507,12 +507,13 @@ module SilverwebEcom
   
         def find_cart
           #  @cart = (session[:cart] ||= Cart.new)
-          user =  User.find_by_id(session[:user_id])
+          #user =  User.find_by_id(session[:user_id])
 
           session[:create]=true
     
-          @cart=Cart.get_cart("cart"+session[:session_id], user.id) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
-    
+          @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id]) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
+          puts("@cart in find_cart: #{@cart}")
+          
           if not params[:coupon_code].blank? then
             puts("Coupon Code Found")
             @cart.coupon_code = params[:coupon_code]

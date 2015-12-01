@@ -24,11 +24,13 @@ def build_product_list_templates
 end
   
 def find_cart
-      
-    user =  User.find_by_id(session[:user_id])
-
-    @cart=Cart.get_cart("cart"+session[:session_id], user.id)
+    # user =  User.find_by_id(session[:user_id])
     
+    puts("session[:user_id]: #{session[:user_id]}")
+
+    @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id])
+    puts("@cart: #{@cart.inspect}")
+
     #   @cart = Cart.get_cart(session[:cart])
     #   session[:cart] = @cart.id
   
