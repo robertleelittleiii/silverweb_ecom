@@ -130,7 +130,7 @@ end
 
     @user = User.find_by_id(session[:user_id])
     @page_title = "order success"
-    @page = Page.find_all_by_title (@page_title).first
+    @page = Page.find_by_title (@page_title).first
 
     if params[:order].blank? then
       @order=Order.new

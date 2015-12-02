@@ -127,6 +127,8 @@ class Cart
   end
 
   def calc_store_wide_sale
+    return 0 if Settings.store_wide_sale_start.blank?
+    
     start_date = Date.parse Settings.store_wide_sale_start
     end_date = Date.parse Settings.store_wide_sale_end
 
