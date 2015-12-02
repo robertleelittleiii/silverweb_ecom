@@ -156,3 +156,25 @@ root {
     font-style: oblique;
     font-size: 13px;
 }
+
+a.add-product, a.minus-product {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px;
+}
+
+div#increase-item, div#decrease-item, div#delete-item {
+    width: 20px;
+    text-align: center;
+    border: 1px black solid;
+    height: 20px;
+    line-height: 20px;
+    background-color: rgba(255,255,255,0.50);
+    margin: 5px;
+}
+
+img#delete-icon {
+    margin-top: 3px;
+}
