@@ -310,11 +310,14 @@ display: inline-block;}
 #invoice-frame {
 border: black solid 1px;
 display: inline-block;
+/*height:480px;*/
 height: 1200px;
 overflow: auto;
 width: 1000px;
+/*width:400px;*/
 border-image: initial;
 }
+
 
 .cart-header {
     background-color: lightGrey;

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title><%=@site_name %></title>
+    <%@host=@hostfull[7..@hostfull.length-1]%>
+    <% ActionController::Base.asset_host = @hostfull%>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <%= stylesheet_link_tag 'index' %>
+
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td>      
+          <%=link_to getHTMLsitePreference('Logo1'), url_for(:host=>@host,:controller=>'store',:action=>'store_list', :page=> '1')%>
+        </td>
+      </tr>
+      <tr>
+        <td id="content_c_content">
+
+          Dear <%=@user.full_name%>,
+          <br><br>
+          &nbsp;&nbsp;Your shipment has gone out.  To review your shipment at our web site please click here:<br><br>
+
+          <%= link_to 'My Shipment',:host=>@host, :controller => 'orders', :id => @order.id,  :action => 'customer_detail' %><br><br>
+
+          To track your shipment via UPS click here <br><br>
+
+          <a href="http://wwwapps.ups.com/WebTracking/processInputRequest?sort_by=status&tracknums_displayed=1&TypeOfInquiryNumber=T&loc=en_US&InquiryNumber1=<%=h @order.shipping_tracking %>&track.x=0&track.y=0"target="_blank"><%=h @order.shipping_tracking || "none" %></a>&nbsp;
+
+          <br><br>
+
+          Thank you for visiting our site !!!<br><br>
+
+          <%=@site_name %><br><br>
+
+
+
+
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+<% ActionController::Base.asset_host = ""%>

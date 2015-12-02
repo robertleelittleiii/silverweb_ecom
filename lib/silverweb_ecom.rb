@@ -7,6 +7,7 @@ module SilverwebEcom
     require "silverweb_ecom/controller"
     require "silverweb_ecom/base"
     require "silverweb_ecom/raility"
+    require "silverweb_ecom/configuration"
 
 
 end

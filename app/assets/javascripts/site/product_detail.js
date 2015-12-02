@@ -232,10 +232,10 @@ function addCommas(nStr)
 }
 
 
-function bindLiveActionOnQuantity () {
+function bindLiveActionOnQuantity() {
     $("input#quantity").bind("keyup focusout",function(a,b){
         
-        var price = (parseFloat($("input#quantity").val()||0)*parseFloat($("#product-price").html().trim().replace(",","").substr(1,100))).toFixed(2);
+        var price = (parseFloat($("input#quantity").val()||0)*parseFloat($("#product-price").text().trim().replace(",","").substr(1,100))).toFixed(2);
         
         if (isNaN(price) || (price < 0))
         {

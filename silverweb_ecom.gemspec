@@ -22,6 +22,9 @@ Gem::Specification.new do |s|
   #s.add_dependency "bartt-ssl_requirement"
   #s.add_dependency "ssl_requirement"
   s.add_dependency "geocoder"
+  s.add_dependency "activemerchant"
+  s.add_dependency "pdfkit"
+  s.add_dependency "wkhtmltopdf-binary"
 
   s.add_development_dependency "mysql"
 end

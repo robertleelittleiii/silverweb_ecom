@@ -40,7 +40,7 @@ class OrderItemsController < ApplicationController
   # POST /order_items
   # POST /order_items.json
   def create
-    @order_item = OrderItem.new(params[:order_item])
+    @order_item = OrderItem.new(order_items_params)
 
     respond_to do |format|
       if @order_item.save
@@ -59,7 +59,7 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find(params[:id])
 
     respond_to do |format|
-      if @order_item.update_attributes(params[:order_item])
+      if @order_item.update_attributes(order_items_params)
         format.html { redirect_to @order_item, notice: "Order item was successfully updated."}
         format.json { head :ok }
       else
@@ -91,5 +91,8 @@ class OrderItemsController < ApplicationController
     redirect_to(controller: :order_items, action: :edit, id: @order_item)
   end
 
+  def order_items_params
+    params[:order_item].permit("order_id", "product_id", "product_detail_id", "price", "quantity", "discount", "size", "color", "description", "title", "shipped", "shipped_date", "created_at", "updated_at")
+  end
   
 end

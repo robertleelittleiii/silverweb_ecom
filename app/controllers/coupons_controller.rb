@@ -40,7 +40,7 @@ class CouponsController < ApplicationController
   # POST /coupons
   # POST /coupons.json
   def create
-    @coupon = Coupon.new(params[:coupon])
+    @coupon = Coupon.new(coupon_params)
 
     respond_to do |format|
       if @coupon.save
@@ -59,7 +59,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.find(params[:id])
 
     respond_to do |format|
-      if @coupon.update_attributes(params[:coupon])
+      if @coupon.update_attributes(coupon_params)
         format.html { redirect_to @coupon, notice: "Coupon was successfully updated."}
         format.json { head :ok }
       else
@@ -91,5 +91,8 @@ class CouponsController < ApplicationController
     redirect_to(controller: :coupons, action: :edit, id: @coupon)
   end
 
+  def coupon_params
+    params[:coupon].permit( "description", "start_date", "end_date", "coupon_code", "value", "min_amount", "coupon_type", "created_at", "updated_at", "one_time_only", "only_most_expensive_item", "coupon_calc")
+  end
   
 end

@@ -13,10 +13,13 @@ module SilverwebEcom
     
     # The block you pass to this method will run for every request in
     # development mode, but only once in production.
-    
+
+
  
-    initializer "silverweb_ecom.update_picture_model" do      
-    
+    initializer "silverweb_ecom.update_picture_model" do 
+      
+
+
       SilverwebCms::Config.add_nav_item({:name=>"Products", :controller=>'products', :action=>'index'})
         
      SilverwebCms::Config.add_menu_class(["Show Products","menu_show_products"])

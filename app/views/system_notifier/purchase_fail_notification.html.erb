@@ -1,0 +1,20 @@
+
+           The following order FAILED processing due to a gateway error: <br><br>
+           
+           <%= link_to 'Problem Order',@host+"/orders/order_success?id="+ @order.id.to_s%>
+            
+           </br>
+           </br>
+           The user experiencing the problems is:  <%="#{@user.user_attribute.first_name rescue ""} #{@user.user_attribute.last_name rescue ""}<#{@user.name}>" %>
+           </br>
+           </br>
+           
+           GATEWAY ERROR CODES: </BR>
+           <%=("<span style='color:red;font-size:9pt'>Fail</br> Auth: #{@order.transactions[0].authorization}</br> Msg: #{@order.transactions[0].params.to_yaml.split("\n").join("</br>")}</span>").html_safe %>
+                          
+           <br>
+           
+           <br>
+             
+             
+             

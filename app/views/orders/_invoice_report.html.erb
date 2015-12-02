@@ -3,7 +3,7 @@
   <tbody>
     <tr>
       <td>
-        <%= image_tag "site/logo-full.png", {:width=>"350", :height=>"140"}%></br>
+        <%= image_tag(image_url("site/logo-full.png"), {:width=>"350", :height=>"140"}) %></br>
         <%= @company_name%></br>
         <%= @company_address%></br>
         <%= @company_phone%></br>
@@ -80,7 +80,7 @@
 
 
               <tr class="<%= cycle('odd gradeA', 'even gradeA')%> shipping-item-row"  style = "cursor:pointer">
-                <td align="center" width="54"><%= image_tag(order_item.product_detail.thumb.to_s,:border=>"0", :width=>"40", :height=>"50") rescue image_tag("empty_s.jpg",:border=>"0", :width=>"40", :height=>"50") %></br><%=order_item.color%></br><%=order_item.size%></td>
+                <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.thumb.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></br><%=order_item.color%></br><%=order_item.size%></td>
                 <td align="left"  width="375"><%=order_item.title.html_safe%> - <%=order_item.description.to_s.gsub(/<\/?[^>]+>|(\r\n|\n|\r)|&nbsp;/, '').html_safe%></td>
                 <td align="center"  width="149"><%=order_item.product_detail.inventory_key rescue "Not Available"%></td>
                 <td align="center"  width="97"><%=order_item.quantity%></td>

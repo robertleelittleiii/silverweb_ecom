@@ -2,7 +2,8 @@ class ValidateCard < ActiveModel::Validator
   def validate(record)
     unless record.credit_card.valid?
       record.credit_card.errors.full_messages.each do |message|
-        record.errors.add_to_base message
+        record.errors.add :base, message
+        #  record.errors.add_to_base message
       end
     end
   end
@@ -19,6 +20,9 @@ end
 
 
 class Order < ActiveRecord::Base
+  
+  require "activemerchant"
+  
   belongs_to :user
   has_many :order_items , dependent: :destroy
 
@@ -26,7 +30,7 @@ class Order < ActiveRecord::Base
   
   has_many :transactions, class_name: "OrderTransaction"
 
-  attr_accessor :cc_number, :cc_verification
+  attr_accessor :cc_number, :cc_verification, :cc_expires
  
   validates_presence_of :ship_first_name, :ship_last_name, :ship_street_1, :ship_city, :ship_state, :ship_zip,
     :bill_first_name, :bill_last_name, :bill_street_1, :bill_city, :bill_state, :bill_zip,
@@ -35,10 +39,16 @@ class Order < ActiveRecord::Base
   # validate_on_create :validate_card
   validates_with ValidateCard, on: :create
   
-  composed_of :cc_expires, class_name: "DateTime",
-    mapping: %w(Time to_s),
-    constructor: Proc.new { |item| item },
-    converter: Proc.new { |item| item }
+#  composed_of :cc_expires, class_name: "Date",
+#    mapping: %w(Date to_s),
+#    constructor: Proc.new { |item| item },
+#    converter: Proc.new { |item| item }
+
+#  composed_of :cc_expires,
+#:class_name => 'DateTime',
+#:mapping => %w(DateTime to_s),
+#:constructor => Proc.new { |date| (date && date.to_date) || Date.today },
+#:converter => Proc.new { |value| value.to_s.to_date }
 
   CC_TYPES =  [
     ["Visa", "visa"],
@@ -245,11 +255,7 @@ class Order < ActiveRecord::Base
   def calc_percent_store_wide_sale 
     (store_wide_sale*100)/total_price rescue 0
   end
-  
-
-
-  private
-  
+    
   def purchase_options
     {
       ip: ip_address,
@@ -275,8 +281,11 @@ class Order < ActiveRecord::Base
   end
   
 
-  
   def credit_card
+    puts("cc_expires.inspect: #{cc_expires.inspect}")
+    puts("cc_number.inspect:  #{cc_number.inspect}")
+    puts("cc_verification.inspect:  #{cc_verification.inspect}")
+    
     @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
       type: credit_card_type,
       number: cc_number,
@@ -287,6 +296,7 @@ class Order < ActiveRecord::Base
       last_name: bill_last_name
     )
   end
+  
 
 
 

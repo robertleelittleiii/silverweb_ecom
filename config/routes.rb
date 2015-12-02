@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get "create_empty_record"
       get "create_order"
       get "enter_order"
+      post "enter_order"
       get "order_success"
       get "invoice_slip"
       get "user_orders"
