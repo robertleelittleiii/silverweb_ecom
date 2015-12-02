@@ -1,2 +1,2 @@
-module MailerHelper
+module MailHelper
 end
