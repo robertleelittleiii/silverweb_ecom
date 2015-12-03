@@ -4,7 +4,7 @@ class SystemNotifier < ActionMailer::Base
   
   def purchase_fail_notification(order, user, host)
      @hostfull=host
-     attachments.inline['logo-100.png'] = File.read('public/images/site/logo-100.png')
+     # attachments.inline['logo-100.png'] = File.read('public/images/site/logo-100.png')
      
     @user=user
     @order=order
