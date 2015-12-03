@@ -36,4 +36,16 @@ def find_cart
   
   end
   
+# not used
+
+def ecomm_attributes
+    return_val = ""
+    return_val  << "<div class='hidden-item'>"
+    return_val  << " <div id='logged-in'>#{not User.find_by_id(session[:user_id]).blank?}</div>"
+    return_val  << ""
+    return_val  << "</div>"
+    
+    return return_val.html_safe
+    
+  end
 end
