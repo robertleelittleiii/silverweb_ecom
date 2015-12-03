@@ -203,7 +203,8 @@ class Order < ActiveRecord::Base
     
     transactions.create!(action: "purchase", amount: price_in_cents(@cart), response: response)
     if not response.success? then
-      errors.add_to_base(response.message)
+      errors.add :base, response.message
+      # errors.add_to_base(response.message)
     end
    
     # cart.update_attribute(:purchased_at, Time.now) if response.success?
