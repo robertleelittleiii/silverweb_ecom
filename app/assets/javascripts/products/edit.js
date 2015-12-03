@@ -67,7 +67,9 @@ function products_edit_callDocumentReady() {
     activate_buttons();
     initialize_edit_button();
     $("a.button-link").button();
-
+    bindRelatedSort();
+    bindDeleteRelated();
+    bindRelatedProductSearch();
 // test();
 }
 
@@ -878,4 +880,128 @@ function set_up_save_callback() {
                 $('iframe.preview').attr("src", $('iframe.preview').attr("src"));
 
             });
+}
+
+
+function bindRelatedSort() {
+
+
+    $('div#related-products').sortable({
+        dropOnEmpty: false,
+        handle: 'div.related-product-item',
+        cursor: '-webkit-grabbing',
+        items: 'div.product-list-item',
+        opacity: 0.4,
+        scroll: true,
+        tolerance: "pointer",
+        update: function () {
+            console.log($(this));
+            $.ajax({
+                url: '/products/update_related_order',
+                type: 'post',
+                data: $(this).sortable('serialize'),
+                dataType: 'json',
+                complete: function (request) {
+                }
+            });
+        }
+    });
+
+}
+
+function bindDeleteRelated() {
+    $('a.related-delete').unbind().bind('ajax:beforeSend', function () {
+         // alert("ajax:before");  
+    }).bind('ajax:success', function () {
+        console.log($(this).parent().parent());
+        $(this).parent().parent().remove();
+         // alert("ajax:success");  
+    }).bind('ajax:failure', function () {
+          //  alert("ajax:failure");    
+    }).bind('ajax:complete', function () {
+       //  alert("ajax:complete"); 
+    });
+
+}
+
+
+
+function bindRelatedProductSearch() {
+
+    if ($("#product-search").length > 0)
+    {
+        $("#product-search").autocomplete({
+            source: "/products/product_search.json",
+            minLength: 2,
+            select: function (event, ui) {
+
+                var product_id = $("div#attr-products #product-id").text();
+                // update_job_site(job_id, ui.item.id);
+                add_product_to_related(product_id, ui.item.id)
+                console.log(ui);
+                console.log(ui.item ?
+                        "Selected: " + ui + " aka " + ui.item.id :
+                        "Nothing selected, input was " + this.value);
+                console.log(this);
+
+                $(this).val("");
+            }
+        });
+    }
+}
+
+
+function add_product_to_related(product_id, related_product_id)
+{
+    $.ajax({
+        url: "/products/update_related_list",
+        dataType: "json",
+        type: "POST",
+        data: "id=" + product_id + "&related_id=" + related_product_id,
+        success: function (data)
+        {
+            //alert(data);
+            if (data === undefined || data === null || data === "")
+            {
+                //display warning
+            }
+            else
+            {
+                console.log("product added!");
+                //  updateJobSiteInformation(job_id, false);
+                if (data.success == true) {
+                    setUpPurrNotifier("Success", data.alert);
+                } else
+                {
+                    setUpPurrNotifier("Failed", data.alert);
+                }
+                updateRelated();
+                //jobs_material_table.fnDraw();
+                //jobs_material_trans_table.fnDraw();
+                //  console.log(data);
+            }
+        }
+    });
+
+}
+
+function updateRelated() {
+
+    //  alert("color changed");
+     var product_id = $("div#attr-products #product-id").text();
+    $("body").css("cursor", "progress");
+// $("#loader_progress").show();
+
+    $.post('/products/render_related_section?id=' + product_id, function (data)
+    {
+        $('div#product-related').html(data);
+        $("body").css("cursor", "default");
+
+        // $("#loader_progress").hide();
+        bindRelatedSort();
+    bindDeleteRelated();
+    bindRelatedProductSearch();
+
+    });
+
 }

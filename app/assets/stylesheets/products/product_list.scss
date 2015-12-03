@@ -1,0 +1,218 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template product, choose Tools | Templates
+and open the template in the editor.
+
+ *= require products.css
+
+*/
+/* 
+    Created on : Feb 20, 2015, 4:59:39 PM
+    Author     : rlittle
+
+
+
+*/
+
+.related-float-center {
+   
+    
+}
+
+div.related-float-center img {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+div.product-list-item {
+display: inline-block;
+position: relative;
+top: -10px\0;
+/* background-color: #ccc; */
+
+
+/*background-image:
+      -moz-linear-gradient(45deg, #ccc 25%, transparent 25%), 
+      -moz-linear-gradient(-45deg, #ccc 25%, transparent 25%),
+      -moz-linear-gradient(45deg, transparent 75%, #ccc 75%),
+      -moz-linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-image:
+      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), 
+      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)),
+      -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)),
+      -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc));
+
+    -moz-background-size:20px 20px;
+    background-size:20px 20px;
+    -webkit-background-size:20px 21px;  override value for shitty webkit 
+    
+    background-position:0 0, 10px 0, 10px -10px, 0px 10px;*/
+    
+/* height: 150px;*/
+vertical-align: middle;
+border: 5px solid white;
+/* border-radius: 20px; */
+/* border-radius: 20px; */
+/* border-bottom-left-radius: 20px; */
+/* border-bottom-right-radius: 20px; */
+}
+
+div.related-float-center img {
+display: block;
+margin-left: auto;
+margin-right: auto;
+padding-top: 20px;
+padding-left: 20px;
+padding-right: 20px;
+padding-bottom: 20px;
+}
+
+.product-block {
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+background-color: #ccc;
+min-height: 150px;
+}
+
+.hover-block {
+display:none;
+background-color: rgba(255, 255, 255, 0.5);
+position: absolute;
+top: 0px;
+width: 100%;
+height: 100%;
+}
+
+/*.product-block:hover + .hover-block{
+    display:block
+}*/
+
+.related-product-item {
+margin-left: 0px;
+padding: 0PX;
+border-radius: 0PX;
+padding-right: 0PX;
+vertical-align: middle;
+display: inline-block;
+position: relative;
+}
+
+.product-title {
+    display: inline-block;
+    position: relative;
+    background: inherit;
+    border: inherit;
+    vertical-align: baseline;
+    font-size: 13px;
+    min-width: 100px;
+    width: 100%;
+    height: 25px;
+    margin-top: 10px;
+    padding-left: 0px;
+    text-align: center;
+}
+
+.product-delete-icon {
+width: 16px;
+height: 16px;
+display: inline-block;
+position: absolute;
+right: 0px;
+top: 2px;
+}
+
+.product-delete-icon a {
+    position: absolute;
+    left: 0px;
+    width: 15px;
+}
+
+.related-product-item {
+    margin-left: 0px;
+    padding: 0PX;
+    border-radius: 0PX;
+    padding-right: 0PX;
+    vertical-align: middle;
+    display: block;
+    position: relative;
+    background-color: darkgray;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: -webkit-grab;
+}
+
+.product-delete-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 2px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.upload {
+display: inline-block;
+padding: 20px;
+font-size:10px;
+}
+
+div.hover-block div.ui-button {
+display: block;
+position: relative;
+margin-top: 12px;
+width: 100px;
+margin-left: auto;
+margin-right: auto;
+}
+
+div.hover-block div.ui-button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+div#insert-related.ui-dialog-content {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+div#related-list {
+  background: white;
+  height: 100%;
+  display: inline-block;
+  padding: 20px;
+}
+
+div.mce-window-head {
+  background-color: lightgray;
+  border-radius: 5px;
+  margin: 5px;
+  background: #cccccc/*{bgColorHeader}*/ image_url("/jquery-ui/ui-bg_highlight-soft_75_cccccc_1x100.png")/*{bgImgUrlHeader}*/ 50%/*{bgHeaderXPos}*/ 50%/*{bgHeaderYPos}*/ repeat-x/*{bgHeaderRepeat}*/;
+}
+
+button.mce-close {
+  background: white;
+  padding: 0px 5px 5px 6px;
+  margin: 0px;
+  border-radius: 5px;
+  margin-top: -3px;
+}
+
+div#product-search-bar {
+    height: 40px;
+    display: block;
+    background-color: lightgray;
+    margin-top: -10px;
+    margin-right: -10px;
+    margin-left: -10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding-left: 10px;
+}
+
+input#product-search {
+    margin: 8px;
+}

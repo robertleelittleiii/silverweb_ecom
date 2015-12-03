@@ -5,18 +5,26 @@
 
 // TODO:  Add ajax function to load pictures based on properties object.
 
-function bindClickToProductItem () {
-    $('.product-item').click(function(){
-        //   console.log(this);
-        window.location.href = $($(this)).find("a.product-detail-link").attr('href');
-
-    //   $(this).find("a.product-detail-link").click();
-    });
-}
+var site_show_products_callDocumentReady_called = false;
 
 
-$(document).ready(function(){
-    
+$(document).ready(function () {
+    if (!site_show_products_callDocumentReady_called)
+    {
+        site_show_products_callDocumentReady_called = true;
+        if ($("#as_window").text() == "true")
+        {
+            //  alert("it is a window");
+        }
+        else
+        {
+            site_show_products_callDocumentReady();
+        }
+    }
+});
+
+function site_show_products_callDocumentReady() {
+        
     // update left to correct height.
     $("#page-middle-left").height($("#page-body").height() + parseInt($("#page-body").css("margin-top")))
 
@@ -84,7 +92,19 @@ $(document).ready(function(){
         setUpOrderChange();
         //bindProductMenu();
     }
-});
+};
+
+
+function bindClickToProductItem () {
+    $('.product-item').click(function(){
+        //   console.log(this);
+        window.location.href = $($(this)).find("a.product-detail-link").attr('href');
+
+    //   $(this).find("a.product-detail-link").click();
+    });
+}
+
+
 
 //
 // Admin editor 

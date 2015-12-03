@@ -6,96 +6,105 @@
 </div>
 
 <% if notice -%>
-      <div id="notice"><%= notice  %></div>
-    <% end -%>
-    <!-- END:flash -->
+  <div id="notice"><%= notice  %></div>
+<% end -%>
+<!-- END:flash -->
 
-    <% if @product.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-        <ul>
+      <ul>
           <% @product.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
-        </ul>
-      </div>
-    <% end %>
-    
-    <%=  product_info(@product) %>
+      </ul>
+  </div>
+<% end %>
+
+<%=  product_info(@product) %>
 
 <%= tinymce_assets %>
 
 
 <div id="product-tabs">
-<ul>
+    <ul>
         <li><a href="#information-tab">Information</a></li>
         <li><a href="#store-layout">Layout</a></li>
         <li><a href="#inventory">Inventory</a></li>
         <li><a href="#images-tab">Images</a></li>
+        <li><a href="#related-tab">Related</a></li>
         <li><a href="#preview-tab">Preview</a></li>
     </ul>
     <div id="information-tab">
         <div class="cms-content">
-       
-      <%= render 'form' %>
 
-    </div>
-  </div>
-
- <div id="store-layout">
-        <div class="cms-content">
-
-      <%= render :partial=>"layout_info" %>
-
-    </div>
-  </div>
- <div id="inventory">
-        <div class="cms-content">
-           
-      <div id="product-inventory">
-        <div>
-          <%=image_tag "interface/ajax-loader2.gif", :id=>"loader_progress" ,:style=>"display:none"%> 
-          <%= link_to('New Inventory', {:action=>:create_empty_record, :controller=>:product_details, :typeofrecord=>"detail", :product_id=>@product.id, :request_type=>"nothing"}, :id=>"new-product-detail-item", :class=>"button-link", :remote =>true)%>
+            <%= render 'form' %>
 
         </div>
-        <p>
-        <b>Size Label (to be displayed in product detail):</b></br> <%=editablefieldcreate("size_label", @product)%>
-        </p>
-        
-        <div id="product-detail-list">
-          <%=render :partial=>"detail_list"%>
-        </div>
-      </div>
     </div>
-  </div>
 
-    <div id="images-tab">
+    <div id="store-layout">
         <div class="cms-content">
-            
-      <div id="product-images">
-      <%= render :partial=>"image_section" %>
-      </div>
-      </div>
+
+            <%= render :partial=>"layout_info" %>
+
+        </div>
     </div>
-    <div id="preview-tab">
+    <div id="inventory">
         <div class="cms-content">
-            <div class="display-area">
-                <div style="display:inline-block; width:600px">
-                    <b>Full Screen:</b><br>
-                    <iframe class="preview" src="<%=url_for(:controller=> :site, :action=>:product_detail, :id=>@product, :only_path=>true)%>" align="left" width="1024" height="800"></iframe>
+
+            <div id="product-inventory">
+                <div>
+                    <%=image_tag "interface/ajax-loader2.gif", :id=>"loader_progress" ,:style=>"display:none"%> 
+                    <%= link_to('New Inventory', {:action=>:create_empty_record, :controller=>:product_details, :typeofrecord=>"detail", :product_id=>@product.id, :request_type=>"nothing"}, :id=>"new-product-detail-item", :class=>"button-link", :remote =>true)%>
+
                 </div>
-                <div style="display:inline-block; width:200px">
-                    <b>Mobile:</b><br>
-                    <iframe class="preview" src="<%=url_for(:controller=> :site, :action=>:product_detail, :id=>@product, :only_path=>true)%>" align="left" width="400" height="800"></iframe>
+                <p>
+                    <b>Size Label (to be displayed in product detail):</b></br> <%=editablefieldcreate("size_label", @product)%>
+                </p>
+
+                <div id="product-detail-list">
+                    <%=render :partial=>"detail_list"%>
                 </div>
             </div>
         </div>
-
     </div>
 
+    <div id="images-tab">
+        <div class="cms-content">
 
-  <%#= link_to '<< Back', request.env['HTTP_REFERER'], :class=>"button-link" %> <%#= link_to 'Preview', {:controller=> :site, :action=>:product_detail, :id=>@product} ,:class=>"button-link" %>
+            <div id="product-images">
+                <%= render :partial=>"image_section" %>
+            </div>
+        </div>
+    </div>
+        <div id="related-tab">
+            <div class="cms-content">
 
-</div>
+                <div id="product-related">
+                    <%= render :partial=>"related_section" %>
+                </div>
+            </div>
+        </div>
+        <div id="preview-tab">
+            <div class="cms-content">
+                <div class="display-area">
+                    <div style="display:inline-block; width:600px">
+                        <b>Full Screen:</b><br>
+                        <iframe class="preview" src="<%=url_for(:controller=> :site, :action=>:product_detail, :id=>@product, :only_path=>true)%>" align="left" width="1024" height="800"></iframe>
+                    </div>
+                    <div style="display:inline-block; width:200px">
+                        <b>Mobile:</b><br>
+                        <iframe class="preview" src="<%=url_for(:controller=> :site, :action=>:product_detail, :id=>@product, :only_path=>true)%>" align="left" width="400" height="800"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+<%#= link_to '<< Back', request.env['HTTP_REFERER'], :class=>"button-link" %> <%#= link_to 'Preview', {:controller=> :site, :action=>:product_detail, :id=>@product} ,:class=>"button-link" %>
+
+    </div>
 

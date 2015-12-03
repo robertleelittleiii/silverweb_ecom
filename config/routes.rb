@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :product_related_products
   resources :retailers do
     collection do
       get "create_empty_record"
@@ -72,6 +73,16 @@ Rails.application.routes.draw do
       post "add_image_system"
       get "reprocess_product_images"
       post "sort"
+      post "update_related_order"
+      get "product_search"
+      post "update_related_list"
+      post "render_related_section"
+    end
+  end
+  
+  resources :product_related_products do
+    collection do
+            delete "delete" 
     end
   end
 

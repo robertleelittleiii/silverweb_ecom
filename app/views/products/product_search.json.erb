@@ -1,0 +1,13 @@
+[
+    <% @products.each do |product| %>
+     {
+     "id":"<%=  product.id%>",
+     "label":"<%=  product.product_name.to_s + ': ' + product.product_description.to_s %>",
+     "value":""
+     }
+     <% if @products.last!=product then %>
+       ,
+     <% end %>
+
+<% end %>
+  ]

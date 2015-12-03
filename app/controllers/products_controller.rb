@@ -228,6 +228,15 @@ def add_image_system
     render nothing: true
 
   end
+  
+    def update_related_order
+    params[:related].each_with_index do |id, position|
+      #   Image.update(id, :position => position)
+      ProductRelatedProduct.reorder(id,position)
+    end
+    render nothing: true
+
+  end
     
    def edit_picture
     @picture = Picture.find(params[:picture_id])
@@ -290,6 +299,14 @@ def add_image_system
     @image_locations = ["Slider", "Primary","Product List", "-"]  
 
     render(partial: "image_section")
+    
+  end
+    
+  
+  def render_related_section
+    @product=Product.find(params[:id])
+    
+    render(partial: "related_section")
     
   end
     
@@ -395,6 +412,37 @@ def add_image_system
 #    end
   end
   
+  def product_search
+    if params[:term].blank? then 
+      @products = Product.all
+    else
+      @products = Product.where("`product_name` like '%#{params[:term]}%' or `product_description` like '%#{ params[:term]}%'or `supplier_product_id` like '%#{ params[:term]}%'")
+    end
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json
+    end
+  end
+  
+  
+  def update_related_list
+    @product = Product.find(params[:id])
+    check_for_duplicate = ProductRelatedProduct.where(:product_id=>params[:id]).where(:related_product_id=>params[:related_id])
+    if check_for_duplicate.length == 0 then
+      @related_product = ProductRelatedProduct.new
+      @related_product.related_product_id=params[:related_id]
+      @related_product.position=999
+      @related_product.save
+      @product.related << @related_product
+      @product.save
+      render :json=>{:success=>true, :alert=>"Related Product '" + @related_product.related_product.product_name.to_s + "' added to this product."} 
+    else
+      render :json=>{:success=>false, :alert=>"Can not add related product."} 
+
+    end
+    
+  end
   
   def reprocess_product_images
     @products = Product.all

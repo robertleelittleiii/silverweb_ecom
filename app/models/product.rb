@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :supplier
   has_many :pictures,  -> { order(position: :asc) },  dependent: :destroy, as: :resource
   has_one :order_item
+  has_many :related, dependent: :destroy, class_name: "ProductRelatedProduct", foreign_key: "product_id"
   
    acts_as_taggable_on :category, :department
    

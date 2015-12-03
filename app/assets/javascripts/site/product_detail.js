@@ -1,3 +1,28 @@
+
+var site_product_detail_callDocumentReady_called = false;
+
+
+$(document).ready(function () {
+    if (!site_product_detail_callDocumentReady_called)
+    {
+        site_product_detail_callDocumentReady_called = true;
+        if ($("#as_window").text() == "true")
+        {
+            //  alert("it is a window");
+        }
+        else
+        {
+            site_product_detail_callDocumentReady();
+        }
+    }
+});
+
+
+function site_product_detail_callDocumentReady() {    
+    bind_hover_to_swatch();
+    enableProductEdit();
+    };
+
 function bindThumbHover()
 {
 //   $('.product-thumb').click(function(){
@@ -42,9 +67,6 @@ function setUpdialog(headline, message)
     
     
 }
-$(document).ready(function(){
-    bind_hover_to_swatch();
-    });
 
 function bind_hover_to_swatch() {
     $('img.product-swatch').hover(function() {
