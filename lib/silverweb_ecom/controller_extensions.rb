@@ -106,9 +106,9 @@ module SilverwebEcom
     
           @product_last = params[:page].blank? ? @products.length : ((params[:page].to_i*@products_per_page) - @products_per_page) + @products.length || @products.length
 
-     #     @action_template = params[:template].blank? ? "show_products.html" :  params[:template]
+         system_action_template = (Settings.product_list_template_name.blank? ? "show_products" : "show_products-" + Settings.product_list_template_name) rescue "show_products"
+         @action_template = params[:template].blank? ? system_action_template :  params[:template]
 
-          @action_template = Settings.product_list_template_name.blank? ? "show_products" : "show_products-" + Settings.product_list_template_name rescue "show_products"
           
           respond_to do |format|
             format.html { render :action=>@action_template}

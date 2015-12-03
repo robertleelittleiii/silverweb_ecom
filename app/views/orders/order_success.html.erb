@@ -55,7 +55,7 @@
       <div id="invoice-tools-title"> Thank you <br> for your Order!! </div>
       <div id="invoice-tools-body">
       If you want to get a PDF version of your invoice for your records please click on the PDF icon below:</br>
-      <center><%= link_to image_tag("site/pdf.png",{:width=>"60px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>@order.id},{} %></center>
+      <center><%= link_to image_tag("interface/pdf.png",{:width=>"60px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>@order.id},{} %></center>
       </br>
       You can check the status of your order anytime by logging in to our site and clicking on the "Orders" tab or if you wish to go there now then</br></br>
       <center><%= link_to "Click Here", {:controller=>:orders, :action=>:user_orders}, {:class=>"navigation-link"}%></center>

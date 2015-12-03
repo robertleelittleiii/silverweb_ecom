@@ -23,7 +23,7 @@ CHOOSE SIZE </br>
 
       puts("***each_item: #{each_item}, counter: #{counter} ")
     %>
-      <div class="<%=(size_selected ? 'size-selected ': '')+ (product_size_item.units_in_stock.to_i> 0 ? "product-size-item" : "product-size-inactive") rescue ""%>">
+      <div class="<%=(size_selected ? 'size-selected ': '')+ (product_size_item.units_in_stock.to_i> 0 ? "product-size-item" : "product-size-inactive") rescue ""%>" title="<%=(product_size_item.units_in_stock.to_i> 0 ? "" : "Size out of stock") %>">
         <%=each_item%>
       </div>
 

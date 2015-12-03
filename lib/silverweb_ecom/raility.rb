@@ -31,6 +31,12 @@ module SilverwebEcom
         belongs_to :products, :polymorphic => true
       end
       
+      User.class_eval do
+         has_many :orders
+  
+         has_many :coupon_usages
+      end
+      
       # Add taggability on this menu
       Menu.class_eval do
            acts_as_taggable_on :category, :department

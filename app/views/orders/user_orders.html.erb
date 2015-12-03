@@ -44,7 +44,7 @@
                 <span class="list-title"><%= order.shipped_date.strftime('%m/%d/%Y') rescue "n/a" %></span>
               </td>
               <td align="left" width="10%">
-                <span class="list-title"><%= link_to image_tag("site/pdf.png",{:width=>"20px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>order.id},{} %></span>
+                <span class="list-title"><%= link_to image_tag("interface/pdf.png",{:width=>"20px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>order.id},{} %></span>
               </td>
 
             </tr>
@@ -58,3 +58,4 @@
     </div>
     <center><%#= link_to 'New Order', :action=>:create_empty_record,:typeofrecord=>"order" %></center>
   </div>
+</div>

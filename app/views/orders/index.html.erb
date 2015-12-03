@@ -50,8 +50,8 @@
                <span class="list-title"><%= (order.transactions[0].success ? "<span style='color:green;'>Success</span>" : "<span style='color:red;font-size:9pt'>Fail</br> Auth: #{order.transactions[0].authorization}</br> Msg: #{order.transactions[0].params.to_yaml.split("\n").join("</br>")}</span>").html_safe rescue "n/a" %></span>
               </td>
               <td align="left" width="10%">
-                <span class="list-title"><%= link_to image_tag("site/pdf.png",{:width=>"20px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>order.id},{:title=>"generate PDF"} %></span>
-                 <span class="list-title"><%= link_to image_tag("site/email.png",{:width=>"25px"}), {:action=>:resend_invoice, :order_id=>order.id},{:title=>"re email order", :confirm=>"Are you sure that you wish to resend the invoice?"} %></span>
+                <span class="list-title"><%= link_to image_tag("interface/pdf.png",{:width=>"20px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>order.id},{:title=>"generate PDF"} %></span>
+                 <span class="list-title"><%= link_to image_tag("interface/email.png",{:width=>"25px"}), {:action=>:resend_invoice, :order_id=>order.id},{:title=>"re email order", :confirm=>"Are you sure that you wish to resend the invoice?"} %></span>
              </td>
 
             </tr>
