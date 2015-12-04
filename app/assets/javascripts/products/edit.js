@@ -527,10 +527,11 @@ function buildproductDetailsListTable() {
         "fnDrawCallback": function () {
             $(".best_in_place ").best_in_place();
             $(".combobox").combobox();
-            $("#toggle").click(function () {
-                $("#combobox").toggle();
-            });
-
+//            $("#toggle").click(function () {
+//                $("#combobox").toggle();
+//            });
+            
+            // $(".combobox").combobox();
             bindChangeColor();
             ui_ajax_select();
             bindDeleteProductDetail();
