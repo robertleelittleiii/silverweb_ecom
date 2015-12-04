@@ -83,19 +83,19 @@ $("#page-middle-left").hide();
     
     if ($("#slides").length != 0)
     {
-        $(".slides_container").width($("#slider-width").html().strip());
+        $(".slides_container").width($("#slider-width").html().trim());
     
-    $(".slides_container").height($("#slider-height").html().strip());
-    $(".slides_container div.slides_control").width($("#slider-width").html().strip());
-    $(".slides_container div.slides_control").height($("#slider-height").html().strip());
-    $(".slides_container div.slider-content").width($("#slider-width").html().strip());
-    $(".slides_container div.slider-content").height($("#slider-height").html().strip());
+    $(".slides_container").height($("#slider-height").html().trim());
+    $(".slides_container div.slides_control").width($("#slider-width").html().trim());
+    $(".slides_container div.slides_control").height($("#slider-height").html().trim());
+    $(".slides_container div.slider-content").width($("#slider-width").html().trim());
+    $(".slides_container div.slider-content").height($("#slider-height").html().trim());
     
     //  slideshow_width = $("#slides").width();
     //  slideshow_height =$("#slides").height();
     
-    slideshow_width =  parseInt($("#slider-width").html().strip());
-    slideshow_height=  parseInt($("#slider-height").html().strip());
+    slideshow_width =  parseInt($("#slider-width").html().trim());
+    slideshow_height=  parseInt($("#slider-height").html().trim());
     
     slideshow_offset = $("#slides").offset();
     slideshow_middle = (slideshow_height / 2) - ($("#slides .next-slide").height() / 2);

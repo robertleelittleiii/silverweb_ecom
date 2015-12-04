@@ -128,7 +128,7 @@ function bindSwatchClick() {
                 else
                 {
                     $("#product-size-items").html(data);
-                    $("#product-selected-size").html($(".size-selected").html().strip());
+                    $("#product-selected-size").html($(".size-selected").html().trim());
                     bindSizeClick();
                 }
             }
