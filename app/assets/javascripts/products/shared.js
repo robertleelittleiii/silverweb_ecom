@@ -51,6 +51,7 @@ function producteditClickBinding(selector) {
                         
                         $('div#edit-product-dialog').html("");
                         $('div#edit-product-dialog').dialog("destroy");
+                        update_content();
                         producteditClickBinding(selector);
 
                     }
