@@ -49,8 +49,8 @@ def ecomm_attributes
     
   end
   
-def page_data_attr_ecom
-        return ("<div id='data-reload' class='hidden-item' data-page-params='#{request.original_url}' data-page-update='call_document_ready(\"#{controller_name + "_" + action_name}\")'></div>").html_safe
+def page_data_attr_ecom(addtional_script)
+        return ("<div id='data-reload' class='hidden-item' data-page-params='#{request.original_url}' data-page-update='call_document_ready(\"#{controller_name + "_" + action_name}\")' data-additional='#{controller_name + "_" + addtional_script.sub("-","_")}'></div>").html_safe
   end
   
 end
