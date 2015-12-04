@@ -23,13 +23,13 @@ $(document).ready(function () {
     }
 });
 
-function products_edit_callDocumentReady() {    
+function products_edit_callDocumentReady() {
     $("#product-tabs").tabs({
         activate: function (event, ui) {
             if ($(ui.newTab[0]).find('a').text() == "Preview")
             {
                 console.log("updated!")
-                
+
                 $('iframe.preview').each(function () {
                     this.contentWindow.location.reload(true)
                 });
@@ -37,7 +37,7 @@ function products_edit_callDocumentReady() {
 
         }
     });
-    
+
     require("jquery-ui-combobox.js");
     requireCss("jquery-ui-combobox.css");
 
@@ -530,7 +530,7 @@ function buildproductDetailsListTable() {
 //            $("#toggle").click(function () {
 //                $("#combobox").toggle();
 //            });
-            
+
             // $(".combobox").combobox();
             bindChangeColor();
             ui_ajax_select();
@@ -788,23 +788,44 @@ function ajaxSave()
 
 function bindChangeColor() {
 
-    $('.combobox').change(function () {
-        var $detail_id = $(this).parent().parent().find("#detail-id").text();
-        var value = $(this).val();
-        console.log($detail_id);
-        //   "/products/update_ajax/1?field=color&pointer_class=ProductDetail"
-        $.ajax({
-            url: '/product_details/' + $detail_id,
-            data: {"product_detail": {"color": value}},
-            method: "put",
-            dataType: "json",
-            success: function (data) {
-                $(this).html(data);
-                updateImages();
+    $('.combobox').combobox({
+        select: function (event, ui) {
+            console.log("a change occured");
 
-            }
-        })
-    });
+            var $detail_id = $(this).parent().parent().find("#detail-id").text();
+            var value = $(this).val();
+            console.log($detail_id);
+            //   "/products/update_ajax/1?field=color&pointer_class=ProductDetail"
+            $.ajax({
+                url: '/product_details/' + $detail_id,
+                data: {"product_detail": {"color": value}},
+                method: "put",
+                dataType: "json",
+                success: function (data) {
+                    // $(this).html(data);
+                    // updateImages();
+
+                }
+            });
+        }});
+
+//    $('.combobox').change(function () {
+//        var $detail_id = $(this).parent().parent().find("#detail-id").text();
+//        var value = $(this).val();
+//        console.log($detail_id);
+//        //   "/products/update_ajax/1?field=color&pointer_class=ProductDetail"
+//        $.ajax({
+//            url: '/product_details/' + $detail_id,
+//            data: {"product_detail": {"color": value}},
+//            method: "put",
+//            dataType: "json",
+//            success: function (data) {
+//                $(this).html(data);
+//                updateImages();
+//
+//            }
+//        })
+//    });
 }
 
 
@@ -912,15 +933,15 @@ function bindRelatedSort() {
 
 function bindDeleteRelated() {
     $('a.related-delete').unbind().bind('ajax:beforeSend', function () {
-         // alert("ajax:before");  
+        // alert("ajax:before");  
     }).bind('ajax:success', function () {
         console.log($(this).parent().parent());
         $(this).parent().parent().remove();
-         // alert("ajax:success");  
+        // alert("ajax:success");  
     }).bind('ajax:failure', function () {
-          //  alert("ajax:failure");    
+        //  alert("ajax:failure");    
     }).bind('ajax:complete', function () {
-       //  alert("ajax:complete"); 
+        //  alert("ajax:complete"); 
     });
 
 }
@@ -989,7 +1010,7 @@ function add_product_to_related(product_id, related_product_id)
 function updateRelated() {
 
     //  alert("color changed");
-     var product_id = $("div#attr-products #product-id").text();
+    var product_id = $("div#attr-products #product-id").text();
     $("body").css("cursor", "progress");
 // $("#loader_progress").show();
 
@@ -1000,8 +1021,8 @@ function updateRelated() {
 
         // $("#loader_progress").hide();
         bindRelatedSort();
-    bindDeleteRelated();
-    bindRelatedProductSearch();
+        bindDeleteRelated();
+        bindRelatedProductSearch();
 
     });
 
