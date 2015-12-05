@@ -51,7 +51,7 @@
               </td>
               <td align="left" width="10%">
                 <span class="list-title"><%= link_to image_tag("interface/pdf.png",{:width=>"20px"}), {:action=>:invoice_slip, :format=>"pdf", :id=>order.id},{:title=>"generate PDF"} %></span>
-                 <span class="list-title"><%= link_to image_tag("interface/email.png",{:width=>"25px"}), {:action=>:resend_invoice, :order_id=>order.id},{:title=>"re email order", :confirm=>"Are you sure that you wish to resend the invoice?"} %></span>
+                 <span class="list-title"><%= link_to image_tag("interface/email.png",{:width=>"25px"}), {:action=>:resend_invoice, :order_id=>order.id},{:remote=>true, :target=>"new", :title=>"re email order", :confirm=>"Are you sure that you wish to resend the invoice?"} %></span>
              </td>
 
             </tr>

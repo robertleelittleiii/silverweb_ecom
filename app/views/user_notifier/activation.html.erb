@@ -1,27 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><%=@site_name %></title>
-<%@host=@hostfull[7..@hostfull.length-1]%>
-
-<%#@hostfull=getHTMLsitePreference('siteURL')
-@host=@hostfull[6..@hostfull.length-2]%>
-
-<% ActionController::Base.asset_host = @hostfull%>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<%= stylesheet_link_tag 'index' %>
-
-</head>
-
-<body>
-  <table>
-  <tr>
-<td id="content_c_content" colspan="3">
-          
-          Dear <%=@user.full_name%>,
-          <br><br>
-           Thank you for your request.  To review details of your request at our web site please click here:<br><br>
+        Thank you for your request.  To review details of your request at our web site please click here:<br><br>
 
 <%= link_to 'My Order',:host=>@host, :controller => 'orders', :id => @order.id,  :action => 'customer_detail' %><br><br>
 
@@ -30,11 +7,4 @@
           Thank you for using our site !!!<br><br>
 
           <%=@site_name %><br><br>
-        
-
-        </td>
-      </tr>
-  </table>
-</body>
-</html>
-<% ActionController::Base.asset_host = ""%>
+  

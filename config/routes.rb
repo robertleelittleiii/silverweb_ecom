@@ -77,6 +77,7 @@ Rails.application.routes.draw do
       get "product_search"
       post "update_related_list"
       post "render_related_section"
+      get "render_swatch_picture"
     end
   end
   

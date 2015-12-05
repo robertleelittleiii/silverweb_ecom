@@ -9,42 +9,87 @@
 <div id="product-settings-tabs">
     <ul>
         <li><a href="#product-settings-tab">View Settings</a></li>
+        <li><a href="#product-purchage-gateway-tab">Payment</a></li>
         <li><a href="#product-images-tab">Product Swatches</a></li>
         <li><a href="#product-social-tools-tab">Social Sharing Tool</a></li>
         <li><a href="#product-utilities-tab">Utilities</a></li>
     </ul>
 
     <div id="product-settings-tab">
+        <div class="cms-section">
+            <div class="cms-heading">Site Settings</div>
+            <div class="cms-content">
+                <p>
+                    <b>Products per Page (Number):</b><br>
+                    <%=editablefieldcreate("products_per_page", @settings)%>
+                </p>
+                <p> 
+                    <b>Search Products per Page (Number):</b><br>
+                    <%=editablefieldcreate("search_products_per_page", @settings)%>
+                </p> 
+
+                <p>
+                    <b>Size List (please seperate by ",")</b><br>
+                    <%=editablefieldcreate("inventory_size_list", @settings)%>
+                </p>
+
+                <p>
+                    <b>Default Template:(leave blank for default)</b><br>
+                    <%=ajax_select("product_template_name","settings",@settings, @template_types, "Choose Template...")%><br><br>
+                </p>
+
+                <p>
+                    <b> Default List Template: (leave blank for default) </b></br>
+                    <%=ajax_select("product_list_template_name","settings",@settings, @template_list_types, "Choose Template...")%><br><br>
+                </p>
+
+
+            </div>
+        </div>
+        <div class="cms-section">
+            <div class="cms-heading">Order Processing</div>
+            <div class="cms-content">
+                <p> 
+                    <b>Send Invoice copy in email: </b><br>
+                    <%=editablecheckboxedit("order_notification", @settings, "Send Invoice Copy")%> 
+                </p> 
+
+            </div>
+        </div>
+  <div class="cms-section">
+    <div class="cms-heading">Inventory</div>
+    <div class="cms-content">
+        <p>
+        <b>Click this link to generate inventory report.</b></br>
+<%=link_to 'Product Inventory (page)', {:controller => 'products', :action => 'generate_inventory_report'}, :id=>"process-image-button",:target => "_blank"%></br></br>
+        <%=link_to 'Product Inventory (csv)', {:controller => 'products', :action => 'generate_inventory_report', :format=>"csv"}, :id=>"process-image-button",:target => "_blank"%>
+      </p>
+      </br> 
+      
+      <p>
+        <b>Email Address for Notification</b><br>
+        <%=editablefieldcreate("inventory_email", @settings)%>
+      </p>
+    </div>
+  </div>
+    </div>
+    <div id="product-purchage-gateway-tab">
         <div class="cms-content">
             <p>
-            <p>
-                <b>Products per Page (Number):</b><br>
-                <%=editablefieldcreate("products_per_page", @settings)%>
+                <b>Login:</b><br>
+                <%=editablefieldcreate("gateway_login", @settings)%>
             </p>
-            <p> 
-                <b>Search Products per Page (Number):</b><br>
-                <%=editablefieldcreate("search_products_per_page", @settings)%>
-            </p> 
-
             <p>
-                <b>Size List (please seperate by ",")</b><br>
-                <%=editablefieldcreate("inventory_size_list", @settings)%>
+                <b>Password:</b><br>
+                <%=editablefieldcreate("gateway_password", @settings)%>
             </p>
-
             <p>
-                <b>Default Template:(leave blank for default)</b><br>
-                <%=ajax_select("product_template_name","settings",@settings, @template_types, "Choose Template...")%><br><br>
+                <b>Signature: (paypal only)</b><br>
+                <%=editablefieldcreate("gateway_signature", @settings)%>
             </p>
-            
             <p>
-                <b> Default List Template: (leave blank for default) </b></br>
-                 <%=ajax_select("product_list_template_name","settings",@settings, @template_list_types, "Choose Template...")%><br><br>
             </p>
-
-
         </div>
-
-
     </div>
     <div id="product-images-tab">
         <div class="cms-content">

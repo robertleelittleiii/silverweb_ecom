@@ -3,19 +3,17 @@ class UserNotifier < ActionMailer::Base
 
   
   def signup_notification(user, siteurl)
+    set_up_images()
     @hostfull=siteurl
     setup_email(user)
     subject 'Please activate your new account'
     body(:user=>user, :hostfull=>@hostfull)
     content_type "text/html"   #Here's where the magic happens
-
-    #@body  = siteurl.gsub(%r{</?[^>]+?>}, '')+"activate/#{user.activation_code}"
   end
   
   def inventory_alert(product_detail, host)
+    set_up_images()
     @hostfull=host
-    #  attachments.inline['logo-100.png'] = File.read('assets/images/site/logo-100.png')
-     
     @host = host
     @user = Settings.inventory_email
     @admin_email = Settings.admin_email || self.default_params[:from]
@@ -28,7 +26,7 @@ class UserNotifier < ActionMailer::Base
   
 
   def signup_notification(user, host)
-   # attachments.inline['logo-100.png'] = File.read('assets/images/site/logo-100.png')
+    set_up_images()
 
     @user=user
     @hostfull=host
@@ -40,29 +38,28 @@ class UserNotifier < ActionMailer::Base
   
   def reset_notification(user, host)
     
-   # attachments.inline['logo-100.png'] = File.read('assets/images/site/logo-100.png')
+    set_up_images()
     puts("Self: #{self.default_params[:from]}")
     @user=user
     @hostfull=host
     @site_name = Settings.company_url
     @admin_email = Settings.admin_email || self.default_params[:from]
-        
     mail(:from=>@admin_email,:to => "#{user.user_attribute.first_name} #{user.user_attribute.last_name}<#{user.name}>", :subject => "Reset your password")
   end
  
   
   def signup_notification2(user, siteurl)
+    set_up_images()
     @hostfull=siteurl
     @site_name = Settings.company_url
     setup_email(user)
     subject 'Please activate your new account'
     body(:user=>user, :hostfull=>@hostfull)
     content_type "text/html"   #Here's where the magic happens
-
-    #@body  = siteurl.gsub(%r{</?[^>]+?>}, '')+"activate/#{user.activation_code}"
   end
 
   def activation(user)
+    set_up_images()
     setup_email(user)
     @site_name = Settings.company_url
     @subject    += 'Your account has been activated!'
@@ -71,19 +68,18 @@ class UserNotifier < ActionMailer::Base
   end
 
   def reset_notification2(user, siteurl)
+    set_up_images()
     @hostfull=siteurl
     @site_name = Settings.company_url
     setup_email(user)
     subject 'Link to reset your password'
-    #    @body  = siteurl.gsub(%r{</?[^>]+?>}, '')+"reset/#{user.password_reset_code}"
     body(:user=>user, :hostfull=>@hostfull)
     content_type "text/html"   #Here's where the magic happens
 
   end
   
   def lostwithemail(user, host)
-  #  attachments.inline['logo-100.png'] = File.read('assets/images/site/logo-100.png')
-
+    set_up_images()
     @user=user
     @hostfull=host
     @site_name = Settings.company_url
@@ -93,6 +89,7 @@ class UserNotifier < ActionMailer::Base
   end
   
   def shipment_notification(order, user, message, host)
+    set_up_images()
     @site_name = Settings.company_url
     @hostfull=host
   
@@ -103,27 +100,22 @@ class UserNotifier < ActionMailer::Base
   end
 
   def order_notification_as_invoice(order,user,host)
+    set_up_images()
    
-    #  attachments.inline['logo.png'] = File.read(('public/'+Settings.logo_path rescue "public/images/empty_s.jpg"))
-   # attachments.inline['logo-100.png'] = File.read('assets/images/site/logo-100.png')
-
     @page_title = "order success"
-    @page = Page.find_all_by_title (@page_title).first
+    @page = Page.find_by_title (@page_title).first
     
     @company_name = Settings.company_name
     @company_address = Settings.company_address
     @company_phone = Settings.company_phone
     @company_fax = Settings.company_fax
-    
-    
+     
     @user=user
     @order=order
     
     @order.order_items.each do |order_item|
-      attachments.inline["#{order_item.id}.png"] = File.read("public" + order_item.product_detail.thumb.to_s)
+      attachments.inline["#{order_item.id}.png"] = File.read(Rails.root.to_s + "/public/" + order_item.product_detail.thumb.to_s)
     end
-    
-    
     
     @hostfull=host
     @site_slogan = Settings.site_slogan rescue ""
@@ -135,10 +127,8 @@ class UserNotifier < ActionMailer::Base
   end
   
  def order_notification(order, user, host)
-
-    #  attachments.inline['logo.png'] = File.read(('public/'+Settings.logo_path rescue "public/images/empty_s.jpg"))
-   # attachments.inline['logo-100.png'] = File.read('assets/images/site/logo-100.png')
-
+    set_up_images()
+    
     @user=user
     @order=order
     @hostfull=host
@@ -149,20 +139,13 @@ class UserNotifier < ActionMailer::Base
     mail(:from=>@admin_email, :cc=> @admin_email,:to => "#{user.user_attribute.first_name rescue ""} #{user.user_attribute.last_name rescue ""}<#{user.name}>", :subject => "Thank you for your order !!")
   end
 
-
-  #def winner_notification(user, message, host)
-  #  @hostfull=host
-  #  self.setup_email(user)
-  #  subject 'Congratulations!! You are a winner.'
-  #  body (:user=>user)
-  #  content_type "text/html"
-  #  
-  #end
-
-
   
   protected
 
+ def set_up_images
+       attachments.inline['logo-100.png'] = File.read(Rails.root.to_s + '/app/assets/images/site/logo-100.png')
+ end
+ 
   def setup_email(user)
     @recipients  = "#{user.name}"
     @from        = "admin@squirtinibikini.com"

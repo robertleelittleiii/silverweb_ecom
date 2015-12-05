@@ -276,7 +276,7 @@ function bind_file_upload_to_upload_form()
                         }
                         else
                         {
-                            render_picture(result.id);
+                            render_swatch_picture(result.id);
                         }
 
                     })
@@ -288,7 +288,7 @@ function bind_file_upload_to_upload_form()
                         console.log(jqXHR.responseText);
                         if (jqXHR.status == "200")
                         {
-                            render_picture(result.id);
+                            render_swatch_picture(result.id);
                         }
                         else
                         {
@@ -345,7 +345,7 @@ function bind_download_to_files()
             });
 }
 
-function render_pictures(product_id) {
+function render_swatch_pictures(product_id) {
     $.ajax({
         dataType: "html",
         url: '/pictures/render_pictures',
@@ -373,10 +373,10 @@ function render_pictures(product_id) {
 
 }
 
-function render_picture(picture_id) {
+function render_swatch_picture(picture_id) {
     $.ajax({
         dataType: "html",
-        url: '/pictures/render_picture',
+        url: '/products/render_swatch_picture',
         cache: false,
         data: "class_name=product&id=" + picture_id,
         success: function (data)
@@ -400,6 +400,9 @@ function render_picture(picture_id) {
             activate_buttons();
             initialize_edit_button();
             bind_download_to_files();
+            $("a.button-link").button();
+            $(".best_in_place").best_in_place();
+
 
 
         }

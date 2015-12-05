@@ -292,6 +292,17 @@ def add_image_system
     
   end
     
+    def render_swatch_picture
+    class_name =  params[:class_name]
+
+    @picture = Picture.where(id: params[:id]).first
+    if class_name.blank? then
+      render :partial=>"/products/swatch_view.html" 
+    else
+      render :partial=> class_name.downcase + "s" + "/swatch_view.html" 
+    end
+  end
+  
     
   def render_image_section
     @product=Product.find(params[:id])

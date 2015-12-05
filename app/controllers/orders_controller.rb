@@ -230,14 +230,20 @@ class OrdersController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     @order = Order.find_by_id(params[:order_id])
     
-    if  not Settings.order_notification then
+    if  not Settings.order_notification=="true" then
       UserNotifier.order_notification(@order, @order.user, @hostfull).deliver
     else
       UserNotifier.order_notification_as_invoice(@order, @order.user, @hostfull).deliver
     end            
    
     flash[:notice] = "Invoice receipt resent to user #{@order.user.full_name}."
-    redirect_back_or_default(request.referer)
+    
+    respond_to do |format|
+      format.html { head :ok }
+      format.json { head :ok }
+    end
+    
+    # redirect_back_or_default(request.referer)
 
   end
 
