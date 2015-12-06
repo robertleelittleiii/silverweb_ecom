@@ -46,7 +46,7 @@ class Product < ActiveRecord::Base
   
   
   def next_in_collection 
-    product_list = Product.tagged_with([self.category[0].name], on: :category).order(:product_name)
+    product_list = Product.tagged_with([self.category[0].name], on: :category).order(:position)
     product_list.index(self)
     if product_list.last == self then
       return product_list.first
@@ -57,7 +57,7 @@ class Product < ActiveRecord::Base
   end
   
   def previous_in_collection
-    product_list = Product.tagged_with([self.category[0].name], on: :category).order(:product_name)
+    product_list = Product.tagged_with([self.category[0].name], on: :category).order(:position)
     product_list.index(self)
     if product_list.first == self then
       return product_list.last
