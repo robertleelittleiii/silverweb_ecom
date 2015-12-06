@@ -181,6 +181,7 @@ class OrdersController < ApplicationController
 
               empty_cart
               format.html { redirect_to(controller: :orders, action: :order_success, id: @order)}
+              return
               # format.html {render :action => "order_success"}
             else
               SystemNotifier.purchase_fail_notification(@order, @user, $hostfull).deliver
@@ -194,6 +195,7 @@ class OrdersController < ApplicationController
           end
         else
           format.html {redirect_to(controller: :site, action: :show_page)}
+          return
         end
       end 
     end

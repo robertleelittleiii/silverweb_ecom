@@ -121,7 +121,9 @@ class UserNotifier < ActionMailer::Base
     @site_slogan = Settings.site_slogan rescue ""
     @site_name = Settings.site_name rescue "Our Site"
     @admin_email = Settings.admin_email || self.default_params[:from]
- 
+    
+    puts("@hostfull: #{@hostfull}")
+    
     mail(:from=>@admin_email, :cc=> @admin_email,:to => "#{user.user_attribute.first_name rescue ""} #{user.user_attribute.last_name rescue ""}<#{user.name}>", :subject => "Thank you for your order !!")
  
   end
