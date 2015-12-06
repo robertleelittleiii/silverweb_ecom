@@ -1,19 +1,10 @@
-<div class="cart-title" >Your Bag</div>
-<table width="1000" border="0" cellspacing="0" cellpadding="0">
-  <tr class="cart-header">
-    <td width="30" align="center"></td>
+<div class="cart-title" >My Bag</div>
 
-    <td width="850">Description</td>
-
-    <td>Sub Total</td>
-    <td></td>
-
-  </tr>
-  <tr >
-
-    <td colspan="5"><hr></td>
-  </tr>
-</table>
+<div class="cart-header">
+    <div class="cart-title" id="description">Description </div>
+    <div class="cart-title" id="sub-total">Sub Total</div>
+</div>
+    
 <div id="cart-contents">
   <%= render(:partial => "checkout_cart_item" , :collection => checkout_cart.items) %>
 </div>

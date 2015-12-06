@@ -178,3 +178,15 @@ div#increase-item, div#decrease-item, div#delete-item {
 img#delete-icon {
     margin-top: 3px;
 }
+
+
+div.cart-header div.cart-title {
+    width: 47%;
+    display: inline-block;
+    position: relative;
+}
+
+div.cart-header {
+    display: inline-block;
+    width: 100%;
+}

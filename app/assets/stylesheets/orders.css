@@ -34,61 +34,7 @@ padding: 10px;
 }
 
 
-input.navigation-link:active {
 
-
-    /* IE10 */ 
-    background-image: -ms-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Mozilla Firefox */ 
-    background-image: -moz-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Opera */ 
-    background-image: -o-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Webkit (Safari/Chrome 10) */ 
-    background-image: -webkit-gradient(radial, left top, 0, left top, 1002, color-stop(0, #0080FF), color-stop(1, #FFFFFF));
-
-    /* Webkit (Chrome 11+) */ 
-    background-image: -webkit-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Proposed W3C Markup */ 
-    background-image: radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-
-    background-color: #4da6FF;
-    color: #DDDDDD;
-    outline: none; /* hide dotted outline in Firefox */
-    padding: 5px 6px 3px 10px; /* push text down 1px */
-    text-shadow: 1px 1px gray ;
-
-
-}
-
-
-
-
-input.navigation-link{
-    color:white;
-    background-color: #4da6FF;
-    border: 1px black solid;
-    border-radius: 8px;
-    background-image: -ms-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: -moz-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: -o-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: -webkit-gradient(radial, left top, 0, left top, 1002, color-stop(0, #FFFFFF), color-stop(1, #0080FF));
-    background-image: -webkit-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-margin: -3px 1px 1px 1px;
-padding: 4px 5px 4px 11px;
-    border-image: initial;
-
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bolder;
-    text-shadow: -1px -1px gray ;
-
-}
 
 .shipping-address legend {
 background: lightgray;
@@ -217,62 +163,6 @@ margin-right:25px;
 
 }
 
-
-a.navigation-link:active {
-
-
-    /* IE10 */ 
-    background-image: -ms-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Mozilla Firefox */ 
-    background-image: -moz-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Opera */ 
-    background-image: -o-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Webkit (Safari/Chrome 10) */ 
-    background-image: -webkit-gradient(radial, left top, 0, left top, 1002, color-stop(0, #0080FF), color-stop(1, #FFFFFF));
-
-    /* Webkit (Chrome 11+) */ 
-    background-image: -webkit-radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-    /* Proposed W3C Markup */ 
-    background-image: radial-gradient(left top, ellipse farthest-corner, #0080FF 0%, #FFFFFF 100%);
-
-
-    background-color: #4da6FF;
-    color: #DDDDDD;
-    outline: none; /* hide dotted outline in Firefox */
-    padding: 5px 6px 3px 10px; /* push text down 1px */
-    text-shadow: 1px 1px gray ;
-
-
-}
-
-
-
-
-a.navigation-link{
-    color:white;
-        background-color: #4da6FF;
-    border: 1px black solid;
-    border-radius: 8px;
-    background-image: -ms-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: -moz-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: -o-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: -webkit-gradient(radial, left top, 0, left top, 1002, color-stop(0, #FFFFFF), color-stop(1, #0080FF));
-    background-image: -webkit-radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    background-image: radial-gradient(left top, ellipse farthest-corner, #FFFFFF 0%, #0080FF 100%);
-    margin: 2px;
-    padding: 4px 5px 4px 11px;
-    border-image: initial;
-
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: bolder;
-    text-shadow: -1px -1px gray ;
-
-}
 
 
 .field_with_errors {

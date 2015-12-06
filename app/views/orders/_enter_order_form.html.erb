@@ -1,7 +1,7 @@
 
 <%= form_for :order, :url => { :controller=>:orders, :action => :enter_order } do |form| %>
   <div class="shipping-address">
-    <div class="address-title">Shipping Address <div id="copy-to-billing"><%=link_to "Copy >> Billing" ,{},{:href=>"javascript:void();",:onclick=>"return false;", :class=>"button-link"}%></div></div>
+    <div class="address-title">Shipping Address <div id="copy-to-billing"><%=link_to "Copy to Billing" ,{},{:href=>"javascript:void();",:onclick=>"return false;", :class=>"button-link"}%></div></div>
 
     <div>
       <b>Name:</b> </br>
