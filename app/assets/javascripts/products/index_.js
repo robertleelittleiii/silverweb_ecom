@@ -48,6 +48,8 @@ function products_index_callDocumentReady() {
      bindDeleteProduct();
      
      bindPreferences();
+     
+     bindCoupons();
 }
 
 function bindDeleteProduct() {
@@ -220,3 +222,34 @@ function bindPreferences() {
 
 
 }
+
+function bindCoupons() {
+
+    $('a#coupons-settings').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
+        xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
+        $("body").css("cursor", "progress");
+    }).bind('ajax:success', function (xhr, data, status) {
+        $("body").css("cursor", "default");
+        productPrefsDialog = createAppDialog(data, "coupons-settings-dialog");
+        productPrefsDialog.dialog('open');
+        productPrefsDialog.dialog({
+            close: function (event, ui) {
+                productPrefsDialog.html("");
+                productPrefsDialog.dialog("destroy");
+            }
+        });
+        require("products/coupons_settings.js");
+        product_coupons_settings_callDocumentReady();
+
+        //update_rolls_callDocumentReady();
+
+
+        // setupRolesSelection();
+        // 
+    }).bind('ajax:error', function (evt, xhr, status, error) {
+        setUpPurrNotifier("Error", "Coupons could not be opened!'");
+    });
+
+
+}
+

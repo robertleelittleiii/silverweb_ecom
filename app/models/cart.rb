@@ -13,6 +13,7 @@ class Cart
     @shipping = 0
     @shipping_type = 0
     @user_id=user_id
+    @coupon_code=""
   end
 
   def persisted?

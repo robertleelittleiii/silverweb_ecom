@@ -21,9 +21,12 @@ module SilverwebEcom
 
 
       SilverwebCms::Config.add_nav_item({:name=>"Products", :controller=>'products', :action=>'index'})
+      SilverwebCms::Config.add_nav_item({:name=>"My Orders", :controller=>'orders', :action=>'user_orders'})
+      SilverwebCms::Config.add_nav_item({:name=>"Store Orders", :controller=>'orders', :action=>'index'})
         
      SilverwebCms::Config.add_menu_class(["Show Products","menu_show_products"])
-     # SilverwebCms::Config.add_menu_class(["Show Products with Page","menu_show_products_with_page"])
+
+# SilverwebCms::Config.add_menu_class(["Show Products with Page","menu_show_products_with_page"])
       
      # SilverwebCms::Config.add_menu_actions(["Show Portfolio",20])
       

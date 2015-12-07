@@ -28,7 +28,7 @@
     </div>
     <div class="cart-coupon-code">
       <p>
-        <%=editablefieldcreate("coupon_code", @checkout_cart,{},"Enter Code")%>
+        <%=editablefieldcreate("coupon_code", @checkout_cart,"Enter Code",{:path=>"cart_update"})%>
       </p>
     </div>
     <% end %>

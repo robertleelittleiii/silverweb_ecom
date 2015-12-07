@@ -130,7 +130,7 @@ function setUpOrderChange() {
         dropOnEmpty: false,
         items: 'div.product-item',
         handle: '.handle',
-        cursor: 'crosshair',
+        cursor: '-webkit-grabbing',
         opacity: 0.4,
         scroll: true,
         update: function(){

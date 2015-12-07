@@ -17,12 +17,11 @@
   </div>
 
   <div id="site-pref-list">
-    <h1  class="myaccountheader">Product</h1>
-
     <p>
     <center>
-<%= link_to 'New Product', {:action=>:create_empty_record,:typeofrecord=>"product"}, :class=>"button-link"%>
+        <%= link_to 'New Product', {:action=>:create_empty_record,:typeofrecord=>"product"}, :class=>"button-link"%>
         <%= link_to 'Product Prefs',{ :action=>:product_preferences,:typeofrecord=>"Product"}, :class=>"button-link",:id=>"product-prefs", :remote=>true%>
+        <%= link_to 'Coupons',{ :controller=>:coupons, :action=>:index, :typeofrecord=>"Coupons"}, :class=>"button-link",:id=>"coupons-settings", :remote=>true%>
 </center>
     </br>
   </p>
