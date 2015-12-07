@@ -240,7 +240,10 @@ def add_image_system
     
    def edit_picture
     @picture = Picture.find(params[:picture_id])
-        @image_locations = ["Slider", "Primary","Product List", "-"]  
+    @image_locations = ["Slider", "Primary","Product List", "-"]  
+    @product = Product.find(@picture.resource_id)
+    @colors =  @product.product_details.select("distinct `color`").collect{|x| x.color}
+    @image_locations  = @image_locations + @colors
      
     respond_to do |format|
       format.html # index.html.erb

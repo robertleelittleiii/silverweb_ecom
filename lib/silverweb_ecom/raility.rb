@@ -31,14 +31,14 @@ module SilverwebEcom
      # SilverwebCms::Config.add_menu_actions(["Show Portfolio",20])
       
       Picture.class_eval do
-        belongs_to :products, :polymorphic => true
+        belongs_to :product, :polymorphic => true
       end
       
       User.class_eval do
          has_many :orders
   
          has_many :coupon_usages
-      end
+      end      
       
       # Add taggability on this menu
       Menu.class_eval do
