@@ -13,13 +13,17 @@ class ProductDetail < ActiveRecord::Base
   end
   
   def swatch
-    begin 
-      self.product.pictures.where(title: self.color).first.image_url(:swatch).to_s 
-    rescue 
-      begin
-        SystemImages.all.where(title: self.color).first.image_url.to_s
+    if (!!Settings.force_system_swatches)
+      SystemImages.all.where(title: self.color).first.image_url.to_s
+    else
+      begin 
+        self.product.pictures.where(title: self.color).first.image_url(:swatch).to_s 
       rescue 
-        "blank.png"
+        begin
+          SystemImages.all.where(title: self.color).first.image_url.to_s
+        rescue 
+          "blank.png"
+        end
       end
     end
 
@@ -34,12 +38,12 @@ class ProductDetail < ActiveRecord::Base
       #begin
       #  self.product.pictures.first.image_url(:thumb).to_s
       #rescue 
-        begin
-          SystemImages.all.where(title: self.color).first.image_url(:thumb).to_s
-        rescue 
-          "/images/site/blank.png"
-        end
-     # end
+      begin
+        SystemImages.all.where(title: self.color).first.image_url(:thumb).to_s
+      rescue 
+        "/images/site/blank.png"
+      end
+      # end
     end
 
   end

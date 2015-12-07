@@ -34,6 +34,11 @@
                 </p>
 
                 <p>
+                </p>
+                   <b>Force use of system swatches:</b><br>
+                   <%=editablecheckboxedit("force_system_swatches", @settings, "Send Invoice Copy")%> 
+
+                <p>
                     <b>Default Template:(leave blank for default)</b><br>
                     <%=ajax_select("product_template_name","settings",@settings, @template_types, "Choose Template...")%><br><br>
                 </p>
