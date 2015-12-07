@@ -1,39 +1,24 @@
-<div class="myaccountblock" Align="Left">
-    <div align="center">
+<%= create_dialog_settings("Edit Coupon", "650", "500") %>
+
+<div class="cms-block" Align="Left">
+  <div id="flash" align="center">
     <!-- START:flash -->
-    <% if notice -%>
-      <div id="notice"><%= notice  %></div>
+    <% if flash[:notice] -%>
+      <div id="notice"><%= flash[:notice] %></div>
     <% end -%>
     <!-- END:flash -->
-    
-    <% if @coupon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@coupon.errors.count, "error") %> prohibited this coupon from being saved:</h2>
-
-      <ul>
-      <% @coupon.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    
   </div>
 
-  <div class="myaccountheader">Edit Coupon</div>
-  <div class="myaccountsection">
-    <div class="myaccountheading">Information for coupon</div>
-    <div class="myaccountcontent">
+
+
+  <!-- <div class="cms-header">Site Preferences</div> -->
+
+  <div class="cms-section">
+    <div class="cms-content">
 
       <%= render 'form' %>
 
          </div>
-    </p>
   </div>
-  
-<%= link_to 'Show', @coupon %> |
-<%= link_to 'Back', coupons_path %>
-   
-
 </div>
 

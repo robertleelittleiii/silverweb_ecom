@@ -1,0 +1,16 @@
+{"sEcho": <%= params[:sEcho] || -1 %>,
+ "iTotalRecords": <%= @total_objects %>,
+ "iTotalDisplayRecords": <%= @total_objects %>,
+ "aaData":[ 
+<% @objects.each do |coupon| %>
+  [
+   "<%= coupon.coupon_code%> <div id='coupon-id' class='hidden-item'> <%= coupon.id%></div> ",
+   "<%= truncate(coupon.description.to_s.gsub(/<\/?[^>]+>|(\r\n|\n|\r)|&nbsp;/, '').html_safe, :length => 50) %>",
+   "<%= coupon.start_date %>",
+   "<%= coupon.end_date %>",
+   "<%= coupon.value %>",
+   "<center><div class='delete-coupon-item'><%=image_tag('interface/delete.png', :border=>'0').gsub("\"", "'").html_safe() %></div> </center>"
+  ] <% if @objects.last != coupon then %> , <% end %>
+<% end %>
+]}
+

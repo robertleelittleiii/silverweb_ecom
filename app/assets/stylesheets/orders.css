@@ -206,6 +206,8 @@ overflow: auto;
 width: 1000px;
 /*width:400px;*/
 border-image: initial;
+margin-top:20px;
+
 }
 
 
@@ -226,7 +228,7 @@ border: black 1px dotted;
 height: 480px;
 border-image: initial;
 vertical-align: top;
-
+margin-top:20px;
 }
 
 

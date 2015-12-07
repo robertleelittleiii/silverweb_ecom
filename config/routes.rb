@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :coupons do 
     collection do
       get "create_empty_record"
+      get "coupon_table"
     end
   end
   

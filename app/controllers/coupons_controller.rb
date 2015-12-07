@@ -86,13 +86,64 @@ class CouponsController < ApplicationController
 
   def create_empty_record
     @coupon = Coupon.new
+    @coupon.coupon_code = "New Coupon"
+    @coupon.description = "New Description here..."
     @coupon.save
     
     redirect_to(controller: :coupons, action: :edit, id: @coupon)
   end
 
+  def coupon_table
+    @objects = current_objects(params)
+    @total_objects = total_objects(params)
+    render layout: false
+  end
+  
+    
+  private
+ 
+  def current_objects(params={})
+    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
+    @current_objects = Coupon.page(current_page).per(params[:iDisplayLength]). 
+      order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").
+      where(conditions)
+    
+    # @current_objects = Coupon.select("coupons.*").
+    #   where(conditions).
+    #   order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}")
+  
+  
+  end
+    
+
+  def total_objects(params={})
+    @total_objects = Coupon.where(conditions).count
+  end
+
+  def datatable_columns(column_id)
+    case column_id.to_i
+    when 0
+      return "coupons.coupon_code"
+    when 1
+      return "coupons.description"
+    when 2
+      return "coupons.start_date"
+    when 3
+      return "coupons.end_date"
+    else
+      return "coupons.value"
+    end
+  end
+
+  def conditions
+    conditions = []
+    conditions << "(coupons.coupon_code LIKE '%#{params[:sSearch]}%' OR coupons.description LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    return conditions.join(" AND ")
+  end
+  
   def coupon_params
     params[:coupon].permit( "description", "start_date", "end_date", "coupon_code", "value", "min_amount", "coupon_type", "created_at", "updated_at", "one_time_only", "only_most_expensive_item", "coupon_calc")
   end
+  
   
 end
