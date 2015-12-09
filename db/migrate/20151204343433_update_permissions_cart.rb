@@ -1,4 +1,4 @@
-class UpdatePremissionsCart < ActiveRecord::Migration
+class UpdatePermissionsCart < ActiveRecord::Migration
   def self.up
     
 		#Admin role name should be "Admin" for convenience
