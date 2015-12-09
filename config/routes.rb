@@ -20,6 +20,12 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :cart do
+    collection do
+     post "update"
+    end
+  end
+
   resources :order_items do
     collection do
       get "create_empty_record"
@@ -101,7 +107,7 @@ Rails.application.routes.draw do
   match "/site/decrement_cart_item" => "site#decrement_cart_item", via: :get
   match "/site/delete_cart_item" => "site#delete_cart_item", via: :get
   match "/site/get_shopping_cart_item_info" => "site#get_shopping_cart_item_info", via: :get
-  match "/site/get_cart_summary_body" => "site#get_cart_summary_body", via: :post
+  match "/site/get_cart_summary_body" => "site#get_cart_summary_body", via: [:get, :post]
   match "/site/get_cart_contents" => "site#get_cart_contents", via: :get
   match "/site/show_products_with_page" => "site#show_products_with_page", via: :get
   match "/site/live_product_search" => "site#live_product_search", via: :get

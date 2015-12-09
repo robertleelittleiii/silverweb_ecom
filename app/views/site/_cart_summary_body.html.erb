@@ -6,9 +6,9 @@
   <div class="cart-summary-title">Sales Tax(in NJ Only)</div>  <div class="cart-summary-price" id="cart-tax-price" ><%=number_to_currency(@checkout_cart.calc_tax) %></div>
 </div>
 <div class="cart-sumamry-row">
-  <div class="cart-summary-title">Shipping</div> <div class="cart-summary-price" id="cart-shipping-price"  ><%=number_to_currency(@checkout_cart.calc_shipping[@checkout_cart.shipping_type]) %></div>
+  <div class="cart-summary-title">Shipping</div> <div class="cart-summary-price" id="cart-shipping-price"  ><%=number_to_currency(@checkout_cart.calc_shipping[@checkout_cart.shipping_type]) rescue "" %></div>
 </div>
-<% if not @checkout_cart.coupon_code==nil then %>
+<% if not @checkout_cart.coupon_code.blank? then %>
   <div class="cart-sumamry-row">
     <div class="cart-summary-title"><%=@checkout_cart.coupon_description %> </div> <div class="cart-summary-price" id="cart-coupon-code"  ><%=number_to_currency(@checkout_cart.coupon_value * -1) %></div>
   </div>

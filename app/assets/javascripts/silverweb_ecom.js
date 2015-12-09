@@ -19,3 +19,33 @@ $(document).ready(function () {
         producteditClickBinding("div.edit-product");
     }
 }
+
+function ui_ajax_cart_select() {
+
+    $("select.ui-ajax-cart-select").bind("change", function () {
+        selected_item = $(this).val();
+        controller = this.getAttribute("data-path")
+
+        //alert(this.getAttribute("data-id"));
+
+
+        $.ajax({
+            url: controller, // controller + "/update",
+            dataType: "json",
+            type: "PUT",
+            data: "id=" + this.getAttribute("data-id") + "&cart[" + this.getAttribute("name") + "=" + selected_item,
+            success: function (data)
+            {
+                // alert(data);
+                if (data === undefined || data === null || data === "")
+                {
+                    //display warning
+                }
+                else
+                {
+
+                }
+            }
+        });
+    });
+}

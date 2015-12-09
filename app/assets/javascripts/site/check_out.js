@@ -35,6 +35,8 @@ $(document).ready(function () {
     bindProductActions();
     bindChangeShipping();
     intercept_click();
+    ui_ajax_cart_select();
+    
     // check for full screen and adjust layout
     //if ($("#full-screen").html().trim() == "true")
     //{
@@ -52,7 +54,7 @@ $(document).ready(function () {
 function bindChangeShipping() {
 
 
-    $('#cart_shipping_type').change(function () {
+    $('select#shipping_type').change(function () {
 
         //alert("changed");
         //cart_item_id=$(this).parent().parent().find("#cart-item-index").html().trim()
