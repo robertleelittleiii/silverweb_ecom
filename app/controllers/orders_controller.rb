@@ -132,9 +132,17 @@ class OrdersController < ApplicationController
     @page_title = "order success"
     @page = Page.find_by_title (@page_title).first
 
+    cart_is_empty = false;
+    purchase_success = false;
+    error_occured = false;
     
+    redirect_controller = :site
+    redirect_action = :index
+        
     if params[:order].blank? then
+      puts("****************** New order from cart ************")
       @order=Order.new
+      error_occured=true
     else
     
       puts("params[cc_expires(1i)]#{params[:order]["cc_expires(1i)"].inspect}")
@@ -160,106 +168,126 @@ class OrdersController < ApplicationController
       @order.cc_number = params[:order][:cc_number] 
       @order.cc_verification = params[:order][:cc_verification]
 
-      respond_to do |format|
-        if @cart.total_price > 0 then
-          if @order.save
-            if @order.purchase(@cart)
-              @order.reduce_inventory($hostfull)
+      
+      
+      if @cart.total_price > 0 then
+        if @order.save
+          if @order.purchase(@cart)
+            @order.reduce_inventory($hostfull)
             
-              if  not Settings.order_notification then
-                UserNotifier.order_notification(@order, @user, $hostfull).deliver
-              else
-                UserNotifier.order_notification_as_invoice(@order, @user, $hostfull).deliver
-              end
-            
-              #  if there is a coupon, make a record that it was used.
-              if not @cart.coupon_code.blank? then
-                @coupon = Coupon.where(coupon_code: @cart.coupon_code).first
-                @coupon_used = CouponUsage.create(user_id: @user.id, coupon_id: @coupon.id)
-                @coupon.save
-              end
-
-              empty_cart
-              format.html { redirect_to(controller: :orders, action: :order_success, id: @order)}
-              # return
-              # format.html {render :action => "order_success"}
+            if  not Settings.order_notification then
+              UserNotifier.order_notification(@order, @user, $hostfull).deliver
             else
-              SystemNotifier.purchase_fail_notification(@order, @user, $hostfull).deliver
-              format.html { render action: "enter_order", params: params[:order]}
+              UserNotifier.order_notification_as_invoice(@order, @user, $hostfull).deliver
             end
-            #  format.html { redirect_to @order, :notice=>"Order was successfully created." }
-            #  format.json { render :json=>@order, :status=>:created, :location=>@order }
+            
+            #  if there is a coupon, make a record that it was used.
+            if not @cart.coupon_code.blank? then
+              @coupon = Coupon.where(coupon_code: @cart.coupon_code).first
+              @coupon_used = CouponUsage.create(user_id: @user.id, coupon_id: @coupon.id)
+              @coupon.save
+            end
+
+            empty_cart_no_redirect
+            
+            redirect_controller = :orders
+            redirect_action = :order_success
+            puts("****************** Purchase Success  ************")
+    
+            purchase_success = true              # return
+            # format.html {render :action => "order_success"}
           else
-            format.html { render action: "enter_order", params: params[:order] }
-            format.json { render json: @order.errors, status: :unprocessable_entry }
+            SystemNotifier.purchase_fail_notification(@order, @user, $hostfull).deliver
+            error_occured=true
           end
+          #  format.html { redirect_to @order, :notice=>"Order was successfully created." }
+          #  format.json { render :json=>@order, :status=>:created, :location=>@order }
         else
-          format.html {redirect_to(controller: :site, action: :show_page)}
-          return
+          error_occured = true
         end
-      end 
-    end
+      else
+        puts("****************** Cart is empty (redirect to /site/index) ************")
+       
+        redirect_controller = :site
+        redirect_action = :index
+      
+        # cart_is_empty = true
+      end
+    end 
+  
+    respond_to do |format|
+      if error_occured then
+        puts("****************** ERROR OCCURED ************")
+        puts("#{@order.errors.inspect}")
+        format.html { render action: "enter_order", params: params[:order] }
+        format.json { render json: @order.errors, status: :unprocessable_entry }
+      else
 
-  end
-  
-  def order_success 
-    @page_title = "order success"
-    @order = Order.find(params[:id])
-    @user = User.find_by_id(session[:user_id])
-    @page = Page.find_by_title (@page_title).first
-    @company_name = Settings.company_name
-    @company_address = Settings.company_address
-    @company_phone = Settings.company_phone
-    @company_fax = Settings.company_fax 
-  end
-  
-  def invoice_slip
-    @page_title = "order success"
-
-    @order = Order.find(params[:id])
-    @user = User.find_by_id(session[:user_id])
-    @page = Page.find_by_title (@page_title).first
-    @company_name = Settings.company_name
-    @company_address = Settings.company_address
-    @company_phone = Settings.company_phone
-    @company_fax = Settings.company_fax
-    
-    render partial: "invoice_report.html", layout: false
-  end
-  
-  def resend_invoice
-    @hostfull = request.protocol + request.host_with_port
-    @user = User.find_by_id(session[:user_id])
-    @order = Order.find_by_id(params[:order_id])
-    
-    if  not Settings.order_notification=="true" then
-      UserNotifier.order_notification(@order, @order.user, @hostfull).deliver
-    else
-      UserNotifier.order_notification_as_invoice(@order, @order.user, @hostfull).deliver
-    end            
+        puts("****************** Redirct occured   ************")
+        format.html { redirect_to(controller: redirect_controller, action: redirect_action, id: @order) && return}
+      end
    
-    flash[:notice] = "Invoice receipt resent to user #{@order.user.full_name}."
-    
-    respond_to do |format|
-      format.html { head :ok }
-      format.json { head :ok }
     end
+  end
+
+    def order_success 
+      @page_title = "order success"
+      @order = Order.find(params[:id])
+      @user = User.find_by_id(session[:user_id])
+      @page = Page.find_by_title (@page_title).first
+      @company_name = Settings.company_name
+      @company_address = Settings.company_address
+      @company_phone = Settings.company_phone
+      @company_fax = Settings.company_fax 
+    end
+  
+    def invoice_slip
+      @page_title = "order success"
+
+      @order = Order.find(params[:id])
+      @user = User.find_by_id(session[:user_id])
+      @page = Page.find_by_title (@page_title).first
+      @company_name = Settings.company_name
+      @company_address = Settings.company_address
+      @company_phone = Settings.company_phone
+      @company_fax = Settings.company_fax
     
-    # redirect_back_or_default(request.referer)
+      render partial: "invoice_report.html", layout: false
+    end
+  
+    def resend_invoice
+      @hostfull = request.protocol + request.host_with_port
+      @user = User.find_by_id(session[:user_id])
+      @order = Order.find_by_id(params[:order_id])
+    
+      if  not Settings.order_notification=="true" then
+        UserNotifier.order_notification(@order, @order.user, @hostfull).deliver
+      else
+        UserNotifier.order_notification_as_invoice(@order, @order.user, @hostfull).deliver
+      end            
+   
+      flash[:notice] = "Invoice receipt resent to user #{@order.user.full_name}."
+    
+      respond_to do |format|
+        format.html { head :ok }
+        format.json { head :ok }
+      end
+    
+      # redirect_back_or_default(request.referer)
 
-  end
+    end
 
-  def user_orders
-    @user = User.find_by_id(session[:user_id])
-    @orders = @user.orders.joins(:transactions).where(order_transactions: {success: true})
+    def user_orders
+      @user = User.find_by_id(session[:user_id])
+      @orders = @user.orders.joins(:transactions).where(order_transactions: {success: true})
   
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @orders} 
-    end  end
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @orders} 
+      end  end
   
-  def order_params
-    params[:order].permit("user_id", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale")
+    def order_params
+      params[:order].permit("user_id", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale","cc_number", "cc_verification", "cc_expires(1i)", "cc_expires(2i)", "cc_expires(3i)")
+    end
+  
   end
-  
-end

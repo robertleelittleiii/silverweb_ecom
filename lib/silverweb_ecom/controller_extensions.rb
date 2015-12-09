@@ -410,7 +410,14 @@ module SilverwebEcom
             format.html {render :nothing=>true}
           end
         end
-
+       
+        def empty_cart_no_redirect
+          find_cart
+          @cart.delete
+          session[:cart] = nil
+          find_cart
+        end
+        
         def empty_cart
           find_cart
           @cart.delete
