@@ -57,8 +57,9 @@ class Cart
     puts("cart initialized with id:#{cart_object_id}")
     @cart_object = Rails.cache.fetch(cart_object_id, expires_in: 24.hours) {Cart.new(cart_object_id, user_id)}
     @cart_items  = Rails.cache.fetch(cart_object_id+"items", expires_in: 24.hours) {[]}
-   
-    @cart=@cart_object.dup  
+    @cart_object.user_id = user_id
+    
+    @cart=@cart_object.dup      
     @cart.items.replace (@cart_items.dup) rescue []
    
    
@@ -195,6 +196,11 @@ class Cart
     @id= identifier
     save
   end
+  
+  def user_id=(identifier)
+    @user_id= identifier
+    save
+  end
 
   def items=(items)
     @items.replace(items.dup)
@@ -221,11 +227,12 @@ class Cart
   def coupon_valid?
     @user=User.find_by_id(@user_id)
     
+    puts("--COUPON VALID CHECK ------------ > USERID+> #{@user_id}")
+    
     @coupon=Coupon.find_coupon(@coupon_code)
     
     return false if(@user.blank?)
     return false if(@coupon.blank?)
-    
     return false if((@user.coupon_usages.where(coupon_id: @coupon.id).length > 0) and !!@coupon.one_time_only )
     
     return true
@@ -241,7 +248,9 @@ class Cart
     if @coupon.blank? then 
       return_value =  "<div style='color:red;'>INVALID COUPON CODE!!</div>".html_safe
     else 
-      if coupon_valid? then
+      if @coupon.one_time_only and @user_id.blank? then
+        return_value =  "<div style='color:red;'>ONE TIME COUPON, LOGIN TO SEE VALUE.</div>".html_safe
+      elsif coupon_valid? then
         largest_valued_item_name = (!!@coupon.only_most_expensive_item ? " on " + item_with_largest_price.product.product_name : "") rescue "n/a"
         return_value =  @coupon.description + largest_valued_item_name
       else

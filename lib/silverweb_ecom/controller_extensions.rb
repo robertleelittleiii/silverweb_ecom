@@ -1,7 +1,7 @@
 module SilverwebEcom
   module ControllerExtensions
   
-   module MenusControllerExtensions
+    module MenusControllerExtensions
     
       def self.included(base)
         base.send(:include, InstanceMethods)
@@ -28,9 +28,9 @@ module SilverwebEcom
         end
         
         def render_category_div
-    @menu=Menu.find(params[:id])
-    render(partial: "category_div")
-  end
+          @menu=Menu.find(params[:id])
+          render(partial: "category_div")
+        end
   
       end
       
@@ -38,7 +38,7 @@ module SilverwebEcom
     end
     
     module SiteControllerExtensions
-    
+     
       def self.included(base)
         base.send(:include, InstanceMethods)
         # base.alias_method_chain :new, :my_module
@@ -47,7 +47,7 @@ module SilverwebEcom
       module InstanceMethods
         
       
- #       before_filter :find_cart, :except => :empty_cart
+        #       before_filter :find_cart, :except => :empty_cart
 
         def show_products
           puts("in show products...")
@@ -88,10 +88,10 @@ module SilverwebEcom
               end
               
             end
-         # puts("=------------ product list found ---------------")
-          # puts(@products_list.inspect)
+            # puts("=------------ product list found ---------------")
+            # puts(@products_list.inspect)
           rescue
-          #  @products_list = Product.all
+            #  @products_list = Product.all
           end
     
           @product_ids = @products_list.collect{|prod| prod.id }
@@ -106,8 +106,8 @@ module SilverwebEcom
     
           @product_last = params[:page].blank? ? @products.length : ((params[:page].to_i*@products_per_page) - @products_per_page) + @products.length || @products.length
 
-         system_action_template = (Settings.product_list_template_name.blank? ? "show_products" : "show_products-" + Settings.product_list_template_name) rescue "show_products"
-         @action_template = params[:template].blank? ? system_action_template :  params[:template]
+          system_action_template = (Settings.product_list_template_name.blank? ? "show_products" : "show_products-" + Settings.product_list_template_name) rescue "show_products"
+          @action_template = params[:template].blank? ? system_action_template :  params[:template]
 
           
           respond_to do |format|
@@ -311,7 +311,7 @@ module SilverwebEcom
 
   
         def show_cart
-        #  user =  User.find_by_id(session[:user_id])
+          #  user =  User.find_by_id(session[:user_id])
 
           # @cart = (session[:cart] ||= Cart.new)
           @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id])

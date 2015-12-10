@@ -231,6 +231,9 @@ def add_image_system
   
     def update_related_order
     params[:related].each_with_index do |id, position|
+ #     related_product = ProductRelatedProduct.find(id)
+ #     related_product.position = position
+ #     related_product.save
       #   Image.update(id, :position => position)
       ProductRelatedProduct.reorder(id,position)
     end

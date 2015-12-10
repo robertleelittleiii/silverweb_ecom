@@ -45,7 +45,7 @@ module SilverwebEcom
            acts_as_taggable_on :category, :department
       end
      
-      
+          
       ImageUploader.class_eval do
         
         version :swatch do 
@@ -112,7 +112,7 @@ module SilverwebEcom
         #
         #
       end
-      
+       
     end
     
     #    initializer "silverweb_portfolio.update_menu_defs" do

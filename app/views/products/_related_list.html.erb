@@ -2,7 +2,7 @@
 <%# return if (not defined?(picture_list).nil?) %>
 <% @related = related_list if @related.blank? %>
 
-<% @related.each do |related| %>
+<% @related.order(:position).each do |related| %>
 <% puts("---------->  related.product: '#{related.related_product.product_name}'") %>
 <%= render(:partial=>"related_view.html" , :locals=>{:related=>related})%>
 <% end if not @related.blank?%>
