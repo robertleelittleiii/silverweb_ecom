@@ -16,4 +16,14 @@ class CartController < ApplicationController
     end
   end
   
+  protected
+  
+  def authorize
+    return true
+  end
+
+  def authenticate
+    return true
+  end
+  
 end
