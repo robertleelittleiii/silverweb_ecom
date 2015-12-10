@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><%=@site_name %></title>
 <%@host=@hostfull[7..@hostfull.length-1]%>
-
-<% ActionController::Base.asset_host = @hostfull%>
+<%# hold_host = ActionController::Base.asset_host  %>
+<%# ActionController::Base.asset_host = @hostfull%>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <%= stylesheet_link_tag 'index' %>
 
@@ -37,4 +37,4 @@
   </table>
 </body>
 </html>
-<% ActionController::Base.asset_host = ""%>
+<%# ActionController::Base.asset_host = hold_host%>
