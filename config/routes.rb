@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   resources :orders do
     collection do
+      get "show"
       get "create_empty_record"
       get "create_order"
       get "enter_order"
@@ -42,6 +43,9 @@ Rails.application.routes.draw do
       get "invoice_slip"
       get "user_orders"
       get "resend_invoice"
+      get "order_table"
+      get "user_order_table"
+
     end
   end
   

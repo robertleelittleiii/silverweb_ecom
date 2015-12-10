@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 9, 2015, 10:28:26 PM
+    Author     : rlittle
+*/
+
+div.action-block {
+    display: inline-block;
+    position: relative;
+    float:right;
+}
+
+div.action-item {
+    display: inline;
+    cursor: pointer;
+}
+
+div.auth-error-code {
+    display: none;
+    position: absolute;
+    z-index: 40;
+    background-color: rgb(255, 255, 204);
+    border: 1px solid #A9A91D;
+    width: 250px;
+    padding: 5px;
+    font-size: 9px;
+}
+
+span.status-code:hover + div.auth-error-code{
+    display: block;
+}

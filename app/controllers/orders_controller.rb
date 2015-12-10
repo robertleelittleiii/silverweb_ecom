@@ -230,64 +230,166 @@ class OrdersController < ApplicationController
     end
   end
 
-    def order_success 
-      @page_title = "order success"
-      @order = Order.find(params[:id])
-      @user = User.find_by_id(session[:user_id])
-      @page = Page.find_by_title (@page_title).first
-      @company_name = Settings.company_name
-      @company_address = Settings.company_address
-      @company_phone = Settings.company_phone
-      @company_fax = Settings.company_fax 
-    end
-  
-    def invoice_slip
-      @page_title = "order success"
-
-      @order = Order.find(params[:id])
-      @user = User.find_by_id(session[:user_id])
-      @page = Page.find_by_title (@page_title).first
-      @company_name = Settings.company_name
-      @company_address = Settings.company_address
-      @company_phone = Settings.company_phone
-      @company_fax = Settings.company_fax
-    
-      render partial: "invoice_report.html", layout: false
-    end
-  
-    def resend_invoice
-      @hostfull = request.protocol + request.host_with_port
-      @user = User.find_by_id(session[:user_id])
-      @order = Order.find_by_id(params[:order_id])
-    
-      if  not Settings.order_notification=="true" then
-        UserNotifier.order_notification(@order, @order.user, @hostfull).deliver
-      else
-        UserNotifier.order_notification_as_invoice(@order, @order.user, @hostfull).deliver
-      end            
-   
-      flash[:notice] = "Invoice receipt resent to user #{@order.user.full_name}."
-    
-      respond_to do |format|
-        format.html { head :ok }
-        format.json { head :ok }
-      end
-    
-      # redirect_back_or_default(request.referer)
-
-    end
-
-    def user_orders
-      @user = User.find_by_id(session[:user_id])
-      @orders = @user.orders.joins(:transactions).where(order_transactions: {success: true})
-  
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @orders} 
-      end  end
-  
-    def order_params
-      params[:order].permit("user_id", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale","cc_number", "cc_verification", "cc_expires(1i)", "cc_expires(2i)", "cc_expires(3i)")
-    end
-  
+  def order_success 
+    @page_title = "order success"
+    @order = Order.find(params[:id])
+    @user = User.find_by_id(session[:user_id])
+    @page = Page.find_by_title (@page_title).first
+    @company_name = Settings.company_name
+    @company_address = Settings.company_address
+    @company_phone = Settings.company_phone
+    @company_fax = Settings.company_fax 
   end
+  
+  def invoice_slip
+    @page_title = "order success"
+
+    @order = Order.find(params[:id])
+    @user = User.find_by_id(session[:user_id])
+    @page = Page.find_by_title (@page_title).first
+    @company_name = Settings.company_name
+    @company_address = Settings.company_address
+    @company_phone = Settings.company_phone
+    @company_fax = Settings.company_fax
+    
+    render partial: "invoice_report.html", layout: false
+  end
+  
+  def resend_invoice
+    @hostfull = request.protocol + request.host_with_port
+    @user = User.find_by_id(session[:user_id])
+    @order = Order.find_by_id(params[:order_id])
+    
+    if  not Settings.order_notification=="true" then
+      UserNotifier.order_notification(@order, @order.user, @hostfull).deliver
+    else
+      UserNotifier.order_notification_as_invoice(@order, @order.user, @hostfull).deliver
+    end            
+   
+    flash[:notice] = "Invoice receipt resent to user #{@order.user.full_name}."
+    
+    respond_to do |format|
+      format.html { head :ok }
+      format.json { head :ok }
+    end
+    
+    # redirect_back_or_default(request.referer)
+
+  end
+
+  def user_orders
+    @user = User.find_by_id(session[:user_id])
+    @orders = @user.orders.joins(:transactions).where(order_transactions: {success: true})
+  
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @orders} 
+    end  end
+  
+  
+  
+  def user_order_table
+    @objects = current_objects_user(params)
+    @total_objects = total_objects_user(params)
+    render :layout => false
+  end
+  
+  
+  def order_table
+    @objects = current_objects(params)
+    @total_objects = total_objects(params)
+    render :layout => false
+  end
+  
+  private
+    
+
+  def current_objects_user(params={})
+    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
+    @current_objects = Order.joins(user: [:user_attribute]).joins(:transactions).page(current_page).per(params[:iDisplayLength]).order("#{datatable_columns_user(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").where(conditions_user(params))
+  end
+  
+
+  def total_objects_user(params={})
+    @total_objects = Order.joins(user: [:user_attribute]).joins(:transactions).where(conditions_user(params)).count()
+  end
+
+  def datatable_columns_user(column_id)
+    puts(column_id)
+    case column_id.to_i
+    when 0
+      return "`orders`.`id`"
+    when 1
+      return "`orders`.`created_at`"
+    when 2
+      return "`orders`.`shipped_date`"
+    when 3
+      return "`order_transactions`.`amount`"
+    else
+     return "`order_transactions`.`success`"
+    end
+  end
+
+      
+  def conditions_user(params={})
+    
+    conditions = []
+   
+    conditions << "(orders.id LIKE '%#{params[:sSearch]}%' OR
+          user_attributes.first_name LIKE '%#{params[:sSearch]}%' OR 
+          user_attributes.last_name LIKE '%#{params[:sSearch]}%' OR 
+          order_transactions.amount LIKE '%#{params[:sSearch]}%' OR 
+          orders.created_at LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    return conditions.join(" AND ")
+    
+    
+  end
+  
+  
+  def current_objects(params={})
+    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
+    @current_objects = Order.joins(user: [:user_attribute]).joins(:transactions).page(current_page).per(params[:iDisplayLength]).order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").where(conditions(params))
+  end
+  
+
+  def total_objects(params={})
+    @total_objects = Order.joins(user: [:user_attribute]).joins(:transactions).where(conditions(params)).count()
+  end
+
+  def datatable_columns(column_id)
+    puts(column_id)
+    case column_id.to_i
+    when 0
+      return "`orders`.`id`"
+    when 1
+      return "`user_attributes`.`first_name`"
+    when 2
+      return "`orders`.`created_at`"
+    when 3
+      return "`orders`.`shipped_date`"
+    when 4
+      return "`order_transactions`.`amount`"
+    else
+     return "`order_transactions`.`success`"
+    end
+  end
+
+      
+  def conditions(params={})
+    
+    conditions = []
+   
+    conditions << "(orders.id LIKE '%#{params[:sSearch]}%' OR
+          user_attributes.first_name LIKE '%#{params[:sSearch]}%' OR 
+          user_attributes.last_name LIKE '%#{params[:sSearch]}%' OR 
+          order_transactions.amount LIKE '%#{params[:sSearch]}%' OR 
+          orders.created_at LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    return conditions.join(" AND ")
+    
+    
+  end
+  
+  def order_params
+    params[:order].permit("user_id", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale","cc_number", "cc_verification", "cc_expires(1i)", "cc_expires(2i)", "cc_expires(3i)")
+  end
+end

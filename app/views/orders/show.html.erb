@@ -1,25 +1,15 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>User:</b>
-  <%= @order.user_id %>
-</p>
+<div class="hidden-item">
+    <div id="as_window"><%=params[:request_type]=="window"%></div>
+    <div id="dialog-height">650</div>
+    <div id="dialog-width">1050</div>
+    <div id="dialog-name">Show Invoice</div>
+</div>
 
-<p>
-  <b>Credit card type:</b>
-  <%= @order.credit_card_type %>
-</p>
-
-<p>
-  <b>Credit card expires:</b>
-  <%= @order.credit_card_expires %>
-</p>
-
-<p>
-  <b>Ip address:</b>
-  <%= @order.ip_address %>
-</p>
-
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<div class="cms-block">
+    <div class="cms-section">
+      <div class="cms-content">
+          <%= render(:partial=>"invoice_report.html") %>
+      </div>
+    </div>
+</div>
