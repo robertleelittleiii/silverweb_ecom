@@ -30,7 +30,10 @@ function site_show_products_callDocumentReady() {
 
 
     bindClickToProductItem();
-    
+
+    require("products/shared.js");
+    producteditClickBinding("div.edit-product");
+
     // check for full screen and adjust layout
     //if ($("#full-screen").html().trim() == "true")
     //{
