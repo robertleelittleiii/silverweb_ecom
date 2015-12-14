@@ -184,6 +184,8 @@ class Order < ActiveRecord::Base
   @gateway_login = Settings.express_gateway_login
 
   if !@gateway_login.blank? then
+      puts("Paypal Express Gatway Activated")
+
       gateway = ActiveMerchant::Billing::PaypalExpressGateway.new(
         :login => Settings.express_gateway_login,
         :password => Settings.express_gateway_password,
@@ -206,14 +208,15 @@ class Order < ActiveRecord::Base
       puts("'#{@gateway_login}' Default Gatway Activated")
       gateway = GATEWAY
     else
+      
     if @gateway_signature.blank? then
-        puts("Authorize Net Gatway Activated")
+        puts("Application Defined Gatway Activated")
+        
+        GATEWAY.options[:login] = Settings.gateway_login
+        GATEWAY.options[:password] = Settings.gateway_password
 
-        gateway = ActiveMerchant::Billing::CyberSourceGateway.new(
+        gateway = GATEWAY
    
-          :login => Settings.gateway_login,
-          :password => Settings.gateway_password
-        )
       else
         puts("Paypal Gateway Activated")
         gateway = ActiveMerchant::Billing::PaypalGateway.new(
