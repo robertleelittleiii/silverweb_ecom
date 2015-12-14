@@ -144,9 +144,9 @@ class Cart
     
     
     if state_local.to_s=="NJ" then
-      total_price + calc_shipping[shipping_type.to_i].to_f + calc_tax - coupon_value = calc_store_wide_sale
+      total_price + calc_shipping[shipping_type.to_i].to_f + calc_tax - coupon_value - calc_store_wide_sale
     else 
-      total_price + calc_shipping[shipping_type.to_i].to_f  - coupon_value = calc_store_wide_sale
+      total_price + calc_shipping[shipping_type.to_i].to_f  - coupon_value - calc_store_wide_sale
     end
   end
   

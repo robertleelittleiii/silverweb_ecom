@@ -1,9 +1,11 @@
 class ValidateCard < ActiveModel::Validator
   def validate(record)
-    unless record.credit_card.valid?
+    unless !record.express_token.blank? 
+      unless record.credit_card.valid?
       record.credit_card.errors.full_messages.each do |message|
         record.errors.add :base, message
         #  record.errors.add_to_base message
+        end
       end
     end
   end
@@ -32,12 +34,14 @@ class Order < ActiveRecord::Base
 
   attr_accessor :cc_number, :cc_verification, :cc_expires
  
-  validates_presence_of :ship_first_name, :ship_last_name, :ship_street_1, :ship_city, :ship_state, :ship_zip,
-    :bill_first_name, :bill_last_name, :bill_street_1, :bill_city, :bill_state, :bill_zip,
-    :credit_card_type, :cc_number, :cc_expires, :cc_verification
-  
+   validates_presence_of :ship_first_name, :ship_last_name, :ship_street_1, :ship_city, :ship_state, :ship_zip,
+    :bill_first_name, :bill_last_name, :bill_street_1, :bill_city, :bill_state, :bill_zip, :credit_card_type
+  #,
+  #  :credit_card_type, :cc_number, :cc_expires, :cc_verification
+  #
+    
   # validate_on_create :validate_card
-  validates_with ValidateCard, on: :create
+  validates_with ValidateCard, on: :create, if: :paid_with_card?
   
 #  composed_of :cc_expires, class_name: "Date",
 #    mapping: %w(Date to_s),
@@ -113,7 +117,10 @@ class Order < ActiveRecord::Base
   SHIPPING_TYPES= ["Ground" , "2 Day", "Next Day", "Pick Up Store"].freeze
     
     
-    
+    def paid_with_card? 
+      puts("express_token.blank?:  #{express_token.blank?}")
+      credit_card_type != "PayPalExpress"
+    end
  
   def generate_order_items(cart)
     cart.items.each do |item|
@@ -147,92 +154,95 @@ class Order < ActiveRecord::Base
     #  self.shipping_price= cart.shipping_cost
   end
 
-  
-  
-  
-  
-  def purchase(cart)
+    def purchase(cart)
     @cart=cart
-    
-    @gateway_login = Settings.gateway_login
-    @gateway_signature = Settings.gateway_signature
-    
-    if @gateway_login.blank? then
-      puts("'#{@gateway_login}' Default Gatway Activated")
-
-      response = GATEWAY.purchase(price_in_cents(@cart), credit_card, purchase_options)
-    else
-    
-    
-      if @gateway_signature.blank? then
-        puts("CyberSource Gatway Activated")
-
-        #        gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new(   
-        #          :login => Settings.gateway_login,
-        #          :password => Settings.gateway_password
-        #        )
-
-        gateway = ActiveMerchant::Billing::CyberSourceGateway.new(   
-          login: Settings.gateway_login,
-          password: Settings.gateway_password,
-          nexus: "NJ",
-          vat_reg_number: "",
-          logger: Logger.new(STDOUT),
-          test: false
-        )
- 
         
-        #  gateway = ActiveMerchant::Billing::QbmsGateway.new(
-        #    :login => Settings.gateway_login,
-        #    :ticket => Settings.gateway_password,
-        #    :test=>false
-        # )
-      else
-        puts("Paypal Gateway Activated")
-        gateway = ActiveMerchant::Billing::PaypalGateway.new(
-          login: Settings.gateway_login,
-          password: Settings.gateway_password,
-          signature: Settings.gateway_signature
-          
-        )
-      end
-      puts("user.name #{user.name}")
+   if express_token.blank?
+      gateway = Order.get_gateway
+      response = gateway.purchase(price_in_cents, credit_card, purchase_options)
+      
+   else
+      gateway = Order.get_express_gateway
+      response = gateway.purchase(price_in_cents, express_purchase_options)
 
-      response = gateway.purchase(price_in_cents(@cart), credit_card, purchase_options)
     end
     
-    transactions.create!(action: "purchase", amount: price_in_cents(@cart), response: response)
+    transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
     if not response.success? then
-      errors.add :base, response.message
-      # errors.add_to_base(response.message)
+      errors.add_to_base(response.message)
     end
    
     # cart.update_attribute(:purchased_at, Time.now) if response.success?
     
-    
-    
     response.success?
   end
   
-  def price_in_cents(cart)
-    (cart.grand_total_price(bill_state)*100).round
+  def self.get_express_gateway
+    
+  @gateway_login = Settings.express_gateway_login
+
+  if !@gateway_login.blank? then
+      gateway = ActiveMerchant::Billing::PaypalExpressGateway.new(
+        :login => Settings.express_gateway_login,
+        :password => Settings.express_gateway_password,
+        :signature => Settings.express_gateway_signature
+      )
+    else
+      gateway= ::EXPRESS_GATEWAY
+    end
+    
+    return gateway
+  end
+  
+  
+  def self.get_gateway
+    
+    @gateway_signature = Settings.gateway_signature
+    @gateway_login = Settings.gateway_login
+    
+    if @gateway_login.blank? then
+      puts("'#{@gateway_login}' Default Gatway Activated")
+      gateway = GATEWAY
+    else
+    if @gateway_signature.blank? then
+        puts("Authorize Net Gatway Activated")
+
+        gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new(
+   
+          :login => Settings.gateway_login,
+          :password => Settings.gateway_password
+        )
+      else
+        puts("Paypal Gateway Activated")
+        gateway = ActiveMerchant::Billing::PaypalGateway.new(
+          :login => Settings.gateway_login,
+          :password => Settings.gateway_password,
+          :signature => Settings.gateway_signature
+        )
+      end
+    end
+      
+  end
+  
+  def price_in_cents
+    (grand_total_price*100).round
   end
 
   
   def full_shipping_name
-    ship_first_name + " " + ship_last_name
+    ship_first_name.to_s + " " + ship_last_name.to_s
   end
   
   def full_billing_name
-    bill_first_name + " " + bill_last_name
+    bill_first_name.to_s + " " + bill_last_name.to_s
   end
   
   def full_shipping_street
-    ship_street_1 + " " + ship_street_2
+    ship_street_1.to_s + " " + ship_street_2.to_s
   end
   
   def full_billing_street
-    bill_street_1 + " " + bill_street_2
+    bill_street_1.to_s + " " + bill_street_2.to_s
   end
   
   
@@ -252,11 +262,82 @@ class Order < ActiveRecord::Base
   def grand_total_price
     (total_price || 0) + (full_tax || 0) + (shipping_cost || 0) - (coupon_value || 0) - (store_wide_sale || 0)
   end
-
-  def calc_percent_store_wide_sale 
-    (store_wide_sale*100)/total_price rescue 0
+  
+  
+   # paypal express
+  
+  def express_token=(token)
+    puts("**************** >> token: #{token}")
+    write_attribute(:express_token, token)
+    if new_record? && !token.blank?
+      details = EXPRESS_GATEWAY.details_for(token)
+      puts("Details:  #{details.inspect}")
+      self.express_payer_id = details.payer_id
+      get_paypal_info(details.params)
+      # self.first_name = details.params["first_name"]
+      # self.last_name = details.params["last_name"]
+    end
   end
+
+   
+  def express_purchase_options
+  {
+    :ip => ip_address,
+    :token => express_token,
+    :payer_id => express_payer_id
+  }
+end
+  
+  def validate_card
+  if (express_token.blank? and !credit_card.valid?) then
+    credit_card.errors.full_messages.each do |message|
+      errors.add_to_base message
+    end
+  end
+end
+#
+#  def validate_card
+#    unless credit_card.valid?
+#      credit_card.errors.full_messages.each do |message|
+#        errors.add_to_base message
+#      end
+#    end
+#  end
+  
+  def credit_card
+    @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
+      type: credit_card_type,
+      number: cc_number,
+      verification_value: cc_verification,
+      month: cc_expires.month,
+      year: cc_expires.year,
+      first_name: bill_first_name,
+      last_name: bill_last_name
+    ) 
+  end
+  
+  
+  private
+  
+  def get_paypal_info (info)
+    self.bill_first_name = info["PayerInfo"]["PayerName"]["FirstName"]
+    self.bill_last_name = info["PayerInfo"]["PayerName"]["LastName"]
+    self.bill_street_1 = info["PayerInfo"]["Address"]["Street1"] || ""
+    self.bill_street_2 = info["PayerInfo"]["Address"]["Street2"] || ""
+    self.bill_city = info["PayerInfo"]["Address"]["CityName"]
+    self.bill_state = info["PayerInfo"]["Address"]["StateOrProvince"]
+    self.bill_zip = info["PayerInfo"]["Address"]["PostalCode"]
     
+    self.ship_first_name = info["first_name"]
+    self.ship_last_name = info["last_name"]
+    self.ship_street_1 = info["PaymentDetails"]["ShipToAddress"]["Street1"] || ""
+    self.ship_street_2 = info["PaymentDetails"]["ShipToAddress"]["Street2"] || ""
+    self.ship_city = info["PaymentDetails"]["ShipToAddress"]["CityName"]
+    self.ship_state = info["PaymentDetails"]["ShipToAddress"]["StateOrProvince"]
+    self.ship_zip = info["PaymentDetails"]["ShipToAddress"]["PostalCode"]
+    
+  end
+  
   def purchase_options
     {
       ip: ip_address,
@@ -280,25 +361,6 @@ class Order < ActiveRecord::Base
       }
     }
   end
+ 
   
-
-  def credit_card
-    puts("cc_expires.inspect: #{cc_expires.inspect}")
-    puts("cc_number.inspect:  #{cc_number.inspect}")
-    puts("cc_verification.inspect:  #{cc_verification.inspect}")
-    
-    @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
-      type: credit_card_type,
-      number: cc_number,
-      verification_value: cc_verification,
-      month: cc_expires.month,
-      year: cc_expires.year,
-      first_name: bill_first_name,
-      last_name: bill_last_name
-    )
-  end
-  
-
-
-
 end

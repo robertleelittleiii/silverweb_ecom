@@ -1,0 +1,96 @@
+
+<%= form_for :order, :url => { :controller=>:orders, :action => :enter_order } do |form| %>
+  <div class="shipping-address">
+    <div class="address-title">Shipping Address <div id="copy-to-billing"></div></div>
+     
+    <div>
+      <b>Name:</b> </br>
+      <div class="static-field name-field"><%= @order.ship_first_name%>  <%= @order.ship_last_name %></div>
+    </div>
+
+
+    <div>
+      <b>Street:</b></br>
+      <div class="static-field address-field"><%=  @order.ship_street_1 %></br></div>
+          <div class="<%= @order.bill_street_2.blank? ? "" : "static-field address-field"%>"><%=  @order.ship_street_2 %></div>
+    </div>
+
+
+      <div> 
+      <div> 
+        <b>City:</b></br>
+        <div class="static-field city-field"><%= @order.ship_city  %></div>
+      </div>
+      <div>
+        <b>State:</b></br> 
+        <div class="static-field state-field"><%= @order.ship_state  %></div>
+      </div>
+      <div>
+        <b>Zip Code:</b></br> 
+        <div class="static-field zip-field"><%= @order.ship_zip %></div>
+      </div>
+    </div>
+
+  </div>    
+
+
+  <div class="billing-address">
+    <div class="address-title">Billing Address</div>
+
+    <div>
+      <b>Name:</b> </br>
+      <div class="static-field name-field"><%= @order.bill_first_name %>  <%= @order.bill_last_name %></div>
+    </div>
+
+
+    <div>
+      <b>Street:</b></br>
+      <div class="static-field address-field"><%= @order.bill_street_1%></br></div>
+      <div class="<%= @order.bill_street_2.blank? ? "" : "static-field address-field"%>"><%= @order.bill_street_2 if @order.bill_street_2.blank? %></div>
+    </div>
+
+
+  <div>
+      <div> 
+        <b>City:</b></br>
+        <div class="static-field city-field"><%= @order.bill_city %></div>
+      </div>
+      <div>
+        <b>State:</b></br> 
+        <div class="static-field state-field"><%= @order.bill_state%></div> 
+      </div>
+      <div>
+        <b>Zip Code:</b></br> 
+        <div class="static-field zip-field"><%= @order.bill_zip%></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="credit-card-info  pay-pal-express">
+    <div class="credit-card-title">Paid with Paypal Express</div>
+    <%= image_tag("interface/paypal-express.png") %>
+    
+  </div>
+  
+
+  <div class="nav-cart-bottom"> 
+    <div class="nav-cart-left">
+      <%=link_to "<< Back to Cart" ,request.env['HTTP_REFERER'], {:class=>"navigation-link"} %>
+      <%=link_to "Empty Cart" ,{:action => :empty_cart, :controller=>:site}, {:class=>"navigation-link"} %>
+    </div>
+      
+    <%= form.hidden_field :express_token, :value=>params[:token] %>
+    <%= form.hidden_field :credit_card_type, :value=>"PayPalExpress" %>
+
+    <div class="nav-cart-right">
+      <%= submit_tag "Place Order", {:class => "navigation-link"} %>
+
+  <%#=link_to "Continue to Confirmation >>" ,{:action => :enter_order, :controller=>:orders}, {:class=>"navigation-link"} %>
+    </div>
+
+  </div>
+
+
+  </div>
+<%end %>

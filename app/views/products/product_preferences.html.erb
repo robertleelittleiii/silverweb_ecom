@@ -35,8 +35,8 @@
 
                 <p>
                 </p>
-                   <b>Force use of system swatches:</b><br>
-                   <%=editablecheckboxedit("force_system_swatches", @settings, "Send Invoice Copy")%> 
+                <b>Force use of system swatches:</b><br>
+                <%=editablecheckboxedit("force_system_swatches", @settings, "Send Invoice Copy")%> 
 
                 <p>
                     <b>Default Template:(leave blank for default)</b><br>
@@ -61,68 +61,92 @@
 
             </div>
         </div>
-            <div class="cms-section">
-    <div class="cms-heading">General Shipping Settings</div>
-    <div class="cms-content">
-      <p> 
-        </br>
+        <div class="cms-section">
+            <div class="cms-heading">General Shipping Settings</div>
+            <div class="cms-content">
+                <p> 
+                    </br>
 
-      </p>
-      <p>
-        <b>$0.00 - $49.99: (ground, 2nd day, overnight, pickup)</b><br>
-        <%=editablefieldcreate("shipping_level_1", @settings)%>
-      </p>
-      <p>
-        <b>$50.00 - $99.99:(ground, 2nd day, overnight, pickup)</b><br>
-        <%=editablefieldcreate("shipping_level_2", @settings)%>
-      </p>
-      <p>
-        <b>$100.00 - $149.99:(ground, 2nd day, overnight, pickup)</b><br>
-        <%=editablefieldcreate("shipping_level_3", @settings)%>
-      </p>
+                </p>
+                <p>
+                    <b>$0.00 - $49.99: (ground, 2nd day, overnight, pickup)</b><br>
+                    <%=editablefieldcreate("shipping_level_1", @settings)%>
+                </p>
+                <p>
+                    <b>$50.00 - $99.99:(ground, 2nd day, overnight, pickup)</b><br>
+                    <%=editablefieldcreate("shipping_level_2", @settings)%>
+                </p>
+                <p>
+                    <b>$100.00 - $149.99:(ground, 2nd day, overnight, pickup)</b><br>
+                    <%=editablefieldcreate("shipping_level_3", @settings)%>
+                </p>
 
-      <p>
-        <b>$150.00 - $1999.99:(ground, 2nd day, overnight, pickup)</b><br>
-        <%=editablefieldcreate("shipping_level_4", @settings)%>
-      </p>
-      <p>
-      </p>
-    </div>
-  </div>
-            
-  <div class="cms-section">
-    <div class="cms-heading">Inventory</div>
-    <div class="cms-content">
-        <p>
-        <b>Click this link to generate inventory report.</b></br>
-<%=link_to 'Product Inventory (page)', {:controller => 'products', :action => 'generate_inventory_report'}, :id=>"process-image-button",:target => "_blank"%></br></br>
-        <%=link_to 'Product Inventory (csv)', {:controller => 'products', :action => 'generate_inventory_report', :format=>"csv"}, :id=>"process-image-button",:target => "_blank"%>
-      </p>
-      </br> 
-      
-      <p>
-        <b>Email Address for Notification</b><br>
-        <%=editablefieldcreate("inventory_email", @settings)%>
-      </p>
-    </div>
-  </div>
+                <p>
+                    <b>$150.00 - $1999.99:(ground, 2nd day, overnight, pickup)</b><br>
+                    <%=editablefieldcreate("shipping_level_4", @settings)%>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+
+        <div class="cms-section">
+            <div class="cms-heading">Inventory</div>
+            <div class="cms-content">
+                <p>
+                    <b>Click this link to generate inventory report.</b></br>
+                    <%=link_to 'Product Inventory (page)', {:controller => 'products', :action => 'generate_inventory_report'}, :id=>"process-image-button",:target => "_blank"%></br></br>
+                    <%=link_to 'Product Inventory (csv)', {:controller => 'products', :action => 'generate_inventory_report', :format=>"csv"}, :id=>"process-image-button",:target => "_blank"%>
+                </p>
+                </br> 
+
+                <p>
+                    <b>Email Address for Notification</b><br>
+                    <%=editablefieldcreate("inventory_email", @settings)%>
+                </p>
+            </div>
+        </div>
     </div>
     <div id="product-purchage-gateway-tab">
-        <div class="cms-content">
-            <p>
-                <b>Login:</b><br>
-                <%=editablefieldcreate("gateway_login", @settings)%>
-            </p>
-            <p>
-                <b>Password:</b><br>
-                <%=editablefieldcreate("gateway_password", @settings)%>
-            </p>
-            <p>
-                <b>Signature: (paypal only)</b><br>
-                <%=editablefieldcreate("gateway_signature", @settings)%>
-            </p>
-            <p>
-            </p>
+        <div class="cms-section">
+            <div class="cms-heading">Normal Gateway</div>
+            <div class="cms-content">            <p>
+                    <b>Login:</b><br>
+                    <%=editablefieldcreate("gateway_login", @settings)%>
+                </p>
+                <p>
+                    <b>Password:</b><br>
+                    <%=editablefieldcreate("gateway_password", @settings)%>
+                </p>
+                <p>
+                    <b>Signature: (paypal only)</b><br>
+                    <%=editablefieldcreate("gateway_signature", @settings)%>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+            <div class="cms-section">
+
+            <div class="cms-heading">Paypal Express Gateway</div>
+            <div class="cms-content">             </p>
+                <p>
+                    <b>Paypal Express Activation:</b><br>
+                    <%=editablecheckboxedit("enable_paypal_express", @settings, "Enable Paypal Express")%> 
+                </p>
+                <p>
+                    <b>Paypal Express Login:</b><br>
+                    <%=editablefieldcreate("express_gateway_login", @settings)%>
+                </p>
+                <p>
+                    <b>Paypal Express Password:</b><br>
+                    <%=editablefieldcreate("express_gateway_password", @settings)%>
+                </p>
+                <p>
+                    <b>Paypal Express Signature: (paypal only)</b><br>
+                    <%=editablefieldcreate("express_gateway_signature", @settings)%>
+                </p>
+            </div>
         </div>
     </div>
     <div id="product-images-tab">

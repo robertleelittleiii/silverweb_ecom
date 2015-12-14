@@ -231,6 +231,23 @@ vertical-align: top;
 margin-top:20px;
 }
 
+.static-field {
+    padding: 5px;
+    border: black 1px dotted;
+    background: white;
+    font-size: larger;
+    color: gray;
+    margin: 3px;
+}
+
+div.name-field, div.address-field {
+    width: 450px;
+}
+
+div.city-field {
+    width: 345px;
+}
+
 
 #zoom-invoice {
 display: inline-block;
@@ -284,4 +301,12 @@ margin-top: -16px;
 padding: 1px 6px 1px 4px;
 
 
+}
+
+
+div.pay-pal-express img {
+    margin: auto;
+    width: 500px;
+    display: block;
+    padding-top: 10px;
 }

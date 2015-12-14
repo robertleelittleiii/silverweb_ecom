@@ -141,7 +141,7 @@ class OrdersController < ApplicationController
         
     if params[:order].blank? then
       puts("****************** New order from cart ************")
-      @order=Order.new
+      @order=Order.new(:express_token=>params[:token])
       error_occured=true
     else
     
@@ -163,15 +163,17 @@ class OrdersController < ApplicationController
       @order.coupon_description = @cart.coupon_description
       @order.coupon_value = @cart.coupon_value
       @order.store_wide_sale = @cart.calc_store_wide_sale
-      @order.cc_expires = Date.new(params[:order]["cc_expires(1i)"].to_i, params[:order]["cc_expires(2i)"].to_i, params[:order]["cc_expires(2i)"].to_i)
-  
-      @order.cc_number = params[:order][:cc_number] 
-      @order.cc_verification = params[:order][:cc_verification]
+      
+      @order.cc_expires = Date.new(params[:order]["cc_expires(1i)"].to_i, params[:order]["cc_expires(2i)"].to_i, params[:order]["cc_expires(2i)"].to_i) rescue nil
+      @order.cc_number = params[:order][:cc_number] || ""
+      @order.cc_verification = params[:order][:cc_verification] || ""
+      puts("-=-=-=-=-=-=-=-=-=-=-=-=-=->>>> #{@order.inspect}")
 
       
       
       if @cart.total_price > 0 then
         if @order.save
+
           if @order.purchase(@cart)
             @order.reduce_inventory($hostfull)
             
@@ -301,6 +303,37 @@ class OrdersController < ApplicationController
     render :layout => false
   end
   
+  def express_purchase
+    puts("Paypal Epress Gateway Activated")
+    @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id])
+
+    gateway = Order.get_express_gateway
+    
+    puts("request.remote_ip #{request.remote_ip.class}")
+
+    
+    response = ::EXPRESS_GATEWAY.setup_purchase(@cart.grand_total_price("NJ"),
+      :ip                => request.remote_ip,
+      :return_url        => enter_order_orders_url,
+      :cancel_return_url => site_check_out_url
+    )
+    puts("response.token: #{response.token}")
+    puts("response: #{response.inspect}")
+      
+    redirect_to ::EXPRESS_GATEWAY.redirect_url_for(response.token)
+  end
+  
+
+  def express
+    response = EXPRESS_GATEWAY.setup_purchase(current_cart.build_order.price_in_cents,
+      :ip                => request.remote_ip,
+      :return_url        => new_order_url,
+      :cancel_return_url => products_url
+    )
+    redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+  end
+
+
   private
     
 
@@ -326,7 +359,7 @@ class OrdersController < ApplicationController
     when 3
       return "`order_transactions`.`amount`"
     else
-     return "`order_transactions`.`success`"
+      return "`order_transactions`.`success`"
     end
   end
 
@@ -370,7 +403,7 @@ class OrdersController < ApplicationController
     when 4
       return "`order_transactions`.`amount`"
     else
-     return "`order_transactions`.`success`"
+      return "`order_transactions`.`success`"
     end
   end
 
@@ -390,6 +423,6 @@ class OrdersController < ApplicationController
   end
   
   def order_params
-    params[:order].permit("user_id", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale","cc_number", "cc_verification", "cc_expires(1i)", "cc_expires(2i)", "cc_expires(3i)")
+    params[:order].permit("user_id", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale","cc_number", "cc_verification", "cc_expires(1i)", "cc_expires(2i)", "cc_expires(3i)", "express_token")
   end
 end

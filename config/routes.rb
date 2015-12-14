@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       get "resend_invoice"
       get "order_table"
       get "user_order_table"
-
+      get "express_purchase"
     end
   end
   

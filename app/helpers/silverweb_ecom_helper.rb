@@ -36,6 +36,10 @@ def find_cart
   
   end
   
+def express_checkout_link()
+  return link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_purchase_orders_path, {:class=>"paypal-button"}) if Settings.enable_paypal_express == "true"
+end
+  
 # not used
 
 def ecomm_attributes
