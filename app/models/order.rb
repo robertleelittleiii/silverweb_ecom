@@ -209,7 +209,7 @@ class Order < ActiveRecord::Base
     if @gateway_signature.blank? then
         puts("Authorize Net Gatway Activated")
 
-        gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new(
+        gateway = ActiveMerchant::Billing::CyberSourceGateway.new(
    
           :login => Settings.gateway_login,
           :password => Settings.gateway_password
