@@ -135,8 +135,8 @@ class Cart
     end_date = Date.parse Settings.store_wide_sale_end
 
     
-   return total_price * (Settings.store_wide_sale.to_s.to_f/100) if (Settings.store_wide_sale.to_s.to_f > 0 and start_date <= Date.today and end_date >= Date.today)
-   0
+    return total_price * (Settings.store_wide_sale.to_s.to_f/100) if (Settings.store_wide_sale.to_s.to_f > 0 and start_date <= Date.today and end_date >= Date.today)
+    0
   end
   
   
@@ -228,13 +228,18 @@ class Cart
     @user=User.find_by_id(@user_id)
     
     puts("--COUPON VALID CHECK ------------ > USERID+> #{@user_id}")
-    
+
     @coupon=Coupon.find_coupon(@coupon_code)
+
     
-    return false if(@user.blank?)
-    return false if(@coupon.blank?)
-    return false if((@user.coupon_usages.where(coupon_id: @coupon.id).length > 0) and !!@coupon.one_time_only )
+   return false if(@coupon.blank?)
     
+    if  !!@coupon.one_time_only and @user.blank? then
+      return false
+    elsif !@user.blank? and !!@coupon.one_time_only and @user.coupon_usages.where(coupon_id: @coupon.id).length > 0 then
+      return false
+    end
+        
     return true
   end
   
@@ -274,23 +279,23 @@ class Cart
   
   
   def calc_total_on_product(collection_name, coupon_value)
-     total_discount = 0
-     @items.each_with_index do |the_item, item_index|
-        puts("     ++++++++++++++++ +++++++++++++++ +++++++++++++++++ ")
-        puts("")
-        puts("the_item.product.id: #{the_item.product.id}")
-        puts("the_item.product.category_list: #{the_item.product.category_list}")
-        puts("Collection_name: #{collection_name}")
+    total_discount = 0
+    @items.each_with_index do |the_item, item_index|
+      puts("     ++++++++++++++++ +++++++++++++++ +++++++++++++++++ ")
+      puts("")
+      puts("the_item.product.id: #{the_item.product.id}")
+      puts("the_item.product.category_list: #{the_item.product.category_list}")
+      puts("Collection_name: #{collection_name}")
              
-         if the_item.product.category_list.to_a.include?(collection_name) then
-            puts("item #{the_item.product.id} is in collection #{collection_name}.")
-            total_discount = total_discount + (the_item.product.msrp.to_s.to_f* (coupon_value.to_f/100))
-          end
-          
-        puts("    ++++++++++++++++ +++++++++++++++ +++++++++++++++++ ")
-
+      if the_item.product.category_list.to_a.include?(collection_name) then
+        puts("item #{the_item.product.id} is in collection #{collection_name}.")
+        total_discount = total_discount + (the_item.product.msrp.to_s.to_f* (coupon_value.to_f/100))
       end
-      return total_discount
+          
+      puts("    ++++++++++++++++ +++++++++++++++ +++++++++++++++++ ")
+
+    end
+    return total_discount
   end
   
   def special_calc(coupon)
@@ -309,19 +314,19 @@ class Cart
       puts("#{coupon_index}: coupon_value #{coupon_value}, coupon_item: #{coupon_item.inspect}, collection_name: #{collection_name} ")
      
         
-       @items.each_with_index do |the_item, item_index|
+      @items.each_with_index do |the_item, item_index|
         puts("     ++++++++++++++++ +++++++++++++++ +++++++++++++++++ ")
         puts("")
         puts("the_item.product.id: #{the_item.product.id}")
         puts("the_item.product.category_list: #{the_item.product.category_list}")
         puts("Collection_name: #{collection_name}")
              
-         if the_item.product.category_list.to_a.include?(collection_name) then
-            puts("item #{the_item.product.id} is in collection #{collection_name}.")
-            puts("the_item.product.msrp.to_f* (coupon_value.to_f/100): #{the_item.product.msrp.to_f* (coupon_value.to_f/100)}")
+        if the_item.product.category_list.to_a.include?(collection_name) then
+          puts("item #{the_item.product.id} is in collection #{collection_name}.")
+          puts("the_item.product.msrp.to_f* (coupon_value.to_f/100): #{the_item.product.msrp.to_f* (coupon_value.to_f/100)}")
           
-            total_discount = total_discount + (the_item.product.msrp.to_f* (coupon_value.to_f/100))
-          end
+          total_discount = total_discount + (the_item.product.msrp.to_f* (coupon_value.to_f/100))
+        end
           
         puts("    ++++++++++++++++ +++++++++++++++ +++++++++++++++++ ")
 
