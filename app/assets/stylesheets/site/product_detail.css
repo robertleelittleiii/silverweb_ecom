@@ -141,14 +141,15 @@ color: #01b4b3;
 }
 
 .color-swatch-item {
-font-size: 9px;
-display: inline-block;
-vertical-align: top;
-text-align: center;
-margin-top: 10px;
-margin-left: 0px;
-font-weight: normal;
-margin-bottom: 10px;
+    font-size: 9px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 0px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    width: 62px;
 }
 
 .product-legend {
