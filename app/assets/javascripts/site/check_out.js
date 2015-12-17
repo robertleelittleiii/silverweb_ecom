@@ -93,6 +93,7 @@ function updateCartContents() {
             else
             {
                 $("#cart-contents").html(data);
+                bindProductActions();
 
             }
         }
@@ -212,12 +213,14 @@ function bindProductActions()
 
         if (item_quantity == "1")
         {
-            $(this).parent().parent().hide();
+            $(this).parent().parent().parent().parent().parent().remove();
+            updateCartitemindex("div#cart-contents table.cart-item","div#cart-item-index");
+            //updateCartContents();
         }
-        else
-        {
-            $(this).parent().parent().show();
-        }
+        //else
+       // {
+        //    $(this).parent().parent().show();
+       // }
 
         // alert("minus success");
         $("#loader_progress").hide();
@@ -237,7 +240,6 @@ function bindProductActions()
     $('.remove-product').bind('ajax:success', function (xhr, data, status) {
 
         updateCartContents();
-        bindProductActions();
         updateShoppingCartSummary();
         updateShoppingCartView();
 
@@ -302,4 +304,16 @@ function intercept_click() {
         validate_login($(this).attr('href'));
         return false;
     });
+}
+
+// .find("div#cart-item-index").text()
+
+
+function updateCartitemindex(parent, keySelector) {
+
+    $(parent).each(function (index, value) {
+        $(value).find("div#cart-item-index").text(index);
+        $(value).find("div#decrease-item a").attr("href","/site/decrement_cart_item?current_item="+ index)
+    });
+    
 }

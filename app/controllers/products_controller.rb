@@ -469,7 +469,7 @@ def add_image_system
       
         picture.image.recreate_versions!     
       end
-    end
+    end 
     respond_to do |format|
       format.json  { head :ok }
       format.html {redirect_to :action => 'site_settings', :id=>params[:product_id]}
