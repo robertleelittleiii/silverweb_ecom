@@ -313,7 +313,9 @@ function updateCartitemindex(parent, keySelector) {
 
     $(parent).each(function (index, value) {
         $(value).find("div#cart-item-index").text(index);
-        $(value).find("div#decrease-item a").attr("href","/site/decrement_cart_item?current_item="+ index)
-    });
+        $(value).find("div#decrease-item a").attr("href","/site/decrement_cart_item?current_item="+ index);
+        $(value).find("div#delete-item a").attr("href","/site/delete_cart_item?current_item="+ index);
+        $(value).find("div#increase-item a").attr("href","/site/increment_cart_item?current_item="+ index);
+      });
     
 }
