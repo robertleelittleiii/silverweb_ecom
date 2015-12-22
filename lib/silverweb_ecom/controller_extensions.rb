@@ -356,7 +356,13 @@ module SilverwebEcom
    
         def get_shopping_cart_info 
           find_cart
-          render :partial=>"/site/shopping_cart_info.html"
+          if params[:small] then
+            render :partial=>"/site/shopping_cart_small_info.html"
+
+          else
+            render :partial=>"/site/shopping_cart_info.html"
+
+          end
         end
   
   

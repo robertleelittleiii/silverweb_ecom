@@ -18,73 +18,75 @@ $(document).ready(function () {
 });
 
 
-function site_product_detail_callDocumentReady() {    
+function site_product_detail_callDocumentReady() {
     bind_hover_to_swatch();
     enableProductEdit();
-    
+
     bindSwatchClick();
     bindSizeClick();
     bindLiveActionOnQuantity();
-    bindAddToCartClick();  
+    bindAddToCartClick();
     bindSizeChartClick();
     bindCareChartClick();
-    
+
     $('a.product-picture').jqzoom({
         zoomType: 'innerzoom'
     });
-    
-    };
+
+}
+;
 
 function bindThumbHover()
 {
 //   $('.product-thumb').click(function(){
-        
+
 //   theTitle = $(".product-picture").attr("title");
 //   newContent = '<a href="'+$(this).attr('src').replace('small_','') +'" class="product-picture" title="'+theTitle+'"><img src="'+ $(this).attr('src').replace('small_','view_') +'"></a>';
 //   $("#product-main-image").html(newContent);
-    
+
 //  $('.product-picture img').attr('src',$(this).attr('src').replace('small_','view_'));
 //  $('.product-picture').attr("href",$(this).attr('src').replace('small_',''));
-      
+
 //   $(".zoomWrapperImage img").attr("src",$(this).attr('src').replace('small_',''));
 //   $(".zoomPad img").attr("src",$(this).attr('src').replace('small_','view_'));
-    
+
 //$('a.product-picture').jqzoom({
 //         zoomType: 'innerzoom'
 //  });
 //$(".product-picture").attr("href");
 //$(".product-picture img").attr("src");
-    
+
 //$('#description').html($(this).attr('alt'));
 //});
-    
+
 }
 var notice = ""
 
 function setUpdialog(headline, message)
 {
-    var notice = '<div id="dialog" title="'+headline+'">'
-    + '<p>' + message + '</p>'
-    + '</div>';
-    if (message.length > 1) 
+    var notice = '<div id="dialog" title="' + headline + '">'
+            + '<p>' + message + '</p>'
+            + '</div>';
+    if (message.length > 1)
     {
         $(notice).dialog({
             width: 575,
-            height:490
-        }).css( {
-            'max-height' : '750px'
-        } );;
+            height: 490
+        }).css({
+            'max-height': '750px'
+        });
+        ;
 
     }
-    
-    
+
+
 }
 
 function bind_hover_to_swatch() {
-    $('img.product-swatch').hover(function() {
+    $('img.product-swatch').hover(function () {
         $(this).addClass('transition');
-    
-    }, function() {
+
+    }, function () {
         $(this).removeClass('transition');
     });
 }
@@ -96,30 +98,57 @@ function updateShoppingCartView() {
         url: "/site/get_shopping_cart_info",
         dataType: "html",
         type: "GET",
-        data: "" ,
+        data: "",
         success: function (data)
         {
             //alert(data);
             if (data === undefined || data === null || data === "")
             {
-            //display warning
+                //display warning
             }
             else
             {
-                $("#shopping-cart-info").html(data);
+                if ($("#shopping-cart.normal").length > 0)
+                {
+                    $("div#shopping-cart.normal div#shopping-cart-info").html(data);
+                }
+                else {
+                    $("#shopping-cart-info").html(data);
+                }
             }
         }
     });
-    
+
+    if ($("#shopping-cart.small").length > 0) {
+        $.ajax({
+            url: "/site/get_shopping_cart_info",
+            dataType: "html",
+            type: "GET",
+            data: "small=true",
+            success: function (data)
+            {
+                //alert(data);
+                if (data === undefined || data === null || data === "")
+                {
+                    //display warning
+                }
+                else
+                {
+                    $("div#shopping-cart.small div#shopping-cart-info").html(data);
+                }
+            }
+        });
+    }
+
 }
 
 function bindSwatchClick() {
-    $(".product-swatch").click(function(){
+    $(".product-swatch").click(function () {
 
-        $(".product-swatch").each(function(i,o){
-            $(o).removeClass("swatch-selected "); 
+        $(".product-swatch").each(function (i, o) {
+            $(o).removeClass("swatch-selected ");
         });
-        
+
         $(this).addClass("swatch-selected ")
         $("#product-selected-color").html($($(this).parent()).find("#color-name").html());
         var product_color = $("#product-selected-color").html().trim();
@@ -129,13 +158,13 @@ function bindSwatchClick() {
             url: "/site/get_sizes_for_color",
             dataType: "html",
             type: "GET",
-            data: "id="+product_id+ "&color="+product_color ,
+            data: "id=" + product_id + "&color=" + product_color,
             success: function (data)
             {
                 //alert(data);
                 if (data === undefined || data === null || data === "")
                 {
-                //display warning
+                    //display warning
                 }
                 else
                 {
@@ -145,111 +174,111 @@ function bindSwatchClick() {
                 }
             }
         });
-        
+
     });
-    
-    
+
+
 }
 
 function bindSizeClick() {
-    $(".product-size-item").click(function(){
-        $(".product-size-item").each(function(i,o){
-            $(o).removeClass("size-selected "); 
+    $(".product-size-item").click(function () {
+        $(".product-size-item").each(function (i, o) {
+            $(o).removeClass("size-selected ");
         });
-        
+
         $(this).addClass("size-selected ")
         $("#product-selected-size").html($(this).html());
 
     });
-    
-    
+
+
 }
 
 function bindSizeChartClick() {
-    $("#product-size a").click(function(){
+    $("#product-size a").click(function () {
         var distributor_info = $("#distributor-info").text().trim();
         $.ajax({
             url: "/site/show_page_popup",
             dataType: "html",
             type: "Get",
-            data: "page_name="+distributor_info+" Sizing",
+            data: "page_name=" + distributor_info + " Sizing",
             success: function (data)
             {
                 //alert(data);
                 if (data === undefined || data === null || data === "")
                 {
-                //display warning
+                    //display warning
                 }
                 else
                 {
                     setUpdialog("Size Chart", data)
-                //alert("success");
+                    //alert("success");
                 }
             }
         });
     });
-    return( false);
-    
+    return(false);
+
 }
 function bindCareChartClick() {
-    $("#product-colors a").click(function(){
+    $("#product-colors a").click(function () {
         var distributor_info = $("#distributor-info").text().trim();
         $.ajax({
             url: "/site/show_page_popup",
             dataType: "html",
             type: "Get",
-            data: "page_name="+distributor_info+" Care",
+            data: "page_name=" + distributor_info + " Care",
             success: function (data)
             {
                 //alert(data);
                 if (data === undefined || data === null || data === "")
                 {
-                //display warning
+                    //display warning
                 }
                 else
                 {
                     setUpdialog("Care Instructions", data)
-                //alert("success");
+                    //alert("success");
                 }
             }
         });
     });
-    return( false);
-    
+    return(false);
+
 }
 
 function bindAddToCartClick() {
-    $("#add_to_cart").click(function(){
+    $("#add_to_cart").click(function () {
         var product_id = $("#product-id").html().trim();
         var product_size = $("#product-selected-size").html().trim();
         var product_color = $("#product-selected-color").html().trim();
         var product_name = $("#product-name").text().trim();
-        var product_quantity  = $("input#quantity").val();  
+        var product_quantity = $("input#quantity").val();
         $.ajax({
             url: "/site/add_to_cart",
             dataType: "html",
             type: "Get",
-            data: "id="+product_id+ "&color="+product_color + "&size=" + product_size +"&quantity="+product_quantity,
+            data: "id=" + product_id + "&color=" + product_color + "&size=" + product_size + "&quantity=" + product_quantity,
             success: function (data)
             {
-                    setUpPurrNotifier("Added to Cart", product_quantity + " " + product_name+ "<br> Size: "+ product_size + "(" + product_color +")" );
+                setUpPurrNotifier("Added to Cart", product_quantity + " " + product_name + "<br> Size: " + product_size + "(" + product_color + ")");
 
                 // alert(data);
                 if (data === undefined || data === null || data === "")
                 {
-                    updateShoppingCartView(); 
-                //display warning
+                    updateShoppingCartView();
+                    //display warning
                 }
                 else
                 {
-                    setUpPurrNotifier("Inventory Warning",data)
-                    updateShoppingCartView(); 
-                //alert("success");
+                    setUpPurrNotifier("Inventory Warning", data)
+                    updateShoppingCartView();
+                    //alert("success");
                 }
             }
         });
     });
-   
+
 }
 
 function addCommas(nStr)
@@ -267,10 +296,10 @@ function addCommas(nStr)
 
 
 function bindLiveActionOnQuantity() {
-    $("input#quantity").bind("keyup focusout",function(a,b){
-        
-        var price = (parseFloat($("input#quantity").val()||0)*parseFloat($("#product-price").text().trim().replace(",","").substr(1,100))).toFixed(2);
-        
+    $("input#quantity").bind("keyup focusout", function (a, b) {
+
+        var price = (parseFloat($("input#quantity").val() || 0) * parseFloat($("#product-price").text().trim().replace(",", "").substr(1, 100))).toFixed(2);
+
         if (isNaN(price) || (price < 0))
         {
             $("input#quantity").val(1)
@@ -279,37 +308,38 @@ function bindLiveActionOnQuantity() {
         else
             $("#total-cost-dollars").html("$" + addCommas(price));
     });
-  
-  
+
+
 //  #total-cost-dollars
-   
+
 }
 
 function mycarousel_initCallback(carousel) {
-    
-   // alert("init-callback");
-    $('.jcarousel-control a').bind('click', function() {
+
+    // alert("init-callback");
+    $('.jcarousel-control a').bind('click', function () {
         carousel.scroll($.jcarousel.intval($(this).text()));
         return false;
     });
 
-    $('.jcarousel-scroll select').bind('change', function() {
+    $('.jcarousel-scroll select').bind('change', function () {
         carousel.options.scroll = $.jcarousel.intval(this.options[this.selectedIndex].value);
         return false;
     });
 
-    $('#mycarousel-next').on('click', function() {
+    $('#mycarousel-next').on('click', function () {
         //alert("next");
         carousel.next();
         return false;
     });
 
-    $('#mycarousel-prev').on('click', function() {
-       // alert("prev");
+    $('#mycarousel-prev').on('click', function () {
+        // alert("prev");
         carousel.prev();
         return false;
     });
-};
+}
+;
 
 
 // $(document).ready(function(){
@@ -338,10 +368,10 @@ function mycarousel_initCallback(carousel) {
 //    });
 //    bindThumbHover();
 // });
-				
-                                
-                                
-      
+
+
+
+
 //       <a href="/uploads/picture/image/44/M106UWIR-BLW-1.jpg?1337001332" class="product-picture" title="Wired"><img alt="View_m106uwir-blw-1" src="/uploads/picture/image/44/view_M106UWIR-BLW-1.jpg?1337001332"></a>
-  
+
 

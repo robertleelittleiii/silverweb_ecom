@@ -185,7 +185,7 @@ class Order < ActiveRecord::Base
 
   if !@gateway_login.blank? then
       puts("Paypal Express Gatway Activated")
-
+      
       gateway = ActiveMerchant::Billing::PaypalExpressGateway.new(
         :login => Settings.express_gateway_login,
         :password => Settings.express_gateway_password,
@@ -275,7 +275,7 @@ class Order < ActiveRecord::Base
     puts("**************** >> token: #{token}")
     write_attribute(:express_token, token)
     if new_record? && !token.blank?
-      details = EXPRESS_GATEWAY.details_for(token)
+      details = Order.get_express_gateway.details_for(token)
       puts("Details:  #{details.inspect}")
       self.express_payer_id = details.payer_id
       get_paypal_info(details.params)

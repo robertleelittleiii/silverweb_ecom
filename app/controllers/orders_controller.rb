@@ -312,7 +312,7 @@ class OrdersController < ApplicationController
     puts("request.remote_ip #{request.remote_ip.class}")
 
     
-    response = ::EXPRESS_GATEWAY.setup_purchase(@cart.grand_total_price("NJ"),
+    response = gateway.setup_purchase(@cart.grand_total_price("NJ"),
       :ip                => request.remote_ip,
       :return_url        => enter_order_orders_url,
       :cancel_return_url => site_check_out_url
@@ -320,7 +320,7 @@ class OrdersController < ApplicationController
     puts("response.token: #{response.token}")
     puts("response: #{response.inspect}")
       
-    redirect_to ::EXPRESS_GATEWAY.redirect_url_for(response.token)
+    redirect_to gateway.redirect_url_for(response.token)
   end
   
 
@@ -365,8 +365,9 @@ class OrdersController < ApplicationController
 
       
   def conditions_user(params={})
-    
-    conditions = []
+    @user = User.find_by_id(session[:user_id])
+
+    conditions = ["orders.user_id = #{@user.id}"]
    
     conditions << "(orders.id LIKE '%#{params[:sSearch]}%' OR
           user_attributes.first_name LIKE '%#{params[:sSearch]}%' OR 
