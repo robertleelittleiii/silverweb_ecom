@@ -484,7 +484,7 @@ function wait(msecs)
 
 
 function buildproductDetailsListTable() {
-    var $product_id = $("#product-id").text();
+    var $product_id = $("div#attr-products div#product-id").text();
 
     productDetailsTable = $('#product-detail-list-table').dataTable({
         "iDisplayLength": 25,
