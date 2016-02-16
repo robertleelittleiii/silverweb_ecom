@@ -3,10 +3,10 @@
  * @copyright 2014, macek <paulmacek@gmail.com>
  * @link https://github.com/macek/jquery-serialize-object
  * @license BSD
- * @version 2.5.0
+ * @version 2.5.0 *
  */
 (function(root, factory) {
-
+  
   // AMD
   if (typeof define === "function" && define.amd) {
     define(["exports", "jquery"], function(exports, $) {
