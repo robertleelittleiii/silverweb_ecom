@@ -148,7 +148,7 @@ class ProductsController < ApplicationController
   
     
     
-def add_image
+  def add_image
     @product = Product.find(params[:id])
     @colors =  @product.product_details.select("distinct `color`").collect{|x| x.color }
     @image_locations = ["Slider", "Primary","Product List", "-"]  
@@ -164,8 +164,8 @@ def add_image
       @product.pictures<< @picture
     end
   
-  puts("@picture -----____----#{@picture.inspect}")
-  puts("image_saved -----____----#{image_saved}")
+    puts("@picture -----____----#{@picture.inspect}")
+    puts("image_saved -----____----#{image_saved}")
 
     respond_to do |format|
       if image_saved
@@ -180,14 +180,14 @@ def add_image
   end
   
 
-def add_image_system
+  def add_image_system
     format = params[:format]
     
-  @picture = SystemImages.new(params[:image_name], params[:image])
-  image_saved = !@picture.blank?
+    @picture = SystemImages.new(params[:image_name], params[:image])
+    image_saved = !@picture.blank?
   
-  puts("@picture -----____----#{@picture.inspect}")
-  puts("image_saved -----____----#{image_saved}")
+    puts("@picture -----____----#{@picture.inspect}")
+    puts("image_saved -----____----#{image_saved}")
 
     respond_to do |format|  
       if image_saved
@@ -229,11 +229,11 @@ def add_image_system
 
   end
   
-    def update_related_order
+  def update_related_order
     params[:related].each_with_index do |id, position|
- #     related_product = ProductRelatedProduct.find(id)
- #     related_product.position = position
- #     related_product.save
+      #     related_product = ProductRelatedProduct.find(id)
+      #     related_product.position = position
+      #     related_product.save
       #   Image.update(id, :position => position)
       ProductRelatedProduct.reorder(id,position)
     end
@@ -241,7 +241,7 @@ def add_image_system
 
   end
     
-   def edit_picture
+  def edit_picture
     @picture = Picture.find(params[:picture_id])
     @image_locations = ["Slider", "Primary","Product List", "-"]  
     @product = Product.find(@picture.resource_id)
@@ -254,7 +254,7 @@ def add_image_system
     end
   end
   
-   def edit_picture_swatch
+  def edit_picture_swatch
     @picture = Picture.find(params[:picture_id])
     @image_locations = ["Slider", "Primary","Product List", "-"]  
      
@@ -298,7 +298,7 @@ def add_image_system
     
   end
     
-    def render_swatch_picture
+  def render_swatch_picture
     class_name =  params[:class_name]
 
     @picture = Picture.where(id: params[:id]).first
@@ -392,9 +392,10 @@ def add_image_system
     @settings = Settings.all 
     @all_pictures = SystemImages.all.order(:created_at)
     
-   @template_types = [] # TEMPLATE_TYPES
+    @template_types = [] # TEMPLATE_TYPES
     
     paths = ActionController::Base.view_paths
+    
     template_types = [["B L A N K",""]]
     paths.each do |the_view_path|
       templates = Dir.glob(the_view_path.to_path+ "/site/product_detail-*")
@@ -402,13 +403,27 @@ def add_image_system
       templates.each do |template|
         template_name = template.split("/").last.split("-").drop(1).join("-").split(".").first
         template_types << [template_name + " Template",template_name] if not template_name.blank?
-      end
+      end     
     end
     
-    @template_types = template_types
+    preference_panes = []
     
+    paths.each do |the_view_path|
+
+      pref_panes_erbs = Dir.glob(the_view_path.to_path+ "/products/_custom_prefs0*")
+      pref_panes_erbs.each do |pref_panes_erb|
+        puts(pref_panes_erb)
+        pref_pane_name = pref_panes_erb.split("/").last.split("0").drop(1).join("-").split(".").first
+        preference_panes << pref_pane_name if not pref_pane_name.blank?
+      end
+      
+    end
+    
+    
+    @template_types = template_types
+    @preference_panes = preference_panes
     @template_list_types = []
-     paths = ActionController::Base.view_paths
+    paths = ActionController::Base.view_paths
     template_list_types = [["B L A N K",""]]
     paths.each do |the_view_path|
       templates = Dir.glob(the_view_path.to_path+ "/site/show_products-*")
@@ -423,10 +438,10 @@ def add_image_system
     @template_list_types = template_list_types
     
     params[:action_name]="add_image_system"
-#    if request.put?
-#      render nothing: true
-#    else
-#    end
+    #    if request.put?
+    #      render nothing: true
+    #    else
+    #    end
   end
   
   def product_search
@@ -474,6 +489,201 @@ def add_image_system
       format.json  { head :ok }
       format.html {redirect_to :action => 'site_settings', :id=>params[:product_id]}
     end  
+  end
+  
+  
+  def clean_product_details 
+    puts("**** Begin Clean of DB: Lost Children")
+    bulk_clean_product_detail_sql = ["
+      Delete
+      FROM product_details
+      WHERE NOT EXISTS (
+            SELECT 1 FROM products
+            WHERE products.id = product_details.product_id
+           );
+      "]
+    
+    bulk_clean_product_detail_2_sql = ["Delete FROM product_details WHERE inventory_key LIKE '%%.0'"]
+    
+    
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_clean_product_detail_2_sql)
+      result = ActiveRecord::Base.connection.execute(sql)
+    rescue
+      puts "something went wrong with the bulk clean sql query 2 #{result.inspect}: #{sql.inspect}"
+    end
+    
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_clean_product_detail_sql)
+      ActiveRecord::Base.connection.execute(sql)
+    rescue
+      "something went wrong with the bulk insert sql query"
+    end
+    
+    puts("**** Begin Clean of DB: BAD UPC Children")
+
+    respond_to do |format|
+      format.json  { head :ok }
+      format.html {redirect_to :action => 'site_settings', :id=>params[:product_id]}
+    end  
+    puts("**** END Clean of DB")
+
+  end
+  
+  
+  def activate_all_products
+    bulk_activate_products_sql = ["
+         Update 
+           products p
+         Join 
+           product_details pd on p.id = pd.product_id
+         SET 
+           p.product_active = 1
+         where
+           pd.units_in_stock > 0
+      "] 
+ 
+    bulk_activate_details_sql = ["
+        Update 
+           product_details pd
+         SET 
+           pd.sku_active = 1
+         where
+           pd.units_in_stock > 0;
+      "] 
+
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_activate_products_sql)
+      ActiveRecord::Base.connection.execute(sql)
+    rescue
+      "something went wrong with the bulk insert sql query"
+    end
+    
+  
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_activate_details_sql)
+      ActiveRecord::Base.connection.execute(sql)
+    rescue
+      "something went wrong with the bulk insert sql query"
+    end
+    
+    respond_to do |format|
+      format.json  { head :ok }
+      format.html {redirect_to :action => 'site_settings', :id=>params[:product_id]}
+    end  
+  end
+  
+  def clear_product_inventory_and_make_all_inactive 
+    puts("**** Begin Clean of DB: clear active products")
+    bulk_clear_active_product_flag_sql = ["
+      Update 
+         products p
+      SET 
+         p.product_active = 0
+      where 1=1
+      "]
+    
+    bulk_clear_active_product_detail_flag_sql = ["
+      Update 
+         product_details pd
+      SET 
+         pd.sku_active = 0,
+         pd.units_in_stock = 0
+      where 1=1
+      "]
+  
+    
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_clear_active_product_flag_sql)
+      result = ActiveRecord::Base.connection.execute(sql)
+    rescue
+      puts "something went wrong with the bulk clear active products #{result.inspect}: #{sql.inspect}"
+    end
+    
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_clear_active_product_detail_flag_sql)
+      ActiveRecord::Base.connection.execute(sql)
+    rescue
+      "something went wrong with the bulk clear active product details"
+    end
+    
+    puts("**** Begin Clean of DB: BAD UPC Children")
+
+    respond_to do |format|
+      format.json  { head :ok }
+      format.html {redirect_to :action => 'site_settings', :id=>params[:product_id]}
+    end  
+    puts("**** END Clean of DB")
+
+  end
+  
+  def hide_inactive_inventory 
+    puts("**** Begin Clean of DB: clear active products")
+    
+     bulk_clear_active_product_flag_sql = ["
+      Update 
+         products p
+      SET 
+         p.product_active = 0
+      where 1=1
+      "]
+    
+    hide_outofstock_items = ["
+      UPDATE `products` pu SET pu.product_active = 1
+      WHERE pu.id IN (
+        SELECT 
+          p.id
+        FROM 
+         (select * from `products`) p 
+        JOIN 
+          `product_details` pd 
+        ON 
+          pd.product_id = p.id 
+        WHERE 
+          pd.units_in_stock > 0
+        GROUP BY 
+          p.id 
+        )
+      "]
+    
+    clear_inactive_inventory = ["
+      Update 
+         product_details pd
+      SET 
+         pd.sku_active = 0
+      where
+         pd.units_in_stock <= 0
+      "]
+  
+   begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_clear_active_product_flag_sql)
+      result = ActiveRecord::Base.connection.execute(sql)
+    rescue
+      puts "something went wrong with the bulk clear all active product flags #{result.inspect}: #{sql.inspect}"
+    end
+    
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, clear_inactive_inventory)
+      result = ActiveRecord::Base.connection.execute(sql)
+    rescue
+      puts "something went wrong with the bulk clear inactive inventory #{result.inspect}: #{sql.inspect}"
+    end
+    
+    begin
+      sql = ActiveRecord::Base.send(:sanitize_sql_array, hide_outofstock_items)
+      ActiveRecord::Base.connection.execute(sql)
+    rescue
+      "something went wrong with the bulk hide out of stock items."
+    end
+    
+    puts("**** Begin Clean of DB: BAD UPC Children")
+
+    respond_to do |format|
+      format.json  { head :ok }
+      format.html {redirect_to :action => 'site_settings', :id=>params[:product_id]}
+    end  
+    puts("**** END Clean of DB")
+
   end
   
   private

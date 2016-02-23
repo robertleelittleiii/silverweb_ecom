@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  has_many :product_details
+  has_many :product_details, dependent: :destroy
   belongs_to :supplier
   has_many :pictures,  -> { order(position: :asc) },  dependent: :destroy, as: :resource
   has_one :order_item

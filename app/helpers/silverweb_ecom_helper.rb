@@ -57,4 +57,8 @@ def page_data_attr_ecom(addtional_script)
         return ("<div id='data-reload' class='hidden-item' data-page-params='#{request.original_url}' data-page-update='call_document_ready(\"#{controller_name + "_" + action_name}\")' data-additional='#{controller_name + "_" + addtional_script.sub("-","_")}'></div>").html_safe
   end
   
+
+def product_data_attr(template_name="")
+        return ("<div id='data-reload' class='hidden-item' data-page-params='/site/product_detail?id=#{@product.id}' data-page-update='site_product_detail', data-additional='#{template_name}'></div>").html_safe
+  end
 end

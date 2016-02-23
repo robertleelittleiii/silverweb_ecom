@@ -109,6 +109,10 @@ module SilverwebEcom
           system_action_template = (Settings.product_list_template_name.blank? ? "show_products" : "show_products-" + Settings.product_list_template_name) rescue "show_products"
           @action_template = params[:template].blank? ? system_action_template :  params[:template]
 
+                
+          @java_script_custom = (@action_template != "show_products")  ? @action_template + ".js" : "" rescue ""
+          @style_sheet_custom = (@action_template != "show_products") ? @action_template + ".css" : "" rescue ""
+   
           
           respond_to do |format|
             format.html { render :action=>@action_template}

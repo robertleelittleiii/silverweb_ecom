@@ -89,6 +89,10 @@ Rails.application.routes.draw do
       post "update_related_list"
       post "render_related_section"
       get "render_swatch_picture"
+      get "clean_product_details"
+      get "activate_all_products"
+      get "clear_product_inventory_and_make_all_inactive"
+      get "hide_inactive_inventory"
     end
   end
   
