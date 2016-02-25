@@ -406,6 +406,17 @@ class ProductsController < ApplicationController
       end     
     end
     
+    search_template_types = [["B L A N K",""]]
+    paths.each do |the_view_path|
+      templates = Dir.glob(the_view_path.to_path+ "/site/show_products_search-*")
+      
+      templates.each do |template|
+        template_name = template.split("/").last.split("-").drop(1).join("-").split(".").first
+        search_template_types << [template_name + " Search Template",template_name] if not template_name.blank?
+      end     
+    end
+
+    
     preference_panes = []
     
     paths.each do |the_view_path|
@@ -422,6 +433,8 @@ class ProductsController < ApplicationController
     
     @template_types = template_types
     @preference_panes = preference_panes
+    @search_template_types = search_template_types
+    
     @template_list_types = []
     paths = ActionController::Base.view_paths
     template_list_types = [["B L A N K",""]]

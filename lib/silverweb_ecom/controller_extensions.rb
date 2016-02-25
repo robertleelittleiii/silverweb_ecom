@@ -162,6 +162,13 @@ module SilverwebEcom
     
           @product_last = params[:page].blank? ? @products.length : ((params[:page].to_i*@products_per_page) - @products_per_page) + @products.length || @products.length
 
+          search_action_template = (Settings.search_template_name.blank? ? "show_products_search" : "show_products_search-" + Settings.product_list_template_name) rescue "show_products_search"
+          @action_template = params[:template].blank? ? search_action_template :  params[:template]
+
+                
+          @java_script_custom = (@action_template != "show_products_search")  ? @action_template + ".js" : "" rescue ""
+          @style_sheet_custom = (@action_template != "show_products_search") ? @action_template + ".css" : "" rescue ""
+   
 
           if session[:search] and request.xhr?
             render  :action=>"show_products_search"
@@ -169,8 +176,8 @@ module SilverwebEcom
     
     
             respond_to do |format|
-              format.js  { render :action=>"show_products_search"}
-              format.html { render :action=>"show_products_search"}
+              format.js  { render :action=>@action_template}
+              format.html { render :action=>@action_template}
               format.xml  { render :xml => @products }
               format.json { render :json=> @products }
             end

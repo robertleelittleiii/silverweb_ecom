@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
    
   
     scope :by_search_term, lambda {|q|  
-    where("product_active=true and (product_name LIKE ? or product_description LIKE ? or sheet_name LIKE ?)", "%#{q}%", "%#{q}%", "%#{q}%").order("product_ranking DESC").order("created_at DESC")
+    where("product_active=true and (product_name LIKE ? or product_description LIKE ? or sheet_name LIKE ? or search_terms LIKE ?)", "%#{q}%", "%#{q}%", "%#{q}%","%#{q}%").order("product_ranking DESC").order("created_at DESC")
     }
     
   validates_uniqueness_of :supplier_product_id, allow_nil: true, message: "Supplier Product ID must be unique!!"
