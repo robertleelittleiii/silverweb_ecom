@@ -146,6 +146,9 @@ function ajaxUpdateSearch(search_term) {
 
 
 function updateSearchFormBindings() {
+    // set the search term before we set up bindings.
+    search_term = queryString("search");
+    $("#live-search #live-search_search").val(search_term);
 
     // Executes a callback detecting changes with a frequency of 1 second
     $("#live-search_search").observe_field(1, function () {
@@ -181,23 +184,23 @@ function enableHistory() {
     //window.location.href=State.url;
     //  History.pushState(State.data, State.title, State.url);
     //History.log(State.data, State.title, State.url);
-    
-    if ( !History.enabled ) {
+
+    if (!History.enabled) {
         // History.js is disabled for this browser.
         // This is because we can optionally choose to support HTML4 browsers or not.
         return false;
     }
-            
-       
-        // Bind to StateChange Event
-        History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
-            var State = History.getState(); // Note: We are using History.getState() instead of event.state
-            //       window.location.href=State.url;
-            //       History.log(State.data, State.title, State.url);
-            search_term = queryString("search");
-            //       console.log("search_term =='" + search_term +"'");
-            ajaxUpdateSearch (search_term);
-        
-        });
+
+
+    // Bind to StateChange Event
+    History.Adapter.bind(window, 'statechange', function () { // Note: We are using statechange instead of popstate
+        var State = History.getState(); // Note: We are using History.getState() instead of event.state
+        //       window.location.href=State.url;
+        //       History.log(State.data, State.title, State.url);
+        search_term = queryString("search");
+        //       console.log("search_term =='" + search_term +"'");
+        ajaxUpdateSearch(search_term);
+
+    });
 
 }
