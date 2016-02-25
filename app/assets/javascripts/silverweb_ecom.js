@@ -108,7 +108,6 @@ function ajaxUpdateSearch(search_term) {
 
             $("#content").html(data); // replace the "results" div with the results
 
-
             // $("#mainnav").hide();// hide the admin menu
             $("#live-search_search").focus();
             $("#live-search_search").caretToEnd();
@@ -130,6 +129,8 @@ function ajaxUpdateSearch(search_term) {
 
             // updateSearchFormBindings();
             bindClickToProductItem();
+            enableProductEdit();
+
             //alert('Load was performed.');
         },
         error: function (jqXHR, textStatus, errorThrown) {
