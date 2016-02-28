@@ -354,9 +354,10 @@ module SilverwebEcom
         end
   
         def get_cart_summary_body 
+          summary_partial = params[:summary_template] || "/site/cart_summary_body.html"
           find_cart
           @checkout_cart = @cart
-          render :partial=>"/site/cart_summary_body.html", :locals=>{:checkout_cart=>@checkout_cart}
+          render :partial=>summary_partial, :locals=>{:checkout_cart=>@checkout_cart}
         end
   
         def get_cart_contents 

@@ -9,16 +9,7 @@ class ValidateCard < ActiveModel::Validator
       end
     end
   end
-    
-
-  private
-  def some_complex_logic
-    # ...
-  end
 end
-
-
-
 
 
 class Order < ActiveRecord::Base

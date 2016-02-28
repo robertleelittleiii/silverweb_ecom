@@ -115,9 +115,48 @@ class Cart
     return(current_item)
     
   end
+  
+  def update_product(product_detail, quantity)
+    
+    current_item = @items.find {|item| item.product_detail.id == product_detail.id}
+   
+    error_string = {:message=>"Exceeded Inventory", :max_value=>product_detail.units_in_stock}.to_json
+    
+    if current_item.blank? then
+      # do nothing
+    else
+      projected_quantity =  quantity.to_i
+      current_item.quantity = quantity.to_i
+      if projected_quantity  > product_detail.units_in_stock then
+        current_item.quantity = product_detail.units_in_stock
+        self.save
+        raise(error_string)
+      end
+    end
+
+    self.save
+    puts("current_item=> #{current_item.inspect}")
+    return(current_item)
+    
+  end
 
   def total_items
     @items.sum { |item| item.quantity }
+  end
+  
+  def total_items_product(product)
+     @items.sum { |item| (item.product.id==product.id ? item.quantity : 0)  }
+   # total_items = get_cart_items(product)
+   #  puts("------- in cart total_items_product ------")
+   # puts(total_items.length)
+   # puts(total_items.inspect)
+   # total_items.length
+  end
+  
+  def total_price_product(product)
+    puts("------- in cart total_price_product ------")
+    puts(product.inspect)
+    total_items_product(product) * product.price
   end
 
   def total_price
@@ -422,6 +461,23 @@ class Cart
     "https://sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
   end
 
+  def get_cart_products
+    items.map{|t| t.product}.uniq
+  end
+  
+  def get_cart_items(product)
+    product_detail_list = []
+    items.each do |item|
+      if(item.product.id== product.id) then
+      product_detail_list << item.product_detail 
+      end
+    end
+  end
+  
+  def get_cart_item_color_size_product(product,color,size)
+    cart_items = get_cart_items(product)
+    cart_items.find{|item| ((item.product_detail.color==color) && (item.product_detail.size==size))}
+  end
 
 
 end

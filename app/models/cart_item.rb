@@ -66,4 +66,9 @@ def description
 end
 
  
+
+  def [](key)
+    self.send(key)
+  end
+  
 end
