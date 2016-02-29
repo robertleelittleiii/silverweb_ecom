@@ -40,7 +40,7 @@
   <tr>
 <td id="content_c_content" colspan="3">
           
-          Dear <%=@user.full_name%>,
+          Dear <%=@user.full_name rescue "Sir/Madam:"%>,
           </br></br>
           
           <%=yield%>
