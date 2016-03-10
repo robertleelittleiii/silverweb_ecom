@@ -1,4 +1,4 @@
-class UserNotifier < ActionMailer::Base
+class UserNotifierOld < ActionMailer::Base
   default :from=>"admin@littleconsultingnj.com"
 
   

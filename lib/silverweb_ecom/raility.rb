@@ -14,6 +14,80 @@ module SilverwebEcom
     # The block you pass to this method will run for every request in
     # development mode, but only once in production.
 
+    initializer "silverweb_ecom.update_user_notifier" do
+      
+      UserNotifier.class_eval do
+       
+        
+        def inventory_alert(product_detail, host)
+          set_up_images()
+          @hostfull=host
+          @host = host
+          @user = Settings.inventory_email
+          @admin_email = Settings.admin_email || self.default_params[:from]
+          @product_detail = ProductDetail.find(product_detail.id)
+          @cc_emai_address = Settings.cc_email_address || ""
+
+          mail(:to=>@user, :cc=>@cc_emai_address, :subject=>"Inventory Warning for #{@product_detail.inventory_key}")
+    
+        end
+  
+        def shipment_notification(order, user, message, host)
+          set_up_images()
+          @site_name = Settings.company_url
+          @hostfull=host
+  
+          setup_email(user)
+          subject 'Your shipment has been sent'
+          body(:order=>order, :user => user, :url_base => 'http://locathost:3000/grants/show')
+          content_type "text/html"   #Here's where the magic happens
+        end
+
+        def order_notification_as_invoice(order,user,host)
+          set_up_images()
+   
+          @page_title = "order success"
+          @page = Page.find_by_title (@page_title).first
+    
+          @company_name = Settings.company_name
+          @company_address = Settings.company_address
+          @company_phone = Settings.company_phone
+          @company_fax = Settings.company_fax
+     
+          @user=user
+          @order=order
+    
+          @order.order_items.each do |order_item|
+            attachments.inline["#{order_item.id}.png"] = File.read(Rails.root.to_s + "/public/" + order_item.product_detail.thumb.to_s)
+          end
+    
+          @hostfull=host
+          @site_slogan = Settings.site_slogan rescue ""
+          @site_name = Settings.site_name rescue "Our Site"
+          @admin_email = Settings.admin_email || self.default_params[:from]
+          @cc_emai_address = Settings.cc_email_address || @admin_email
+
+          puts("@hostfull: #{@hostfull}")
+    
+          mail(:from=>@admin_email, :cc=> @cc_emai_address,:to => "#{user.user_attribute.first_name rescue ""} #{user.user_attribute.last_name rescue ""}<#{user.name}>", :subject => "Thank you for your order !!")
+ 
+        end
+  
+        def order_notification(order, user, host)
+          set_up_images()
+    
+          @user=user
+          @order=order
+          @hostfull=host
+          @site_slogan = Settings.site_slogan rescue ""
+          @site_name = Settings.site_name rescue "Our Site"
+          @admin_email = Settings.admin_email || self.default_params[:from]
+          @cc_emai_address = Settings.cc_email_address || @admin_email
+
+          mail(:from=>@admin_email, :cc=> @cc_emai_address,:to => "#{user.user_attribute.first_name rescue ""} #{user.user_attribute.last_name rescue ""}<#{user.name}>", :subject => "Thank you for your order !!")
+        end
+      end
+    end
 
  
     initializer "silverweb_ecom.update_picture_model" do 
@@ -24,25 +98,25 @@ module SilverwebEcom
       SilverwebCms::Config.add_nav_item({:name=>"My Orders", :controller=>'orders', :action=>'user_orders'})
       SilverwebCms::Config.add_nav_item({:name=>"Store Orders", :controller=>'orders', :action=>'index'})
         
-     SilverwebCms::Config.add_menu_class(["Show Products","menu_show_products"])
+      SilverwebCms::Config.add_menu_class(["Show Products","menu_show_products"])
 
-# SilverwebCms::Config.add_menu_class(["Show Products with Page","menu_show_products_with_page"])
+      # SilverwebCms::Config.add_menu_class(["Show Products with Page","menu_show_products_with_page"])
       
-     # SilverwebCms::Config.add_menu_actions(["Show Portfolio",20])
+      # SilverwebCms::Config.add_menu_actions(["Show Portfolio",20])
       
       Picture.class_eval do
         belongs_to :product, :polymorphic => true
       end
       
       User.class_eval do
-         has_many :orders
+        has_many :orders
   
-         has_many :coupon_usages
+        has_many :coupon_usages
       end      
       
       # Add taggability on this menu
       Menu.class_eval do
-           acts_as_taggable_on :category, :department
+        acts_as_taggable_on :category, :department
       end
      
           
@@ -120,11 +194,11 @@ module SilverwebEcom
     #      MenusController::ACTION_TYPES << ["Show Portfolio",20]
     #    end
     
-        config.to_prepare do
-          SiteController.send(:include, SilverwebEcom::ControllerExtensions::SiteControllerExtensions)
-          MenusController.send(:include, SilverwebEcom::ControllerExtensions::MenusControllerExtensions)
+    config.to_prepare do
+      SiteController.send(:include, SilverwebEcom::ControllerExtensions::SiteControllerExtensions)
+      MenusController.send(:include, SilverwebEcom::ControllerExtensions::MenusControllerExtensions)
 
-         end
+    end
     
 
   end
