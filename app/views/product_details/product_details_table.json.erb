@@ -6,7 +6,7 @@
   [
    "<%=json_clean(editablecheckboxedit("sku_active",@product_detail,""))%><div id='detail-id' class='hidden-item'><%=@product_detail.id%></div>",
    "<%=json_clean(editablefieldcreate("inventory_key",@product_detail,"xxxx-xxx",{}))%>",
-   "<%=json_clean(ajax_select("size","product_detail",@product_detail, ([@product_detail.size]+@sizes).uniq))%>",
+   "<%=json_clean(ajax_select_combo("size","product_detail",@product_detail, ([@product_detail.size]+@sizes).uniq,'Please Select...', {:class=>"combobox"}))%>",
    "<%=json_clean(ajax_select_combo("color","product_detail",@product_detail, ([@product_detail.color]+@system_colors).uniq,'Please Select...', {:class=>"combobox"}))%>",
    "<%=json_clean(editablefieldcreate("units_in_stock",@product_detail))%>",
    "<%=json_clean(editablefieldcreate("units_on_order",@product_detail))%>",
