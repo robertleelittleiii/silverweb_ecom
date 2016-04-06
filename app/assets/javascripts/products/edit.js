@@ -52,7 +52,7 @@ function products_edit_callDocumentReady() {
     //   bindBlurToDepartmentPopup();
     bindDivDepartmentUpdate();
     $(".combobox").combobox();
-    bindChangeColor();
+    bindChangeCombobox();
     tinyMCE_editor_product = tinyMCE.init(tinymce_config);
     $(".best_in_place").best_in_place();
     set_up_save_callback();
@@ -532,7 +532,7 @@ function buildproductDetailsListTable() {
 //            });
 
             // $(".combobox").combobox();
-            bindChangeColor();
+            bindChangeCombobox();
             ui_ajax_select();
             bindDeleteProductDetail();
             bindDuplicateProductDetail();
@@ -572,7 +572,7 @@ function buildproductDetailsListTableOLD()
             $("#toggle").click(function () {
                 $("#combobox").toggle();
             });
-            bindChangeColor();
+            bindChangeCombobox();
 
         }
     });
@@ -786,19 +786,29 @@ function ajaxSave()
 
 }
 
-function bindChangeColor() {
+function bindChangeCombobox() {
 
     $('.combobox').combobox({
         select: function (event, ui) {
             console.log("a change occured");
+            console.log($(this).attr("name"));
+            var fieldToUpdate = $(this).attr("name").split("[")[1].split("]")[0];
+            var objectToUpdate = $(this).attr("name").split("[")[0];
+            var dataObj = {};
 
-            var $detail_id = $(this).parent().parent().find("#detail-id").text();
+            console.log($(this).attr("data-id"));
+            
+            // var $detail_id = $(this).parent().parent().find("#detail-id").text();
+            detail_id = $(this).attr("data-id");
             var value = $(this).val();
-            console.log($detail_id);
+            dataObj[objectToUpdate]= {};
+            dataObj[objectToUpdate][fieldToUpdate]=value;
+
+            console.log(detail_id);
             //   "/products/update_ajax/1?field=color&pointer_class=ProductDetail"
             $.ajax({
-                url: '/product_details/' + $detail_id,
-                data: {"product_detail": {"color": value}},
+                url: '/'+objectToUpdate+'s/' + detail_id,
+                data: dataObj, //{objectToUpdate: { fieldToUpdate: value}},
                 method: "put",
                 dataType: "json",
                 success: function (data) {
