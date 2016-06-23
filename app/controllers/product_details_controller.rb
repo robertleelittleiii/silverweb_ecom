@@ -154,17 +154,17 @@ class ProductDetailsController < ApplicationController
    private
  
   def current_objects(params={})
-    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
-    @current_objects = ProductDetail.page(current_page).per(params[:iDisplayLength]).order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").where(product_id: [params[:product_id]]).where(conditions)
+    current_page = (params[:start].to_i/params[:length].to_i rescue 0)+1
+    @current_objects = ProductDetail.page(current_page).per(params[:length]).order("#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}").where(product_id: [params[:product_id]]).where(conditions)
 
   #  @current_objects = ProductDetail.where(:product_id=>[params[:product_id]]).paginate :page => current_page, 
-  #    :order => "#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}", 
+  #    :order => "#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}", 
   #    :where => conditions,
-  #    :per_page => params[:iDisplayLength]
+  #    :per_page => params[:length]
     
     # @current_objects = ProductDetail.select("product_details.*").
     #   where(conditions).
-    #   order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}")
+    #   order("#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}")
   
   
   end
@@ -193,7 +193,7 @@ class ProductDetailsController < ApplicationController
 
   def conditions
     conditions = []
-    conditions << "(product_details.inventory_key LIKE '%#{params[:sSearch]}%' OR product_details.size LIKE '%#{params[:sSearch]}%' OR product_details.color LIKE '%#{params[:sSearch]}%'OR product_details.units_in_stock LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    conditions << "(product_details.inventory_key LIKE '%#{params[:search][:value]}%' OR product_details.size LIKE '%#{params[:search][:value]}%' OR product_details.color LIKE '%#{params[:search][:value]}%'OR product_details.units_in_stock LIKE '%#{params[:search][:value]}%')" if(params[:search][:value])
     return conditions.join(" AND ")
   end
   

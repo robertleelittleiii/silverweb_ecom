@@ -338,8 +338,8 @@ class OrdersController < ApplicationController
     
 
   def current_objects_user(params={})
-    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
-    @current_objects = Order.joins(user: [:user_attribute]).joins(:transactions).page(current_page).per(params[:iDisplayLength]).order("#{datatable_columns_user(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").where(conditions_user(params))
+    current_page = (params[:start].to_i/params[:length].to_i rescue 0)+1
+    @current_objects = Order.joins(user: [:user_attribute]).joins(:transactions).page(current_page).per(params[:length]).order("#{datatable_columns_user(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}").where(conditions_user(params))
   end
   
 
@@ -369,11 +369,11 @@ class OrdersController < ApplicationController
 
     conditions = ["orders.user_id = #{@user.id}"]
    
-    conditions << "(orders.id LIKE '%#{params[:sSearch]}%' OR
-          user_attributes.first_name LIKE '%#{params[:sSearch]}%' OR 
-          user_attributes.last_name LIKE '%#{params[:sSearch]}%' OR 
-          order_transactions.amount LIKE '%#{params[:sSearch]}%' OR 
-          orders.created_at LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    conditions << "(orders.id LIKE '%#{params[:search][:value]}%' OR
+          user_attributes.first_name LIKE '%#{params[:search][:value]}%' OR 
+          user_attributes.last_name LIKE '%#{params[:search][:value]}%' OR 
+          order_transactions.amount LIKE '%#{params[:search][:value]}%' OR 
+          orders.created_at LIKE '%#{params[:search][:value]}%')" if(params[:search][:value])
     return conditions.join(" AND ")
     
     
@@ -381,8 +381,8 @@ class OrdersController < ApplicationController
   
   
   def current_objects(params={})
-    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
-    @current_objects = Order.joins(user: [:user_attribute]).joins(:transactions).page(current_page).per(params[:iDisplayLength]).order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").where(conditions(params))
+    current_page = (params[:start].to_i/params[:length].to_i rescue 0)+1
+    @current_objects = Order.joins(user: [:user_attribute]).joins(:transactions).page(current_page).per(params[:length]).order("#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}").where(conditions(params))
   end
   
 
@@ -413,11 +413,11 @@ class OrdersController < ApplicationController
     
     conditions = []
    
-    conditions << "(orders.id LIKE '%#{params[:sSearch]}%' OR
-          user_attributes.first_name LIKE '%#{params[:sSearch]}%' OR 
-          user_attributes.last_name LIKE '%#{params[:sSearch]}%' OR 
-          order_transactions.amount LIKE '%#{params[:sSearch]}%' OR 
-          orders.created_at LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    conditions << "(orders.id LIKE '%#{params[:search][:value]}%' OR
+          user_attributes.first_name LIKE '%#{params[:search][:value]}%' OR 
+          user_attributes.last_name LIKE '%#{params[:search][:value]}%' OR 
+          order_transactions.amount LIKE '%#{params[:search][:value]}%' OR 
+          orders.created_at LIKE '%#{params[:search][:value]}%')" if(params[:search][:value])
     return conditions.join(" AND ")
     
     

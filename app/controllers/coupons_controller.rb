@@ -103,9 +103,9 @@ class CouponsController < ApplicationController
   private
  
   def current_objects(params={})
-    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
-    @current_objects = Coupon.page(current_page).per(params[:iDisplayLength]). 
-      order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").
+    current_page = (params[:start].to_i/params[:length].to_i rescue 0)+1
+    @current_objects = Coupon.page(current_page).per(params[:length]). 
+      order("#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir]  || "DESC"}").
       where(conditions)
     
     # @current_objects = Coupon.select("coupons.*").
@@ -137,7 +137,7 @@ class CouponsController < ApplicationController
 
   def conditions
     conditions = []
-    conditions << "(coupons.coupon_code LIKE '%#{params[:sSearch]}%' OR coupons.description LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    conditions << "(coupons.coupon_code LIKE '%#{params[:search][:value]}%' OR coupons.description LIKE '%#{params[:search][:value]}%')" if(params[:search][:value])
     return conditions.join(" AND ")
   end
   

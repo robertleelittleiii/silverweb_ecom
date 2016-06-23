@@ -702,14 +702,14 @@ class ProductsController < ApplicationController
   private
  
   def current_objects(params={})
-    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
-    @current_objects = Product.page(current_page).per(params[:iDisplayLength]). 
-      order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}").
+    current_page = (params[:start].to_i/params[:length].to_i rescue 0)+1
+    @current_objects = Product.page(current_page).per(params[:length]). 
+      order("#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}").
       where(conditions)
     
     # @current_objects = Product.select("products.*").
     #   where(conditions).
-    #   order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}")
+    #   order("#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}")
   
   
   end
@@ -732,7 +732,7 @@ class ProductsController < ApplicationController
 
   def conditions
     conditions = []
-    conditions << "(products.product_name LIKE '%#{params[:sSearch]}%' OR products.product_description LIKE '%#{params[:sSearch]}%' OR products.supplier_product_id LIKE '%#{params[:sSearch]}%'OR products.sheet_name LIKE '%#{params[:sSearch]}%')" if(params[:sSearch])
+    conditions << "(products.product_name LIKE '%#{params[:search][:value]}%' OR products.product_description LIKE '%#{params[:search][:value]}%' OR products.supplier_product_id LIKE '%#{params[:search][:value]}%'OR products.sheet_name LIKE '%#{params[:search][:value]}%')" if(params[:search][:value])
     return conditions.join(" AND ")
   end
   

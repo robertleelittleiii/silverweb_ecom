@@ -107,15 +107,15 @@ class RetailersController < ApplicationController
   private
  
   def current_objects(params={})
-    current_page = (params[:iDisplayStart].to_i/params[:iDisplayLength].to_i rescue 0)+1
+    current_page = (params[:start].to_i/params[:length].to_i rescue 0)+1
     @current_objects = Retailer.paginate page: current_page, 
-      order: "#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}", 
+      order: "#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}", 
       conditions: conditions,
-      per_page: params[:iDisplayLength]
+      per_page: params[:length]
     
     # @current_objects = Retailer.select("retailers.*").
     #   where(conditions).
-    #   order("#{datatable_columns(params[:iSortCol_0])} #{params[:sSortDir_0] || "DESC"}")
+    #   order("#{datatable_columns(params[:order]["0"][:column])} #{params[:order]["0"][:dir] || "DESC"}")
   
   
   end
@@ -155,17 +155,17 @@ class RetailersController < ApplicationController
   def conditions
     conditions = []
     conditions << "(retailers.company_name LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_street_1 LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_street_2 LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_city LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_state LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_zip LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_phone LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_website LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_hours_1 LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_hours_2 LIKE '%#{
-          params[:sSearch]}%' OR retailers.company_hours_3 LIKE '%#{
-          params[:sSearch]}%')" if(params[:sSearch])
+          params[:search][:value]}%' OR retailers.company_street_1 LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_street_2 LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_city LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_state LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_zip LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_phone LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_website LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_hours_1 LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_hours_2 LIKE '%#{
+          params[:search][:value]}%' OR retailers.company_hours_3 LIKE '%#{
+          params[:search][:value]}%')" if(params[:search][:value])
     return conditions.join(" AND ")
   end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     collection do
       get "create_empty_record"
       get "delete_ajax"
-      get "retailer_table"
+      post "retailer_table"
     end
   end
 
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :coupons do 
     collection do
       get "create_empty_record"
-      get "coupon_table"
+      post "coupon_table"
     end
   end
   
@@ -43,8 +43,8 @@ Rails.application.routes.draw do
       get "invoice_slip"
       get "user_orders"
       get "resend_invoice"
-      get "order_table"
-      get "user_order_table"
+      post "order_table"
+      post "user_order_table"
       get "express_purchase"
     end
   end
@@ -53,7 +53,7 @@ Rails.application.routes.draw do
     collection do
       get "create_empty_record"
       get "duplicate_record"
-      get "product_details_table"
+      post "product_details_table"
       get "delete_ajax"
       delete "delete" 
     end
@@ -69,7 +69,7 @@ Rails.application.routes.draw do
   resources :products do
     collection do
       get "create_empty_record"
-      get "product_table"
+      post "product_table"
       get "show_detail"
       post "render_category_div"
       get "render_image_section"
