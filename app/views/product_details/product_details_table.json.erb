@@ -1,7 +1,7 @@
-{"sEcho": <%= params[:sEcho] || -1 %>,
- "iTotalRecords": <%= @total_objects %>,
- "iTotalDisplayRecords": <%= @total_objects %>,
- "aaData":[
+{"draw": <%= params[:draw] || -1 %>,
+ "recordsTotal": <%= @total_objects %>,
+ "recordsFiltered": <%= @total_objects %>,
+ "data":[
 <% @objects.each do |product_detail| %>  <% @product_detail = product_detail %>
   [
    "<%=json_clean(editablecheckboxedit("sku_active",@product_detail,""))%><div id='detail-id' class='hidden-item'><%=@product_detail.id%></div>",

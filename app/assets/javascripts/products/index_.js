@@ -8,8 +8,7 @@ $(document).ready(function () {
         if ($("#as_window").text() == "true")
         {
             //  alert("it is a window");
-        }
-        else
+        } else
         {
             products_index_callDocumentReady();
         }
@@ -34,22 +33,22 @@ function products_index_callDocumentReady() {
     requireCss("products.css");
     require("products/shared.js");
     require("imgpreview.full.jquery.js");
-    
+
     $("body").css("cursor", "progress");
-   
+
     createProductsTable();
-        
+
     $("body").css("cursor", "default");
 
-     bindNewProduct();
+    bindNewProduct();
 
     $("a.button-link").button();
-    
-     bindDeleteProduct();
-     
-     bindPreferences();
-     
-     bindCoupons();
+
+    bindDeleteProduct();
+
+    bindPreferences();
+
+    bindCoupons();
 }
 
 function bindDeleteProduct() {
@@ -67,8 +66,7 @@ function deleteProduct(product_id)
     var answer = confirm('Are you sure you want to delete this?')
     if (answer) {
         $.ajax({
-            url: '/products/delete_ajax?id='+ product_id,
-            
+            url: '/products/delete_ajax?id=' + product_id,
             success: function (data)
             {
                 setUpPurrNotifier("Notice", "Item Successfully Deleted.");
@@ -80,59 +78,105 @@ function deleteProduct(product_id)
     }
 }
 
-function createProductsTable(){
-    productTableAjax=$('#product-table').dataTable({
-       "iDisplayLength": 25,
-        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
-        "bStateSave": true,
-        "bProcessing": true,
-        "bServerSide": true,
-        "sAjaxSource": "/products/product_table",
-        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-            $(nRow).addClass('product-row');
-            $(nRow).addClass('gradeA');
-            
-            return nRow;
+function createProductsTable() {
+    productTableAjax = $('#product-table').DataTable({
+        pageLength: 25,
+        lengthMenu: [[25, 50, 100], [25, 50, 100]],
+        stateSave: true,
+        stateDuration: 0,
+        stateSaveCallback: function (settings, data) {
+            localStorage.setItem('DataTables_products_' + window.location.pathname, JSON.stringify(data));
         },
-        
-        "aoColumns": 
-        [ 
-        {
-            "sWidth": "100"
+        stateLoadCallback: function (settings) {
+            return JSON.parse(localStorage.getItem('DataTables_products_' + window.location.pathname));
         },
-        {
-            "sWidth": "300"
+        processing: true,
+        order: [[0, "asc"]],
+        serverSide: true,
+        searchDelay: 500,
+        ajax: {
+            url: "/products/product_table",
+            type: "post"
         },
-        {
-            "sWidth": "600"
+        rowCallback: function (row, data, index) {
+            $(row).addClass('product-row');
+            $(row).addClass('gradeA');
+            //return row;
         },
-        {
-            "sWidth": "25"
+        initComplete: function () {
+            // $(".best_in_place").best_in_place(); 
+
         },
-        {
-            "sWidth": "25"
-        }
-        ]
-        ,
-        "fnDrawCallback": function (){
+        drawCallback: function (settings) {
             producteditClickBinding("tr.product-row");
             bindDeleteProduct();
 
             image_list = $('a.zoom-image');
-            if(image_list.length > 0){
-            image_list.imgPreview();
+            if (image_list.length > 0) {
+                image_list.imgPreview();
             }
+            //bindClicktoProductTableRow();
+            $("td.dataTables_empty").attr("colspan", "20")
         }
+        ,
+        columns: [
+            {width: '100'},
+            {width: '300'},
+            {width: '600'},
+            {width: '25'},
+            {width: '25'}
+        ]
+//        ,
+//        "iDisplayLength": 25,
+//        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
+//        "bStateSave": true,
+//        "bProcessing": true,
+//        "bServerSide": true,
+//        "sAjaxSource": "/products/product_table",
+//        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+//            $(nRow).addClass('product-row');
+//            $(nRow).addClass('gradeA');
+//
+//            return nRow;
+//        },
+//        "aoColumns":
+//                [
+//                    {
+//                        "sWidth": "100"
+//                    },
+//                    {
+//                        "sWidth": "300"
+//                    },
+//                    {
+//                        "sWidth": "600"
+//                    },
+//                    {
+//                        "sWidth": "25"
+//                    },
+//                    {
+//                        "sWidth": "25"
+//                    }
+//                ]
+//        ,
+//        "fnDrawCallback": function () {
+//            producteditClickBinding("tr.product-row");
+//            bindDeleteProduct();
+//
+//            image_list = $('a.zoom-image');
+//            if (image_list.length > 0) {
+//                image_list.imgPreview();
+//            }
+//        }
     });
-    
-        $("#product-table").css("width","100%")
 
-    
+    $("#product-table").css("width", "100%")
+
+
 }
 
 function bindNewProduct() {
-    
-   $('a#new-product').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
+
+    $('a#new-product').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
         xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
         $("body").css("cursor", "progress");
     }).bind('ajax:success', function (xhr, data, status) {
@@ -140,8 +184,8 @@ function bindNewProduct() {
         productTableAjax.fnDraw();
         setUpPurrNotifier("Notice", "New Product Created!'");
     }).bind('ajax:error', function (evt, xhr, status, error) {
-                setUpPurrNotifier("Error", "Product Creation Failed!'");
-    }); 
+        setUpPurrNotifier("Error", "Product Creation Failed!'");
+    });
 
 //    $('a#new-product').bind('ajax:beforeSend', function (evt, xhr, settings) {
 //        // alert("ajax:before");  

@@ -75,51 +75,98 @@ function deleteCoupon(coupon_id)
 }
 
 function createCouponsTable(){
-    couponTableAjax=$('#coupon-table').dataTable({
-       "iDisplayLength": 25,
-        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
-        "bStateSave": true,
-        "bProcessing": true,
-        "bServerSide": true,
-        "sAjaxSource": "/coupons/coupon_table",
-        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-            $(nRow).addClass('coupon-row');
-            $(nRow).addClass('gradeA');
+    couponTableAjax=$('#coupon-table').DataTable({
+        pageLength: 25,
+        lengthMenu: [[25, 50, 100], [25, 50, 100]],
+        stateSave: true,
+        stateDuration: 0,
+        stateSaveCallback: function (settings, data) {
+            localStorage.setItem('DataTables_coupon_' + window.location.pathname, JSON.stringify(data));
+        },
+        stateLoadCallback: function (settings) {
+            return JSON.parse(localStorage.getItem('DataTables_coupon_' + window.location.pathname));
+        },
+        processing: true,
+        order: [[0, "asc"]],
+        serverSide: true,
+        searchDelay: 500,
+        ajax: {
+            url: "/coupons/coupon_table",
+            type: "post"
+        },
+        rowCallback: function (row, data, index) {
+            $(row).addClass('coupon-row');
+            $(row).addClass('gradeA');
+            //return row;
+        },
+        initComplete: function () {
+            // $(".best_in_place").best_in_place(); 
+
+        },
+        drawCallback: function (settings) {
             
-            return nRow;
-        },
-        
-        "aoColumns": 
-        [ 
-        {
-            "sWidth": "100"
-        },
-        {
-            "sWidth": "600"
-        },
-        {
-            "sWidth": "75"
-        },
-        {
-            "sWidth": "75"
-        },
-        {
-            "sWidth": "25"
-        },
-        {
-            "sWidth": "25"
-        }
-        ]
-        ,
-        "fnDrawCallback": function (){
-            couponeditClickBinding("tr.coupon-row");
+                        couponeditClickBinding("tr.coupon-row");
             bindDeleteCoupon();
 
             image_list = $('a.zoom-image');
             if(image_list.length > 0){
             image_list.imgPreview();
             }
-        }
+            $("td.dataTables_empty").attr("colspan", "20")
+
+        },
+        columns: [
+            {width: '100'},
+            {width: '600'},
+            {width: '75'},
+            {width: '75'},
+            {width: '25'},
+            {width: '25'}
+        ]
+//        ,"iDisplayLength": 25,
+//        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
+//        "bStateSave": true,
+//        "bProcessing": true,
+//        "bServerSide": true,
+//        "sAjaxSource": "/coupons/coupon_table",
+//        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+//            $(nRow).addClass('coupon-row');
+//            $(nRow).addClass('gradeA');
+//            
+//            return nRow;
+//        },
+//        
+//        "aoColumns": 
+//        [ 
+//        {
+//            "sWidth": "100"
+//        },
+//        {
+//            "sWidth": "600"
+//        },
+//        {
+//            "sWidth": "75"
+//        },
+//        {
+//            "sWidth": "75"
+//        },
+//        {
+//            "sWidth": "25"
+//        },
+//        {
+//            "sWidth": "25"
+//        }
+//        ]
+//        ,
+//        "fnDrawCallback": function (){
+//            couponeditClickBinding("tr.coupon-row");
+//            bindDeleteCoupon();
+//
+//            image_list = $('a.zoom-image');
+//            if(image_list.length > 0){
+//            image_list.imgPreview();
+//            }
+//        }
     });
     
         $("#coupon-table").css("width","100%")

@@ -93,36 +93,80 @@ function viewOrderDialog() {
 
 function createOrderTable() {
     console.log("create table");
-    orderTableAjax = $('#order-table').dataTable({
-        "iDisplayLength": 25,
-        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
-        "bStateSave": true,
-        "fnStateSave": function (oSettings, oData) {
-            localStorage.setItem('DataTables_orders_' + window.location.pathname, JSON.stringify(oData));
+    orderTableAjax = $('#order-table').DataTable({
+        pageLength: 25,
+        lengthMenu: [[25, 50, 100], [25, 50, 100]],
+        stateSave: true,
+        stateDuration: 0,
+        stateSaveCallback: function (settings, data) {
+            localStorage.setItem('DataTables_orders_' + window.location.pathname, JSON.stringify(data));
         },
-        "fnStateLoad": function (oSettings) {
+        stateLoadCallback: function (settings) {
             return JSON.parse(localStorage.getItem('DataTables_orders_' + window.location.pathname));
         },
-        "bProcessing": true,
-        "bServerSide": true,
-        "aaSorting": [[1, "asc"]],
-        "sAjaxSource": "/orders/order_table",
-        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            $(nRow).addClass('order-row');
-            $(nRow).addClass('gradeA');
-            return nRow;
+        processing: true,
+        order: [[0, "asc"]],
+        serverSide: true,
+        searchDelay: 500,
+        ajax: {
+            url: "/orders/order_table",
+            type: "post"
         },
-        "fnInitComplete": function () {
+        rowCallback: function (row, data, index) {
+            $(row).addClass('order-row');
+            $(row).addClass('gradeA');
+            //return row;
+        },
+        initComplete: function () {
             // $(".best_in_place").best_in_place(); 
 
         },
-        "fnDrawCallback": function () {
-            $(".best_in_place").best_in_place();
-            //ordereditClickBinding(".edit-order-item");
+        drawCallback: function (settings) {
+
             bindEmailOrder();
             bindViewOrder();
-//bindDeleteOrder();
+            $("td.dataTables_empty").attr("colspan", "20")
+
         }
+//        ,
+//        columns: [
+//            {width: '100'},
+//            {width: '600'},
+//            {width: '75'},
+//            {width: '75'},
+//            {width: '25'},
+//            {width: '25'}
+//        ]        
+        
+//        ,"iDisplayLength": 25,
+//        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
+//        "bStateSave": true,
+//        "fnStateSave": function (oSettings, oData) {
+//            localStorage.setItem('DataTables_orders_' + window.location.pathname, JSON.stringify(oData));
+//        },
+//        "fnStateLoad": function (oSettings) {
+//            return JSON.parse(localStorage.getItem('DataTables_orders_' + window.location.pathname));
+//        },
+//        "bProcessing": true,
+//        "bServerSide": true,
+//        "aaSorting": [[1, "asc"]],
+//        "sAjaxSource": "/orders/order_table",
+//        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+//            $(nRow).addClass('order-row');
+//            $(nRow).addClass('gradeA');
+//            return nRow;
+//        },
+//        "fnInitComplete": function () {
+//            // $(".best_in_place").best_in_place(); 
+//
+//        },
+//        "fnDrawCallback": function () {
+//            $(".best_in_place").best_in_place();
+//            //ordereditClickBinding(".edit-order-item");
+//            bindEmailOrder();
+//            bindViewOrder();
+////bindDeleteOrder();
+//        }
     });
 }
 

@@ -1,7 +1,7 @@
-{"sEcho": <%= params[:sEcho] || -1 %>,
- "iTotalRecords": <%= @total_objects %>,
- "iTotalDisplayRecords": <%= @total_objects %>,
- "aaData":[ 
+{"draw": <%= params[:draw] || -1 %>,
+ "recordsTotal": <%= @total_objects %>,
+ "recordsFiltered": <%= @total_objects %>,
+ "data":[
 <% @objects.each do |retailer| %>
   [
    "<%= retailer.company_name%> <div id='retailer-id' class='hidden-item'> <%= retailer.id%></div> ",

@@ -6,7 +6,7 @@ var venderTable;
 
 $(document).ready(function() {
     $("#loader_progress").show();
-    vendorTable=$('#vendor').dataTable();
+    vendorTable=$('#vendor').DataTable();
     $("#loader_progress").hide();
 
 

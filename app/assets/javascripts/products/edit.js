@@ -486,46 +486,39 @@ function wait(msecs)
 function buildproductDetailsListTable() {
     var $product_id = $("div#attr-products div#product-id").text();
 
-    productDetailsTable = $('#product-detail-list-table').dataTable({
-        "iDisplayLength": 25,
-        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
-        "bStateSave": true,
-        "bProcessing": true,
-        "bServerSide": true,
-        "sAjaxSource": "/product_details/product_details_table" + "?" + "product_id=" + $product_id,
-        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //  $(nRow).addClass('product-row');
-            // $(nRow).addClass('gradeA');
-
-            return nRow;
+    productDetailsTable = $('#product-detail-list-table').DataTable({
+        pageLength: 25,
+        lengthMenu: [[25, 50, 100], [25, 50, 100]],
+        stateSave: true,
+        stateDuration: 0,
+        stateSaveCallback: function (settings, data) {
+            localStorage.setItem('DataTables_product_details_' + window.location.pathname, JSON.stringify(data));
         },
-        "aoColumns":
-                [
-                    {
-                        "sWidth": "25"
-                    },
-                    {
-                        "sWidth": "200"
-                    },
-                    {
-                        "sWidth": "200"
-                    },
-                    {
-                        "sWidth": "300"
-                    },
-                    {
-                        "sWidth": "100"
-                    },
-                    {
-                        "sWidth": "100"
-                    },
-                    {
-                        "sWidth": "50"
-                    }
-                ]
-        ,
-        "fnDrawCallback": function () {
-            $(".best_in_place ").best_in_place();
+        stateLoadCallback: function (settings) {
+            return JSON.parse(localStorage.getItem('DataTables_product_details_' + window.location.pathname));
+        },
+        processing: true,
+        order: [[0, "asc"]],
+        serverSide: true,
+        searchDelay: 500,
+        ajax: {
+            url: "/product_details/product_details_table",
+            data: {
+                product_id: $product_id
+            },
+            type: "post"
+        },
+        rowCallback: function (row, data, index) {
+            $(row).addClass('product-row');
+            $(row).addClass('gradeA');
+            //return row;
+        },
+        initComplete: function () {
+            // $(".best_in_place").best_in_place(); 
+
+        },
+        drawCallback: function (settings) {
+           $(".best_in_place ").best_in_place();
             $(".combobox").combobox();
 //            $("#toggle").click(function () {
 //                $("#combobox").toggle();
@@ -539,7 +532,72 @@ function buildproductDetailsListTable() {
 
 
             //bindClicktoProductTableRow();
+            $("td.dataTables_empty").attr("colspan", "20")
+
         }
+        ,
+        columns: [
+            {width: '25'},
+            {width: '200'},
+            {width: '200'},
+            {width: '300'},
+            {width: '100'},
+            {width: '100'},
+            {width: '50'}
+        ]   
+//        ,"iDisplayLength": 25,
+//        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
+//        "bStateSave": true,
+//        "bProcessing": true,
+//        "bServerSide": true,
+//        "sAjaxSource": "/product_details/product_details_table" + "?" + "product_id=" + $product_id,
+//        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+//            //  $(nRow).addClass('product-row');
+//            // $(nRow).addClass('gradeA');
+//
+//            return nRow;
+//        },
+//        "aoColumns":
+//                [
+//                    {
+//                        "sWidth": "25"
+//                    },
+//                    {
+//                        "sWidth": "200"
+//                    },
+//                    {
+//                        "sWidth": "200"
+//                    },
+//                    {
+//                        "sWidth": "300"
+//                    },
+//                    {
+//                        "sWidth": "100"
+//                    },
+//                    {
+//                        "sWidth": "100"
+//                    },
+//                    {
+//                        "sWidth": "50"
+//                    }
+//                ]
+//        ,
+//        "fnDrawCallback": function () {
+//            $(".best_in_place ").best_in_place();
+//            $(".combobox").combobox();
+////            $("#toggle").click(function () {
+////                $("#combobox").toggle();
+////            });
+//
+//            // $(".combobox").combobox();
+//            bindChangeCombobox();
+//            ui_ajax_select();
+//            bindDeleteProductDetail();
+//            bindDuplicateProductDetail();
+//
+//
+//            //bindClicktoProductTableRow();
+//        }
     });
 
     // $("#product-detail-list-table").css("width","100%")
@@ -564,7 +622,8 @@ function buildproductDetailsListTable() {
 
 function buildproductDetailsListTableOLD()
 {
-    productDetailsTable = $('#product-detail-list-table').dataTable({
+    // NOTE: NOT USED.
+    productDetailsTable = $('#product-detail-list-table').DataTable({
         "aLengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
         "fnDrawCallback": function () {
             $(".best_in_place ").best_in_place();
