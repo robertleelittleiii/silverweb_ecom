@@ -3,6 +3,8 @@ module SilverwebEcom
         require 'geocoder'
         require "activemerchant"
         require 'pdfkit'
+ #       require 'activerecord-session-store'
+       
 #        require 'ssl_requirement'
     config.middleware.use PDFKit::Middleware
 

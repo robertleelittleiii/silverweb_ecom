@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency "activemerchant"
   s.add_dependency "pdfkit"
   s.add_dependency "wkhtmltopdf-binary"
+  s.add_dependency 'activerecord-session_store'
 
   s.add_development_dependency "mysql"
 end

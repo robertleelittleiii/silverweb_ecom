@@ -534,8 +534,10 @@ module SilverwebEcom
           #  @cart = (session[:cart] ||= Cart.new)
           #user =  User.find_by_id(session[:user_id])
 
-          session[:create]=true
-    
+        #   session[:create]=true
+        
+          session[:session_id] = request.session_options[:id]
+          
           @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id]) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
           puts("@cart in find_cart: #{@cart}")
           

@@ -26,10 +26,18 @@ end
 def find_cart
     # user =  User.find_by_id(session[:user_id])
     
-    puts("session[:user_id]: #{session[:user_id]}")
+#    p session.loaded?               
+#    p session                       
+#    session[:init] = true           
+#    p session.loaded?               
+#    p session      
+    
+    session[:session_id] = request.session_options[:id]
 
+   #  puts("session[:user_id]: #{session[:user_id]}")
+    session.delete 'init'
     @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id])
-    puts("@cart: #{@cart.inspect}")
+  #   puts("@cart: #{@cart.inspect}")
 
     #   @cart = Cart.get_cart(session[:cart])
     #   session[:cart] = @cart.id
