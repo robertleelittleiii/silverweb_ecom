@@ -42,7 +42,7 @@ function emailOrder(order_id)
             success: function (data)
             {
                 setUpPurrNotifier("Notice", "Invoice Successfully Resent.");
-                orderTableAjax.fnDraw();
+                orderTableAjax.draw();
 
             }
         });
@@ -71,7 +71,7 @@ function viewOrderDialog() {
                         url: '/orders/delete_ajax?id=' + order_id,
                         success: function (data)
                         {
-                            orderTableAjax.fnDraw();
+                            orderTableAjax.draw();
                         }
                     });
                 }
@@ -82,7 +82,7 @@ function viewOrderDialog() {
             },
             "Ok": function () {
                 $(this).dialog("close");
-                orderTableAjax.fnDraw();
+                orderTableAjax.draw();
             }
         }
 

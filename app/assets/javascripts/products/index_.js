@@ -70,7 +70,7 @@ function deleteProduct(product_id)
             success: function (data)
             {
                 setUpPurrNotifier("Notice", "Item Successfully Deleted.");
-                productTableAjax.fnDraw();
+                productTableAjax.draw();
 
             }
         });
@@ -181,7 +181,7 @@ function bindNewProduct() {
         $("body").css("cursor", "progress");
     }).bind('ajax:success', function (xhr, data, status) {
         $("body").css("cursor", "default");
-        productTableAjax.fnDraw();
+        productTableAjax.draw();
         setUpPurrNotifier("Notice", "New Product Created!'");
     }).bind('ajax:error', function (evt, xhr, status, error) {
         setUpPurrNotifier("Error", "Product Creation Failed!'");

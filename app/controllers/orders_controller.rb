@@ -178,7 +178,7 @@ class OrdersController < ApplicationController
             @order.reduce_inventory($hostfull)
             
             if  not Settings.order_notification then
-              UserNotifier.order_notification(@order, @user, $hostfull).deliver
+                UserNotifier.order_notification(@order, @user, $hostfull).deliver
             else
               UserNotifier.order_notification_as_invoice(@order, @user, $hostfull).deliver
             end

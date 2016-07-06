@@ -66,7 +66,7 @@ function deleteCoupon(coupon_id)
             success: function (data)
             {
                 setUpPurrNotifier("Notice", "Item Successfully Deleted.");
-                couponTableAjax.fnDraw();
+                couponTableAjax.draw();
 
             }
         });
@@ -183,7 +183,7 @@ function bindNewCoupon() {
         $("body").css("cursor", "default");
         // editCoupon(data.id);
 
-        couponTableAjax.fnDraw();
+        couponTableAjax.draw();
         setUpPurrNotifier("Notice", "New Coupon Created!'");
     }).bind('ajax:error', function (evt, xhr, status, error) {
                 setUpPurrNotifier("Error", "Coupon Creation Failed!'");

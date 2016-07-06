@@ -33,7 +33,7 @@ function couponeditClickBinding(selector) {
                 coupon_edit_dialog.dialog({
                     close: function (event, ui) {
                         if ($("table#coupon-table").length > 0)
-                            couponTableAjax.fnDraw();
+                            couponTableAjax.draw();
                         
                         if ($("div#edit-coupon-dialog").length > 0)
                         {

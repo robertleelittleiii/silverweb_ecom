@@ -33,7 +33,7 @@ function producteditClickBinding(selector) {
                 product_edit_dialog.dialog({
                     close: function (event, ui) {
                         if ($("table#product-table").length > 0)
-                            productTableAjax.fnDraw();
+                            productTableAjax.draw();
                         
                         if ($("div#edit-product-dialog").length > 0)
                         {
