@@ -81,6 +81,13 @@ class CouponsController < ApplicationController
     end
   end
   
+   def delete_ajax
+    @coupon = Coupon.find(params[:id])
+    @coupon.destroy
+    render nothing: true
+  end
+
+   
    # CREATE_EMPTY_RECORD /coupons/1
    # CREATE_EMPTY_RECORD /coupons/1.json
 

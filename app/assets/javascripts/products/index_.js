@@ -42,13 +42,14 @@ function products_index_callDocumentReady() {
 
     bindNewProduct();
 
-    $("a.button-link").button();
-
     bindDeleteProduct();
 
     bindPreferences();
 
     bindCoupons();
+    
+    $("a.button-link").button();
+
 }
 
 function bindDeleteProduct() {

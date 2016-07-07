@@ -17,12 +17,16 @@ Rails.application.routes.draw do
     collection do
       get "create_empty_record"
       post "coupon_table"
+      get "delete_ajax"
+      delete "delete" 
+
     end
+    
   end
   
   resources :cart do
     collection do
-     post "update"
+      post "update"
     end
   end
 
@@ -98,7 +102,7 @@ Rails.application.routes.draw do
   
   resources :product_related_products do
     collection do
-            delete "delete" 
+      delete "delete" 
     end
   end
 
