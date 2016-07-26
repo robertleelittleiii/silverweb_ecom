@@ -8,8 +8,7 @@ $(document).ready(function () {
         if ($("#as_window").text() == "true")
         {
             //  alert("it is a window");
-        }
-        else
+        } else
         {
             coupons_index_callDocumentReady();
         }
@@ -34,17 +33,20 @@ function coupons_index_callDocumentReady() {
     require("coupons/shared.js");
 
     $("body").css("cursor", "progress");
-   
+
     createCouponsTable();
-        
+
     $("body").css("cursor", "default");
 
-     bindNewCoupon();
+    bindNewCoupon();
 
     $("a.button-link").button();
-    
-     bindDeleteCoupon();
- }
+
+    bindDeleteCoupon();
+
+    $(".best_in_place").best_in_place();
+
+}
 
 function bindDeleteCoupon() {
     $(".delete-coupon-item").on("click", function (e) {
@@ -61,8 +63,7 @@ function deleteCoupon(coupon_id)
     var answer = confirm('Are you sure you want to delete this?')
     if (answer) {
         $.ajax({
-            url: '/coupons/delete_ajax?id='+ coupon_id,
-            
+            url: '/coupons/delete_ajax?id=' + coupon_id,
             success: function (data)
             {
                 setUpPurrNotifier("Notice", "Item Successfully Deleted.");
@@ -74,8 +75,8 @@ function deleteCoupon(coupon_id)
     }
 }
 
-function createCouponsTable(){
-    couponTableAjax=$('#coupon-table').DataTable({
+function createCouponsTable() {
+    couponTableAjax = $('#coupon-table').DataTable({
         pageLength: 25,
         lengthMenu: [[25, 50, 100], [25, 50, 100]],
         stateSave: true,
@@ -104,13 +105,13 @@ function createCouponsTable(){
 
         },
         drawCallback: function (settings) {
-            
-                        couponeditClickBinding("tr.coupon-row");
+
+            couponeditClickBinding("tr.coupon-row");
             bindDeleteCoupon();
 
             image_list = $('a.zoom-image');
-            if(image_list.length > 0){
-            image_list.imgPreview();
+            if (image_list.length > 0) {
+                image_list.imgPreview();
             }
             $("td.dataTables_empty").attr("colspan", "20")
 
@@ -168,15 +169,15 @@ function createCouponsTable(){
 //            }
 //        }
     });
-    
-        $("#coupon-table").css("width","100%")
 
-    
+    $("#coupon-table").css("width", "100%")
+
+
 }
 
 function bindNewCoupon() {
-    
-   $('a#new-coupon').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
+
+    $('a#new-coupon').unbind().bind('ajax:beforeSend', function (e, xhr, settings) {
         xhr.setRequestHeader('accept', '*/*;q=0.5, text/html, ' + settings.accepts.html);
         $("body").css("cursor", "progress");
     }).bind('ajax:success', function (xhr, data, status) {
@@ -186,8 +187,8 @@ function bindNewCoupon() {
         couponTableAjax.draw();
         setUpPurrNotifier("Notice", "New Coupon Created!'");
     }).bind('ajax:error', function (evt, xhr, status, error) {
-                setUpPurrNotifier("Error", "Coupon Creation Failed!'");
-    }); 
+        setUpPurrNotifier("Error", "Coupon Creation Failed!'");
+    });
 
 //    $('a#new-coupon').bind('ajax:beforeSend', function (evt, xhr, settings) {
 //        // alert("ajax:before");  

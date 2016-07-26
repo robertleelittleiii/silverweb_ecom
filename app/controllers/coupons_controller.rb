@@ -2,6 +2,7 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
+    @settings = Settings.all 
     @coupons = Coupon.all
 
     respond_to do |format|
@@ -58,6 +59,11 @@ class CouponsController < ApplicationController
   def update
     @coupon = Coupon.find(params[:id])
 
+    
+    if Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :decimal or Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :integer or Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :float then
+      params[:coupon][params[:coupon].keys[0]] = params[:coupon][params[:coupon].keys[0]].delete("$").delete(",")
+    end
+    
     respond_to do |format|
       if @coupon.update_attributes(coupon_params)
         format.html { redirect_to @coupon, notice: "Coupon was successfully updated."}

@@ -1,7 +1,31 @@
 <%= create_dialog_settings("Coupon Manager", "875", "450") %>
 
 <%=page_attr_display(nil,"true") %>
+<div class="cms-block">
+<div class="cms-section">
+      <div class="cms-heading">Store Wide Settings</div>
+      <div class="cms-content">
+        <p>
+        <b>Store wide sale: (Percentage off of price)</b><br>
+        <%=editablefieldcreate("store_wide_sale", @settings,"$0.00",{:format_type=>"currency"})%>
+      </p>
+      
+      <p>
+        <b>Store wide sale start: (Start Date)</b><br>
+        <%=editabledatefieldcreate("store_wide_sale_start", @settings,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
 
+      </p>
+      
+      <p>
+        <b>Store wide sale end: (End Date)</b><br>
+        <%=editabledatefieldcreate("store_wide_sale_end", @settings,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
+      </p>
+        <p>
+          </br>
+        </p>
+      </div>
+    </div>
+</div>
 
 <div class="cms-block">
     <div align="center">

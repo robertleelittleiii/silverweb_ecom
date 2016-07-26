@@ -14,26 +14,26 @@
 
       <p>
         <b>Start Date:</b><br>
-        <%=editablefieldcreate("start_date", @coupon)%>
-      </p>
+        <%=editabledatefieldcreate("start_date", @coupon,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
+    </p>
 
 
 
       <p>
         <b>End Date:</b><br>
-        <%=editablefieldcreate("end_date", @coupon)%>
-      </p>
+         <%=editabledatefieldcreate("end_date", @coupon,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
+     </p>
 
 
 
       <p>
         <b>Value</b><br>
-        <%=editablefieldcreate("value", @coupon)%>
+        <%=editablefieldcreate("value", @coupon,"$0.00",{:format_type=>"currency"})%>
       </p>
 
  <p>
         <b>min amount</b><br>
-        <%=editablefieldcreate("min_amount", @coupon)%>
+        <%=editablefieldcreate("min_amount", @coupon,"$0.00",{:format_type=>"currency"})%>
       </p>
 
 

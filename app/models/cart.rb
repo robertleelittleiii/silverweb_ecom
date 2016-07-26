@@ -2,6 +2,7 @@ class Cart
 
   extend ActiveModel::Naming
   include ActiveModel::Conversion
+  require 'american_date'
   
   attr_reader :items, :id, :coupon_code, :user_id, :shipping_type
   
