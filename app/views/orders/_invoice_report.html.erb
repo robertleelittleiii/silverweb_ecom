@@ -76,8 +76,10 @@
             </tr>
           </thead>
           <tbody>
+            <% line_number_counter = 0 %>
             <%  @order.order_items.each do |order_item| %>
 
+              <% line_number_counter = line_number_counter + 1 %>
 
               <tr class="<%= cycle('odd gradeA', 'even gradeA')%> shipping-item-row"  style = "cursor:pointer">
                 <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.thumb.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></br><%=order_item.color%></br><%=order_item.size%></td>
@@ -86,6 +88,53 @@
                 <td align="center"  width="97"><%=order_item.quantity%></td>
                 <td align="center"  width="124"><%=number_to_currency(order_item.price)%></td>
               </tr>
+                         <% if (((line_number_counter) % 4 == 0) and @page_number.blank?) or ((line_number_counter) % 6 == 0) then %>
+                <% line_number_counter = 0 %>
+
+              </tbody>
+              <tfoot>
+            <tr>
+              <th></th>
+              <th>Product Description</th>
+              <th>UPC</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+              </tfoot>
+            </table>
+         </tr>
+  </tbody>
+</table>
+<% @page_number = @page_number.blank? ? 1: @page_number + 1%>
+<div style=" page-break-before: always;" class="pagebreak"> </div>
+      
+<table width="850" border="0" cellpadding="5" cellspacing="5">
+  <tbody>
+    <tr>
+      <td>
+        <table border="0" width="100%">
+      <tbody>
+        <tr>
+          <td align="right"><b>Customer Name:</b></td><td><%=@order.full_billing_name.html_safe %></td>
+        </tr>
+    </tbody>
+    </table>
+
+    <table cellpadding="2" cellspacing="0" border="1" width="100%">
+     <thead>
+            <tr>
+              <th></th>
+              <th>Product Description</th>
+              <th>UPC</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+
+      <tbody>
+
+      <% end %>
+              
             <% end %>
 
           </tbody>
