@@ -19,6 +19,10 @@ $(document).ready(function () {
 
 
 function site_product_detail_callDocumentReady() {
+    
+    require("jquery.jqzoom-core.js");
+    requireCss("jquery.jqzoom.css");
+    
     bind_hover_to_swatch();
     enableProductEdit();
 
