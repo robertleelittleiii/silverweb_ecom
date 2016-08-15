@@ -681,7 +681,7 @@ function updateBestinplaceImageTitles() {
 }
 
 function refreshProductDetails() {
-    productDetailsTable.fnDraw(true);
+    productDetailsTable.draw(true);
     $("body").css("cursor", "default");
 
     //   $("#loader_progress").hide();

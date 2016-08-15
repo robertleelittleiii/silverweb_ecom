@@ -86,7 +86,7 @@ class Cart
   #    @items << inventory_item
   # end
 
-  def add_product(product, product_detail, quantity)
+    def add_product(product, product_detail, quantity)
     
     current_item = @items.find {|item| item.product_detail.id == product_detail.id}
    
