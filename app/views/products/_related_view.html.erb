@@ -4,18 +4,18 @@
 <div id="related_<%=related.id.to_s%>" data-id='product_<%=related.id.to_s%>' class="product-list-item">
     <div class="product-delete-icon ui-icon ui-icon-closethick">
         <%= link_to('X',related, {method: :delete, remote: true, data: { confirm: "Are you sure?" }, class: 'related-delete'})%>
-    </div> 
-    <div class="related-product-item"> 
-     
-        <div class="product-title"><%=truncate(related.related_product.product_name, length: 12) rescue "product not found"%> 
+      </div> 
+      <div class="related-product-item"> 
 
-        </div>
-    </div> 
+          <div class="product-title"><%=truncate(related.related_product.product_name, length: 12) rescue "product not found"%> 
 
-    <div class="product-block">
+          </div>
+      </div> 
+
+      <div class="product-block">
           <div class="related-item">
               <div class="related-float-center">
-                  <%= image_tag(related.related_product.pictures.where(:title=>"Product List")[0].blank? ? "empty_s.jpg" : related.related_product.pictures.where(:title=>"Product List")[0].image_url(:store_list_freshbetty).to_s,:class=>"product-image") rescue "" %>
+                  <%= image_tag(related.related_product.pictures[0].blank? ? "empty_s.jpg" : related.related_product.pictures[0].image_url(:product_list).to_s,:class=>"product-image") rescue "" %>
               </div>
           </div>       
       </div>

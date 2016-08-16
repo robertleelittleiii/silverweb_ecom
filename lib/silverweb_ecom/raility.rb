@@ -129,9 +129,13 @@ module SilverwebEcom
         version :collection_list do
           process :resize_to_fill =>[90,140]
         end
-
+        
+        version :product_list, if: :not_pdf? do
+          process resize_to_fill: [188,141    ]
+        end
+  
         version :store_list do
-          process :resize_to_fill => [77,125]
+        process :resize_to_fill => [77,125]
         end   
 
         version :store_list_mm do
