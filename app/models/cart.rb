@@ -29,7 +29,7 @@ class Cart
         
     begin
       @found_item =  @items.max_by do |element|
-        element.product.unit_price 
+        !!element.product.no_coupon==true ? 0 : element.product.msrp 
       end 
  
     rescue
@@ -86,7 +86,7 @@ class Cart
   #    @items << inventory_item
   # end
 
-    def add_product(product, product_detail, quantity)
+  def add_product(product, product_detail, quantity)
     
     current_item = @items.find {|item| item.product_detail.id == product_detail.id}
    
@@ -146,12 +146,12 @@ class Cart
   end
   
   def total_items_product(product)
-     @items.sum { |item| (item.product.id==product.id ? item.quantity : 0)  }
-   # total_items = get_cart_items(product)
-   #  puts("------- in cart total_items_product ------")
-   # puts(total_items.length)
-   # puts(total_items.inspect)
-   # total_items.length
+    @items.sum { |item| (item.product.id==product.id ? item.quantity : 0)  }
+    # total_items = get_cart_items(product)
+    #  puts("------- in cart total_items_product ------")
+    # puts(total_items.length)
+    # puts(total_items.inspect)
+    # total_items.length
   end
   
   def total_price_product(product)
@@ -167,6 +167,15 @@ class Cart
     #    @items.sum { |item| item.price } + (self.calc_shipping ||= 0)
 
   end
+  
+  def total_coupon_price
+    @items.sum { |item| (!!item.product.no_coupon ? 0 : item.price) }
+
+    #  @items.sum { |item| item.price } + (@shipping ||= 0)
+    #    @items.sum { |item| item.price } + (self.calc_shipping ||= 0)
+
+  end
+  
 
   def calc_store_wide_sale
     return 0 if Settings.store_wide_sale_start.blank?
@@ -272,7 +281,7 @@ class Cart
     @coupon=Coupon.find_coupon(@coupon_code)
 
     
-   return false if(@coupon.blank?)
+    return false if(@coupon.blank?)
     
     if  !!@coupon.one_time_only and @user.blank? then
       return false
@@ -296,8 +305,16 @@ class Cart
       if @coupon.one_time_only and @user_id.blank? then
         return_value =  "<div style='color:red;'>ONE TIME COUPON, LOGIN TO SEE VALUE.</div>".html_safe
       elsif coupon_valid? then
-        largest_valued_item_name = (!!@coupon.only_most_expensive_item ? " on " + item_with_largest_price.product.product_name : "") rescue "n/a"
-        return_value =  @coupon.description + largest_valued_item_name
+        if ((item_with_largest_price.product.no_coupon==true) and (@coupon.coupon_type !=5)) then
+          return_value =  "<div style='color:red;'>COUPON CODE DOES NOT APPLY TO ITEMS IN CART !!</div>".html_safe
+        else
+          if total_price > @coupon.min_amount then
+            largest_valued_item_name = (!!@coupon.only_most_expensive_item ? " on " + item_with_largest_price.product.product_name : "") rescue "n/a"
+            return_value =  (@coupon.description + largest_valued_item_name).truncate(50)
+          else
+            return_value =  "<div style='color:red;'>CART MUST BE GREATER THAN #{@coupon.min_amount}</div>".html_safe
+          end          
+        end  
       else
         return_value =  "<div style='color:red;'>COUPON CODE ALREADY USED!!</div>".html_safe
       end
@@ -401,9 +418,9 @@ class Cart
       if total_price > @coupon.min_amount then
         if !!@coupon.only_most_expensive_item then
           puts(item_with_largest_price.inspect)
-          return  item_with_largest_price.product.msrp * (@coupon.value/100)
+          return (item_with_largest_price.product.no_coupon==true ? 0 : item_with_largest_price.product.msrp * (@coupon.value/100))
         else        
-          return total_price * (@coupon.value/100)
+          return total_coupon_price * (@coupon.value/100)
         end
       else
         return 0
@@ -470,7 +487,7 @@ class Cart
     product_detail_list = []
     items.each do |item|
       if(item.product.id== product.id) then
-      product_detail_list << item.product_detail 
+        product_detail_list << item.product_detail 
       end
     end
   end

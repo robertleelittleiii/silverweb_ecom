@@ -104,8 +104,11 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td>
             Discount: </br> <%=editablecheckboxedit("discount_available", @product, "Available?")%> <%=editablefieldcreate("discount", @product)%>   
+          </td>
+           <td>
+            No Coupon Applies: </br> <%=editablecheckboxedit("no_coupon", @product, "No Coupon?")%>   
           </td>
         </tr>
       </tbody>

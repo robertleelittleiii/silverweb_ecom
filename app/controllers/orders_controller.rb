@@ -162,6 +162,8 @@ class OrdersController < ApplicationController
       @order.ip_address = request.remote_ip
       @order.coupon_description = @cart.coupon_description
       @order.coupon_value = @cart.coupon_value
+      @order.coupon_code = @cart.coupon_code
+
       @order.store_wide_sale = @cart.calc_store_wide_sale
       
       @order.cc_expires = Date.new(params[:order]["cc_expires(1i)"].to_i, params[:order]["cc_expires(2i)"].to_i, params[:order]["cc_expires(2i)"].to_i) rescue nil
