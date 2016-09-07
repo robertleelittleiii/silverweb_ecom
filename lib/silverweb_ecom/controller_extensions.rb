@@ -81,7 +81,7 @@ module SilverwebEcom
               @products_list = Product.where(:product_active=>true).tagged_with(@categories, :any=>true, :on=>:category).tagged_with(@department_id, :on=>:department)
 
             else
-              if @category_id.blank? or @department_id.blank? then
+              if @category_id.blank? or @department_id.blank? or @category_id.downcase == "all" then
                 @products_list = Product.where(:product_active=>true)
               else
                 @products_list = Product.where(:product_active=>true).tagged_with(@category_id, :on=>:category).tagged_with(@department_id, :on=>:department)
@@ -99,8 +99,14 @@ module SilverwebEcom
           @product_count = @products_list.length
 
           # @products = Kaminari.paginate_array(@products).page(params[:page]).per(@products_per_page)
-          @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC").page(params[:page]).per(@products_per_page)
-          #    @products = @products.page(params[:page]).per(@products_per_page)
+          # @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC").page(params[:page]).per(@products_per_page)
+          if params[:show_all]== "true" then
+            @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC")
+
+          else
+            @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC").page(params[:page]).per(@products_per_page)
+
+          end     #    @products = @products.page(params[:page]).per(@products_per_page)
 
           @product_first = params[:page].blank? ? "1" : (params[:page].to_i*@products_per_page - (@products_per_page-1))
     
@@ -534,11 +540,16 @@ module SilverwebEcom
           #  @cart = (session[:cart] ||= Cart.new)
           #user =  User.find_by_id(session[:user_id])
 
-        #   session[:create]=true
+          session[:create]=true
         
           session[:session_id] = request.session_options[:id]
           
-          @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id]) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
+          begin
+            @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id]) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
+          rescue
+            cart = Cart.new
+          end
+          
           puts("@cart in find_cart: #{@cart}")
           
           if not params[:coupon_code].blank? then
