@@ -99,13 +99,13 @@ module SilverwebEcom
           @product_count = @products_list.length
 
           # @products = Kaminari.paginate_array(@products).page(params[:page]).per(@products_per_page)
-          # @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC").page(params[:page]).per(@products_per_page)
-          if params[:show_all] == "true" then
-            @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC")
-          else
-            @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC").page(params[:page]).per(@products_per_page)
+          @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC").page(params[:page]).per(@products_per_page)
+          # if params[:show_all] == "true" then
+          #  @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC")
+          #else
+          #  @products = Product.where(:id=>@product_ids).order("product_ranking DESC").order("position ASC").order("created_at DESC").page(params[:page]).per(@products_per_page)
 
-          end     #    @products = @products.page(params[:page]).per(@products_per_page)
+          # end     #    @products = @products.page(params[:page]).per(@products_per_page)
 
           @product_first = params[:page].blank? ? "1" : (params[:page].to_i*@products_per_page - (@products_per_page-1))
     
