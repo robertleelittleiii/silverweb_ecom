@@ -2,3 +2,7 @@
 <%#=@cart.inspect%>
 <%#=@shipping_methods.inspect%>
 Shipping Method (UPS): <%=ajax_select("shipping_type","cart",@cart, @shipping_methods)  %>
+
+</br> </br>
+<%= display_page_body("shipping note")%>
+

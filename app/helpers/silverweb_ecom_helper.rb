@@ -1,6 +1,11 @@
 module SilverwebEcomHelper
 
-
+def display_page_body(page_name) 
+    page = Page.where(:title=>page_name).first rescue ""
+    
+    return page.body.html_safe rescue "Page '#{page_name}' not found.   Please create it in pages."
+  end
+  
 def json_clean(input)
     # return input.gsub('"', '\\"').gsub(/'/) {|s| "\\'"} 
     return input.gsub(/\n/," ").gsub(/\r/," ").gsub(/\\|"/) { |c| "\\#{c}" }.html_safe
