@@ -68,7 +68,8 @@ class ProductDetail < ActiveRecord::Base
       begin
         SystemImages.all.where(title: self.color).first.image_url(:small).to_s
       rescue 
-        ActionController::Base.helpers.asset_path("blank.png")
+        self.product.pictures.first.image_url(:small).to_s
+        # ActionController::Base.helpers.asset_path("blank.png")
         # "/images/blank.png"
       end
     end
