@@ -9,7 +9,7 @@
                 <tr>
                     <td class="cart-item-title"><%=link_to h(checkout_cart_item.product.product_name.html_safe), {:action=>:product_detail, :id=>checkout_cart_item.product.id},{}%></td>
                 </tr><tr>
-                    <td width="766" class="cart-item-description"><%= truncate(checkout_cart_item.product.product_description.to_s.gsub(/<\/?[^>]+>|(\r\n|\n|\r)|&nbsp;/, ''), :length=>250) %></td>
+                    <td width="766" class="cart-item-description"><%= truncate(checkout_cart_item.product.product_description.to_s.gsub(/<\/?[^>]+>|(\r\n|\n|\r)|&nbsp;|&bull;/, ''), :length=>250) %></td>
                 </tr>
             </table>
         </td>
