@@ -256,7 +256,7 @@ class OrdersController < ApplicationController
     @company_phone = Settings.company_phone
     @company_fax = Settings.company_fax
     
-    render partial: "invoice_report.html", layout: false
+    render  partial: "invoice_report.html", layout: "default_pdf.html"
   end
   
   def resend_invoice
