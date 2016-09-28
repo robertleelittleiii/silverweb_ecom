@@ -238,7 +238,8 @@ class OrdersController < ApplicationController
     @page_title = "order success"
     @order = Order.find(params[:id])
     @user = User.find_by_id(session[:user_id])
-    @page = Page.find_by_title (@page_title).first
+    @page = Page.where(:title=>@page_title).first
+   #  @page = Page.find_by_title (@page_title).first
     @company_name = Settings.company_name
     @company_address = Settings.company_address
     @company_phone = Settings.company_phone

@@ -454,9 +454,17 @@ module SilverwebEcom
           #        find_cart
           #    @cart=nil
           #    session[:cart] = nil
+          
+          if params[:redirect].blank? then
+            redirect = ["site","index"]
+          else
+            redirect = params[:redirect].split(":")
+          end
+          
+          redirect_to_hash = {}.merge!(params).merge!({:controller => redirect[0], :action => redirect[1]})
           respond_to do |format|
             format.js if request.xhr?
-            format.html {redirect_to :controller => 'site', :action => 'index'}
+            format.html{ redirect_to(redirect_to_hash) }
           end
 
     
