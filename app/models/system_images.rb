@@ -5,6 +5,10 @@ class SystemImages
     Picture.where(:resource_type=>"System").order(:position)
   end  
 
+  def self.swatches
+    Picture.where(:resource_type=>"Swatch").order(:position)
+  end
+  
   def self.count 
         Picture.where(:resource_type=>"System").count()
   end

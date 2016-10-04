@@ -184,7 +184,10 @@ class ProductsController < ApplicationController
     format = params[:format]
     
     @picture = SystemImages.new(params[:image_name], params[:image])
-    image_saved = !@picture.blank?
+    @picture.resource_type = "Swatch"
+    
+    
+    image_saved = !@picture.blank? and @picture.save
   
     puts("@picture -----____----#{@picture.inspect}")
     puts("image_saved -----____----#{image_saved}")
@@ -390,7 +393,7 @@ class ProductsController < ApplicationController
   
   def product_preferences
     @settings = Settings.all 
-    @all_pictures = SystemImages.all.order(:created_at)
+    @all_pictures = SystemImages.swatches.order(:created_at)
     
     @template_types = [] # TEMPLATE_TYPES
     
@@ -436,6 +439,7 @@ class ProductsController < ApplicationController
     @search_template_types = search_template_types
     
     @template_list_types = []
+    params[:action_name] = "add_image_system"
     paths = ActionController::Base.view_paths
     template_list_types = [["B L A N K",""]]
     paths.each do |the_view_path|
