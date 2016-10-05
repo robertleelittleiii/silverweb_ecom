@@ -393,7 +393,7 @@ class ProductsController < ApplicationController
   
   def product_preferences
     @settings = Settings.all 
-    @all_pictures = SystemImages.swatches.order(:created_at)
+    @all_pictures = SystemImages.swatches.order(id: :desc)
     
     @template_types = [] # TEMPLATE_TYPES
     
