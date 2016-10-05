@@ -14,13 +14,13 @@ class ProductDetail < ActiveRecord::Base
   
   def swatch
     if (!!Settings.force_system_swatches)
-      SystemImages.all.where(title: self.color).first.image_url.to_s
+      SystemImages.swatches.where(title: self.color).first.image_url.to_s
     else
       begin 
         self.product.pictures.where(title: self.color).first.image_url(:swatch).to_s 
       rescue 
         begin
-          SystemImages.all.where(title: self.color).first.image_url.to_s
+          SystemImages.swatches.where(title: self.color).first.image_url.to_s
         rescue 
            ActionController::Base.helpers.asset_path("blank.png")
 #        "blank.png"
