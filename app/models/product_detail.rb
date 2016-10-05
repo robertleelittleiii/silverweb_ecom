@@ -40,7 +40,7 @@ class ProductDetail < ActiveRecord::Base
       #  self.product.pictures.first.image_url(:thumb).to_s
       #rescue 
       begin
-        SystemImages.all.where(title: self.color).first.image_url(:thumb).to_s
+        SystemImages.swatches.where(title: self.color).first.image_url(:thumb).to_s
       rescue 
                 ActionController::Base.helpers.asset_path("blank.png")
 
@@ -66,7 +66,7 @@ class ProductDetail < ActiveRecord::Base
       self.product.pictures.where(title: self.color).first.image_url(:small).to_s 
     rescue 
       begin
-        SystemImages.all.where(title: self.color).first.image_url(:small).to_s
+        SystemImages.swatches.where(title: self.color).first.image_url(:small).to_s
       rescue 
         self.product.pictures.first.image_url(:small).to_s
         # ActionController::Base.helpers.asset_path("blank.png")
