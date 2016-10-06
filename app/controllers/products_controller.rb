@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
     @product_layouts = [["Normal",""], ["Horizontal", "horizontal"]]
 
     @sizes =  Settings.inventory_size_list.split(",").collect{|x| x } || "" rescue []
-    @system_colors = SystemImages.all.collect{|x| x.title}
+    @system_colors = SystemImages.swatches.collect{|x| x.title}
   end
 
   # POST /products
@@ -135,7 +135,7 @@ class ProductsController < ApplicationController
   def show_detail 
     @product = Product.find(params[:id])
     @sizes =  Settings.inventory_size_list.split(",").collect{|x| x } || "" rescue []
-    @system_colors = SystemImages.all.collect{|x| x.title}
+    @system_colors = SystemImages.swatches.collect{|x| x.title}
 
     render partial: "detail_list"
   end

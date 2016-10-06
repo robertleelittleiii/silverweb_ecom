@@ -141,7 +141,7 @@ class ProductDetailsController < ApplicationController
     
     @colors =  @product_details.select("distinct `color`").collect{|x| x.color }
     @sizes =  Settings.inventory_size_list.split(",").collect{|x| x } || "" rescue []
-    @system_colors = SystemImages.all.collect{|x| x.title}
+    @system_colors = SystemImages.swatches.collect{|x| x.title}
 
     
     
