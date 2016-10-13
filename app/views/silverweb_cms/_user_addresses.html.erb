@@ -1,0 +1,51 @@
+<div class="cms-section">
+    <div class="cms-heading">My Addresses</div>
+    <div class="cms-content">       
+        <h2> Shipping </h2>
+        <p>
+            <b>Address:</b><br>
+            <%=editablefieldcreate("shipping_address", @user_attributes)%>
+        </p>
+
+        <p>
+            <b>City</b><br>
+            <%=editablefieldcreate("shipping_city", @user_attributes)%>
+        </p>
+
+        <p>
+            <b>State</b><br>
+            <%=ajax_select("shipping_state","user_attribute",@user_attributes, Order::CC_STATES, "Choose State...")%><br><br>
+        </p>
+
+        <p>
+            <b>Zip Code</b><br>
+            <%=editablefieldcreate("shipping_zip_code", @user_attributes)%>
+        </p>
+
+        <p>
+
+        <h2> Billing </h2>
+        <p>
+            <b>Address:</b><br>
+            <%=editablefieldcreate("billing_address", @user_attributes)%>
+        </p>
+
+        <p>
+            <b>City</b><br>
+            <%=editablefieldcreate("billing_city", @user_attributes)%>
+        </p>
+
+        <p>
+            <b>State</b><br>
+            <%=ajax_select("billing_state","user_attribute",@user_attributes, Order::CC_STATES, "Choose State...")%><br><br>
+
+        </p>
+
+        <p>
+            <b>Zip Code</b><br>
+            <%=editablefieldcreate("billing_zip_code", @user_attributes)%>
+        </p>
+
+        <p>
+    </div>
+</div>

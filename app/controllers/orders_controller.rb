@@ -172,6 +172,23 @@ class OrdersController < ApplicationController
       puts("-=-=-=-=-=-=-=-=-=-=-=-=-=->>>> #{@order.inspect}")
 
       
+       if params[:save_billing_addresses] == "1" then
+        @user.user_attribute.billing_address  = @order.bill_street_1 
+        @user.user_attribute.billing_city =  @order.bill_city
+        @user.user_attribute.billing_state = @order.bill_state 
+        @user.user_attribute.billing_zip_code =  @order.bill_zip
+        @user.save
+        @user.user_attribute.save
+      end
+      if params[:save_shipping_addresses] == "1" then
+        @user.user_attribute.shipping_address = @order.ship_street_1
+        @user.user_attribute.shipping_city = @order.ship_city 
+        @user.user_attribute.shipping_state  = @order.ship_state 
+        @user.user_attribute.shipping_zip_code = @order.ship_zip
+        @user.save
+        @user.user_attribute.save
+      end
+      
       
       if @cart.total_price > 0 then
         if @order.save

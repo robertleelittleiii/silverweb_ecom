@@ -58,7 +58,7 @@ module SilverwebEcom
           @order=order
     
           @order.order_items.each do |order_item|
-            attachments.inline["#{order_item.id}.png"] = File.read(Rails.root.to_s + "/public/" + order_item.product_detail.thumb.to_s)
+            attachments.inline["#{order_item.id}.png"] = (File.read(Rails.root.to_s + "/public/" + order_item.product_detail.thumb.to_s) rescue "blank.png")
           end
     
           @hostfull=host
@@ -131,79 +131,94 @@ module SilverwebEcom
         end
         
         version :product_list, if: :not_pdf? do
-          process resize_to_fill: [188,141    ]
-        end
+            process resize_to_fill: [188,141    ]
+          end
   
-        version :store_list do
-        process :resize_to_fill => [77,125]
-        end   
+          version :store_list do
+            process :resize_to_fill => [77,125]
+          end   
 
-        version :store_list_mm do
-          process :resize_to_fill => [115,180]
-        end
+          version :store_list_mm do
+            process :resize_to_fill => [115,180]
+          end
         
-        version :store_list_horizontal do
-          process :resize_to_limit => [237, 171]
-        end
+          version :store_list_horizontal do
+            process :resize_to_limit => [237, 171]
+          end
         
-        version :small_h do
-          process :resize_to_fill =>[100,65]
-        end       
+          version :small_h do
+            process :resize_to_fill =>[100,65]
+          end       
   
-        version :view do
-          process :resize_to_fill => [320, 441]
-          # process :outliner 
-        end
+          version :view do
+            process :resize_to_fill => [320, 441]
+            # process :outliner 
+          end
 
-        version :view_h do
-          process :resize_to_fill => [691,472]
-          #  process :outliner
-        end
+          version :view_h do
+            process :resize_to_fill => [691,472]
+            #  process :outliner
+          end
           
-        version :primary do
-          process  :resize_to_fill =>[250,410]
-          #  process :resize_to_limit => [270, 410]
-          #  process :cropper=>[250,410]
-          #  process :outliner
-        end
+          version :primary do
+            process  :resize_to_fill =>[250,410]
+            #  process :resize_to_limit => [270, 410]
+            #  process :cropper=>[250,410]
+            #  process :outliner
+          end
   
-        version :slider do
-          process :resize_to_fill => [300, 185]
-          #  process :outliner
+          version :slider do
+            process :resize_to_fill => [300, 185]
+            #  process :outliner
+          end
+          # 
+          #        version :artifact_slider do
+          #          process :resize_to_fill => [885, 600]
+          #        end
+          #  
+          #        version :artifact_custom_slider do
+          #          process :resize_to_limit => [600, 615]
+          #        end
+          #  
+          #        version :artifact_before do
+          #          process :resize_to_limit => [375, 255]
+          #        end
+          #  
+          #        version :artifact_list do
+          #          process :resize_to_fill => [180, 130]
+          #        end
+          #
+          #
         end
-        # 
-        #        version :artifact_slider do
-        #          process :resize_to_fill => [885, 600]
-        #        end
-        #  
-        #        version :artifact_custom_slider do
-        #          process :resize_to_limit => [600, 615]
-        #        end
-        #  
-        #        version :artifact_before do
-        #          process :resize_to_limit => [375, 255]
-        #        end
-        #  
-        #        version :artifact_list do
-        #          process :resize_to_fill => [180, 130]
-        #        end
-        #
-        #
-      end
        
-    end
+      end
     
-    #    initializer "silverweb_portfolio.update_menu_defs" do
-    #      MenusController::MENU_TYPES << ["Portfolio",6]
-    #      MenusController::ACTION_TYPES << ["Show Portfolio",20]
-    #    end
+      #    initializer "silverweb_portfolio.update_menu_defs" do
+      #      MenusController::MENU_TYPES << ["Portfolio",6]
+      #      MenusController::ACTION_TYPES << ["Show Portfolio",20]
+      #    end
     
-    config.to_prepare do
-      SiteController.send(:include, SilverwebEcom::ControllerExtensions::SiteControllerExtensions)
-      MenusController.send(:include, SilverwebEcom::ControllerExtensions::MenusControllerExtensions)
+      config.to_prepare do
+        SiteController.send(:include, SilverwebEcom::ControllerExtensions::SiteControllerExtensions)
+        MenusController.send(:include, SilverwebEcom::ControllerExtensions::MenusControllerExtensions)
 
-    end
+      end
     
 
+  
+      initializer "silverweb_ecom.add_user_pref_panes" do
+      
+       SilverwebCms::Config.add_user_pref_pane("user_addresses")
+        
+       SilverwebCms::Config.add_user_attribute_permitted_fields("shipping_address")
+       SilverwebCms::Config.add_user_attribute_permitted_fields("shipping_city")
+       SilverwebCms::Config.add_user_attribute_permitted_fields("shipping_state")
+       SilverwebCms::Config.add_user_attribute_permitted_fields("shipping_zip_code")
+       SilverwebCms::Config.add_user_attribute_permitted_fields("billing_address")
+       SilverwebCms::Config.add_user_attribute_permitted_fields("billing_city")
+       SilverwebCms::Config.add_user_attribute_permitted_fields("billing_state")
+       SilverwebCms::Config.add_user_attribute_permitted_fields("billing_zip_code")
+
+      end
+    end   
   end
-end

@@ -1,69 +1,73 @@
 
 <%= form_for :order, :url => { :controller=>:orders, :action => :enter_order } do |form| %>
-  <div class="shipping-address">
-    <div class="address-title">Shipping Address <div id="copy-to-billing"><%=link_to "Copy to Billing" ,{},{:href=>"javascript:void();",:onclick=>"return false;", :class=>"button-link"}%></div></div>
+    <div class="shipping-address">
+      <div class="address-title">Shipping Address 
+      <div class="save-check"  title="This will save this address to your address settings under your user account.">Save: <%= check_box_tag :save_shipping_addresses %>
+      </div>
+      <div id="copy-to-billing" class="windsor-button"><%=link_to "Copy to Billing" ,{},{:href=>"javascript:void();",:onclick=>"return false;", :class=>""}%></div>
+  </div>
 
-    <div>
+  <div>
       <b>Name:</b> </br>
-      <%= form.text_field :ship_first_name , :size => 33 %>  <%= form.text_field :ship_last_name, :size => 32 %>
-    </div>
+      <%= form.text_field :ship_first_name , :size => 33, :value => @user.user_attribute.first_name %>  <%= form.text_field :ship_last_name, :size => 32,:value => @user.user_attribute.last_name %>
+  </div>
 
 
-    <div>
-      <b>Street:</b></br>
-      <%= form.text_field :ship_street_1, :rows => 1, :size => 72 %></br>
+  <div>
+      <b>Streets:</b></br>
+      <%= form.text_field :ship_street_1, :rows => 1, :size => 72, :value => @user.user_attribute.shipping_address%></br>
       <%= form.text_field :ship_street_2, :rows => 1, :size => 72 %>
-    </div>
+  </div>
 
 
-    <div>
+  <div>
       <div> 
-        <b>City:</b></br>
-        <%= form.text_field :ship_city , :size => 37 %>
+          <b>City:</b></br>
+          <%= form.text_field :ship_city , :size => 37,  :value => @user.user_attribute.shipping_city%>
       </div>
       <div>
-        <b>State:</b></br> 
-        <%= form.select :ship_state, Order::CC_STATES, :prompt => "Select State"  %> 
+          <b>State:</b></br> 
+          <%= form.select :ship_state, Order::CC_STATES, :prompt => "Select State" , :selected => @user.user_attribute.shipping_state %> 
       </div>
       <div>
-        <b>Zip Code:</b></br> 
-        <%= form.text_field :ship_zip , :size => 6 %>
+          <b>Zip Code:</b></br> 
+          <%= form.text_field :ship_zip , :size => 6, :value => @user.user_attribute.shipping_zip_code %>
       </div>
-    </div>
+  </div>
 
   </div>    
 
 
   <div class="billing-address">
-    <div class="address-title">Billing Address</div>
+      <div class="address-title">Billing Address <div class="save-check" title="This will save this address to your address settings under your user account.">   Save: <%= check_box_tag :save_billing_addresses %> </div> </div>
 
-    <div>
-      <b>Name:</b> </br>
-      <%= form.text_field :bill_first_name , :size => 33 %>  <%= form.text_field :bill_last_name, :size => 32 %>
-    </div>
-
-
-    <div>
-      <b>Street:</b></br>
-      <%= form.text_field :bill_street_1, :rows => 1, :size=> 72 %></br>
-      <%= form.text_field :bill_street_2, :rows => 1, :size=> 72 %>
-    </div>
-
-
-  <div>
-      <div> 
-        <b>City:</b></br>
-        <%= form.text_field :bill_city , :size => 37 %>
-      </div>
       <div>
-        <b>State:</b></br> 
-        <%= form.select :bill_state, Order::CC_STATES, :prompt => "Select State"  %> 
+          <b>Name:</b> </br>
+          <%= form.text_field :bill_first_name , :size => 33, :value => @user.user_attribute.first_name %>  <%= form.text_field :bill_last_name, :size => 32, :value => @user.user_attribute.last_name %>
       </div>
+
+
       <div>
-        <b>Zip Code:</b></br> 
-        <%= form.text_field :bill_zip , :size => 6 %>
+          <b>Street:</b></br>
+          <%= form.text_field :bill_street_1, :rows => 1, :size=> 72 , :value => @user.user_attribute.billing_address%></br>
+          <%= form.text_field :bill_street_2, :rows => 1, :size=> 72 %>
       </div>
-    </div>
+
+
+      <div>
+          <div> 
+              <b>City:</b></br>
+              <%= form.text_field :bill_city , :size => 37, :value => @user.user_attribute.billing_city %>
+          </div>
+          <div>
+              <b>State:</b></br> 
+              <%= form.select :bill_state, Order::CC_STATES, :prompt => "Select State" ,:selected => @user.user_attribute.billing_state %> 
+          </div>
+          <div>
+              <b>Zip Code:</b></br> 
+              <%= form.text_field :bill_zip , :size => 6, :value => @user.user_attribute.billing_zip_code %>
+          </div>
+      </div>
   </div>
 
 
@@ -74,7 +78,7 @@
       <b><%= form.label :credit_card_type, "Pay with:" %></b> <br>
       <%= form.select :credit_card_type, Order::CC_TYPES, :prompt => "Select Credit Card Type"  %>
 
-    </div>
+  </div>
     <div>
       <b>Credit Card Number</b><br />
       <%= form.text_field :cc_number %>
