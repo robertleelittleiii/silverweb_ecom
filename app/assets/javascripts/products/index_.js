@@ -1,20 +1,18 @@
 var productTableAjax;
 var products_index_callDocumentReady_called = false;
-
 $(document).ready(function () {
     if (!products_index_callDocumentReady_called)
     {
         products_index_callDocumentReady_called = true;
         if ($("#as_window").text() == "true")
         {
-            //  alert("it is a window");
+//  alert("it is a window");
         } else
         {
             products_index_callDocumentReady();
         }
     }
 });
-
 //function bindClicktoProductTableRow(){
 //    $('#product-table .product-row').on("click",function(e){
 //        console.log(e.target);
@@ -33,23 +31,15 @@ function products_index_callDocumentReady() {
     requireCss("products.css");
     require("products/shared.js");
     require("imgpreview.full.jquery.js");
-
     $("body").css("cursor", "progress");
-
     createProductsTable();
-
     $("body").css("cursor", "default");
-
     bindNewProduct();
-
     bindDeleteProduct();
-
     bindPreferences();
-
     bindCoupons();
-    
     $("a.button-link").button();
-
+    bindDatatableSearchField("div.dataTables_filter input","products");
 }
 
 function bindDeleteProduct() {
@@ -72,10 +62,8 @@ function deleteProduct(product_id)
             {
                 setUpPurrNotifier("Notice", "Item Successfully Deleted.");
                 productTableAjax.draw();
-
             }
         });
-
     }
 }
 
@@ -111,7 +99,6 @@ function createProductsTable() {
         drawCallback: function (settings) {
             producteditClickBinding("tr.product-row");
             bindDeleteProduct();
-
             image_list = $('a.zoom-image');
             if (image_list.length > 0) {
                 image_list.imgPreview();
@@ -169,7 +156,6 @@ function createProductsTable() {
 //            }
 //        }
     });
-
     $("#product-table").css("width", "100%")
 
 
@@ -187,7 +173,6 @@ function bindNewProduct() {
     }).bind('ajax:error', function (evt, xhr, status, error) {
         setUpPurrNotifier("Error", "Product Creation Failed!'");
     });
-
 //    $('a#new-product').bind('ajax:beforeSend', function (evt, xhr, settings) {
 //        // alert("ajax:before");  
 //        console.log('ajax:before');
@@ -255,7 +240,6 @@ function bindPreferences() {
         });
         require("products/product_preferences.js");
         product_preferences_callDocumentReady();
-
         //update_rolls_callDocumentReady();
 
 
@@ -264,8 +248,6 @@ function bindPreferences() {
     }).bind('ajax:error', function (evt, xhr, status, error) {
         setUpPurrNotifier("Error", "Prefs could not be opened!'");
     });
-
-
 }
 
 function bindCoupons() {
@@ -285,7 +267,6 @@ function bindCoupons() {
         });
         require("coupons/index_.js");
         coupons_index_callDocumentReady();
-
         //update_rolls_callDocumentReady();
 
 
@@ -294,7 +275,60 @@ function bindCoupons() {
     }).bind('ajax:error', function (evt, xhr, status, error) {
         setUpPurrNotifier("Error", "Coupons could not be opened!'");
     });
-
-
 }
 
+
+function bindDatatableSearchField(search_field_name, model_name) {
+    $(search_field_name).attr("title","Use ':' to search specific fields. Seperate search terms by ','.")
+    
+    $(search_field_name).autocomplete({
+        //     source: "/contacts/contact_search.json",
+        source: function (request, response) {
+            var field_value = request.term;
+            if ((field_value == ":") | (field_value.slice(-2) == ",:") | (field_value.slice(-3) == ", :")) {
+                console.log("activate popup.");
+               // $("div.dataTables_filter input").css("width", "400px");
+                    $(search_field_name).autoGrowInput({ minWidth: 135, maxWidth: 400, comfortZone: 50 });
+                $.ajax({
+                    url: "/"+ model_name + "/search_fields.json",
+                    dataType: "json",
+                    data: {
+                        q: request.term,
+                    },
+                    success: function (data) {
+
+                        // Handle 'no match' indicated by [ "" ] response
+                        response(data.length === 1 && data[ 0 ].length === 0 ? [] : data);
+                    }
+
+                });
+            }
+        }
+        ,
+        minLength: 0,
+        response: function (event, ui) {
+        }
+        , select: function (event, ui) {
+   
+
+            var current_value = $(this).val();
+            var field_value = "";
+
+            if (current_value == ":") // first search term.
+            {
+                field_value = ui.item.value + ":";
+
+            } else
+            {
+                field_value = (current_value.slice(-2) == ",:" ? current_value.slice(0, -2) : (current_value.slice(-3) == ", :" ? current_value.slice(0, -3) : current_value));
+                field_value = field_value + ", " + ui.item.value + ":";
+            }
+
+            $(this).val(field_value);
+            $(this).caretToEnd().autoGrowInput();
+            return false;
+        }
+    }
+    );
+
+}

@@ -637,7 +637,7 @@ class ProductsController < ApplicationController
   def hide_inactive_inventory 
     puts("**** Begin Clean of DB: clear active products")
     
-     bulk_clear_active_product_flag_sql = ["
+    bulk_clear_active_product_flag_sql = ["
       Update 
          products p
       SET 
@@ -672,7 +672,7 @@ class ProductsController < ApplicationController
          pd.units_in_stock <= 0
       "]
   
-   begin
+    begin
       sql = ActiveRecord::Base.send(:sanitize_sql_array, bulk_clear_active_product_flag_sql)
       result = ActiveRecord::Base.connection.execute(sql)
     rescue
@@ -701,6 +701,20 @@ class ProductsController < ApplicationController
     end  
     puts("**** END Clean of DB")
 
+  end
+  
+  
+  def search_fields
+    @return_fields =
+      [{label: "description",value: "product_description"},
+      {:label=>"name", :value=>"product_name"},
+      {:label=>"style", :value=>"supplier_product_id"}]
+    
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @return_fields}
+    end
   end
   
   private
@@ -736,7 +750,23 @@ class ProductsController < ApplicationController
 
   def conditions
     conditions = []
-    conditions << "(products.product_name LIKE '%#{params[:search][:value]}%' OR products.product_description LIKE '%#{params[:search][:value]}%' OR products.supplier_product_id LIKE '%#{params[:search][:value]}%'OR products.sheet_name LIKE '%#{params[:search][:value]}%')" if(params[:search][:value])
+    
+    params[:search][:value].split(",").each  do |raw_search_term|
+      search_term  = raw_search_term.strip
+      search_term_field = search_term.split(":")
+      if search_term_field.length > 1 then
+        if Product.attribute_names.include?(search_term_field[0])then
+          conditions << "products.#{search_term_field[0]} like '#{search_term_field[1]}%'"
+        else
+        end
+        
+      else
+        conditions << "(products.product_name LIKE '%#{search_term}%' 
+OR products.product_description LIKE '%#{search_term}%' 
+OR products.supplier_product_id LIKE '%#{search_term}%'
+OR products.sheet_name LIKE '%#{search_term}%')" if(search_term)
+      end
+    end
     return conditions.join(" AND ")
   end
   

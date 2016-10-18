@@ -97,6 +97,7 @@ Rails.application.routes.draw do
       get "activate_all_products"
       get "clear_product_inventory_and_make_all_inactive"
       get "hide_inactive_inventory"
+      get "search_fields"
     end
   end
   
