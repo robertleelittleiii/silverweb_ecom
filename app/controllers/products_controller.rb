@@ -755,16 +755,27 @@ class ProductsController < ApplicationController
       search_term  = raw_search_term.strip
       search_term_field = search_term.split(":")
       if search_term_field.length > 1 then
-        if Product.attribute_names.include?(search_term_field[0])then
-          conditions << "products.#{search_term_field[0]} like '#{search_term_field[1]}%'"
+        search_joins = search_term_field[0].split(".")
+        if search_joins.length > 1 then
+          if search_term_field[1]== "!" then
+            conditions << "#{search_term_field[0]} is null"
+          else
+            conditions << "#{search_term_field[0]} like '#{search_term_field[1]}%'"
+          end
+        elsif Product.attribute_names.include?(search_term_field[0])then
+          if search_term_field[1]== "!" then
+            conditions << "#{search_term_field[0]} is null"
+          else
+            conditions << "products.#{search_term_field[0]} like '#{search_term_field[1]}%'"
+          end
         else
+          # nothing to do here.
         end
-        
       else
-        conditions << "(products.product_name LIKE '%#{search_term}%' 
-OR products.product_description LIKE '%#{search_term}%' 
-OR products.supplier_product_id LIKE '%#{search_term}%'
-OR products.sheet_name LIKE '%#{search_term}%')" if(search_term)
+        conditions << "(products.product_name LIKE '%#{search_term}%' OR
+              products.product_description LIKE '%#{search_term}%' OR
+              products.supplier_product_id LIKE '%#{search_term}%' OR
+              products.sheet_name LIKE '%#{search_term}%')" if(search_term)
       end
     end
     return conditions.join(" AND ")
