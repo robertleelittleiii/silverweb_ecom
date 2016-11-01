@@ -77,8 +77,9 @@
                     </thead>
                     <tbody>
                         <% line_number_counter = 0 %>
+                        <% product_count = 0 %>
                         <%  @order.order_items.each do |order_item| %>
-
+                          <% product_count = product_count + 1 %>
                           <% line_number_counter = line_number_counter + 1 %>
 
                           <tr class="<%= cycle('odd gradeA', 'even gradeA')%> shipping-item-row"  style = "cursor:pointer">
@@ -88,7 +89,7 @@
                               <td align="center"  width="97"><%=order_item.quantity%></td>
                               <td align="center"  width="124"><%=number_to_currency(order_item.price)%></td>
                           </tr>
-                          <% if (((line_number_counter) % 4 == 0) and @page_number.blank?) or ((line_number_counter) % 6 == 0) then %>
+                          <% if (((line_number_counter) % 6 == 0) and @page_number.blank?) or ((line_number_counter) % 6 == 0) then %>
                             <% line_number_counter = 0 %>
 
                         </tbody>
@@ -115,21 +116,24 @@
                     <table border="0" width="100%">
                         <tbody>
                             <tr>
-                                <td align="right"><b>Customer Name:</b></td><td><%=@order.full_billing_name.html_safe %></td>
+                                <td height="40" align="right"><b>Customer Name:</b></td><td height="40"><%=@order.full_billing_name.html_safe %></td>
                             </tr>
                         </tbody>
                     </table>
 
                     <table cellpadding="2" cellspacing="0" border="1" width="100%">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Product Description</th>
-                                <th>UPC</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
+                        <% product_count = 0 %>
+                        <% if @order.order_items.last !=  order_item then%>
+                          <thead>
+                              <tr>
+                                  <th></th>
+                                  <th>Product Description</th>
+                                  <th>UPC</th>
+                                  <th>Quantity</th>
+                                  <th>Price</th>
+                              </tr>
+                          </thead>
+                        <% end %>
 
                         <tbody>
 
@@ -139,6 +143,7 @@
 
                     </tbody>
                     <tfoot>
+                        <% if product_count != 0 then %>
                         <tr>
                             <th></th>
                             <th>Product Description</th>
@@ -146,6 +151,7 @@
                             <th>Quantity</th>
                             <th>Price</th>
                         </tr>
+                        <% end %>
                         <tr>
                             <th colspan="4" align="right">
                                 Sub Total:
