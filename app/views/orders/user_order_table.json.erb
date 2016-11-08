@@ -7,7 +7,7 @@
    "<%= order.id%><div id='order-id' class='hidden-item'><%= order.id%></div> ",
    "<%= order.created_at.strftime('%m/%d/%Y') rescue "n/a" %>",
    "<%= order.shipped_date.strftime('%m/%d/%Y') rescue "n/a" %>",
-   "<%= (order.transactions[0].amount.to_f/100) rescue "n/a" %>",   
+   "<%= number_to_currency(order.transactions[0].amount.to_f/100) rescue "n/a" %>",   
    "<%= (order.transactions[0].success ? "<span class='status-code' style='color:green;'>Success</span>" : "<span class='status-code' style='color:red;font-size:9pt'>Fail</span> <div class='auth-error-code'> Auth: #{order.transactions[0].authorization}</br> Msg: #{order.transactions[0].params.to_yaml.split("\n").join("</br>")}</div>").html_safe rescue "n/a" %>",  
    "<div class='action-block'> <div class='action-item pdf-order-item' title='Generate PDF'><%=link_to(image_tag('interface/pdf.png',{:width=>"20px", :border=>'0'}),{:action=>:invoice_slip, :format=>"pdf", :id=>order.id},:target=>"new window").gsub("\"", "'").html_safe() %></div> <div class='action-item view-order-item' title='View Invoice'><%=image_tag('interface/view.png',{:width=>"20px", :border=>'0'}).gsub("\"", "'").html_safe() %></div></div>"
   ] <% if @objects.last != order then %> , <% end %>
