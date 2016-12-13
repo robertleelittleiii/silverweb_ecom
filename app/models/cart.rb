@@ -308,7 +308,7 @@ class Cart
         if ((item_with_largest_price.product.no_coupon==true) and (@coupon.coupon_type !=5)) then
           return_value =  "<div style='color:red;'>COUPON CODE DOES NOT APPLY TO ITEMS IN CART !!</div>".html_safe
         else
-          if total_price > @coupon.min_amount then
+          if total_price.to_i > @coupon.min_amount.to_i then
             largest_valued_item_name = (!!@coupon.only_most_expensive_item ? " on " + item_with_largest_price.product.product_name : "") rescue "n/a"
             return_value =  (@coupon.description + largest_valued_item_name).truncate(50)
           else
