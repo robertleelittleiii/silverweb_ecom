@@ -1,70 +1,70 @@
 
-       <p>
-        <b>Code to use in store:</b><br>
-        <%=editablefieldcreate("coupon_code", @coupon)%>
-      </p>
-
-      
-      <p>
-        <b>Full Description to show in cart:</b><br>
-        <%=editablefieldcreate("description", @coupon)%>
-      </p>
+<p>
+    <b>Code to use in store:</b><br>
+    <%=editablefieldcreate("coupon_code", @coupon)%>
+</p>
 
 
-
-      <p>
-        <b>Start Date:</b><br>
-        <%=editabledatefieldcreate("start_date", @coupon,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
-    </p>
+<p>
+    <b>Full Description to show in cart:</b><br>
+    <%=editablefieldcreate("description", @coupon)%>
+</p>
 
 
 
-      <p>
-        <b>End Date:</b><br>
-         <%=editabledatefieldcreate("end_date", @coupon,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
-     </p>
+<p>
+    <b>Start Date:</b><br>
+    <%=editabledatefieldcreate("start_date", @coupon,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
+</p>
 
 
 
-      <p>
-        <b>Value</b><br>
-        <%=editablefieldcreate("value", @coupon,"$0.00",{:format_type=>"currency"})%>
-      </p>
-
- <p>
-        <b>min amount</b><br>
-        <%=editablefieldcreate("min_amount", @coupon,"$0.00",{:format_type=>"currency"})%>
-      </p>
+<p>
+    <b>End Date:</b><br>
+    <%=editabledatefieldcreate("end_date", @coupon,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
+</p>
 
 
-      <p>
-        <b>Type</b><br>
-          <%=ajax_select("coupon_type","coupon",@coupon, Coupon::COUPON_TYPES)%><br><br>
-        <%#=editablefieldcreate("coupon_type", @coupon)%>
-      </p>
 
-      <p>
-        <b>One time Only:</b><br>
-          <%=editablecheckboxedit("one_time_only", @coupon, "Only use once")%> 
-      
-        <%#=editablefieldcreate("coupon_type", @coupon)%>
-      </p>
-      </br>
- <p>
-        <b>Only applies to most expensive item in cart:</b><br>
-          <%=editablecheckboxedit("only_most_expensive_item", @coupon, "Only Most Expensive Item")%> 
+<p>
+    <b>Value</b><br>
+    <%=editablefieldcreate("value", @coupon,"0.00")%>
+</p>
 
-        <%#=editablefieldcreate("coupon_type", @coupon)%>
-      </p>
-      </br>
-      <p>
-          <p>
-        <b>Special Calcuation:(from developer)</b><br>
-        <%=editablefieldcreate("coupon_calc", @coupon)%>
-      </p>
-        </br>
-        </br>
-        </br>
-        
-      </p>
-      
+<p>
+    <b>min amount</b><br>
+    <%=editablefieldcreate("min_amount", @coupon,"0.00")%>
+</p>
+
+
+<p>
+    <b>Type</b><br>
+    <%=ajax_select("coupon_type","coupon",@coupon, Coupon::COUPON_TYPES)%><br><br>
+<%#=editablefieldcreate("coupon_type", @coupon)%>
+</p>
+
+<p>
+    <b>One time Only:</b><br>
+    <%=editablecheckboxedit("one_time_only", @coupon, "Only use once")%> 
+
+<%#=editablefieldcreate("coupon_type", @coupon)%>
+</p>
+</br>
+<p>
+    <b>Only applies to most expensive item in cart:</b><br>
+    <%=editablecheckboxedit("only_most_expensive_item", @coupon, "Only Most Expensive Item")%> 
+
+<%#=editablefieldcreate("coupon_type", @coupon)%>
+</p>
+</br>
+<p>
+<p>
+    <b>Special Calcuation:(from developer)</b><br>
+    <%=editablefieldcreate("coupon_calc", @coupon)%>
+</p>
+</br>
+</br>
+</br>
+
+</p>
+

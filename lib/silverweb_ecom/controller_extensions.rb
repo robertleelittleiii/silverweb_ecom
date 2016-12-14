@@ -513,7 +513,13 @@ module SilverwebEcom
           @cart.save
     
           puts(@cart.inspect)
-          render :text=>params[:cart][:coupon_code]
+          
+          respond_to do |format|
+            format.json {render :json=>{:message=>""}}
+            format.html{ render :nothing=>true}
+          end
+          # render :text=>params[:cart][:coupon_code]
+          
         end
   
         def load_product_style_slider

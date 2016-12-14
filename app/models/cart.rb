@@ -33,7 +33,7 @@ class Cart
       end 
  
     rescue
-      
+        
     end
     puts("************************ item_with_largest_price found item  ***********************")
     puts(@found_item.inspect)
@@ -409,13 +409,13 @@ class Cart
 
     case @coupon.coupon_type
     when 1 # $$$ amount off
-      if total_price > @coupon.min_amount then
+      if total_price > @coupon.min_amount.to_i then
         return @coupon.value
       else
         return 0
       end
     when 2 # %%% amount off 
-      if total_price > @coupon.min_amount then
+      if total_price > @coupon.min_amount.to_i then
         if !!@coupon.only_most_expensive_item then
           puts(item_with_largest_price.inspect)
           return (item_with_largest_price.product.no_coupon==true ? 0 : item_with_largest_price.product.msrp * (@coupon.value/100))

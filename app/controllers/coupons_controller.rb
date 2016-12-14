@@ -101,6 +101,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.new
     @coupon.coupon_code = "New Coupon"
     @coupon.description = "New Description here..."
+    @coupon.min_amount = 0
     @coupon.save
     
     redirect_to(controller: :coupons, action: :edit, id: @coupon)
