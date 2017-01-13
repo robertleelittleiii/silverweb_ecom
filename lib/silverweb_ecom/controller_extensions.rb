@@ -54,6 +54,9 @@ module SilverwebEcom
           session[:mainnav_status] = false
           session[:last_catetory] = request.env['REQUEST_URI']
           @page_name=Menu.find(session[:parent_menu_id]).name rescue ""
+          @page_name = params[:department_id].to_s
+          puts("---------@page_name=> '#{@page_name}'")
+
           @page_info = Page.where(:title => params[:page_name]).first || ""
           puts("---------the page=> #{@page_info.inspect}")
           @products_per_page = Settings.products_per_page.to_i || 8
