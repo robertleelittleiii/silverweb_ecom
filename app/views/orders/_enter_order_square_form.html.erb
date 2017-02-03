@@ -1,0 +1,242 @@
+<script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
+<script>
+
+  var applicationId = '<%=Settings.gateway_application_id rescue ""  %>'; // <-- Add your application's ID here
+
+  // You can delete this 'if' statement. It's here to notify you that you need
+  // to provide your application ID.
+  if (applicationId == '') {
+    alert('You need to provide a value for the applicationId variable.');
+  }
+
+  // Initializes the payment form. See the documentation for descriptions of
+  // each of these parameters.
+  var paymentForm = new SqPaymentForm({
+    applicationId: applicationId,
+    inputClass: 'sq-input',
+    inputStyles: [
+      {
+        fontSize: '15px'
+      }
+    ],
+    cardNumber: {
+      elementId: 'sq-card-number',
+      placeholder: '•••• •••• •••• ••••'
+    },
+    cvv: {
+      elementId: 'sq-cvv',
+      placeholder: 'CVV'
+    },
+    expirationDate: {
+      elementId: 'sq-expiration-date',
+      placeholder: 'MM/YY'
+    },
+    postalCode: {
+      elementId: 'sq-postal-code'
+    },
+    callbacks: {
+
+      // Called when the SqPaymentForm completes a request to generate a card
+      // nonce, even if the request failed because of an error.
+      cardNonceResponseReceived: function(errors, nonce, cardData) {
+        if (errors) {
+          console.log("Encountered errors:");
+
+          // This logs all errors encountered during nonce generation to the
+          // Javascript console.
+          errors.forEach(function(error) {
+             setUpPurrNotifier("Card Error", error.message)
+             console.log('  ' + error.message);
+          });
+
+        // No errors occurred. Extract the card nonce.
+        } else {
+
+          // Delete this line and uncomment the lines below when you're ready
+          // to start submitting nonces to your server.
+          // alert('Nonce received: ' + nonce);
+
+
+          /*
+            These lines assign the generated card nonce to a hidden input
+            field, then submit that field to your server.
+            Uncomment them when you're ready to test out submitting nonces.
+
+            You'll also need to set the action attribute of the form element
+            at the bottom of this sample, to correspond to the URL you want to
+            submit the nonce to.
+          */
+          document.getElementById('card-nonce').value = nonce;
+          document.getElementById('nonce-form').submit();
+
+        }
+      },
+
+      unsupportedBrowserDetected: function() {
+        // Fill in this callback to alert buyers when their browser is not supported.
+      },
+
+      // Fill in these cases to respond to various events that can occur while a
+      // buyer is using the payment form.
+      inputEventReceived: function(inputEvent) {
+        switch (inputEvent.eventType) {
+          case 'focusClassAdded':
+            // Handle as desired
+            break;
+          case 'focusClassRemoved':
+            // Handle as desired
+            break;
+          case 'errorClassAdded':
+            // Handle as desired
+            break;
+          case 'errorClassRemoved':
+            // Handle as desired
+            break;
+          case 'cardBrandChanged':
+            // Handle as desired
+            break;
+          case 'postalCodeChanged':
+            // Handle as desired
+            break;
+        }
+      },
+
+      paymentFormLoaded: function() {
+        // Fill in this callback to perform actions after the payment form is
+        // done loading (such as setting the postal code field programmatically).
+        // paymentForm.setPostalCode('94103');
+      }
+    }
+  });
+
+  // This function is called when a buyer clicks the Submit button on the webpage
+  // to charge their card.
+  function requestCardNonce(event) {
+
+    // This prevents the Submit button from submitting its associated form.
+    // Instead, clicking the Submit button should tell the SqPaymentForm to generate
+    // a card nonce, which the next line does.
+    event.preventDefault();
+
+    paymentForm.requestCardNonce();
+  }
+  </script>
+  
+<%= form_for :order,  :url => { :controller=>:orders, :action => :enter_order }, :html => {:id => "nonce-form"} do |form| %>
+    <input type="hidden" id="card-nonce" name="nonce">
+    <%#=form.hidden_field :nonce, :id=>"card_nonce" %>  
+
+     
+     <div class="shipping-address">
+      <div class="address-title">Shipping Address 
+      <div class="save-check"  title="This will save this address to your address settings under your user account.">Save: <%= check_box_tag :save_shipping_addresses %>
+      </div>
+      <div id="copy-to-billing" class="windsor-button"><%=link_to "Copy to Billing" ,{},{:href=>"javascript:void();",:onclick=>"return false;", :class=>""}%></div>
+  </div>
+
+  <div>
+      <b>Name:</b> </br>
+      <%= form.text_field :ship_first_name , :size => 33, :value => @user.user_attribute.first_name %>  <%= form.text_field :ship_last_name, :size => 32,:value => @user.user_attribute.last_name %>
+  </div>
+
+
+  <div>
+      <b>Streets:</b></br>
+      <%= form.text_field :ship_street_1, :rows => 1, :size => 72, :value => @user.user_attribute.shipping_address%></br>
+      <%= form.text_field :ship_street_2, :rows => 1, :size => 72 %>
+  </div>
+
+
+  <div>
+      <div> 
+          <b>City:</b></br>
+          <%= form.text_field :ship_city , :size => 37,  :value => @user.user_attribute.shipping_city%>
+      </div>
+      <div>
+          <b>State:</b></br> 
+          <%= form.select :ship_state, Order::CC_STATES, :prompt => "Select State" , :selected => @user.user_attribute.shipping_state %> 
+      </div>
+      <div>
+          <b>Zip Code:</b></br> 
+          <%= form.text_field :ship_zip , :size => 6, :value => @user.user_attribute.shipping_zip_code %>
+      </div>
+  </div>
+
+  </div>    
+
+
+  <div class="billing-address">
+      <div class="address-title">Billing Address <div class="save-check" title="This will save this address to your address settings under your user account.">   Save: <%= check_box_tag :save_billing_addresses %> </div> </div>
+
+      <div>
+          <b>Name:</b> </br>
+          <%= form.text_field :bill_first_name , :size => 33, :value => @user.user_attribute.first_name %>  <%= form.text_field :bill_last_name, :size => 32, :value => @user.user_attribute.last_name %>
+      </div>
+
+
+      <div>
+          <b>Street:</b></br>
+          <%= form.text_field :bill_street_1, :rows => 1, :size=> 72 , :value => @user.user_attribute.billing_address%></br>
+          <%= form.text_field :bill_street_2, :rows => 1, :size=> 72 %>
+      </div>
+
+
+      <div>
+          <div> 
+              <b>City:</b></br>
+              <%= form.text_field :bill_city , :size => 37, :value => @user.user_attribute.billing_city %>
+          </div>
+          <div>
+              <b>State:</b></br> 
+              <%= form.select :bill_state, Order::CC_STATES, :prompt => "Select State" ,:selected => @user.user_attribute.billing_state %> 
+          </div>
+          <div>
+              <b>Zip Code:</b></br> 
+              <%= form.text_field :bill_zip , :size => 6, :value => @user.user_attribute.billing_zip_code %>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="credit-card-info">
+    <div class="credit-card-title">Credit Card Info</div>
+
+  
+    <div>
+      <b>Credit Card Number</b><br />
+  <div id="sq-card-number"></div>
+    </div>
+    <div>
+      <b>Card Verification Value (CVV):</b> </br>
+      <%= image_tag "interface/cvv2.gif" %>  <%= image_tag "interface/cvv2_amex.gif" %>   <div id="sq-cvv"></div>
+
+    </div>
+    <div>
+      <b>Expiration Date:</b><br />
+  <div id="sq-expiration-date"></div>
+    </div>
+  
+  <div>
+      <b> Postal Code:</b><br />
+        <div id="sq-postal-code"></div>
+  </div>
+  </div>
+
+
+  <div class="nav-cart-bottom"> 
+    <div class="nav-cart-left">
+      <%=link_to "<< Back to Cart" ,request.env['HTTP_REFERER'], {:class=>"navigation-link"} %>
+      <%=link_to "Empty Cart" ,{:action => :empty_cart, :controller=>:site}, {:class=>"navigation-link"} %>
+    </div>
+
+    <div class="nav-cart-right">
+      <%= submit_tag "Place Order", {:onclick=>"requestCardNonce(event)", :class => "navigation-link"} %>
+
+  <%#=link_to "Continue to Confirmation >>" ,{:action => :enter_order, :controller=>:orders}, {:class=>"navigation-link"} %>
+    </div>
+
+  </div>
+
+
+  </div>
+<% end %>

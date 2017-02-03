@@ -26,11 +26,14 @@
 
     <div class="myaccountblock">
 
-
-        <% if !@order.express_token.blank? %>
-          <%= render 'enter_order_express_form' %>
+        <% if Settings.enable_square == "true" then%>
+          <%= render 'enter_order_square_form' %>
         <% else %>
-          <%= render 'enter_order_form' %>
+          <% if !@order.express_token.blank? %>
+            <%= render 'enter_order_express_form' %>
+          <% else %>
+            <%= render 'enter_order_form' %>
+          <% end %>
         <% end %>
 
     </div>

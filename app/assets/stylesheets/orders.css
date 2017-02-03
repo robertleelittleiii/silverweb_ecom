@@ -322,3 +322,19 @@ div.save-check {
     font-size: 14px;
     
 }
+
+
+/* square specific */
+
+iframe.sq-input {
+    border: 1px solid darkgray;
+    border-style: inset;
+}
+
+iframe#sq-expiration-date {
+    width: 60px;
+}
+
+iframe#sq-cvv {
+    width: 40px;
+}

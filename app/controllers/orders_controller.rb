@@ -123,9 +123,122 @@ class OrdersController < ApplicationController
     redirect_to(controller: :orders, action: :edit, id: @order)
   end
 
-  
+    def empty_cart_no_redirect
+          find_cart
+          @cart.delete
+          session[:cart] = nil
+          find_cart
+        end
+        
+    def find_cart
+          #  @cart = (session[:cart] ||= Cart.new)
+          #user =  User.find_by_id(session[:user_id])
+
+          session[:create]=true
+        
+          session[:session_id] = request.session_options[:id]
+          
+          begin
+            @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id]) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
+          rescue
+            cart = Cart.new
+          end
+          
+          puts("@cart in find_cart: #{@cart}")
+          
+          if not params[:coupon_code].blank? then
+            puts("Coupon Code Found")
+            @cart.coupon_code = params[:coupon_code]
+            @cart.save
+          end
+    
+          #   @cart = Cart.get_cart(session[:cart])
+          #    session[:cart] = @cart.id
+        end
+
+  def enter_order_square
+    
+     $hostfull = request.protocol + request.host_with_port
+
+    @user = User.find_by_id(session[:user_id])
+    @page_title = "order success"
+    @page = Page.find_by_title (@page_title).first
+
+    cart_is_empty = false;
+    purchase_success = false;
+    error_occured = false;
+    
+    redirect_controller = :site
+    redirect_action = :index
+    
+     if params[:order].blank? then
+      puts("****************** New order from cart ************")
+      @order=Order.new(:express_token=>params[:token])
+      error_occured=true
+    else
+      if @cart.total_price > 0 then
+        if @order.save
+
+          if @order.purchase(@cart)
+            @order.reduce_inventory($hostfull)
+            
+            if  not Settings.order_notification then
+                UserNotifier.order_notification(@order, @user, $hostfull).deliver
+            else
+              UserNotifier.order_notification_as_invoice(@order, @user, $hostfull).deliver
+            end
+            
+            #  if there is a coupon, make a record that it was used.
+            if not @cart.coupon_code.blank? then
+              @coupon = Coupon.where(coupon_code: @cart.coupon_code).first
+              @coupon_used = CouponUsage.create(user_id: @user.id, coupon_id: @coupon.id)
+              @coupon.save
+            end
+
+            empty_cart_no_redirect
+            
+            redirect_controller = :orders
+            redirect_action = :order_success
+            puts("****************** Purchase Success  ************")
+    
+            purchase_success = true              # return
+            # format.html {render :action => "order_success"}
+          else
+            SystemNotifier.purchase_fail_notification(@order, @user, $hostfull).deliver
+            error_occured=true
+          end
+          #  format.html { redirect_to @order, :notice=>"Order was successfully created." }
+          #  format.json { render :json=>@order, :status=>:created, :location=>@order }
+        else
+          error_occured = true
+        end
+      else
+        puts("****************** Cart is empty (redirect to /site/index) ************")
+       
+        redirect_controller = :site
+        redirect_action = :index
+      
+        # cart_is_empty = true
+      end
+     end
+     
+    respond_to do |format|
+      if error_occured then
+        puts("****************** ERROR OCCURED ************")
+        puts("#{@order.errors.inspect}")
+        format.html { render action: "enter_order_square", params: params[:order] }
+        format.json { render json: @order.errors, status: :unprocessable_entry }
+      else
+
+        puts("****************** Redirct occured   ************")
+        format.html { redirect_to(controller: redirect_controller, action: redirect_action, id: @order) && return}
+      end
+   
+    end
+  end
   
   def enter_order
+    
     $hostfull = request.protocol + request.host_with_port
 
     @user = User.find_by_id(session[:user_id])
@@ -138,7 +251,9 @@ class OrdersController < ApplicationController
     
     redirect_controller = :site
     redirect_action = :index
-        
+    puts("params.inspect : #{params.inspect}")
+    puts("params[:nonce] : #{params[:nonce]}")
+    
     if params[:order].blank? then
       puts("****************** New order from cart ************")
       @order=Order.new(:express_token=>params[:token])
@@ -169,6 +284,8 @@ class OrdersController < ApplicationController
       @order.cc_expires = Date.new(params[:order]["cc_expires(1i)"].to_i, params[:order]["cc_expires(2i)"].to_i, params[:order]["cc_expires(2i)"].to_i) rescue nil
       @order.cc_number = params[:order][:cc_number] || ""
       @order.cc_verification = params[:order][:cc_verification] || ""
+      @order.nonce = params[:nonce] || ""
+      
       puts("-=-=-=-=-=-=-=-=-=-=-=-=-=->>>> #{@order.inspect}")
 
       
@@ -444,6 +561,6 @@ class OrdersController < ApplicationController
   end
   
   def order_params
-    params[:order].permit("user_id", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale","cc_number", "cc_verification", "cc_expires(1i)", "cc_expires(2i)", "cc_expires(3i)", "express_token","bill_phone", "ship_phone")
+    params[:order].permit("user_id", "nonce", "credit_card_type", "credit_card_expires", "ip_address", "shipped", "shipped_date", "ship_first_name", "ship_last_name", "ship_street_1", "ship_street_2", "ship_city", "ship_state", "ship_zip", "bill_first_name", "bill_last_name", "bill_street_1", "bill_street_2", "bill_city", "bill_state", "bill_zip", "created_at", "updated_at", "shipping_cost", "sales_tax", "shipping_method", "coupon_description", "coupon_value", "store_wide_sale","cc_number", "cc_verification", "cc_expires(1i)", "cc_expires(2i)", "cc_expires(3i)", "express_token","bill_phone", "ship_phone")
   end
 end

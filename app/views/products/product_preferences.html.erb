@@ -55,9 +55,9 @@
                     <b> Default List Template: (leave blank for default) </b></br>
                     <%=ajax_select("product_list_template_name","settings",@settings, @template_list_types, "Choose Template...")%><br><br>
                 </p>
-                
+
                 <p>
-                    
+
                     <b> Default search Template: (leave blank for default) </b></br>
                     <%=ajax_select("search_template_name","settings",@settings, @search_template_types, "Choose Template...")%><br><br>
 
@@ -162,6 +162,34 @@
                 </p>
             </div>
         </div>
+
+        <div class="cms-section">
+            <div class="cms-heading">Payment Gateway [Square]</div>
+            <div class="cms-content">
+                <p> 
+                    </br>
+                </p>
+                <p>
+                    <b>Square Activation: (will disable normal payment gateway!)</b><br>
+                    <%=editablecheckboxedit("enable_square", @settings, "Enable Square")%> 
+                </p>
+                <p>
+                    <b>Application Name:</b><br>
+                    <%=editablefieldcreate("gateway_application_name", @settings)%>
+                </p>
+                <p>
+                    <b>Application ID:</b><br>
+                    <%=editablefieldcreate("gateway_application_id", @settings)%>
+                </p>
+                <p>
+                    <b>Access Token:</b><br>
+                    <%=editablefieldcreate("gateway_access_token", @settings)%>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+
     </div>
     <div id="product-images-tab">
         <div class="cms-content">
@@ -193,39 +221,39 @@
             <p><b> Click this link to reprocess images:</b></br>
                 <%=link_to 'Reproces product images', {:controller => 'products', :action => 'reprocess_product_images'}, :id=>"process-image-button", :remote=>true%>
             </p>
-            
-            <hr>
-      <p>
-        <b> Click this link to clean database: (this will remove any bad product details with an inventory key like "%.0")</b></br>
-        <%=link_to 'Clean Database', {:controller => 'products', :action => 'clean_product_details'}, :id=>"process-image-button", :remote=>true%>
-      </p>
-      </br>  
-      <hr>
 
-      <p>
-        <b> Click this link to clear inventory and deactivate all products in system.</b></br>
-        <%=link_to 'Clear Products', {:controller => 'products', :action => 'clear_product_inventory_and_make_all_inactive'}, :id=>"process-image-button", :remote=>true%>
-      </p>
-      </br>  
-      <hr>
-      <p>
-        <b> Click this link to Activate Products with Inventory:</b></br>
-        <%=link_to 'Activate Products', {:controller => 'products', :action => 'activate_all_products'}, :id=>"process-image-button", :remote=>true%>
-      </p>
-      </br>  
-      <hr>
-      <p>
-        <b> Click this link to Deactivate Products with out any inventory:</b></br>
-        <%=link_to 'Hide Inactive Products', {:controller => 'products', :action => 'hide_inactive_inventory'}, :id=>"process-image-button", :remote=>true%>
-      </p>
-      </br> 
+            <hr>
+            <p>
+                <b> Click this link to clean database: (this will remove any bad product details with an inventory key like "%.0")</b></br>
+                <%=link_to 'Clean Database', {:controller => 'products', :action => 'clean_product_details'}, :id=>"process-image-button", :remote=>true%>
+            </p>
+            </br>  
+            <hr>
+
+            <p>
+                <b> Click this link to clear inventory and deactivate all products in system.</b></br>
+                <%=link_to 'Clear Products', {:controller => 'products', :action => 'clear_product_inventory_and_make_all_inactive'}, :id=>"process-image-button", :remote=>true%>
+            </p>
+            </br>  
+            <hr>
+            <p>
+                <b> Click this link to Activate Products with Inventory:</b></br>
+                <%=link_to 'Activate Products', {:controller => 'products', :action => 'activate_all_products'}, :id=>"process-image-button", :remote=>true%>
+            </p>
+            </br>  
+            <hr>
+            <p>
+                <b> Click this link to Deactivate Products with out any inventory:</b></br>
+                <%=link_to 'Hide Inactive Products', {:controller => 'products', :action => 'hide_inactive_inventory'}, :id=>"process-image-button", :remote=>true%>
+            </p>
+            </br> 
         </div>
     </div>
 
     <% @preference_panes.each do |pref_pane| %>
 
       <div id="product-<%=pref_pane%>-tab">
-          <%#=render(:partial=>"_custom_prefs;windsor_utilities.html")  %>
+  <%#=render(:partial=>"_custom_prefs;windsor_utilities.html")  %>
           <%=render(:partial=> "custom_prefs0" + pref_pane+ ".html")  %>
       </div>
 

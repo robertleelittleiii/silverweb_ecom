@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   #s.add_dependency "ssl_requirement"
   s.add_dependency "geocoder"
   s.add_dependency "activemerchant"
+  s.add_dependency "square_connect", "2.0.0"
   s.add_dependency "pdfkit"
   s.add_dependency "wkhtmltopdf-binary"
   s.add_dependency 'activerecord-session_store'
