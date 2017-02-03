@@ -3,7 +3,8 @@ module SilverwebEcom
         require 'geocoder'
         require "activemerchant"
         require 'pdfkit'
-        
+        require 'square_connect'
+
  #       require 'activerecord-session-store'
        
 #        require 'ssl_requirement'
