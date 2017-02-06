@@ -171,6 +171,8 @@ class Order < ActiveRecord::Base
 
           # The SDK throws an exception if a Connect endpoint responds with anything besides 200 (success).
           # This block catches any exceptions that occur from the request.
+          SquareConnect::Configuration.default.logger=Rails.logger
+
           locationApi = SquareConnect::LocationApi.new()
           locations = locationApi.list_locations(Settings.gateway_access_token)
           

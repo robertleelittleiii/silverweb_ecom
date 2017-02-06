@@ -11,6 +11,7 @@
         <li><a href="#product-settings-tab">View Settings</a></li>
         <li><a href="#product-purchage-gateway-tab">Payment</a></li>
         <li><a href="#product-images-tab">Product Swatches</a></li>
+        <li><a href="#product-report-tools-tab">Reporting Tools</a></li>
         <li><a href="#product-social-tools-tab">Social Sharing Tool</a></li>
         <li><a href="#product-utilities-tab">Utilities</a></li>
         <% @preference_panes.each do |pref_pane| %>
@@ -211,6 +212,24 @@
                 <%=editablefieldcreate("product_button_block_social_share", @settings,"button code", {:sanitize=>false})%>
             </p>
 
+        </div>
+
+    </div>
+
+         <div id="product-report-tools-tab">
+        <div class="cms-content">
+            <p>
+                <b>Sales Report Start Date:</b><br>
+                <%=editabledatefieldcreate("report_start_date", @settings, "dd/mm/yyyy")%>
+            </p>
+            <p>
+                <b>Sales Report End Date:</b><br>
+                <%=editabledatefieldcreate("report_end_date", @settings,"dd/mm/yyyy")%>
+            </p>
+
+            <p><b> Click link to generate PDF Report.</b></br>
+                 <%= link_to "Sales Report", {:controller=>:orders, :action=>:product_list_report, :format=>"pdf"},{:target=>"_blank"} %>
+           </p>
         </div>
 
     </div>

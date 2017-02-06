@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       post "order_table"
       post "user_order_table"
       get "express_purchase"
+      get "product_list_report"
     end
   end
   

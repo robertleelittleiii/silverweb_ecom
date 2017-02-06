@@ -1,0 +1,97 @@
+
+<table width="1100" border="0" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr>
+            <td>
+                <%= image_tag(image_url("site/logo-100.png"), :width=>"225")%>
+            </td>
+            <td align="right">
+                <h1>P R O D U C T &nbsp;&nbsp;&nbsp; S A L E S &nbsp;&nbsp;&nbsp;R E P O R T </h1>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-top:25px; padding-bottom:25px" >
+                <table border="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td align="right"><b>Report Name:</b></td><td>Product Sales Report</td>
+                            <td align="right"><b>Report Date(s):</b></td><td><%= @start_date.to_date.strftime(" %m/%d/%Y") %> <%= ( @end_date.to_date.blank? ? "" : "thru "+ @end_date.to_date.strftime(" %m/%d/%Y")) %> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table cellpadding="2" cellspacing="0" border="1" width="100%" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th> 
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% line_number_counter = 0 %>
+
+                        <%  @order_items.each_with_index do |order_item, counter| %>
+                          <% line_number_counter = line_number_counter + 1 %>
+                          <tr height="60" class="<%= cycle('odd gradeA', 'even gradeA')%> shipping-item-row"  style = "font-size:14px; cursor:pointer;">
+                              <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.small.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></br>
+                              <td align="center" style="font-size:12px;"><%=  order_item.product.product_name.html_safe rescue ""%></td>
+                              <td align="center"><%=  number_with_precision(order_item.sum_product_count,:precision=>0) %></td>
+                              <td align="center"><%=   number_to_currency(order_item.sum_price) %></td>
+                          </tr>
+
+                          <% if (((line_number_counter) % 7  == 0) and @page_number.blank?) or ((line_number_counter) % 8 == 0) then %>
+                            <% line_number_counter = 0 %>
+
+                        </tbody>
+                    </table>
+            </tr>
+        </tbody>
+    </table>
+    <% @page_number = @page_number.blank? ? 1: @page_number + 1%>
+
+    <div style=" page-break-before: always;" class="pagebreak"> </div>
+
+    <table width="1100" border="0" cellpadding="5" cellspacing="5">
+        <tbody>
+            <tr>
+                <td>
+                    <table border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td align="right"><b>Report Name:</b></td><td>Product Sales Report</td>
+                                <td align="right"><b>Report Date(s):</b></td><td><%= @start_date.to_date.strftime(" %m/%d/%Y") %> <%= ( @end_date.to_date.blank? ? "" : "thru "+ @end_date.to_date.strftime(" %m/%d/%Y")) %> </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="2" cellspacing="0" border="1" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Image</th> 
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <% end %>
+
+                        <% end %>
+                    </tbody>
+                </table>
+
+
+
+            </td>
+        </tr>
+
+    </tbody>
+
+</table>
+
