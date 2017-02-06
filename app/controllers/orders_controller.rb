@@ -480,7 +480,7 @@ class OrdersController < ApplicationController
     
     @orders_ids = Order.joins(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
    # @order_items = OrderItem.where(:id=>@orders_ids)
-    @order_items = OrderItem.where(:id=>@orders_ids).select(:product_detail_id, :product_id, "SUM(quantity) as sum_product_count", "SUM(price) as sum_price").group(:product_detail_id).order("sum_product_count DESC")
+    @order_items = OrderItem.where(:order_id=>@orders_ids).select(:product_detail_id, :product_id, "SUM(quantity) as sum_product_count", "SUM(price) as sum_price").group(:product_detail_id).order("sum_product_count DESC")
     
     
   render "product_list_report.html", layout: "default_pdf.html"
