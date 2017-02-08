@@ -229,6 +229,8 @@
 
             <p><b> Click link to generate PDF Report.</b></br>
                  <%= link_to "Sales Report", {:controller=>:orders, :action=>:product_list_report, :format=>"pdf"},{:target=>"_blank"} %>
+                 </br>
+                <%= link_to "Customer Sales Report", {:controller=>:orders, :action=>:customer_sales_report, :format=>"pdf"},{:target=>"_blank"} %>
            </p>
         </div>
 

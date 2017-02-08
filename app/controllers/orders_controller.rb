@@ -123,42 +123,42 @@ class OrdersController < ApplicationController
     redirect_to(controller: :orders, action: :edit, id: @order)
   end
 
-    def empty_cart_no_redirect
-          find_cart
-          @cart.delete
-          session[:cart] = nil
-          find_cart
-        end
+  def empty_cart_no_redirect
+    find_cart
+    @cart.delete
+    session[:cart] = nil
+    find_cart
+  end
         
-    def find_cart
-          #  @cart = (session[:cart] ||= Cart.new)
-          #user =  User.find_by_id(session[:user_id])
+  def find_cart
+    #  @cart = (session[:cart] ||= Cart.new)
+    #user =  User.find_by_id(session[:user_id])
 
-          session[:create]=true
+    session[:create]=true
         
-          session[:session_id] = request.session_options[:id]
+    session[:session_id] = request.session_options[:id]
           
-          begin
-            @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id]) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
-          rescue
-            cart = Cart.new
-          end
+    begin
+      @cart=Cart.get_cart("cart"+session[:session_id], session[:user_id]) rescue  Rails.cache.write("cart"+session[:session_id],{}, :expires_in => 15.minutes)
+    rescue
+      cart = Cart.new
+    end
           
-          puts("@cart in find_cart: #{@cart}")
+    puts("@cart in find_cart: #{@cart}")
           
-          if not params[:coupon_code].blank? then
-            puts("Coupon Code Found")
-            @cart.coupon_code = params[:coupon_code]
-            @cart.save
-          end
+    if not params[:coupon_code].blank? then
+      puts("Coupon Code Found")
+      @cart.coupon_code = params[:coupon_code]
+      @cart.save
+    end
     
-          #   @cart = Cart.get_cart(session[:cart])
-          #    session[:cart] = @cart.id
-        end
+    #   @cart = Cart.get_cart(session[:cart])
+    #    session[:cart] = @cart.id
+  end
 
   def enter_order_square
     
-     $hostfull = request.protocol + request.host_with_port
+    $hostfull = request.protocol + request.host_with_port
 
     @user = User.find_by_id(session[:user_id])
     @page_title = "order success"
@@ -171,7 +171,7 @@ class OrdersController < ApplicationController
     redirect_controller = :site
     redirect_action = :index
     
-     if params[:order].blank? then
+    if params[:order].blank? then
       puts("****************** New order from cart ************")
       @order=Order.new(:express_token=>params[:token])
       error_occured=true
@@ -183,7 +183,7 @@ class OrdersController < ApplicationController
             @order.reduce_inventory($hostfull)
             
             if  not Settings.order_notification then
-                UserNotifier.order_notification(@order, @user, $hostfull).deliver
+              UserNotifier.order_notification(@order, @user, $hostfull).deliver
             else
               UserNotifier.order_notification_as_invoice(@order, @user, $hostfull).deliver
             end
@@ -220,7 +220,7 @@ class OrdersController < ApplicationController
       
         # cart_is_empty = true
       end
-     end
+    end
      
     respond_to do |format|
       if error_occured then
@@ -289,7 +289,7 @@ class OrdersController < ApplicationController
       puts("-=-=-=-=-=-=-=-=-=-=-=-=-=->>>> #{@order.inspect}")
 
       
-       if params[:save_billing_addresses] == "1" then
+      if params[:save_billing_addresses] == "1" then
         @user.user_attribute.billing_address  = @order.bill_street_1 
         @user.user_attribute.billing_city =  @order.bill_city
         @user.user_attribute.billing_state = @order.bill_state 
@@ -314,7 +314,7 @@ class OrdersController < ApplicationController
             @order.reduce_inventory($hostfull)
             
             if  not Settings.order_notification then
-                UserNotifier.order_notification(@order, @user, $hostfull).deliver
+              UserNotifier.order_notification(@order, @user, $hostfull).deliver
             else
               UserNotifier.order_notification_as_invoice(@order, @user, $hostfull).deliver
             end
@@ -373,7 +373,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @user = User.find_by_id(session[:user_id])
     @page = Page.where(:title=>@page_title).first
-   #  @page = Page.find_by_title (@page_title).first
+    #  @page = Page.find_by_title (@page_title).first
     @company_name = Settings.company_name
     @company_address = Settings.company_address
     @company_phone = Settings.company_phone
@@ -479,14 +479,23 @@ class OrdersController < ApplicationController
     @end_date = Date.parse(Settings.report_end_date).to_s
     
     @orders_ids = Order.joins(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
-   # @order_items = OrderItem.where(:id=>@orders_ids)
+    # @order_items = OrderItem.where(:id=>@orders_ids)
     @order_items = OrderItem.where(:order_id=>@orders_ids).select(:product_detail_id, :product_id, "SUM(quantity) as sum_product_count", "SUM(price) as sum_price").group(:product_detail_id).order("sum_product_count DESC")
     
     
-  render "product_list_report.html", layout: "default_pdf.html"
+    render "product_list_report.html", layout: "default_pdf.html"
 
   end
-
+  
+  def customer_sales_report
+    @start_date = Date.parse(Settings.report_start_date).to_s
+    @end_date = Date.parse(Settings.report_end_date).to_s
+    @orders_ids = Order.joins(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
+    @orders = Order.joins(:user).joins(:user=>:user_attribute).where(:id=>@orders_ids).order("user_attributes.last_name")  
+  
+    render "customer_sales_report.html", layout: "default_pdf.html"
+  end
+  
   private
     
 
