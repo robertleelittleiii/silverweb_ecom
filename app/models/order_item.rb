@@ -17,7 +17,8 @@ class OrderItem < ActiveRecord::Base
     oi.color = cart_item.color
     oi.size = cart_item.size
     oi.title = cart_item.title
-    oi.description =cart_item.description
+    oi.description = ActionView::Base.full_sanitizer.sanitize(cart_item.description).truncate(250)
+
     oi
   end
 end
