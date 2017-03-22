@@ -114,8 +114,10 @@ class UserNotifierOld < ActionMailer::Base
     @order=order
     
     @order.order_items.each do |order_item|
-      attachments.inline["#{order_item.id}.png"] = File.read(Rails.root.to_s + "/public/" + order_item.product_detail.thumb.to_s)
+      image_path = order_item.product_detail.thumb.to_s
+      attachments.inline["#{order_item.id}.#{image_path.split(".").last}"] = File.read(Rails.root.to_s + "/public/" + image_path)
     end
+    puts(attachments.inspect)
     
     @hostfull=host
     @site_slogan = Settings.site_slogan rescue ""

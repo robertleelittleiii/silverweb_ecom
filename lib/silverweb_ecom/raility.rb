@@ -57,9 +57,14 @@ module SilverwebEcom
           @user=user
           @order=order
     
-          @order.order_items.each do |order_item|
-            attachments.inline["#{order_item.id}.png"] = (File.read(Rails.root.to_s + "/public/" + order_item.product_detail.thumb.to_s) rescue "blank.png")
-          end
+      #    @order.order_items.each do |order_item|
+     #       attachments.inline["#{order_item.id}.png"] = (File.read(Rails.root.to_s + "/public/" + order_item.product_detail.thumb.to_s) rescue "blank.png")
+     #     end
+    
+    @order.order_items.each do |order_item|
+      image_path = order_item.product_detail.thumb.to_s
+      attachments.inline["#{order_item.id}.#{image_path.split(".").last}"] = (File.read(Rails.root.to_s + "/public/" + image_path) rescue "blank.png")
+    end
     
           @hostfull=host
           @site_slogan = Settings.site_slogan rescue ""

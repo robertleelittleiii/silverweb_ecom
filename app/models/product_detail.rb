@@ -22,8 +22,8 @@ class ProductDetail < ActiveRecord::Base
         begin
           SystemImages.swatches.where(title: self.color).first.image_url.to_s
         rescue 
-           ActionController::Base.helpers.asset_path("blank.png")
-#        "blank.png"
+          ActionController::Base.helpers.asset_path("blank.png")
+          #        "blank.png"
         end
       end
     end
@@ -42,8 +42,12 @@ class ProductDetail < ActiveRecord::Base
       begin
         SystemImages.swatches.where(title: self.color).first.image_url(:thumb).to_s
       rescue 
-         ActionController::Base.helpers.image_url("blank.png")
-      #  "/images/site/blank.png"
+        begin
+          self.product.pictures.first.image_url(:thumb).to_s
+        rescue 
+          ActionController::Base.helpers.image_url("blank.png")
+        end
+        #  "/images/site/blank.png"
       end
       # end
     end
