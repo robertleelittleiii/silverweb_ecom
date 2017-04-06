@@ -39,12 +39,14 @@
   </tr>
   <tr>
 <td id="content_c_content" colspan="3">
-          
+    <p>
+        <br>
+        <br>
           Dear <%=@user.full_name rescue "Sir/Madam:"%>,
-          </br></br>
+          <br><br>
           
           <%=yield%>
-
+    </p>
 </td>
       </tr>
   </table>
