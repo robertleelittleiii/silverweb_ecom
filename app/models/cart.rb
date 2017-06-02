@@ -200,7 +200,7 @@ class Cart
   end
   
   def calc_tax 
-    @items.sum { |item| item.tax(0.07) }
+    @items.sum { |item| item.tax(0.6875) }
     # total_price * 0.07
   end
   
