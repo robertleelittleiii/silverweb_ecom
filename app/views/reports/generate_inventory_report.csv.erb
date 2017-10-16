@@ -1,0 +1,29 @@
+<%- headers = ['Image','Style','Color','Description'] -%>
+<%  standard_sizes = ["SIZE 3",	"SIZE 4","SIZE 5","SIZE 6","SIZE 7","SIZE 8","SIZE 3/4","SIZE 4/5","SIZE S","SIZE M","SIZE L","S/M","M/L"]  %>
+<%   distinct_sizes = ProductDetail.select(:size).order(:size).map(&:size).map{|x| x.to_s=="" ? nil : x.to_s.upcase }.uniq.delete_if(&:blank?)%>
+<% puts("distinct_sizes: #{distinct_sizes.inspect}") %>
+<%= CSV.generate_line(headers + distinct_sizes + ["Total","Price"]) %>
+<%- @products.each do |product| -%>
+  <% size_array= [] %>
+  <% inventory_array=[] %>
+  <% size_inventory_hash={} %>
+  <% hold_color = "" %>
+  <% product.product_details.order(:color).order(:size).where("units_in_stock > 0").where(:sku_active=>true).each do |detail|   %>
+    <% if hold_color != detail.color.upcase then %>
+      <% puts("size_inventory_hash: #{size_inventory_hash.inspect}") %>
+      <% output_array = [] %>
+      <% distinct_sizes.each do |color|  %>
+        <% output_array << size_inventory_hash[color] || " " %>
+      <% end %>
+      <% total_inventory = inventory_array.inject{|sum,x| sum + x } %>
+      <%= CSV.generate_line([' ',product.supplier_product_id, detail.color, product.product_name] + output_array + [total_inventory,product.msrp])%>
+      <% hold_color = detail.color.upcase %>
+      <% size_inventory_hash={} %>
+      <% size_array= [] %>
+      <% inventory_array=[] %>
+    <% end %>
+    <% size_inventory_hash.merge!(Hash[detail.size,detail.units_in_stock])%>
+    <% size_array << detail.size  %>
+    <% inventory_array << detail.units_in_stock %>
+  <% end %>
+<%- end -%>

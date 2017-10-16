@@ -1,0 +1,162 @@
+<style>
+
+.detail-item {
+  display: inline-block;
+  text-align: center;
+  border-color: black;
+  border: 1px solid;
+  margin-left: -5px;
+  height: 103%;
+  margin-top: -3px;
+} 
+
+.detail-size {
+  text-decoration: underline;
+  font-weight: bold;
+  padding-top: 10px;
+  border-bottom: 1px black solid;
+  padding: 5px;
+}
+
+.detail-in-stock {
+  padding: 5px;
+  border-top: 1px solid black;
+  text-align: center;
+}
+  
+</style>
+
+
+
+
+
+
+<table width="1100" border="0" cellpadding="1" cellspacing="1">
+    <tbody>
+        <tr>
+            <td>
+                <%= image_tag "/images/site/logo-100.png", :width=>"225" %>
+            </td>
+            <td align="right">
+                <h1>I N V E N T O R Y&nbsp;&nbsp;&nbsp;R E P O R T </h1>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table border="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td align="right"><b>Report Name:</b></td><td>Inventory Report</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table cellpadding="2" cellspacing="0" border="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="150">Image</th>
+                            <th width="100">Style</th>
+                            <th>Pattern/Size/Availabilty</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% line_number_counter = 0 %>
+
+                        <%  @products.each_with_index do |product, counter| %>
+                          <% line_number_counter = line_number_counter + 1 %>
+                          <tr>
+                              <td valign="top" width="150" align="left">
+                                  <%=image_tag(product.primary_image.blank? ? "empty.jpg" : product.primary_image.image_url(:primary).to_s,  :itemprop=>"image", :width=>"150px","vertical-align"=>"top") %>
+                              </td>
+                              <td valign="top" width="100" align="center"><%=product.supplier_product_id  rescue ""%></td>
+                              <td>
+                                  <table border="1" width="100%">
+                                      <tr> 
+                                          <th width="100">Pattern</th> 
+                                          <th>Size/Available</th>
+                                      </tr>
+                                  <% hold_color = "" %>
+                                   <% product.product_details.order(:color).order(:size).where("units_in_stock > 0").where(:sku_active=>true).each_with_index do |detail, counter|%> 
+                                      <% if hold_color != detail.color then %>
+                                        <% hold_color = detail.color %>
+                                        <% if counter !=0 then %>
+                                                                <% line_number_counter = line_number_counter + 1 %>
+
+                                          </td>  
+                                          </tr>
+                                        <% end %>
+                                                                    <% line_number_counter = line_number_counter + 1 %>
+
+                                      <tr style="boader-bottom:1px solid black;">
+                                          <td align="center"><%=image_tag(detail.thumb.to_s,:border=>"0", :width=>"40", :height=>"50") rescue image_tag("empty_s.jpg",:border=>"0", :width=>"40", :height=>"50") %><br><%=detail.color%></td>
+                                          <td>
+                                     <% end %>
+                                              <div class="detail-item"> <div class="detail-size"> <%=detail.size%></div><div class="detail-in-stock"> <%=detail.units_in_stock%></div></div>
+                                      <% end %>
+                                  </table>
+                                  </end>
+                              </td>
+                              <td valign="top"><%=product.msrp%></td>
+                          </tr>
+
+
+                          <% if false and ((((line_number_counter) % 11 == 0) and @page_number.blank?) or ((line_number_counter) % 12 == 0)) then %>
+                            <% line_number_counter = 0 %>
+
+                        </tbody>
+
+                    </table>
+            </tr>
+        </tbody>
+    </table>
+    <% @page_number = @page_number.blank? ? 1: @page_number + 1%>
+
+    <div style=" page-break-before: always;" class="pagebreak"> </div>
+
+    <table width="1100" border="0" cellpadding="1" cellspacing="1">
+        <tbody>
+            <tr>
+                <td>
+                    <table border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td align="right"><b>Report Name:</b></td><td>Inventory Report</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellpadding="2" cellspacing="0" border="1" width="100%">
+                         <thead>
+                        <tr>
+                            <th width="150">Image</th>
+                            <th width="100">Style</th>
+                            <th>Pattern/Size/Availabilty</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+
+                        <tbody>
+
+                          <% end %>
+
+                        <% end %>
+                                 
+                    </tbody>
+
+                </table>
+
+
+
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+
