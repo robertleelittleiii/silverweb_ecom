@@ -378,14 +378,14 @@ class ProductsController < ApplicationController
     
   
   def generate_inventory_report
-    @products = Product.includes(:product_details).where("product_details.units_in_stock > 0").where(product_active: true).order(:supplier_product_id)    
+    @products = Product.eager_load(:product_details).where("product_details.units_in_stock > 0").where(product_active: true).order(:supplier_product_id)    
         
     respond_to do |format|
-      format.html {render layout: "print", action: "/reports/generate_inventory_report"}
+      format.html {render  "reports/generate_inventory_report.html" ,layout: "print" }
       format.csv do
         headers['Content-Disposition'] = "attachment; filename=\"product-list.csv\""
         headers['Content-Type'] ||= 'text/csv'
-        render action: "/reports/generate_inventory_report"
+        render "/reports/generate_inventory_report.csv"
       end
     end
   end
