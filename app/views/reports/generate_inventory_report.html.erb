@@ -72,7 +72,7 @@
                           <% line_number_counter = line_number_counter + 1 %>
                           <tr>
                               <td valign="top" width="150" align="left">
-                                  <%=image_tag(!product.primary_image.blank? ? product.primary_image.image_url(:primary).to_s  : ( !product.pictures.first.blank? ? product.pictures.first : "empty.jpg" ),  :itemprop=>"image", :width=>"150px","vertical-align"=>"top"  )%>
+                                  <%=image_tag(!product.primary_image.blank? ? product.primary_image.image_url(:primary).to_s  : ( !product.pictures.first.blank? ? product.pictures.first.image_url.to_s  : "empty.jpg" ),  :itemprop=>"image", :width=>"150px","vertical-align"=>"top"  )%>
                               </td>
                               <td valign="top" width="100" align="center"><%=product.supplier_product_id  rescue ""%></td>
                               <td>
