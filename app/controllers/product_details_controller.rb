@@ -117,8 +117,9 @@ class ProductDetailsController < ApplicationController
     @product_detail.units_on_order = 0 
     @product_detail.color = "N/C"
     @product_detail.size = "N/S"
-    #    @product_detail.inventory_key =("0000000000" + (ProductDetail.maximum(:inventory_key).to_i + 1).to_s).last(10) if Settings.inventory_key_increment == true
-    @product_detail.inventory_key = (ProductDetail.all(select: "Max(inventory_key+0) as max_key").first.max_key.to_i + 1).to_s if Settings.inventory_key_increment == true
+    # @product_detail.inventory_key =("0000000000" + (ProductDetail.maximum(:inventory_key).to_i + 1).to_s).last(10) if Settings.inventory_key_increment == true
+    # @product_detail.inventory_key = (ProductDetail.all(select: "Max(inventory_key+0) as max_key").first.max_key.to_i + 1).to_s if Settings.inventory_key_increment == true
+    @product_detail.inventory_key = (ProductDetail.select("Max(inventory_key+0) as max_key").first.max_key.to_i + 1).to_s if Settings.inventory_key_increment == true
     #puts("ProductDetail.maximum(:inventory_key).to_i: #{ProductDetail.maximum(:inventory_key).to_i}")
     
     
