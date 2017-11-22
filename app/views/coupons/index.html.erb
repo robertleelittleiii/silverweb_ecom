@@ -7,18 +7,18 @@
       <div class="cms-content">
         <p>
         <b>Store wide sale: (Percentage off of price)</b><br>
-        <%=editablefieldcreate("store_wide_sale", @settings,"$0.00",{:format_type=>"currency"})%>
+        <%=editablefieldcreate("store_wide_sale", @settings,"0.00",{:path=>"coupons/update"})%>
       </p>
       
       <p>
         <b>Store wide sale start: (Start Date)</b><br>
-        <%=editabledatefieldcreate("store_wide_sale_start", @settings,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
+        <%=editabledatefieldcreate("store_wide_sale_start", @settings,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y",:path=>"coupons/update"})%>
 
       </p>
       
       <p>
         <b>Store wide sale end: (End Date)</b><br>
-        <%=editabledatefieldcreate("store_wide_sale_end", @settings,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y"})%>
+        <%=editabledatefieldcreate("store_wide_sale_end", @settings,"01/01/2001", {:format_type=>"date", :format_string=>"%m/%d/%Y",:path=>"coupons/update"})%>
       </p>
         <p>
           </br>

@@ -57,20 +57,39 @@ class CouponsController < ApplicationController
   # PUT /coupons/1
   # PUT /coupons/1.json
   def update
-    @coupon = Coupon.find(params[:id])
-
     
-    if Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :decimal or Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :integer or Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :float then
-      params[:coupon][params[:coupon].keys[0]] = params[:coupon][params[:coupon].keys[0]].delete("$").delete(",")
+    preferences_update = false
+    
+    if params[:id].blank? then
+      eval("Settings." + params["settings"].to_a.first[0] + "=\"" + (params["settings"].to_a.first[1]).html_safe() +"\""   )
+      preferences_update = true
+    else
+    
+      @coupon = Coupon.find(params[:id])
+      successfull = @coupon.update_attributes(coupon_params)
+      if Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :decimal or Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :integer or Coupon.columns_hash[params[:coupon].keys[0].to_s].type == :float then
+        params[:coupon][params[:coupon].keys[0]] = params[:coupon][params[:coupon].keys[0]].delete("$").delete(",")
+      end
+  
     end
     
+
+    
+    
+    
     respond_to do |format|
-      if @coupon.update_attributes(coupon_params)
-        format.html { redirect_to @coupon, notice: "Coupon was successfully updated."}
-        format.json { head :ok }
+      if preferences_update then
+        format.html {render nothing: true}
+        format.json { render :json=> {:notice => 'Preferences were successfully updated.'} }
+      
       else
-        format.html { render action: "edit" }
-        format.json { render json: @coupon.errors, status: "unprocessable_entry" }
+        if successfull then
+          format.html { redirect_to @coupon, notice: "Coupon was successfully updated."}
+          format.json { head :ok }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @coupon.errors, status: "unprocessable_entry" }
+        end
       end
     end
   end
@@ -87,15 +106,15 @@ class CouponsController < ApplicationController
     end
   end
   
-   def delete_ajax
+  def delete_ajax
     @coupon = Coupon.find(params[:id])
     @coupon.destroy
     render nothing: true
   end
 
    
-   # CREATE_EMPTY_RECORD /coupons/1
-   # CREATE_EMPTY_RECORD /coupons/1.json
+  # CREATE_EMPTY_RECORD /coupons/1
+  # CREATE_EMPTY_RECORD /coupons/1.json
 
   def create_empty_record
     @coupon = Coupon.new

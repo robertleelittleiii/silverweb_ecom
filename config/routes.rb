@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       post "coupon_table"
       get "delete_ajax"
       delete "delete" 
+      put "index"
+      put "update"
 
     end
     
