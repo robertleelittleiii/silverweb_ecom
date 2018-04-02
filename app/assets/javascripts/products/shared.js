@@ -17,7 +17,7 @@ function producteditClickBinding(selector) {
         if (product_id === "")
         {
             var product_id = $(this).find('#product-id').text();
-            
+
         }
         var is_iframe = $("application-space").length > 0
 
@@ -34,21 +34,21 @@ function producteditClickBinding(selector) {
                     close: function (event, ui) {
                         if ($("table#product-table").length > 0)
                             productTableAjax.draw();
-                        
+
                         if ($("div#edit-product-dialog").length > 0)
                         {
-                         current_product_id = $("div#product div#attr-products div#product-id").text();
+                            current_product_id = $("div#product div#attr-products div#product-id").text();
                             if (product_id === current_product_id)
                             {
                                 show_product(product_id);
                             }
                         }
-                        
-                        if(typeof tinyMCE.editors[0] != "undefined")
+
+                        if (typeof tinyMCE.editors[0] != "undefined")
                         {
                             tinyMCE.editors[0].destroy();
                         }
-                        
+
                         $('div#edit-product-dialog').html("");
                         $('div#edit-product-dialog').dialog("destroy");
                         update_content();
@@ -58,7 +58,7 @@ function producteditClickBinding(selector) {
 
                     }
                 });
-                
+
                 require("products/edit.js");
                 requireCss("products/edit.css");
                 requireCss("products.css");
@@ -84,4 +84,69 @@ function producteditClickBinding(selector) {
 //            }
 
     });
+}
+
+
+//
+// Admin editor 
+//
+
+function orderUpdate(event, ui)
+{
+    alert("order changed!");
+    console.log(event);
+    console.log(ui);
+}
+
+function setUpOrderChange(block_name, item_name) {
+    //    $( "#product-block" ).sortable({ 
+    //        handle: "#edit-product" , 
+    //        stop: function( event, ui ) {
+    //            orderUpdate(event,ui);
+    //        }
+    //    });
+
+
+
+    var currentPage = $("#page_number").text();
+
+    block_name = (typeof (block_name) == "undefined") ? '#product-block' : block_name;
+    item_name = (typeof (item_name) == "undefined") ? 'div.product-item' : item_name;
+    
+    // console.log(block_name);
+    // console.log(item_name);
+
+    $(block_name).sortable({
+        dropOnEmpty: false,
+        items: item_name,
+        handle: '.handle',
+        cursor: '-webkit-grabbing',
+        opacity: 0.4,
+        scroll: true,
+        update: function () {
+            $.ajax({
+                type: 'post',
+                data: $(block_name).sortable('serialize') + "&   page=" + currentPage,
+                dataType: 'script',
+                complete: function (request) {
+                    $(block_name).effect('highlight');
+                },
+                url: '/products/sort'
+            })
+        }
+    });
+}
+
+function bindProductMenu()
+{
+
+    $(".edit-product").hover(
+            function () {
+                $(this).append($("<div class='edit-product-menu'>Edit</br>To Next Page</br></div>"));
+            },
+            function () {
+                $(this).find("div:last").remove();
+            }
+    );
+
 }

@@ -14,7 +14,7 @@ class CouponsController < ApplicationController
   # GET /coupons/1
   # GET /coupons/1.json
   def show
-    @coupon = Coupon.find(params[:id])
+    @coupon = Coupon.find(params[:id]) 
 
     respond_to do |format|
       format.html # show.html.erb
