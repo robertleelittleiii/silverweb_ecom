@@ -27,6 +27,7 @@
                     <thead>
                         <tr>
                             <th>Invoice</th>
+                            <th>Date</th>
                             <th>Name</th> 
                             <th>Company</th>
                             <th>Address</th>
@@ -43,7 +44,8 @@
                         <%  @orders.each_with_index do |order, counter| %>
                           <% line_number_counter = line_number_counter + 1 %>
                           <tr height="60" class="<%= cycle('odd gradeA', 'even gradeA')%> shipping-item-row"  style = "font-size:14px; cursor:pointer;">
-                              <td align="center"><%=order.id%></td>
+                              <td align="center"><%=  order.id%></td>
+                              <td align="center"><%=  order.created_at.strftime(" %m/%d/%Y")%></td>
                               <td align="center"><%= order.user.full_name rescue ""%></td>
                               <td align="center"><%= order.user.company_name rescue "n/a"%></td>                              
                               <td align="center"><%= "#{order.bill_street_1} #{order.bill_street_2}, #{order.bill_city} #{order.bill_state} #{order.bill_zip}" rescue "n/a"%></td>
@@ -62,7 +64,7 @@
 
                               <% line_number_counter = line_number_counter + 2 %>
                             <% end %>
-                                <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.small.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></br>
+                                <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.small.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></td>
                                 <td align="center" style="font-size:12px;"><%=  order_item.product.product_name.html_safe rescue ""%></td>
                                 <td align="center"><%=  number_with_precision(order_item.quantity,:precision=>0) %></td>
                                 <td align="center"><%=   number_to_currency(order_item.price * order_item.quantity) %></td>
@@ -98,6 +100,7 @@
                         <thead>
                             <tr>
                                 <th>Invoice</th>
+                                <th>Date</th>
                                 <th>Name</th> 
                                 <th>Company</th>
                                 <th>Address</th>
