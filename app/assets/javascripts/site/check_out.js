@@ -292,7 +292,7 @@ function validate_login(url_to_goto) {
         return(false);
     }
     else {
-        loadLoginBox(url_to_goto);
+        loadLoginBox(url_to_goto, false);
         return(true);
     }
 
