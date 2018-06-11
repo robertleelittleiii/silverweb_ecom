@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       get "express_purchase"
       get "product_list_report"
       get "customer_sales_report"
+      get "invoice_list_report"
     end
   end
   

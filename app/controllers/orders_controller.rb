@@ -394,6 +394,16 @@ class OrdersController < ApplicationController
     render  partial: "invoice_report.html", layout: "default_pdf.html"
   end
   
+  def invoice_list_report
+    @start_date = Date.parse(Settings.report_start_date).to_s
+    @end_date = Date.parse(Settings.report_end_date).to_s
+    @orders_ids = Order.joins(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
+    @orders = Order.joins(:user).joins(:user=>:user_attribute).where(:id=>@orders_ids).order("user_attributes.last_name")  
+    
+   
+     render "invoice_list_report.html", layout: "default_pdf.html"  
+  end
+  
   def resend_invoice
     @hostfull = request.protocol + request.host_with_port
     @user = User.find_by_id(session[:user_id])
