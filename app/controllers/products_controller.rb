@@ -80,8 +80,20 @@ class ProductsController < ApplicationController
   def update
     preferences_update = false
     
-    if params[:id] == "product_preferences" then
-      eval("Settings." + params["settings"].to_a.first[0] + "=\"" + (params["settings"].to_a.first[1]).html_safe() +"\""   )
+    if params[:id] == "product_preferences" or params[:id] == "settings" then
+      if params["settings"].to_a.first[0] == "category_group"
+        category_list = Settings.category_group.to_s
+        category = params["settings"].to_a.first[1]
+        if category_list.include?(category) then
+          new_cat_list = category_list.to_s.split(",").select{|elem| elem != category}.join(",")
+        else
+          new_cat_list = (category_list.to_s.split(",") << category).join(",")
+        end
+        Settings.category_group = new_cat_list
+      else
+        eval("Settings." + params["settings"].to_a.first[0] + "=\"" + (params["settings"].to_a.first[1]).html_safe() +"\""   )
+      end
+      
       preferences_update = true
     else
     
@@ -396,7 +408,8 @@ class ProductsController < ApplicationController
     @all_pictures = SystemImages.swatches.order(id: :desc)
     
     @template_types = [] # TEMPLATE_TYPES
-    
+    @categories = Product.category_counts.pluck(:name)
+
     paths = ActionController::Base.view_paths
     
     template_types = [["B L A N K",""]]

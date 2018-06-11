@@ -226,6 +226,11 @@
                 <b>Sales Report End Date:</b><br>
                 <%=editabledatefieldcreate("report_end_date", @settings,"dd/mm/yyyy")%>
             </p>
+            
+            <p>
+                <b> Select Category to report on:</b></br>
+                <%=create_group_checkbox_live("category_group", @settings, @categories )%>
+            </p>
 
             <p><b> Click link to generate PDF Report.</b></br>
                  <%= link_to "Sales Report", {:controller=>:orders, :action=>:product_list_report, :format=>"pdf"},{:target=>"_blank"} %>
