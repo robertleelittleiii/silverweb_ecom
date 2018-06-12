@@ -36,6 +36,7 @@
                             <th>Email</th>
                             <th>Image</th>
                             <th>Product</th>
+                            <th>Size/Color</th>
                             <th>Quantity</th>
                             <th>Paid</th>
                         </tr>
@@ -58,6 +59,7 @@
                                 <% if item_counter == 0 then %>
                                   <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.small.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></td>
                                   <td align="center" style="font-size:12px;"><%=  order_item.product.product_name.html_safe rescue ""%></td>
+                                  <td align="center"><%= (order_item.size.blank? ? "" : order_item.size + " / ") rescue "" %>  <%=  (order_item.color.blank? ? "" : order_item.color) rescue "" %></td>
                                   <td align="center"><%=  number_with_precision(order_item.quantity,:precision=>0) %></td>
                                   <td align="center"><%=   number_to_currency(order_item.price * order_item.quantity) %></td>
                               </tr>
@@ -68,6 +70,7 @@
                                   <td colspan="6"></td>                              
                                   <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.small.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></td>
                                   <td align="center" style="font-size:12px;"><%=  order_item.product.product_name.html_safe rescue ""%></td>
+                                  <td align="center"><%= (order_item.size.blank? ? "" : order_item.size + " / ") rescue "" %>  <%=  (order_item.color.blank? ? "" : order_item.color) rescue "" %></td>
                                   <td align="center"><%=  number_with_precision(order_item.quantity,:precision=>0) %></td>
                                   <td align="center"><%=   number_to_currency(order_item.price * order_item.quantity) %></td>
                               </tr>
@@ -111,6 +114,7 @@
                                   <th>Email</th>
                                   <th>Image</th>
                                   <th>Product</th>
+                                  <th>Size/Color</th>
                                   <th>Quantity</th>
                                   <th>Paid</th>
                               </tr>
