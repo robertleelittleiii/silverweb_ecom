@@ -1,0 +1,7 @@
+<% @orders.each do |order| %>
+  <% @order = order %>
+
+  <%=render  partial: "receipt_report.html"  %>
+  <div style=" page-break-before: always;" class="pagebreak"> </div>
+
+<% end %>

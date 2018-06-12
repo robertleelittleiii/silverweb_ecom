@@ -41,7 +41,7 @@
                           <tr height="60" class="<%= cycle('odd gradeA', 'even gradeA')%> shipping-item-row"  style = "font-size:14px; cursor:pointer;">
                               <td align="center" width="54"><%= image_tag(image_url(order_item.product_detail.small.to_s),:border=>"0", :width=>"40", :height=>"50") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"40", :height=>"50") %></br>
                               <td align="center" style="font-size:12px;"><%= order_item.product.product_name.html_safe rescue "" %></td>
-                              <td align="center"><%= order_item.size.blank? ? order_item.size + " / " : %>  <%=  order_item.color.blank? "" : order_item.color%></td>
+                              <td align="center"><%= (order_item.size.blank? ? "" : order_item.size + " / ") rescue "" %>  <%=  (order_item.color.blank? ? "" : order_item.color) rescue "" %></td>
                               <td align="center"><%= number_with_precision(order_item.sum_product_count,:precision=>0) rescue "n/a" %></td>
                               <td align="center"><%= number_to_currency(order_item.sum_price) rescue "n/a" %></td>
                           </tr>
@@ -88,13 +88,8 @@
                         <% end %>
                     </tbody>
                 </table>
-
-
-
             </td>
         </tr>
-
     </tbody>
-
 </table>
 

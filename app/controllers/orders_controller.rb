@@ -411,6 +411,23 @@ class OrdersController < ApplicationController
     render "invoice_list_report.html", layout: "default_pdf.html"  
   end
   
+  def receipt_list_report
+    @start_date = Date.parse(Settings.report_start_date).to_s
+    @end_date = Date.parse(Settings.report_end_date).to_s
+    
+    cat_list = Settings.category_group.split(",")
+    @orders_ids = Order.joins(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
+   
+    if cat_list.blank? then 
+      @orders = Order.joins(:user).joins(:user=>:user_attribute).where(:id=>@orders_ids).order("user_attributes.last_name")  
+    else
+      @orders = Order.joins(:user).joins(:user=>:user_attribute).eager_load(:order_items).eager_load(:order_items=>:product).eager_load(:order_items=>{:product=>:category}).where("tags.name in (?)",cat_list).where(:id=>@orders_ids).order("user_attributes.last_name")  
+
+    end
+   
+    render "receipt_list_report.html", layout: "default_pdf.html"  
+  end
+  
   def resend_invoice
     @hostfull = request.protocol + request.host_with_port
     @user = User.find_by_id(session[:user_id])
@@ -501,9 +518,9 @@ class OrdersController < ApplicationController
     # @order_items = OrderItem.where(:order_id=>@orders_ids).select(:product_detail_id, :product_id, "SUM(quantity) as sum_product_count", "SUM(price) as sum_price").group(:product_detail_id).order("sum_product_count DESC")
    
     if cat_list.blank? then 
-      @order_items = OrderItem.where(:order_id=>@orders_ids).select(:product_detail_id, :product_id, "SUM(quantity) as sum_product_count", "SUM(price) as sum_price").group(:product_detail_id).order("sum_product_count DESC")
+      @order_items = OrderItem.where(:order_id=>@orders_ids).select(:product_detail_id, :product_id, :color, :size, "SUM(quantity) as sum_product_count", "SUM(price) as sum_price").group(:product_detail_id).order("sum_product_count DESC")
     else
-      @order_items = OrderItem.includes(:product).joins(:product=>:category).select(:product_detail_id, :product_id, "SUM(order_items.quantity) as sum_product_count", "SUM(order_items.price) as sum_price").where("tags.name in (?)",cat_list).where(:order_id=>@orders_ids).group(:product_detail_id).order("sum_product_count DESC") 
+      @order_items = OrderItem.includes(:product).joins(:product=>:category).select(:product_detail_id, :product_id, :color, :size, "SUM(order_items.quantity) as sum_product_count", "SUM(order_items.price) as sum_price").where("tags.name in (?)",cat_list).where(:order_id=>@orders_ids).group(:product_detail_id).order("sum_product_count DESC") 
 
     end
     

@@ -1,0 +1,232 @@
+  <table width="800" border="0" cellpadding="5" cellspacing="5">
+
+    <tbody>
+        <tr>
+            <td>
+                <%= image_tag(image_url("site/logo-full.png"), {:width=>"350", :height=>"140"}) %></br>
+                <%= @company_name%></br>
+                <%= @company_address%></br>
+                <%= @company_phone%></br>
+                <%= @company_fax%></br>
+                </br>
+            </td>
+            <td align="right">
+                <h1> R E C E I P T </h1>
+            </td>
+
+        </tr>
+        <tr >
+            <td colspan="2">
+                <table border="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td align="right"><b>Invoice Date:</b></td><td><%= @order.created_at %></td>
+                            <td align="right"><b>Print Date:</b></td><td><%= DateTime.now %></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><b>Order No:</b></td><td><%= @order.id.to_s.rjust(10, '0') %></td>
+                            <td align="right"><b>Contact:</b></td><td><%= @order.full_shipping_name %></td>        
+                        </tr>
+                        <tr>
+                            <td align="right"><b>Invoice No:</b></td><td><%= @order.id.to_s.rjust(5, '0').to_s + "-"+ @order.created_at.to_i.to_s %></td>
+                            <td align="right"><b>Account No:</b></td><td><%= @order.user.id.to_s.rjust(10,'0') %></td>             
+                        </tr>
+                        <tr>
+                            <td align="right"><b></b></td><td><%#= @order.invoice_no.rjust(10,'0') rescue "n/a"%></td>
+                            <td align="right"><b>Purchase Order No:</b></td><td><%= @order.purchase_order_no.rjust(10,'0') rescue "n/a"%></td>             
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top" border="1">
+                <table border="1" width="400"><tr><td>
+                            <b> Bill To:</b></br>
+                            <%= @order.full_billing_name %></br>
+                            <%= @order.full_billing_street %></br>
+                            <%= @order.bill_city %>, <%= @order.bill_state %> <%= @order.bill_zip %></br>
+                            </br>
+                            Email: <%= @order.user.name %></br>
+                        </td></tr></table>
+            </td>
+            <td valign="top">
+                <table border="1" width="400"><tr><td>
+                            <b> Ship To:</b></br>
+                            <%= @order.full_shipping_name %></br>
+                            <%= @order.full_shipping_street %></br>
+                            <%= @order.ship_city %>, <%= @order.ship_state %> <%= @order.ship_zip %></br>
+                            </br>
+                            </br>
+                            Via: <%=@order.shipped_via  %>  #(<%=@order.tracking_no rescue "n/a"%>)</br> 
+                        </td></tr></table>
+            </td> 
+
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table cellpadding="2" cellspacing="0" border="1" width="100%">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Product Name</th>
+                            <th>UPC</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                        <% line_number_counter = 0 %>
+                        <% product_count = 0 %>
+                        <%  @order.order_items.each do |order_item| %>
+                          <% product_count = product_count + 1 %>
+                          <% line_number_counter = line_number_counter + 1 %>
+
+                          <tr class="<%= cycle('odd gradeA', 'even gradeA')%> shipping-item-row"  style = "cursor:pointer">
+                              <td align="center" width="39"><%= image_tag(image_url(order_item.product_detail.thumb.to_s),:border=>"0", :width=>"35") rescue image_tag(image_url("empty_s.jpg"),:border=>"0", :width=>"35") %></br><%=order_item.color%></br><%=order_item.size%></td>
+                              <td align="left"  width="375"><%=order_item.title.html_safe%></td>
+                              <td align="center"  width="149"><%=order_item.product_detail.inventory_key rescue "Not Available"%></td>
+                              <td align="center"  width="97"><%=order_item.quantity%></td>
+                              <td align="center"  width="124"><%=number_to_currency(order_item.price)%></td>
+                          </tr>
+                          <% if (((line_number_counter) % 6 == 0) and @page_number.blank?) or ((line_number_counter) % 6 == 0) then %>
+                            <% line_number_counter = 0 %>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th>Product Name</th>
+                                <th>UPC</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+            </tr>
+        </tbody>
+    </table>
+    <% @page_number = @page_number.blank? ? 1: @page_number + 1%>
+    <div style=" page-break-before: always;" class="pagebreak"> </div>
+
+    <table width="850" border="0" cellpadding="5" cellspacing="5">
+        <tbody>
+            <tr>
+                <td>
+                    <table border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td height="40" align="right"><b>Customer Name:</b></td><td height="40"><%=@order.full_billing_name.html_safe %></td>
+                            </tr>
+                        </tbody>
+                    </table> 
+
+                    <table cellpadding="2" cellspacing="0" border="1" width="100%">
+                        <% product_count = 0 %>
+                        <% if @order.order_items.last !=  order_item then%>
+                          <thead>
+                              <tr>
+                                  <th></th>
+                                  <th>Product Description</th>
+                                  <th>UPC</th>
+                                  <th>Quantity</th>
+                                  <th>Price</th>
+                              </tr>
+                          </thead>
+                        <% end %>
+
+                        <tbody>
+
+                          <% end %>
+
+                        <% end %>
+
+                    </tbody>
+                    <tfoot>
+                        <% if product_count != 0 then %>
+                        <tr>
+                            <th></th>
+                            <th>Product Description</th>
+                            <th>UPC</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                        <% end %>
+                        <tr>
+                            <th colspan="4" align="right">
+                                Sub Total:
+                            </th>
+                            <th align="right" style="padding-right: 15px;">
+                                <%=number_to_currency(@order.total_price)%>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="4" align="right">
+                                Shipping:
+                            </th>
+                            <th align="right" style="padding-right: 15px;">
+                                <%=number_to_currency(@order.shipping_cost)%>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="4" align="right">
+                                Sales Tax:
+                            </th>
+                            <th align="right" style="padding-right: 15px;">
+                                <%=number_to_currency(@order.full_tax)%>
+                            </th> 
+                        </tr>
+                        <%  if(not @order.coupon_value==0) then%> 
+                          <tr>
+                              <th colspan="4" align="right">
+                                  Coupon: <%=@order.coupon_description %> (<%=@order.coupon_code rescue "unknown" %>)
+                              </th>
+                              <th align="right" style="padding-right: 15px;">
+                                  -<%=number_to_currency(@order.coupon_value)%>
+                              </th> 
+                          </tr>
+                        <% end %>
+
+                        <%  if( @order.store_wide_sale.to_s.to_i > 0) then%> 
+                          <tr>
+                              <th colspan="4" align="right">
+                                  Store Wide Sale (<%=@order.calc_percent_store_wide_sale %> % off)
+                              </th>
+                              <th align="right" style="padding-right: 15px;">
+                                  -<%=number_to_currency(@order.store_wide_sale)%>
+                              </th> 
+                          </tr>
+
+                        <% end %>
+
+                        <tr>
+                            <th colspan="4" align="right">
+                                Grand Total:
+                            </th>
+                            <th align="right" style="padding-right: 15px;">
+                                <%=number_to_currency(@order.grand_total_price)%>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <h2> Comments: Backordered items will ship as they become available.</h2>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <h3>Please contact the Customer Service department<%= " at "+  @company_phone rescue " at the number above "%> with any questions or concerns.</h3>
+
+                <h2>Thank you for your order!</h2>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
