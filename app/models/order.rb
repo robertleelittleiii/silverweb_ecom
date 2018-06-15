@@ -131,9 +131,9 @@ class Order < ActiveRecord::Base
       def check_double_purchase
         current_user = user
         
-        last_user_purchase = (current_user.orders.last.created_at rescue (DateTime.now -60.seconds))
+        last_user_purchase = (current_user.orders.last.created_at rescue (DateTime.now - 60.seconds))
       
-        if last_user_purchase >= (DateTime.now - 30.seconds) then
+        if last_user_purchase >= (DateTime.now - 30.seconds) and current_user.orders > 0 then
           
           # save fails becuase usesr purchased within the past 30 seconds
           errors.add :base, "Your order is being processed.  Please wait at least 30 seconds between purchases"
