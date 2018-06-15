@@ -109,6 +109,7 @@ class Order < ActiveRecord::Base
     
       SHIPPING_TYPES= ["Ground" , "2 Day", "Next Day", "Pick Up Store"].freeze
     
+      before_save :check_double_purchase
     
       def paid_with_card? 
         puts("express_token.blank?:  #{express_token.blank?}")
@@ -127,6 +128,20 @@ class Order < ActiveRecord::Base
   
       end
 
+      def check_double_purchase
+        current_user = user
+        last_user_purchase = current_user.orders.last
+      
+        if last_user_purchase.created_at >= DateTime.now - 30.seconds then
+          
+          # save fails becuase usesr purchased within the past 30 seconds
+          errors.add :base, "Please wait at least 30 seconds between purchases"
+          return false
+        end
+        
+        return true
+      end
+      
       def shipped_via
         return SHIPPING_TYPES[shipping_method]
       end
