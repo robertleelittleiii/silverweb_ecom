@@ -135,7 +135,7 @@ class Order < ActiveRecord::Base
         if last_user_purchase.created_at >= DateTime.now - 30.seconds then
           
           # save fails becuase usesr purchased within the past 30 seconds
-          errors.add :base, "Please wait at least 30 seconds between purchases"
+          errors.add :base, "Your order is being processed.  Please wait at least 30 seconds between purchases"
           return false
         end
         
