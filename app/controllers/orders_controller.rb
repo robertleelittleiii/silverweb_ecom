@@ -308,9 +308,8 @@ class OrdersController < ApplicationController
       
       
       if @cart.total_price > 0 then
-        if @order.save
-
-          if @order.purchase(@cart)
+        if @order.save then 
+          if @order.purchase(@cart) then
             @order.reduce_inventory($hostfull)
             
             if  not Settings.order_notification then
@@ -537,9 +536,9 @@ class OrdersController < ApplicationController
     @orders_ids = Order.joins(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
    
     if cat_list.blank? then 
-      @orders = Order.joins(:user).joins(:user=>:user_attribute).where(:id=>@orders_ids).order("user_attributes.last_name")  
+      @orders = Order.includes(:user).includes(:user=>:user_attribute).where(:id=>@orders_ids).order("user_attributes.last_name")  
     else
-      @orders = Order.joins(:user).joins(:user=>:user_attribute).eager_load(:order_items).eager_load(:order_items=>:product).eager_load(:order_items=>{:product=>:category}).where("tags.name in (?)",cat_list).where(:id=>@orders_ids).order("user_attributes.last_name")  
+      @orders = Order.includes(:user).includes(:user=>:user_attribute).eager_load(:order_items).eager_load(:order_items=>:product).eager_load(:order_items=>{:product=>:category}).where("tags.name in (?)",cat_list).where(:id=>@orders_ids).order("user_attributes.last_name")  
     end
     
     render "customer_sales_report.html", layout: "print_landscape.html"
