@@ -61,7 +61,7 @@
                                   <td align="center" style="font-size:12px;"><%=  order_item.product.product_name.html_safe rescue ""%></td>
                                   <td align="center"><%= (order_item.size.blank? ? "" : order_item.size + " / ") rescue "" %>  <%=  (order_item.color.blank? ? "" : order_item.color) rescue "" %></td>
                                   <td align="center"><%=  number_with_precision(order_item.quantity,:precision=>0) %></td>
-                                  <td align="center"><%=   number_to_currency(order_item.price * order_item.quantity) %></td>
+                                  <td align="center"><%=   number_to_currency(order_item.price) %></td>
                               </tr>
 
                             <% else %>
@@ -72,7 +72,7 @@
                                   <td align="center" style="font-size:12px;"><%=  order_item.product.product_name.html_safe rescue ""%></td>
                                   <td align="center"><%= (order_item.size.blank? ? "" : order_item.size + " / ") rescue "" %>  <%=  (order_item.color.blank? ? "" : order_item.color) rescue "" %></td>
                                   <td align="center"><%=  number_with_precision(order_item.quantity,:precision=>0) %></td>
-                                  <td align="center"><%=   number_to_currency(order_item.price * order_item.quantity) %></td>
+                                  <td align="center"><%=   number_to_currency(order_item.price) %></td>
                               </tr>
 
                             <% end %>
@@ -130,7 +130,7 @@
 
 
 
-            </td>
+            </td> 
         </tr>
 
     </tbody>
