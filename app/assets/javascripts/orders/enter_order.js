@@ -5,7 +5,7 @@
 
 
 function bindCopyAddressClick() {
-    $("#copy-to-billing").click(function(){
+    $("#copy-to-billing").click(function () {
         $("#order_bill_first_name").val($("#order_ship_first_name").val());
         $("#order_bill_last_name").val($("#order_ship_last_name").val());
         $("#order_bill_street_1").val($("#order_ship_street_1").val());
@@ -13,11 +13,15 @@ function bindCopyAddressClick() {
         $("#order_bill_city").val($("#order_ship_city").val());
         $("#order_bill_state").val($("#order_ship_state").val());
         $("#order_bill_zip").val($("#order_ship_zip").val());
-    });   
+    });
 }
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     bindCopyAddressClick();
-   
+
+    $('form').submit(function () {
+        $(this).find("input[type='submit']").prop('disabled', true).fadeOut();
+    });
+
 });

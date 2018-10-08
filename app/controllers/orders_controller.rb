@@ -533,7 +533,7 @@ class OrdersController < ApplicationController
   
     cat_list = Settings.category_group.split(",")
     
-    @orders_ids = Order.joins(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
+    @orders_ids = Order.includes(:transactions).where(:order_transactions=>{:success=>true}).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date).to_s}'").select("id").collect(&:id)
    
     if cat_list.blank? then 
       @orders = Order.includes(:user).includes(:user=>:user_attribute).where(:id=>@orders_ids).order("user_attributes.last_name")  
