@@ -1,4 +1,6 @@
-class CreateCoupons < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateCoupons < ActiveRecord::Migration[5.0]
   def self.up
     create_table :coupons do |t|
       t.text :description

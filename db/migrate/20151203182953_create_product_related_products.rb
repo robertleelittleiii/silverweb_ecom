@@ -1,6 +1,8 @@
-class CreateProductRelatedProducts < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateProductRelatedProducts < ActiveRecord::Migration[5.0]
   def change
-    if not ActiveRecord::Base.connection.table_exists? 'product_related_products' then
+    unless ActiveRecord::Base.connection.table_exists? 'product_related_products'
       create_table :product_related_products do |t|
         t.integer :product_id
         t.integer :related_product_id

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.json
@@ -6,7 +8,7 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @suppliers} 
+      format.json { render json: @suppliers }
     end
   end
 
@@ -28,7 +30,7 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @supplier}
+      format.json { render json: @supplier }
     end
   end
 
@@ -44,10 +46,10 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.save
-        format.html { redirect_to @supplier, notice: "Supplier was successfully created." }
+        format.html { redirect_to @supplier, notice: 'Supplier was successfully created.' }
         format.json { render json: @supplier, status: :created, location: @supplier }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @supplier.errors, status: :unprocessable_entry }
       end
     end
@@ -60,11 +62,11 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.update_attributes(params[:supplier])
-        format.html { redirect_to @supplier, notice: "Supplier was successfully updated."}
+        format.html { redirect_to @supplier, notice: 'Supplier was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @supplier.errors, status: "unprocessable_entry" }
+        format.html { render action: 'edit' }
+        format.json { render json: @supplier.errors, status: 'unprocessable_entry' }
       end
     end
   end
@@ -80,16 +82,14 @@ class SuppliersController < ApplicationController
       format.json { head :ok }
     end
   end
-  
-   # CREATE_EMPTY_RECORD /suppliers/1
-   # CREATE_EMPTY_RECORD /suppliers/1.json
+
+  # CREATE_EMPTY_RECORD /suppliers/1
+  # CREATE_EMPTY_RECORD /suppliers/1.json
 
   def create_empty_record
     @supplier = Supplier.new
     @supplier.save
-    
+
     redirect_to(controller: :suppliers, action: :edit, id: @supplier)
   end
-
-  
 end

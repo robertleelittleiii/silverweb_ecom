@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 module SilverwebCms
   module Controller
-    extend ActiveSupport::Concern  
-  module ClassMethods
-     def ecom_findcart
-        
-          before_filter :find_cart, :except => :empty_cart
-        
-       include SilverwebEcom::ControllerExtensions::SiteControllerExtensions
-      end
-  end
+    extend ActiveSupport::Concern
+    module ClassMethods
+      def ecom_findcart
+        before_action :find_cart, except: :empty_cart
+
+        include SilverwebEcom::ControllerExtensions::SiteControllerExtensions
+       end
+    end
   end
 end

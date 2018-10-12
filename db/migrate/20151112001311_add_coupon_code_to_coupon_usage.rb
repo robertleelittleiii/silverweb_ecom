@@ -1,4 +1,6 @@
-class AddCouponCodeToCouponUsage < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddCouponCodeToCouponUsage < ActiveRecord::Migration[5.0]
   def self.up
     add_column :coupon_usages, :coupon_code, :string
   end

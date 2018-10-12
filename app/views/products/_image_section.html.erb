@@ -1,37 +1,17 @@
 
 <div class="imagesection">
-          <!-- START:hidden_div -->
-          
-          <%= hidden_div_if(@product.pictures.count > 999, :id => "imagebutton") %>
-          <%= render(:partial => "/pictures/upload_button_multi") %>
-          <%#=  render(:partial => "/pictures/upload_button")%>
-          <%="</div>".html_safe %>
-          
-          
-          <%= hidden_div_if((@product.pictures.empty?) , :id=>"images") %>
+    <!-- START:hidden_div -->
 
-          <%= render(:partial => "picture_list", :object => @product.pictures) %>
-          
-
-          <%="</div>".html_safe %>
+    <div class="<%= (@product.pictures.count > 999 ? 'hidden-item' : '')%>" id="imagebutton" >              
+        <%= render(:partial => "/pictures/upload_button_multi") %>
+    </div>
 
 
-          <%= render(:partial=>"/pictures/upload_template") %>
-
-      </div> 
-
-
-
-<!-- <div class="imagesection">
-          <!-- START:hidden_div - ->
-          <%#= hidden_div_if(@product.pictures.empty?, :id => "images") %>
-          <%#= render(:partial => "images", :object => @product.pictures) %>
-          <%#="</div>".html_safe %>
+    <div class="<%= (@product.pictures.empty? ? 'hidden-item' : '')%>" id="images" >              
+        <%= render(:partial => "picture_list", :object => @product.pictures) %>
+    </div>
 
 
-          <%#= hidden_div_if(@product.pictures.count >15, :id => "imagebutton") %>
-          <%#=render(:partial => "/images/imagebutton")%>
-          <%#="</div>".html_safe %>
+    <%= render(:partial=>"/pictures/upload_template") %>
 
-        </div>
-        --> 
+</div> 

@@ -1,4 +1,6 @@
-class AddPositionToProducts < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddPositionToProducts < ActiveRecord::Migration[5.0]
   def self.up
     add_column :products, :position, :integer
   end

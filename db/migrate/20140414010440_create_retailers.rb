@@ -1,6 +1,8 @@
-class CreateRetailers < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateRetailers < ActiveRecord::Migration[5.0]
   def self.up
-    if not ActiveRecord::Base.connection.table_exists? 'retailers' then
+    unless ActiveRecord::Base.connection.table_exists? 'retailers'
       create_table :retailers do |t|
         t.string :company_name
         t.string :company_street_1
@@ -21,7 +23,7 @@ class CreateRetailers < ActiveRecord::Migration
   end
 
   def self.down
-    if  ActiveRecord::Base.connection.table_exists? 'retailers' then
+    if ActiveRecord::Base.connection.table_exists? 'retailers'
       drop_table :retailers
     end
   end

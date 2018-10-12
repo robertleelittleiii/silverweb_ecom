@@ -1,4 +1,6 @@
-class CreateOrders < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateOrders < ActiveRecord::Migration[5.0]
   def self.up
     create_table :orders do |t|
       t.integer :user_id
@@ -15,15 +17,15 @@ class CreateOrders < ActiveRecord::Migration
       t.string :ship_city
       t.string :ship_state
       t.string :ship_zip
-      
+
       t.string :bill_first_name
       t.string :bill_last_name
       t.string :bill_street_1
       t.string :bill_street_2
       t.string :bill_city
       t.string :bill_state
-      t.string :bill_zip     
-      
+      t.string :bill_zip
+
       t.timestamps
     end
   end

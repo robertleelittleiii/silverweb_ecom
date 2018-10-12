@@ -1,4 +1,6 @@
-class CreateSuppliers < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateSuppliers < ActiveRecord::Migration[5.0]
   def self.up
     create_table :suppliers do |t|
       t.string :supplier_name

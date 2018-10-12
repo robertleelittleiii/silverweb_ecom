@@ -1,4 +1,6 @@
-class AddExpressTokenToOrders < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddExpressTokenToOrders < ActiveRecord::Migration[5.0]
   def change
     add_column :orders, :express_token, :string
     add_column :orders, :express_payer_id, :string

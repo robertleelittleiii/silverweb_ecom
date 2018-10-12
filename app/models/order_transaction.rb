@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class OrderTransaction < ActiveRecord::Base
-   belongs_to :order
+  belongs_to :order, optional: true
   serialize :params
-  
+
   def response=(response)
     self.success       = response.success?
     self.authorization = response.authorization

@@ -1,4 +1,6 @@
-class CreateCouponOrders < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateCouponOrders < ActiveRecord::Migration[5.0]
   def self.up
     create_table :coupon_orders do |t|
       t.integer :order_id

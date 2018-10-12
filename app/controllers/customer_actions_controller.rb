@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class CustomerActionsController < ApplicationController
   def order_history
-      @user = User.find_by_id(session[:user_id])
-      @orders = @user.orders
+    @user = User.find_by_id(session[:user_id])
+    @orders = @user.orders
   end
-
 end

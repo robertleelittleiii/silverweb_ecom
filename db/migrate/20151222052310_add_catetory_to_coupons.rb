@@ -1,4 +1,6 @@
-class AddCatetoryToCoupons < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddCatetoryToCoupons < ActiveRecord::Migration[5.0]
   def self.up
     add_column :coupons, :category_id, :string
   end

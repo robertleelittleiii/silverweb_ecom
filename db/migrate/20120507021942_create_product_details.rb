@@ -1,4 +1,6 @@
-class CreateProductDetails < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class CreateProductDetails < ActiveRecord::Migration[5.0]
   def self.up
     create_table :product_details do |t|
       t.integer :product_id

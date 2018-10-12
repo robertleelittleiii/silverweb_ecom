@@ -1,15 +1,12 @@
 <div id="product-search-bar">
-                      Add Related Products: <input id="product-search" />
+    Add Related Products: <input id="product-search" />
 
 </div>
 <div class="relatedsection">
-                 
-          <%= hidden_div_if((@product.related.empty?) , :id=>"related-products") %>
 
+    <div class="<%= (@product.related.empty? ? 'hidden-item' : '')%>" id="related-products" >              
           <%= render(:partial => "related_list", :object => @product.related) %>
-          
+    </div>
 
-          <%="</div>".html_safe %>
-
-      </div> 
+</div> 
 

@@ -1,4 +1,6 @@
-class AddCouponInfoToOrders < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddCouponInfoToOrders < ActiveRecord::Migration[5.0]
   def self.up
     add_column :orders, :coupon_description, :string
     add_column :orders, :coupon_value, :float

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ProductRelatedProductsController < ApplicationController
-  before_action :set_product_related_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product_related_product, only: %i[show edit update destroy]
 
   # GET /product_related_products
   def index
@@ -7,8 +9,7 @@ class ProductRelatedProductsController < ApplicationController
   end
 
   # GET /product_related_products/1
-  def show
-  end
+  def show; end
 
   # GET /product_related_products/new
   def new
@@ -16,8 +17,7 @@ class ProductRelatedProductsController < ApplicationController
   end
 
   # GET /product_related_products/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /product_related_products
   def create
@@ -49,13 +49,14 @@ class ProductRelatedProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product_related_product
-      @product_related_product = ProductRelatedProduct.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def product_related_product_params
-      params.require(:product_related_product).permit(:product_id, :related_prooduct)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product_related_product
+    @product_related_product = ProductRelatedProduct.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def product_related_product_params
+    params.require(:product_related_product).permit(:product_id, :related_prooduct)
+  end
 end

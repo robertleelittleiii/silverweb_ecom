@@ -1,4 +1,6 @@
-class AddSizeLabelToProducts < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class AddSizeLabelToProducts < ActiveRecord::Migration[5.0]
   def self.up
     add_column :products, :size_label, :string
   end

@@ -130,7 +130,7 @@ function updateImages() {
 function bind_file_upload_to_upload_form()
 {
     $("form.upload-form").fileupload({
-        dataType: "json",
+            dataType: "json",
         add: function (e, data) {
             file = data.files[0];
             data.context = $(tmpl("template-upload", file));

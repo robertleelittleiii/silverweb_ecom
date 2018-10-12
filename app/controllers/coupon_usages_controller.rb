@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CouponUsagesController < ApplicationController
   # GET /coupon_usages
   # GET /coupon_usages.json
@@ -6,7 +8,7 @@ class CouponUsagesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @coupon_usages} 
+      format.json { render json: @coupon_usages }
     end
   end
 
@@ -28,7 +30,7 @@ class CouponUsagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @coupon_usage}
+      format.json { render json: @coupon_usage }
     end
   end
 
@@ -44,10 +46,10 @@ class CouponUsagesController < ApplicationController
 
     respond_to do |format|
       if @coupon_usage.save
-        format.html { redirect_to @coupon_usage, notice: "Coupon usage was successfully created." }
+        format.html { redirect_to @coupon_usage, notice: 'Coupon usage was successfully created.' }
         format.json { render json: @coupon_usage, status: :created, location: @coupon_usage }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @coupon_usage.errors, status: :unprocessable_entry }
       end
     end
@@ -60,11 +62,11 @@ class CouponUsagesController < ApplicationController
 
     respond_to do |format|
       if @coupon_usage.update_attributes(params[:coupon_usage])
-        format.html { redirect_to @coupon_usage, notice: "Coupon usage was successfully updated."}
+        format.html { redirect_to @coupon_usage, notice: 'Coupon usage was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @coupon_usage.errors, status: "unprocessable_entry" }
+        format.html { render action: 'edit' }
+        format.json { render json: @coupon_usage.errors, status: 'unprocessable_entry' }
       end
     end
   end
@@ -80,16 +82,14 @@ class CouponUsagesController < ApplicationController
       format.json { head :ok }
     end
   end
-  
-   # CREATE_EMPTY_RECORD /coupon_usages/1
-   # CREATE_EMPTY_RECORD /coupon_usages/1.json
+
+  # CREATE_EMPTY_RECORD /coupon_usages/1
+  # CREATE_EMPTY_RECORD /coupon_usages/1.json
 
   def create_empty_record
     @coupon_usage = CouponUsage.new
     @coupon_usage.save
-    
+
     redirect_to(controller: :coupon_usages, action: :edit, id: @coupon_usage)
   end
-
-  
 end
