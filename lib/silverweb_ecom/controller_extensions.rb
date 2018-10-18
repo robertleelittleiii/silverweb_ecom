@@ -54,7 +54,7 @@ module SilverwebEcom
 
           @page_info = Page.where(title: params[:page_name]).first || ''  .dup
           puts("---------the page=> #{@page_info.inspect}")
-          @products_per_page = Settings.products_per_page.to_i || 8
+          @products_per_page = Settings.products_per_page.to_i == 0 ?  8 : Settings.products_per_page.to_i
           @category_id = params[:category_id].to_s.downcase || ''.dup
           @department_id = params[:department_id].to_s.downcase || ''.dup
           @category_children = params[:category_children] || false
@@ -100,7 +100,7 @@ module SilverwebEcom
             #  @products_list = Product.all
           end
 
-          @product_ids = @products_list.collect(&:id)
+          @product_ids = @products_list.pluck(:id)
 
           @product_count = @products_list.length
 
@@ -113,6 +113,8 @@ module SilverwebEcom
           end
           #    @products = @products.page(params[:page]).per(@products_per_page)
 
+ #        puts("@product_ids: #{@product_ids},  @products_list: #{@products_list.count}, @products.count: #{@products.count}, @category_id: #{@category_id}, @department_id: #{@department_id} ")
+          
           @product_first = params[:page].blank? ? '1' : (params[:page].to_i * @products_per_page - (@products_per_page - 1))
 
           @product_last = params[:page].blank? ? @products.length : ((params[:page].to_i * @products_per_page) - @products_per_page) + @products.length || @products.length
@@ -150,7 +152,7 @@ module SilverwebEcom
                        ''
                      end
 
-          @products_per_page = Settings.search_products_per_page.to_i || 8
+          @products_per_page = Settings.search_products_per_page.to_i == 0 ? 8 : Settings.search_products_per_page.to_i
           @category_id = params[:category_id] || ''.dup
           @department_id = params[:department_id] || ''.dup
           @category_children = params[:category_children] || false

@@ -142,13 +142,13 @@ head :ok
   def product_details_table
     @product_details = ProductDetail.where(product_id: params[:product_id])
 
-    @colors = @product_details.select('distinct `color`').collect(&:color)
+    @colors = @product_details.select('distinct `color`').pluck(:color)
     @sizes = begin
                Settings.inventory_size_list.split(',').collect { |x| x } || ''.dup
              rescue StandardError
                []
              end
-    @system_colors = SystemImages.swatches.collect(&:title)
+    @system_colors = SystemImages.swatches.pluck(:title)
 
     @objects = current_objects(params)
     @total_objects = total_objects(params)

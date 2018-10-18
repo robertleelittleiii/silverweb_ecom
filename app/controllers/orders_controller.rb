@@ -399,7 +399,7 @@ class OrdersController < ApplicationController
     @end_date = Date.parse(Settings.report_end_date).to_s
 
     cat_list = Settings.category_group.split(',')
-    @orders_ids = Order.joins(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").select('id').collect(&:id)
+    @orders_ids = Order.joins(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").pluck(:id)
 
     if cat_list.blank?
       @orders = Order.joins(:user).joins(user: :user_attribute).where(id: @orders_ids).order('user_attributes.last_name')
@@ -416,7 +416,7 @@ class OrdersController < ApplicationController
     @end_date = Date.parse(Settings.report_end_date).to_s
 
     cat_list = Settings.category_group.split(',')
-    @orders_ids = Order.joins(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").select('id').collect(&:id)
+    @orders_ids = Order.joins(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").pluck(:id)
 
     if cat_list.blank?
       @orders = Order.joins(:user).joins(user: :user_attribute).where(id: @orders_ids).order('user_attributes.last_name')
@@ -503,7 +503,7 @@ class OrdersController < ApplicationController
     @end_date = Date.parse(Settings.report_end_date).to_s
 
     cat_list = Settings.category_group.split(',')
-    @orders_ids = Order.joins(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").select('id').collect(&:id)
+    @orders_ids = Order.joins(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").pluck(:id)
     # @order_items = OrderItem.where(:id=>@orders_ids)
     # @order_items = OrderItem.where(:order_id=>@orders_ids).select(:product_detail_id, :product_id, "SUM(quantity) as sum_product_count", "SUM(price) as sum_price").group(:product_detail_id).order("sum_product_count DESC")
 
@@ -523,7 +523,7 @@ class OrdersController < ApplicationController
 
     cat_list = Settings.category_group.split(',')
 
-    @orders_ids = Order.includes(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").select('id').collect(&:id)
+    @orders_ids = Order.includes(:transactions).where(order_transactions: { success: true }).where("orders.created_at >= '#{@start_date}' and orders.created_at <= '#{Date.parse(@end_date)}'").pluck(:id)
 
     if cat_list.blank?
       @orders = Order.includes(:user).includes(user: :user_attribute).where(id: @orders_ids).order('user_attributes.last_name')

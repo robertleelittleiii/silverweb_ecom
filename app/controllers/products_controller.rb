@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
     session[:mainnav_status] = true
 
     @product = Product.find(params[:id])
-    @colors =  @product.product_details.select('distinct `color`').collect(&:color)
+    @colors =  @product.product_details.select('distinct `color`').pluck(:color)
     @image_locations = ['Slider', 'Primary', 'Product List', '-']
     @product_layouts = [['Normal', ''], %w[Horizontal horizontal]]
 
@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
     rescue StandardError
       []
     end
-    @system_colors = SystemImages.swatches.collect(&:title)
+    @system_colors = SystemImages.swatches.pluck(:title)
   end
 
   # POST /products
@@ -161,7 +161,7 @@ class ProductsController < ApplicationController
     rescue StandardError
       []
     end
-    @system_colors = SystemImages.swatches.collect(&:title)
+    @system_colors = SystemImages.swatches.pluck(:title)
 
     render partial: 'detail_list'
   end
@@ -174,7 +174,7 @@ class ProductsController < ApplicationController
 
   def add_image
     @product = Product.find(params[:id])
-    @colors =  @product.product_details.select('distinct `color`').collect(&:color)
+    @colors =  @product.product_details.select('distinct `color`').pluck(:color)
     @image_locations = ['Slider', 'Primary', 'Product List', '-']
 
     format = params[:format]
@@ -267,7 +267,7 @@ head :ok
     @picture = Picture.find(params[:picture_id])
     @image_locations = ['Slider', 'Primary', 'Product List', '-']
     @product = Product.find(@picture.resource_id)
-    @colors =  @product.product_details.select('distinct `color`').collect(&:color)
+    @colors =  @product.product_details.select('distinct `color`').pluck(:color)
     @image_locations += @colors
 
     respond_to do |format|
@@ -330,7 +330,7 @@ head :ok
 
   def render_image_section
     @product = Product.find(params[:id])
-    @colors = @product.product_details.select('distinct `color`').collect(&:color)
+    @colors = @product.product_details.select('distinct `color`').pluck(:color)
     @image_locations = ['Slider', 'Primary', 'Product List', '-']
 
     render(partial: 'image_section')
