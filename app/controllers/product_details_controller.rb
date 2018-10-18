@@ -37,7 +37,7 @@ class ProductDetailsController < ApplicationController
   # GET /product_details/1/edit
   def edit
     if params[:request_type] == 'nothing'
-      render nothing: true
+head :ok
     else
       @product_detail = ProductDetail.find(params[:id])
 
@@ -136,7 +136,7 @@ class ProductDetailsController < ApplicationController
   def delete_ajax
     @product_detail = ProductDetail.find(params[:id])
     @product_detail.destroy
-    render nothing: true
+head :ok
   end
 
   def product_details_table

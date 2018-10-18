@@ -96,7 +96,8 @@ class RetailersController < ApplicationController
   def delete_ajax
     @retailer = Retailer.find(params[:id])
     @retailer.destroy
-    render nothing: true
+    head :ok
+    
   end
 
   def retailer_table

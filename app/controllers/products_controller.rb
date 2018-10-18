@@ -248,7 +248,7 @@ class ProductsController < ApplicationController
       #   Image.update(id, :position => position)
       Picture.reorder(id, position)
     end
-    render nothing: true
+head :ok
   end
 
   def update_related_order
@@ -259,7 +259,8 @@ class ProductsController < ApplicationController
       #   Image.update(id, :position => position)
       ProductRelatedProduct.reorder(id, position)
     end
-    render nothing: true
+head :ok
+
   end
 
   def edit_picture
@@ -303,7 +304,7 @@ class ProductsController < ApplicationController
     #    end
     @product.save
 
-    render(nothing: true)
+    head :ok
 
     #   respond_to do |format|
     #       format.js if request.xhr?
@@ -344,7 +345,8 @@ class ProductsController < ApplicationController
   def delete_ajax
     @product = Product.find(params[:id])
     @product.destroy
-    render nothing: true
+head :ok
+
   end
 
   def sort
@@ -361,7 +363,8 @@ class ProductsController < ApplicationController
         product.save
       end
     end
-    render nothing: true
+head :ok
+
   end
 
   def sort2
@@ -389,7 +392,8 @@ class ProductsController < ApplicationController
       end
       product.save
     end
-    render nothing: true
+head :ok
+
   end
 
   def generate_inventory_report
@@ -466,7 +470,7 @@ class ProductsController < ApplicationController
 
     params[:action_name] = 'add_image_system'
     #    if request.put?
-    #      render nothing: true
+    #     head :ok
     #    else
     #    end
   end

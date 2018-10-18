@@ -21,7 +21,7 @@ module SilverwebEcom
 
           @menu.save
 
-          render(nothing: true)
+          head :ok
         end
 
         def render_category_div
@@ -209,7 +209,7 @@ module SilverwebEcom
               format.json { render json: @products }
             end
           end
-          #    render :nothing => true
+          #    head :ok
         end
 
         def get_sizes_for_color
@@ -457,7 +457,7 @@ module SilverwebEcom
           @cart.save
           respond_to do |format|
             format.json { head :ok }
-            format.html { render nothing: true }
+            format.html { head :ok }
           end
         end
 
@@ -469,7 +469,7 @@ module SilverwebEcom
 
           respond_to do |format|
             format.json { head :ok }
-            format.html { render nothing: true }
+            format.html { head :ok }
           end
         end
 
@@ -486,7 +486,7 @@ module SilverwebEcom
           session[:cart] = nil
           find_cart
 
-          #    render(:nothing => true)
+          #    head :ok
 
           #    redirect_to_index
 
@@ -550,7 +550,7 @@ module SilverwebEcom
 
           respond_to do |format|
             format.json { render json: { message: '' } }
-            format.html { render nothing: true }
+            format.html { render head :ok }
           end
           # render :text=>params[:cart][:coupon_code]
         end

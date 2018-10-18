@@ -106,7 +106,7 @@ class CouponsController < ApplicationController
   def delete_ajax
     @coupon = Coupon.find(params[:id])
     @coupon.destroy
-    render nothing: true
+    head :ok
   end
 
   # CREATE_EMPTY_RECORD /coupons/1
@@ -132,13 +132,13 @@ class CouponsController < ApplicationController
 
   def current_objects(params = {})
     current_page = (begin
-                      params[:start].to_i / params[:length].to_i
-                    rescue StandardError
-                      0
-                    end) + 1
+        params[:start].to_i / params[:length].to_i
+      rescue StandardError
+        0
+      end) + 1
     @current_objects = Coupon.page(current_page).per(params[:length])
-                             .order("#{datatable_columns(params[:order]['0'][:column])} #{params[:order]['0'][:dir] || 'DESC'}")
-                             .where(conditions)
+    .order("#{datatable_columns(params[:order]['0'][:column])} #{params[:order]['0'][:dir] || 'DESC'}")
+    .where(conditions)
 
     # @current_objects = Coupon.select("coupons.*").
     #   where(conditions).
