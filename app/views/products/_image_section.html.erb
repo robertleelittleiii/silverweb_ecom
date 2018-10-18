@@ -7,7 +7,7 @@
     </div>
 
 
-    <div class="<%= (@product.pictures.empty? ? 'hidden-item' : '')%>" id="images" >              
+    <div id="images" >              
         <%= render(:partial => "picture_list", :object => @product.pictures) %>
     </div>
 
