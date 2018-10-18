@@ -139,7 +139,7 @@ module SilverwebEcom
       # SilverwebCms::Config.add_menu_actions(["Show Portfolio",20])
 
       Picture.class_eval do
-        belongs_to :product, polymorphic: true
+        belongs_to :product, polymorphic: true, optional: true
       end
 
       User.class_eval do
