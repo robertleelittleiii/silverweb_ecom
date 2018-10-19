@@ -355,7 +355,7 @@ module SilverwebEcom
           end
           respond_to do |format|
             format.json { head :ok }
-            format.html { render text: @flash_message }
+            format.html {  render plain: @flash_message }
           end
         end
 
@@ -443,7 +443,7 @@ module SilverwebEcom
 
           respond_to do |format|
             format.json { head :ok }
-            format.html { render text: @flash_message }
+            format.html {  render plain: @flash_message }
           end
         end
 
