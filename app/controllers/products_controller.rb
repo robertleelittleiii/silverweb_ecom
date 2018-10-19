@@ -85,9 +85,11 @@ class ProductsController < ApplicationController
     preferences_update = false
 
     if (params[:id] == 'product_preferences') || (params[:id] == 'settings')
-      if params['settings'].to_a.first[0] == 'category_group'
+      params_settings = settings_params
+
+      if params_settings.to_h.keys[0] == 'category_group'
         category_list = Settings.category_group.to_s
-        category = params['settings'].to_a.first[1]
+        category = params_settings.to_h.values[0]
         if category_list.include?(category)
           new_cat_list = category_list.to_s.split(',').reject { |elem| elem == category }.join(',')
         else
@@ -95,7 +97,7 @@ class ProductsController < ApplicationController
         end
         Settings.category_group = new_cat_list
       else
-        eval('Settings.' + params['settings'].to_a.first[0] + '="' + params['settings'].to_a.first[1].html_safe + '"')
+        eval("Settings.#{params_settings.to_h.keys[0]}=\"#{params_settings.to_h.values[0].to_s.html_safe}\"")
       end
 
       preferences_update = true
@@ -193,7 +195,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if image_saved
-    #    format.js   { render action: '../pictures/create.js' }
+        #    format.js   { render action: '../pictures/create.js' }
         format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
         format.json { render json: @picture, status: :created, location: @picture }
       else
@@ -248,7 +250,7 @@ class ProductsController < ApplicationController
       #   Image.update(id, :position => position)
       Picture.reorder(id, position)
     end
-head :ok
+    head :ok
   end
 
   def update_related_order
@@ -259,7 +261,7 @@ head :ok
       #   Image.update(id, :position => position)
       ProductRelatedProduct.reorder(id, position)
     end
-head :ok
+    head :ok
 
   end
 
@@ -345,7 +347,7 @@ head :ok
   def delete_ajax
     @product = Product.find(params[:id])
     @product.destroy
-head :ok
+    head :ok
 
   end
 
@@ -363,7 +365,7 @@ head :ok
         product.save
       end
     end
-head :ok
+    head :ok
 
   end
 
@@ -392,7 +394,7 @@ head :ok
       end
       product.save
     end
-head :ok
+    head :ok
 
   end
 
@@ -783,7 +785,11 @@ head :ok
     conditions.join(' AND ')
   end
 
+  def settings_params
+    params[:settings].permit(params[:settings].keys)
+  end
+  
   def product_params
-    params[:product].permit('product_id', 'sku', 'supplier_product_id', 'product_name', 'product_description', 'supplier_id', 'department_id', 'category_id', 'quantity_per_unit', 'unit_size', 'unit_price', 'msrp', 'product_detail_id', 'discount', 'unit_weight', 'reorder_level', 'product_active', 'discount_available', 'product_ranking', 'created_at', 'updated_at', 'supplier_name', 'is_taxable', 'position', 'size_label', 'sheet_name', 'custom_layout', 'search_terms', 'no_coupon')
+    params[:product].permit('product_id', 'sku', 'supplier_product_id', 'product_name', 'product_description', 'supplier_id', 'department_id', 'category_id', 'quantity_per_unit', 'unit_size', 'unit_price', 'msrp', 'product_detail_id', 'discount', 'unit_weight', 'reorder_level', 'product_active', 'discount_available', 'product_ranking', 'created_at', 'updated_at', 'supplier_name', 'is_taxable', 'position', 'size_label', 'sheet_name', 'custom_layout', 'search_terms', 'no_coupon','settings')
   end
 end
