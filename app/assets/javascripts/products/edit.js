@@ -15,8 +15,7 @@ $(document).ready(function () {
         if ($("#as_window").text() == "true")
         {
             //  alert("it is a window");
-        }
-        else
+        } else
         {
             products_edit_callDocumentReady();
         }
@@ -109,7 +108,7 @@ function updateBestinplaceImageTitles() {
 function updateImages() {
 
     //  alert("color changed");
-    var $product_id = $("#product-id").text();
+    var $product_id = $("#current-product-id").text();
     $("body").css("cursor", "progress");
 // $("#loader_progress").show();
 
@@ -130,7 +129,7 @@ function updateImages() {
 function bind_file_upload_to_upload_form()
 {
     $("form.upload-form").fileupload({
-            dataType: "json",
+        dataType: "json",
         add: function (e, data) {
             file = data.files[0];
             data.context = $(tmpl("template-upload", file));
@@ -152,8 +151,7 @@ function bind_file_upload_to_upload_form()
                         if (typeof (jqXHR.responseText) == "undefined") {
                             setUpPurrNotifier("info.png", "Notice", jqXHR.responseJSON["attachment"][0]);
                             data.context.remove();
-                        }
-                        else
+                        } else
                         {
                             render_picture(result.id);
                         }
@@ -168,8 +166,7 @@ function bind_file_upload_to_upload_form()
                         if (jqXHR.status == "200")
                         {
                             render_picture(result.id);
-                        }
-                        else
+                        } else
                         {
                             var obj = jQuery.parseJSON(jqXHR.responseText);
                             // console.log(typeof obj["attachment"][0])
@@ -484,7 +481,7 @@ function wait(msecs)
 
 
 function buildproductDetailsListTable() {
-    var $product_id = $("div#attr-products div#product-id").text();
+    var $product_id = $("div#attr-products div#current-product-id").text();
 
     productDetailsTable = $('#product-detail-list-table').DataTable({
         pageLength: 25,
@@ -518,7 +515,7 @@ function buildproductDetailsListTable() {
 
         },
         drawCallback: function (settings) {
-           $(".best_in_place ").best_in_place();
+            $(".best_in_place ").best_in_place();
             $(".combobox").combobox();
 //            $("#toggle").click(function () {
 //                $("#combobox").toggle();
@@ -544,7 +541,7 @@ function buildproductDetailsListTable() {
             {width: '100'},
             {width: '100'},
             {width: '50'}
-        ]   
+        ]
 //        ,"iDisplayLength": 25,
 //        "aLengthMenu": [[25, 50, 100], [25, 50, 100]],
 //        "bStateSave": true,
@@ -757,9 +754,9 @@ function bindDuplicateProductDetail() {
 
 function bindBlurToDepartmentPopup() {
 
-    $('#product_department_id').change(function () {
+    $('#product_department_id').off("change").on("change", function () {
 
-        var $product_id = $("#product-id").text();
+        var $product_id = $("#current-product-id").text();
         // $("#product_department_id").val()
         setTimeout(function () {
 
@@ -768,13 +765,14 @@ function bindBlurToDepartmentPopup() {
                 $('#category-div').html(data);
                 // $("#loader_progress").hide();
                 //bindBlurToDepartmentPopup();
+                setupCheckboxes(".category-check");
             });
         }, 100);
         //alert('Handler for .blur() called.');
     });
-    $('.department-check').change(function () {
+    $('.department-check').off("change").on("change", function () {
 
-        var $product_id = $("#product-id").text();
+        var $product_id = $("#current-product-id").text();
         // $("#product_department_id").val()
         setTimeout(function () {
 
@@ -783,6 +781,7 @@ function bindBlurToDepartmentPopup() {
                 $('#category-div').html(data);
                 // $("#loader_progress").hide();
                 //bindBlurToDepartmentPopup();
+                setupCheckboxes(".category-check");
             });
         }, 100);
         //alert('Handler for .blur() called.');
@@ -792,7 +791,7 @@ function bindBlurToDepartmentPopup() {
 function updateImages() {
 
     //  alert("color changed");
-    var $product_id = $("#product-id").text();
+    var $product_id = $("#current-product-id").text();
     // $("#loader_progress").show();
     $("body").css("cursor", "progress");
 
@@ -816,7 +815,7 @@ function BestInPlaceCallBack(input) {
     if (input.attributeName.indexOf("color") != -1)
     {
         //  alert("color changed");
-        var $product_id = $("#product-id").text();
+        var $product_id = $("#current-product-id").text();
         $("body").css("cursor", "progress");
 //$("#loader_progress").show();
 
@@ -856,17 +855,17 @@ function bindChangeCombobox() {
             var dataObj = {};
 
             console.log($(this).attr("data-id"));
-            
+
             // var $detail_id = $(this).parent().parent().find("#detail-id").text();
             detail_id = $(this).attr("data-id");
             var value = $(this).val();
-            dataObj[objectToUpdate]= {};
-            dataObj[objectToUpdate][fieldToUpdate]=value;
+            dataObj[objectToUpdate] = {};
+            dataObj[objectToUpdate][fieldToUpdate] = value;
 
             console.log(detail_id);
             //   "/products/update_ajax/1?field=color&pointer_class=ProductDetail"
             $.ajax({
-                url: '/'+objectToUpdate+'s/' + detail_id,
+                url: '/' + objectToUpdate + 's/' + detail_id,
                 data: dataObj, //{objectToUpdate: { fieldToUpdate: value}},
                 method: "put",
                 dataType: "json",
@@ -939,13 +938,15 @@ function bindDivDepartmentUpdate() {
 function updateCategoryDiv() {
 
 
-    var $product_id = $("#product-id").text();
+    var $product_id = $("#current-product-id").text();
     // $("#product_department_id").val()
 
     $.post('/products/render_category_div?id=' + $product_id, function (data)
     {
         $('#category-div').html(data);
         $("body").css("cursor", "default");
+        setupCheckboxes(".category-check");
+
 // $("#loader_progress").hide();
         // setupCheckboxes(".category-check");
     });
@@ -1026,7 +1027,7 @@ function bindRelatedProductSearch() {
             minLength: 2,
             select: function (event, ui) {
 
-                var product_id = $("div#attr-products #product-id").text();
+                var product_id = $("div#attr-products #current-product-id").text();
                 // update_job_site(job_id, ui.item.id);
                 add_product_to_related(product_id, ui.item.id)
                 console.log(ui);
@@ -1055,8 +1056,7 @@ function add_product_to_related(product_id, related_product_id)
             if (data === undefined || data === null || data === "")
             {
                 //display warning
-            }
-            else
+            } else
             {
                 console.log("product added!");
                 //  updateJobSiteInformation(job_id, false);
@@ -1079,7 +1079,7 @@ function add_product_to_related(product_id, related_product_id)
 function updateRelated() {
 
     //  alert("color changed");
-    var product_id = $("div#attr-products #product-id").text();
+    var product_id = $("div#attr-products #current-product-id").text();
     $("body").css("cursor", "progress");
 // $("#loader_progress").show();
 
