@@ -481,7 +481,7 @@ function wait(msecs)
 
 
 function buildproductDetailsListTable() {
-    var $product_id = $("div#attr-products div#current-product-id").text();
+    var $product_id = $("div#attr-products div#product-id").text();
 
     productDetailsTable = $('#product-detail-list-table').DataTable({
         pageLength: 25,
@@ -1027,7 +1027,7 @@ function bindRelatedProductSearch() {
             minLength: 2,
             select: function (event, ui) {
 
-                var product_id = $("div#attr-products #current-product-id").text();
+                var product_id = $("div#attr-products div#product-id").text();
                 // update_job_site(job_id, ui.item.id);
                 add_product_to_related(product_id, ui.item.id)
                 console.log(ui);
@@ -1079,7 +1079,7 @@ function add_product_to_related(product_id, related_product_id)
 function updateRelated() {
 
     //  alert("color changed");
-    var product_id = $("div#attr-products #current-product-id").text();
+    var product_id = $("div#attr-products div#product-id").text();
     $("body").css("cursor", "progress");
 // $("#loader_progress").show();
 
