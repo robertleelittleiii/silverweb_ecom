@@ -4,7 +4,7 @@
 <% else %>
   <tr>
 <% end %>
-  <td><%= image_tag(cart_item.product_detail.thumb.to_s,:border=>"0")%></td>
+  <td><%= image_tag(cart_item.product_detail.thumb.to_s,:border=>"0") rescue "n/a"%></td>
   <td><%= cart_item.quantity %>&times;</td>
   <td><%=h cart_item.product.product_name%><br>
     <span id="cart-item-iid"><%=h truncate(cart_item.product.product_description, :length=>15)%><br></span></td>
