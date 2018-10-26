@@ -16,3 +16,6 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 gem 'rubocop' # --only HashSyntax --auto-correct
+gem 'silverweb_cms', github: 'robertleelittleiii/silverweb_cms', branch: 'v0.1.0rc1'
+gem 'vestal_versions', github: 'robertleelittleiii/vestal_versions'
+

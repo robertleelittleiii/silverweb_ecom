@@ -36,7 +36,11 @@ class CartItem
   end
 
   def price
-    @product.price * @quantity.to_i
+    if @product.use_size_as_price == true then
+      @product_detail.price * @quantity.to_i
+    else
+      @product.price * @quantity.to_i
+    end
   rescue StandardError
     0
   end

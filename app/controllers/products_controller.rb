@@ -790,6 +790,6 @@ class ProductsController < ApplicationController
   end
   
   def product_params
-    params[:product].permit('product_id', 'sku', 'supplier_product_id', 'product_name', 'product_description', 'supplier_id', 'department_id', 'category_id', 'quantity_per_unit', 'unit_size', 'unit_price', 'msrp', 'product_detail_id', 'discount', 'unit_weight', 'reorder_level', 'product_active', 'discount_available', 'product_ranking', 'created_at', 'updated_at', 'supplier_name', 'is_taxable', 'position', 'size_label', 'sheet_name', 'custom_layout', 'search_terms', 'no_coupon','settings')
+    params[:product].permit('product_id', 'sku', 'supplier_product_id', 'product_name', 'product_description', 'supplier_id', 'department_id', 'category_id', 'quantity_per_unit', 'unit_size', 'unit_price', 'msrp', 'product_detail_id', 'discount', 'unit_weight', 'reorder_level', 'product_active', 'discount_available', 'product_ranking', 'created_at', 'updated_at', 'supplier_name', 'is_taxable', 'position', 'size_label', 'sheet_name', 'custom_layout', 'search_terms', 'no_coupon','settings','use_size_as_price')
   end
 end

@@ -10,6 +10,22 @@ class ProductDetail < ActiveRecord::Base
     ProductDetail.where(attributes).first || ProductDetail.create(attributes)
   end
 
+  def price
+    calc_price = 0.0
+    
+    if product.use_size_as_price == true then
+      calc_price = size.to_f
+    else
+      calc_price = product.price
+    end
+    
+    if product.discount_available
+      calc_price.to_f  - ((product.discount.to_f / 100) * calc_price.to_f)
+    else
+      calc_price.to_f
+    end
+    
+  end
   def self.key_field
     'inventory_key'
   end
