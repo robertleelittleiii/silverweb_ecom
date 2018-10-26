@@ -265,7 +265,7 @@ function bindAddToCartClick() {
             data: "id=" + product_id + "&color=" + product_color + "&size=" + product_size + "&quantity=" + product_quantity,
             success: function (data)
             {
-                setUpPurrNotifier("Added to Cart", product_quantity + " " + product_name + "<br> Size: " + product_size + "(" + product_color + ")");
+                setUpPurrNotifier("Added to Cart", product_quantity + " " + product_name + "<br>" + product_size + "(" + product_color + ")");
 
                 // alert(data);
                 if (data === undefined || data === null || data === "")
@@ -275,7 +275,7 @@ function bindAddToCartClick() {
                 }
                 else
                 {
-                    setUpPurrNotifier("Inventory Warning", data)
+                    setUpPurrNotifier("Inventory Warning", data);
                     updateShoppingCartView();
                     //alert("success");
                 }
