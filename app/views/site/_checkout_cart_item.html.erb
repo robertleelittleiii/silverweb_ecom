@@ -1,7 +1,7 @@
 <table class='cart-item' width="970" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td style="text-align: center; text-align: center; width: 87px; padding-right: 30px; ">
-            <%= link_to(image_tag(checkout_cart_item.product_detail.small.to_s,:border=>"0", :align=>"center"), {:action=>:product_detail, :id=>checkout_cart_item.product.id},{})%></br>
+            <%= link_to(image_tag(checkout_cart_item.product_detail.small.to_s,:border=>"0", :align=>"center"), {:action=>:product_detail, :id=>checkout_cart_item.product.id},{}) rescue "n/a"%></br>
             <div class="cart-item-size-color"><%=h "#{checkout_cart_item.color}" if checkout_cart_item.color != "N/C"%> <%=h "#{checkout_cart_item.size}" if checkout_cart_item.size != "N/S" %></div>
 
         </td>
