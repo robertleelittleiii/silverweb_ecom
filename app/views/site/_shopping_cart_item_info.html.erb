@@ -1,6 +1,6 @@
 
     <table width="100">
-      <tr> <td class="item-price-info">(<%=@checkout_cart_item.quantity rescue "0" %>&times;<%= number_to_currency(@checkout_cart_item.product.price) rescue "$0.00"%>)</td></tr>
+      <tr> <td class="item-price-info">(<%=@checkout_cart_item.quantity rescue "0" %>&times;<%= number_to_currency(@checkout_cart_item.price) rescue "$0.00"%>)</td></tr>
       <tr><td> <div id="item-quatity" class="hidden-item"><%=@checkout_cart_item.quantity rescue "0"%></div></td></tr>
       <tr> <td class="item-price"><%=number_to_currency(@checkout_cart_item.price) rescue "$0.00" %></td></tr>
     </table>

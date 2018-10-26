@@ -14,7 +14,7 @@ class ProductDetail < ActiveRecord::Base
     calc_price = 0.0
     
     if product.use_size_as_price == true then
-      calc_price = size.to_f
+      calc_price = size.sub("$","").to_f
     else
       calc_price = product.price
     end
