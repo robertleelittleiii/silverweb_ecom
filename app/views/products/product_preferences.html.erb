@@ -83,6 +83,11 @@
                     </br>
 
                 </p>
+                 <p>
+                    <b>Shipping Methods: (comma seperated list)</b><br>
+                    <%=editablefieldcreate("shipping_methods", @settings)%>
+                </p>
+                
                 <p>
                     <b>$0.00 - $49.99: (ground, 2nd day, overnight, pickup)</b><br>
                     <%=editablefieldcreate("shipping_level_1", @settings)%>

@@ -312,7 +312,8 @@ module SilverwebEcom
         def check_out
           find_cart
 
-          @shipping_methods = [['Ground', 0], ['2 Day', 1], ['Next Day', 2], ['Pick Up Store', 3]]
+          @shipping_methods = Settings.shipping_methods.blank? ? [['Ground', 0], ['2 Day', 1], ['Next Day', 2], ['Pick Up Store', 3]] : Settings.shipping_methods.split(",").map.with_index{|element,i| [element,i]}
+          
           if @cart.items.empty?
             redirect_to(controller: 'site', action: 'index')
           else
