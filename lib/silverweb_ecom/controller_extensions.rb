@@ -503,7 +503,7 @@ module SilverwebEcom
                        params[:redirect].split(':')
                      end
 
-          redirect_to_hash = {}.merge!(params).merge!(controller: redirect[0], action: redirect[1])
+          redirect_to_hash = {}.merge!(params.permit!.to_h).merge!(controller: redirect[0], action: redirect[1])
           respond_to do |format|
             format.js if request.xhr?
             format.html { redirect_to(redirect_to_hash) }
