@@ -3,7 +3,7 @@
 class SystemNotifier < ActionMailer::Base
   default from: 'admin@littleconsultingnj.com'
   helper :mail
-  helper :silverweb_ecom_helper
+  helper :silverweb_ecom
   
   def purchase_fail_notification(order, user, host)
     @hostfull = host
