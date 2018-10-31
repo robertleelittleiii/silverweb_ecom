@@ -5,6 +5,8 @@ class SystemNotifier < ActionMailer::Base
   helper :mail
   helper :silverweb_ecom
   
+  include SilverwebEcomHelper
+  
   def purchase_fail_notification(order, user, host)
     @hostfull = host
     # attachments.inline['logo-100.png'] = File.read('public/images/site/logo-100.png')

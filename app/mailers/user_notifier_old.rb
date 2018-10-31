@@ -4,6 +4,8 @@ class UserNotifierOld < ActionMailer::Base
   default from: 'admin@littleconsultingnj.com'
   helper :silverweb_ecom
   
+  include SilverwebEcomHelper
+
   def signup_notification(user, siteurl)
     set_up_images
     @hostfull = siteurl
@@ -116,28 +118,28 @@ class UserNotifierOld < ActionMailer::Base
 
     @hostfull = host
     @site_slogan = begin
-                     Settings.site_slogan
-                   rescue StandardError
-                     ''
-                   end
+      Settings.site_slogan
+    rescue StandardError
+      ''
+    end
     @site_name = begin
-                   Settings.site_name
-                 rescue StandardError
-                   'Our Site'
-                 end
+      Settings.site_name
+    rescue StandardError
+      'Our Site'
+    end
     @admin_email = Settings.admin_email || default_params[:from]
 
     puts("@hostfull: #{@hostfull}")
 
     mail(from: @admin_email, cc: @admin_email, to: "#{begin
-                                                             user.user_attribute.first_name
-                                                           rescue StandardError
-                                                             ''
-                                                           end} #{begin
-                                                                                                         user.user_attribute.last_name
-                                                                                                       rescue StandardError
-                                                                                                         ''
-                                                                                                       end}<#{user.name}>", subject: 'Thank you for your order !!')
+      user.user_attribute.first_name
+      rescue StandardError
+      ''
+      end} #{begin
+      user.user_attribute.last_name
+      rescue StandardError
+      ''
+      end}<#{user.name}>", subject: 'Thank you for your order !!')
   end
 
   def order_notification(order, user, host)
@@ -147,27 +149,27 @@ class UserNotifierOld < ActionMailer::Base
     @order = order
     @hostfull = host
     @site_slogan = begin
-                   Settings.site_slogan
-                 rescue StandardError
-                   ''
-                 end
+      Settings.site_slogan
+    rescue StandardError
+      ''
+    end
     @site_name = begin
-                 Settings.site_name
-               rescue StandardError
-                 'Our Site'
-               end
+      Settings.site_name
+    rescue StandardError
+      'Our Site'
+    end
     @admin_email = Settings.admin_email || default_params[:from]
 
     mail(from: @admin_email, cc: @admin_email, to: "#{begin
-                                                           user.user_attribute.first_name
-                                                         rescue StandardError
-                                                           ''
-                                                         end} #{begin
-                                                                                                       user.user_attribute.last_name
-                                                                                                     rescue StandardError
-                                                                                                       ''
-                                                                                                     end}<#{user.name}>", subject: 'Thank you for your order !!')
-   end
+      user.user_attribute.first_name
+      rescue StandardError
+      ''
+      end} #{begin
+      user.user_attribute.last_name
+      rescue StandardError
+      ''
+      end}<#{user.name}>", subject: 'Thank you for your order !!')
+  end
 
   protected
 
