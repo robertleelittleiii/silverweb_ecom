@@ -18,6 +18,12 @@ module SilverwebEcom
 
     initializer 'silverweb_ecom.update_user_notifier' do
       UserNotifier.class_eval do
+        
+        helper :silverweb_ecom
+        include SilverwebEcomHelper
+        add_template_helper SilverwebEcomHelper
+
+        
         def inventory_alert(product_detail, host)
           set_up_images
           @hostfull = host
@@ -62,37 +68,37 @@ module SilverwebEcom
           @order.order_items.each do |order_item|
             image_path = order_item.product_detail.thumb.to_s
             attachments.inline["#{order_item.id}.#{image_path.split('.').last}"] = (begin
-                                                                                File.read(Rails.root.to_s + '/public/' + image_path)
-                                                                              rescue StandardError
-                                                                                'blank.png'
-                                                                              end)
+                File.read(Rails.root.to_s + '/public/' + image_path)
+              rescue StandardError
+                'blank.png'
+              end)
           end
 
           @hostfull = host
           @site_slogan = begin
-                           Settings.site_slogan
-                         rescue StandardError
-                           ''.dup
-                         end
+            Settings.site_slogan
+          rescue StandardError
+            ''.dup
+          end
           @site_name = begin
-                         Settings.site_name
-                       rescue StandardError
-                         'Our Site'
-                       end
+            Settings.site_name
+          rescue StandardError
+            'Our Site'
+          end
           @admin_email = Settings.admin_email || default_params[:from]
           @cc_emai_address = Settings.cc_email_address || @admin_email
 
           puts("@hostfull: #{@hostfull}")
 
           mail(from: @admin_email, cc: @cc_emai_address, to: "#{begin
-                                                                       user.user_attribute.first_name
-                                                                     rescue StandardError
-                                                                       ''
-                                                                     end} #{begin
-                                                                                                                   user.user_attribute.last_name
-                                                                                                                 rescue StandardError
-                                                                                                                   ''
-                                                                                                                 end}<#{user.name}>", subject: 'Thank you for your order !!')
+            user.user_attribute.first_name
+            rescue StandardError
+            ''
+            end} #{begin
+            user.user_attribute.last_name
+            rescue StandardError
+            ''
+            end}<#{user.name}>", subject: 'Thank you for your order !!')
         end
 
         def order_notification(order, user, host)
@@ -102,27 +108,27 @@ module SilverwebEcom
           @order = order
           @hostfull = host
           @site_slogan = begin
-                           Settings.site_slogan
-                         rescue StandardError
-                           ''.dup
-                         end
+            Settings.site_slogan
+          rescue StandardError
+            ''.dup
+          end
           @site_name = begin
-                         Settings.site_name
-                       rescue StandardError
-                         'Our Site'
-                       end
+            Settings.site_name
+          rescue StandardError
+            'Our Site'
+          end
           @admin_email = Settings.admin_email || default_params[:from]
           @cc_emai_address = Settings.cc_email_address || @admin_email
 
           mail(from: @admin_email, cc: @cc_emai_address, to: "#{begin
-                                                                       user.user_attribute.first_name
-                                                                     rescue StandardError
-                                                                       ''
-                                                                     end} #{begin
-                                                                                                                   user.user_attribute.last_name
-                                                                                                                 rescue StandardError
-                                                                                                                   ''
-                                                                                                                 end}<#{user.name}>", subject: 'Thank you for your order !!')
+            user.user_attribute.first_name
+            rescue StandardError
+            ''
+            end} #{begin
+            user.user_attribute.last_name
+            rescue StandardError
+            ''
+            end}<#{user.name}>", subject: 'Thank you for your order !!')
         end
       end
     end
@@ -163,88 +169,88 @@ module SilverwebEcom
         end
 
         version :product_list, if: :not_pdf? do
-          process resize_to_fill: [188, 141]
-        end
+            process resize_to_fill: [188, 141]
+          end
 
-        version :store_list do
-          process resize_to_fill: [77, 125]
-        end
+          version :store_list do
+            process resize_to_fill: [77, 125]
+          end
 
-        version :store_list_mm do
-          process resize_to_fill: [115, 180]
-        end
+          version :store_list_mm do
+            process resize_to_fill: [115, 180]
+          end
 
-        version :store_list_horizontal do
-          process resize_to_limit: [237, 171]
-        end
+          version :store_list_horizontal do
+            process resize_to_limit: [237, 171]
+          end
 
-        version :small_h do
-          process resize_to_fill: [100, 65]
-        end
+          version :small_h do
+            process resize_to_fill: [100, 65]
+          end
 
-        version :view do
-          process resize_to_fill: [320, 441]
-          # process :outliner
-        end
+          version :view do
+            process resize_to_fill: [320, 441]
+            # process :outliner
+          end
 
-        version :view_h do
-          process resize_to_fill: [691, 472]
-          #  process :outliner
-        end
+          version :view_h do
+            process resize_to_fill: [691, 472]
+            #  process :outliner
+          end
 
-        version :primary do
-          process resize_to_fill: [250, 410]
-          #  process :resize_to_limit => [270, 410]
-          #  process :cropper=>[250,410]
-          #  process :outliner
-        end
+          version :primary do
+            process resize_to_fill: [250, 410]
+            #  process :resize_to_limit => [270, 410]
+            #  process :cropper=>[250,410]
+            #  process :outliner
+          end
 
-        version :slider do
-          process resize_to_fill: [300, 185]
-          #  process :outliner
+          version :slider do
+            process resize_to_fill: [300, 185]
+            #  process :outliner
+          end
+          #
+          #        version :artifact_slider do
+          #          process :resize_to_fill => [885, 600]
+          #        end
+          #
+          #        version :artifact_custom_slider do
+          #          process :resize_to_limit => [600, 615]
+          #        end
+          #
+          #        version :artifact_before do
+          #          process :resize_to_limit => [375, 255]
+          #        end
+          #
+          #        version :artifact_list do
+          #          process :resize_to_fill => [180, 130]
+          #        end
+          #
+          #
         end
-        #
-        #        version :artifact_slider do
-        #          process :resize_to_fill => [885, 600]
-        #        end
-        #
-        #        version :artifact_custom_slider do
-        #          process :resize_to_limit => [600, 615]
-        #        end
-        #
-        #        version :artifact_before do
-        #          process :resize_to_limit => [375, 255]
-        #        end
-        #
-        #        version :artifact_list do
-        #          process :resize_to_fill => [180, 130]
-        #        end
-        #
-        #
       end
-    end
 
-    #    initializer "silverweb_portfolio.update_menu_defs" do
-    #      MenusController::MENU_TYPES << ["Portfolio",6]
-    #      MenusController::ACTION_TYPES << ["Show Portfolio",20]
-    #    end
+      #    initializer "silverweb_portfolio.update_menu_defs" do
+      #      MenusController::MENU_TYPES << ["Portfolio",6]
+      #      MenusController::ACTION_TYPES << ["Show Portfolio",20]
+      #    end
 
-    config.to_prepare do
-      SiteController.send(:include, SilverwebEcom::ControllerExtensions::SiteControllerExtensions)
-      MenusController.send(:include, SilverwebEcom::ControllerExtensions::MenusControllerExtensions)
-    end
+      config.to_prepare do
+        SiteController.send(:include, SilverwebEcom::ControllerExtensions::SiteControllerExtensions)
+        MenusController.send(:include, SilverwebEcom::ControllerExtensions::MenusControllerExtensions)
+      end
 
-    initializer 'silverweb_ecom.add_user_pref_panes' do
-      SilverwebCms::Config.add_user_pref_pane('user_addresses')
+      initializer 'silverweb_ecom.add_user_pref_panes' do
+        SilverwebCms::Config.add_user_pref_pane('user_addresses')
 
-      SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_address')
-      SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_city')
-      SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_state')
-      SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_zip_code')
-      SilverwebCms::Config.add_user_attribute_permitted_fields('billing_address')
-      SilverwebCms::Config.add_user_attribute_permitted_fields('billing_city')
-      SilverwebCms::Config.add_user_attribute_permitted_fields('billing_state')
-      SilverwebCms::Config.add_user_attribute_permitted_fields('billing_zip_code')
-    end
+        SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_address')
+        SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_city')
+        SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_state')
+        SilverwebCms::Config.add_user_attribute_permitted_fields('shipping_zip_code')
+        SilverwebCms::Config.add_user_attribute_permitted_fields('billing_address')
+        SilverwebCms::Config.add_user_attribute_permitted_fields('billing_city')
+        SilverwebCms::Config.add_user_attribute_permitted_fields('billing_state')
+        SilverwebCms::Config.add_user_attribute_permitted_fields('billing_zip_code')
+      end
     end
   end
