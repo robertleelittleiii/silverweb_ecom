@@ -6,6 +6,7 @@ class SystemNotifier < ActionMailer::Base
   helper :silverweb_ecom
   
   include SilverwebEcomHelper
+  add_template_helper SilverwebEcomHelper
   
   def purchase_fail_notification(order, user, host)
     @hostfull = host

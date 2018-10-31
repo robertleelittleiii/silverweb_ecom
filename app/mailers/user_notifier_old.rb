@@ -5,6 +5,7 @@ class UserNotifierOld < ActionMailer::Base
   helper :silverweb_ecom
   
   include SilverwebEcomHelper
+  add_template_helper SilverwebEcomHelper
 
   def signup_notification(user, siteurl)
     set_up_images
