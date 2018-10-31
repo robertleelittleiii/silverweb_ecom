@@ -3,7 +3,8 @@
 class SystemNotifier < ActionMailer::Base
   default from: 'admin@littleconsultingnj.com'
   helper :mail
-
+  helper :silverweb_ecom_helper
+  
   def purchase_fail_notification(order, user, host)
     @hostfull = host
     # attachments.inline['logo-100.png'] = File.read('public/images/site/logo-100.png')

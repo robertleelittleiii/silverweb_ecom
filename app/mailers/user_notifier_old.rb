@@ -2,7 +2,8 @@
 
 class UserNotifierOld < ActionMailer::Base
   default from: 'admin@littleconsultingnj.com'
-
+  helper :silverweb_ecom_helper
+  
   def signup_notification(user, siteurl)
     set_up_images
     @hostfull = siteurl
