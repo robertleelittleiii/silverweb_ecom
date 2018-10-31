@@ -7,6 +7,20 @@ class UserNotifierOld < ActionMailer::Base
   include SilverwebEcomHelper
   add_template_helper SilverwebEcomHelper
 
+  def display_page_body(page_name)
+    page = begin
+      Page.where(title: page_name).first
+    rescue StandardError
+      ''
+    end
+
+    begin
+      return page.body.html_safe
+    rescue StandardError
+      "Page '#{page_name}' not found.   Please create it in pages."
+    end
+  end
+    
   def signup_notification(user, siteurl)
     set_up_images
     @hostfull = siteurl
