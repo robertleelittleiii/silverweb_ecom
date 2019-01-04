@@ -385,7 +385,7 @@ class Order < ActiveRecord::Base
       end
       
       def calc_percent_store_wide_sale
-        store_wide_sale 
+        Settings.store_wide_sale 
       end
       
       def validate_card
