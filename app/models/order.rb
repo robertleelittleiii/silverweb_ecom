@@ -383,7 +383,11 @@ class Order < ActiveRecord::Base
           :payer_id => express_payer_id
         }
       end
-  
+      
+      def calc_percent_store_wide_sale
+        store_wide_sale 
+      end
+      
       def validate_card
         if (express_token.blank? and !credit_card.valid?) then
           credit_card.errors.full_messages.each do |message|
