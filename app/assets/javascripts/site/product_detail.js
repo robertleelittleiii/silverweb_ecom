@@ -254,8 +254,8 @@ function bindCareChartClick() {
 function bindAddToCartClick() {
     $("#add_to_cart").click(function () {
         var product_id = $("#product-id").html().trim();
-        var product_size = $("#product-selected-size").html().trim() | "N/S";
-        var product_color = $("#product-selected-color").html().trim() | "N/C";
+        var product_size = $("#product-selected-size").html().trim() || "N/S";
+        var product_color = $("#product-selected-color").html().trim() || "N/C";
         var product_name = $("#product-name").text().trim();
         var product_quantity = $("input#quantity").val();
         $.ajax({
