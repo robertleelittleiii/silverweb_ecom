@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>edit.js - RDoc Documentation</title>
+
+<link href="../../../../fonts.css" rel="stylesheet">
+<link href="../../../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../../";
+</script>
+
+<script src="../../../../js/jquery.js"></script>
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/search_index.js"></script>
+<script src="../../../../js/search.js"></script>
+<script src="../../../../js/searcher.js"></script>
+<script src="../../../../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../../LICENSE.html">LICENSE</a>
+  
+    <li><a href="../../../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../../../README_rdoc.html">README</a>
+  
+    <li><a href="../../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../../app/assets/javascripts/coupons/edit_js.html">edit.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/coupons/index__js.html">index_.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/coupons/shared_js.html">shared.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/imgpreview_full_jquery_js.html">imgpreview.full.jquery.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/jquery_jqzoom-core_js.html">jquery.jqzoom-core.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/jquery_serialize-object_js.html">jquery.serialize-object.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/menus/show_products_type_js.html">show_products_type.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/enter_order_js.html">enter_order.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/index__js.html">index_.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/order_success_js.html">order_success.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/user_orders_js.html">user_orders.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/product_related_products_js.html">product_related_products.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/coupon_settings_js.html">coupon_settings.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/edit_js.html">edit.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/index__js.html">index_.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/product_preferences_js.html">product_preferences.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/shared_js.html">shared.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/silverweb_ecom_js.html">silverweb_ecom.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/check_out_js.html">check_out.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/live_search_js.html">live_search.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/product_detail_js.html">product_detail.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/show_products_js.html">show_products.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/show_products_with_page_js.html">show_products_with_page.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/store_locator_js.html">store_locator.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/vendors/vendor_list_js.html">vendor_list.js</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/customers_css.html">customers.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/jquery_jqzoom_scss.html">jquery.jqzoom.scss</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/orders_css.html">orders.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/orders/index__css.html">index_.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/orders/user_orders_css.html">user_orders.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/product_related_products_css.html">product_related_products.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/products_css.html">products.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/products/edit_css.html">edit.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/products/product_list_scss.html">product_list.scss</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/retailers_css.html">retailers.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/scaffold_css.html">scaffold.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/silverweb_ecom_css.html">silverweb_ecom.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/check_out_css.html">check_out.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/product_detail-horizontal_css.html">product_detail-horizontal.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/product_detail_css.html">product_detail.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/show_products_css.html">show_products.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/show_products_with_page_css.html">show_products_with_page.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/show_products_with_page_mm_css.html">show_products_with_page_mm.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/store_locator_css.html">store_locator.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/vendors_css.html">vendors.css</a>
+  
+    <li><a href="../../../../app/mailers/user_notifier_old_rb_orig.html">user_notifier_old.rb.orig</a>
+  
+    <li><a href="../../../../app/views/products/delete_image_rjs.html">delete_image.rjs</a>
+  
+    <li><a href="../../../../app/views/site/product_index_feed_atom_builder.html">product_index_feed.atom.builder</a>
+  
+    <li><a href="../../../../lib/tasks/image_tasks_rake.html">image_tasks.rake</a>
+  
+    <li><a href="../../../../lib/tasks/silverweb_ecom_tasks_rake.html">silverweb_ecom_tasks.rake</a>
+  
+    <li><a href="../../../../nbproject/private/config_properties.html">config.properties</a>
+  
+    <li><a href="../../../../nbproject/private/private_properties.html">private.properties</a>
+  
+    <li><a href="../../../../nbproject/private/private_xml.html">private.xml</a>
+  
+    <li><a href="../../../../nbproject/private/rake-d_txt.html">rake-d</a>
+  
+    <li><a href="../../../../nbproject/project_properties.html">project.properties</a>
+  
+    <li><a href="../../../../nbproject/project_xml.html">project.xml</a>
+  
+    <li><a href="../../../../silverweb_ecom_gemspec.html">silverweb_ecom.gemspec</a>
+  
+    <li><a href="../../../../test/dummy/README_rdoc.html">README</a>
+  
+    <li><a href="../../../../test/dummy/Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../../test/dummy/app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../../test/dummy/app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li><a href="../../../../test/dummy/config_ru.html">config.ru</a>
+  
+    <li><a href="../../../../test/dummy/public/404_html.html">404.html</a>
+  
+    <li><a href="../../../../test/dummy/public/422_html.html">422.html</a>
+  
+    <li><a href="../../../../test/dummy/public/500_html.html">500.html</a>
+  
+    <li><a href="../../../../test/dummy/public/favicon_ico.html">favicon.ico</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/assets/javascripts/products/edit.js">
+
+<p>var productDetailsTable; var vendorTable;</p>
+
+<p>var product_detail_id = “”; var product_detail_list_row = “”;</p>
+
+<p>var products_edit_callDocumentReady_called = false;</p>
+
+<p>var tinyMCE_editor_product = “”;</p>
+
+<p>$(document).ready(function () {</p>
+
+<pre>if (!products_edit_callDocumentReady_called)
+{
+    products_edit_callDocumentReady_called = true;
+    if ($(&quot;#as_window&quot;).text() == &quot;true&quot;)
+    {
+        //  alert(&quot;it is a window&quot;);
+    } else
+    {
+        products_edit_callDocumentReady();
+    }
+}</pre>
+
+<p>});</p>
+
+<p>function products_edit_callDocumentReady() {</p>
+
+<pre>$(&quot;#product-tabs&quot;).tabs({
+    activate: function (event, ui) {
+        if ($(ui.newTab[0]).find(&#39;a&#39;).text() == &quot;Preview&quot;)
+        {
+            console.log(&quot;updated!&quot;)
+
+            $(&#39;iframe.preview&#39;).each(function () {
+                this.contentWindow.location.reload(true)
+            });
+        }
+
+    }
+});
+
+require(&quot;jquery-ui-combobox.js&quot;);
+requireCss(&quot;jquery-ui-combobox.css&quot;);
+
+requireCss(&quot;image_libraries/image_list.css&quot;);
+
+setupCheckboxes(&quot;.department-check&quot;);
+setupCheckboxes(&quot;.category-check&quot;);
+
+bindProductDetailNew();
+buildproductDetailsListTable();
+//   bindBlurToDepartmentPopup();
+bindDivDepartmentUpdate();
+$(&quot;.combobox&quot;).combobox();
+bindChangeCombobox();
+tinyMCE_editor_product = tinyMCE.init(tinymce_config);
+$(&quot;.best_in_place&quot;).best_in_place();
+set_up_save_callback();
+
+bind_file_upload_to_upload_form();
+bindImageChage();
+bind_download_to_files();
+bindPicturesSort();
+bindDeleteImage();
+bind_mouseover();
+activate_buttons();
+initialize_edit_button();
+$(&quot;a.button-link&quot;).button();
+bindRelatedSort();
+bindDeleteRelated();
+bindRelatedProductSearch();</pre>
+
+<p>// test(); }</p>
+
+<p>var toggleLoading = function () {</p>
+
+<pre>$(&quot;#loader_progress&quot;).toggle()</pre>
+
+<p>}; var toggleAddButton = function () {</p>
+
+<pre>$(&quot;#upload-form&quot;).toggle()</pre>
+
+<p>};</p>
+
+<p>function bindImageChage() {</p>
+
+<pre class="ruby"><span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span> <span class="ruby-identifier">image</span> <span class="ruby-keyword">class</span> <span class="ruby-identifier">bindings</span>
+<span class="ruby-regexp">//</span>
+
+$(<span class="ruby-string">&#39;input#image&#39;</span>).<span class="ruby-identifier">bind</span>(<span class="ruby-string">&quot;change&quot;</span>, <span class="ruby-identifier">function</span> () {
+    <span class="ruby-regexp">//</span><span class="ruby-identifier">alert</span>(<span class="ruby-string">&quot;changed&quot;</span>);
+    <span class="ruby-identifier">toggleLoading</span>();
+    <span class="ruby-identifier">toggleAddButton</span>();
+    $(<span class="ruby-identifier">this</span>).<span class="ruby-identifier">closest</span>(<span class="ruby-string">&quot;form&quot;</span>).<span class="ruby-identifier">trigger</span>(<span class="ruby-string">&quot;submit&quot;</span>);
+    $(<span class="ruby-string">&quot;.imageSingle .best_in_place&quot;</span>).<span class="ruby-identifier">best_in_place</span>();
+    <span class="ruby-identifier">disableSelectOptionsSeperators</span>();
+
+});
+</pre>
+
+<p>}</p>
+
+<p>function updateBestinplaceImageTitles() {</p>
+
+<pre>$(&quot;.imageSingle .best_in_place&quot;).best_in_place();</pre>
+
+<p>}</p>
+
+<p>function updateImages() {</p>
+
+<pre>//  alert(&quot;color changed&quot;);
+var $product_id = $(&quot;#current-product-id&quot;).text();
+$(&quot;body&quot;).css(&quot;cursor&quot;, &quot;progress&quot;);</pre>
+
+<p>// $(“#loader_progress”).show();</p>
+
+<pre>$.post(&#39;/products/render_image_section/&#39; + $product_id, function (data)
+{
+    $(&#39;.imagesection&#39;).html(data);
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;default&quot;);
+
+    // $(&quot;#loader_progress&quot;).hide();
+    styleizefilebutton();
+    bindImageChage();
+    disableSelectOptionsSeperators();
+
+});</pre>
+
+<p>}</p>
+
+<p>function bind_file_upload_to_upload_form() {</p>
+
+<pre>$(&quot;form.upload-form&quot;).fileupload({
+    dataType: &quot;json&quot;,
+    add: function (e, data) {
+        file = data.files[0];
+        data.context = $(tmpl(&quot;template-upload&quot;, file));
+        // $(&quot;div.progress&quot;).progressbar();
+        $(&#39;#images&#39;).fadeIn();
+        $(&#39;#images&#39;).prepend(data.context);
+        var jqXHR = data.submit()
+                .success(function (result, statusText, jqXHR) {
+
+                    // console.log(&quot;------ - fileupload: Success - -------&quot;);
+                    // console.log(result);
+                    // console.log(statusText);
+                    // console.log(jqXHR);
+
+                    // console.log(JSON.stringify(jqXHR.responseJSON[&quot;attachment&quot;]));
+
+                    // console.log(typeof(jqXHR.responseText));</pre>
+
+<p>// specifically for IE8.</p>
+
+<pre>    if (typeof (jqXHR.responseText) == &quot;undefined&quot;) {
+        setUpPurrNotifier(&quot;info.png&quot;, &quot;Notice&quot;, jqXHR.responseJSON[&quot;attachment&quot;][0]);
+        data.context.remove();
+    } else
+    {
+        render_picture(result.id);
+    }
+
+})
+.error(function (jqXHR, statusText, errorThrown) {
+    console.log(&quot;------ - fileupload: Error - -------&quot;);
+    console.log(jqXHR.status);
+    console.log(statusText);
+    console.log(errorThrown);
+    console.log(jqXHR.responseText);
+    if (jqXHR.status == &quot;200&quot;)
+    {
+        render_picture(result.id);
+    } else
+    {
+        var obj = jQuery.parseJSON(jqXHR.responseText);
+        // console.log(typeof obj[&quot;attachment&quot;][0])
+        setUpPurrNotifier(&quot;info.png&quot;, &quot;Notice&quot;, obj[&quot;attachment&quot;][0]);
+        data.context.remove();
+    }</pre>
+
+<p>//                        if (jqXHR.statusText == “success”) { //          
+render_pictures(); //                            // It succeeded and we
+need to update the file list. //                        } //               
+else { //                            var obj =
+jQuery.parseJSON(jqXHR.responseText); //                           
+setUpPurrNotifier(“info.png”, “Notice”, <a href=""attachment"">obj</a>[0]);
+//                            data.context.remove(); //                    
+}</p>
+
+<pre>                })
+                .complete(function (result, textStatus, jqXHR) {
+                    // console.log(&quot;------ - fileupload: Complete - -------&quot;);
+                    // console.log(result);
+                    // console.log(textStatus);
+                    // console.log(jqXHR);
+                });
+    },
+    progress: function (e, data) {
+        if (data.context)
+        {
+            progress = parseInt(data.loaded / data.total * 100, 10);
+            data.context.find(&#39;.bar&#39;).css(&#39;width&#39;, progress + &#39;%&#39;);
+        }
+    },
+    done: function (e, data) {
+        // console.log(e);
+        // console.log(data);
+        data.context.text(&#39;&#39;);
+    }
+}).bind(&#39;fileuploaddone&#39;, function (e, data) {
+    // console.log(e);
+    // console.log(data);
+    data.context.remove();
+    //data.context.text(&#39;&#39;);
+});</pre>
+
+<p>}</p>
+
+<p>function bind_download_to_files() {</p>
+
+<pre>$(&quot;div.file-item div#logo-links&quot;).unbind(&quot;click&quot;);
+$(&quot;div.file-item div#logo-links&quot;).bind(&quot;click&quot;,
+        function () {
+            var href = $($(this)[0]).find(&#39;a&#39;).attr(&#39;href&#39;);
+            window.location.href = href
+        });</pre>
+
+<p>}</p>
+
+<p>function render_pictures(product_id) {</p>
+
+<pre>$.ajax({
+    dataType: &quot;html&quot;,
+    url: &#39;/pictures/render_pictures&#39;,
+    cache: false,
+    data: &quot;class_name=product&amp;id=&quot; + product_id,
+    success: function (data)
+    {
+        $(&quot;div#images&quot;).html(data).hide().fadeIn();
+
+        max_images = $(&#39;#max-images&#39;).text();
+
+        if (max_images.length &gt; 0)
+        {
+            total_images = $(&quot;div.file-list-item&quot;).size();
+            if (total_images &gt;= max_images) {
+                $(&quot;div#imagebutton&quot;).fadeOut();
+            }
+
+        }
+        bind_file_upload_to_upload_form();
+
+    }
+});</pre>
+
+<p>}</p>
+
+<p>function render_picture(picture_id) {</p>
+
+<pre>$.ajax({
+    dataType: &quot;html&quot;,
+    url: &#39;/pictures/render_picture&#39;,
+    cache: false,
+    data: &quot;class_name=product&amp;id=&quot; + picture_id,
+    success: function (data)
+    {
+        $(&quot;div#images&quot;).prepend(data).hide().fadeIn();
+
+        max_images = $(&#39;#max-images&#39;).text();
+
+        if (max_images.length &gt; 0)
+        {
+            total_images = $(&quot;div.file-list-item&quot;).size();
+            if (total_images &gt;= max_images) {
+                $(&quot;div#imagebutton&quot;).fadeOut();
+            }
+
+        }
+
+        bind_file_upload_to_upload_form();
+        bindDeleteImage();
+        bind_mouseover();
+        activate_buttons();
+        initialize_edit_button();
+        bind_download_to_files();
+
+    }
+});</pre>
+
+<p>}</p>
+
+<p>$(document).off(&#39;focusin&#39;).on(&#39;focusin&#39;, function (e) {</p>
+
+<pre>if ($(event.target).closest(&quot;.mce-window&quot;).length) {
+    e.stopImmediatePropagation();
+    console.log(&quot;worked!&quot;);
+}</pre>
+
+<p>});</p>
+
+<p>// binds the download attachment link for each attached file.</p>
+
+<p>function bind_download_to_files() {</p>
+
+<pre>$(&quot;div.file-item div#logo-links&quot;).unbind(&quot;click&quot;);
+$(&quot;div.file-item div#logo-links&quot;).bind(&quot;click&quot;,
+        function () {
+            var href = $($(this)[0]).find(&#39;a&#39;).attr(&#39;href&#39;);
+            window.location.href = href
+        });</pre>
+
+<p>} function bindPicturesSort() {</p>
+
+<pre>$(&#39;div#images&#39;).sortable({
+    dropOnEmpty: false,
+    handle: &#39;div.file-item&#39;,
+    cursor: &#39;-webkit-grabbing&#39;,
+    items: &#39;div.file-list-item&#39;,
+    opacity: 0.4,
+    scroll: true,
+    tolerance: &quot;pointer&quot;,
+    update: function () {
+        console.log($(this));
+        $.ajax({
+            url: &#39;/products/update_image_order&#39;,
+            type: &#39;post&#39;,
+            data: $(this).sortable(&#39;serialize&#39;),
+            dataType: &#39;json&#39;,
+            complete: function (request) {
+            }
+        });
+    }
+});</pre>
+
+<p>}</p>
+
+<p>function bindDeleteImage() {</p>
+
+<pre>$(&#39;a.picture-delete&#39;).unbind().bind(&#39;ajax:beforeSend&#39;, function () {
+    // alert(&quot;ajax:before&quot;);  
+}).bind(&#39;ajax:success&#39;, function () {
+    console.log($(this).parent().parent());
+    $(this).parent().parent().remove();
+    //  alert(&quot;ajax:success&quot;);  
+}).bind(&#39;ajax:failure&#39;, function () {
+    //    alert(&quot;ajax:failure&quot;);    
+}).bind(&#39;ajax:complete&#39;, function () {
+    //   alert(&quot;ajax:complete&quot;); 
+});</pre>
+
+<p>}</p>
+
+<p>//  Picture management routines</p>
+
+<p>function initialize_edit_button() {</p>
+
+<pre>$(&quot;a.edit-picture-product&quot;).unbind()
+        .bind(&quot;ajax:beforeSend&quot;, function (evt, xhr, settings) {
+            //alert(&quot;ajax:beforeSend&quot;);
+        })
+        .bind(&quot;ajax:success&quot;, function (evt, data, status, xhr) {
+            // alert(&quot;ajax:success&quot;);
+            edit_picture_dialog(data);
+        })
+        .bind(&#39;ajax:complete&#39;, function (evt, xhr, status) {
+            //alert(&quot;ajax:complete&quot;);
+        })
+        .bind(&quot;ajax:error&quot;, function (evt, xhr, status, error) {
+            //  alert(&quot;ajax:error&quot;);
+
+            var $form = $(this),
+                    errors,
+                    errorText;
+
+            try {
+                // Populate errorText with the comment errors
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+
+                errors = $.parseJSON(xhr.responseText);
+                console.log(errors);
+
+            } catch (err) {
+                // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
+                errors = {
+                    message: &quot;Please reload the page and try again&quot;
+                };
+            }
+            var errorText;
+            // Build an unordered list from the list of errors
+            errorText = &quot;&lt;ul&gt;&quot;;
+
+            for (error in errors) {
+                console.log(error);
+                console.log(errors[error][0]);
+                errorText += &quot;&lt;li&gt;&quot; + error + &#39;: &#39; + errors[error][0] + &quot;&lt;/li&gt; &quot;;
+                console.log(errorText);
+            }
+
+            errorText += &quot;&lt;/ul&gt;&quot;;
+            console.log(errorText);
+
+            // Insert error list into form
+            setUpNotifier(&quot;error.png&quot;, &quot;Warning&quot;, errorText);
+        });</pre>
+
+<p>}</p>
+
+<p>function edit_picture_dialog(data) {</p>
+
+<pre>// alert(&quot;ajax:success&quot;);
+picture_edit_dialog = createAppDialog(data, &quot;edit-picture&quot;, {}, &quot;&quot;);
+
+picture_edit_dialog.dialog({
+    close: function (event, ui) {
+        picture_id = $(&quot;div#picture-id&quot;).text().trim();
+        value = $(&quot;select#picture_title&quot;).val();
+        $(&quot;div#picture_&quot; + picture_id + &quot; div.picture-info&quot;).text(value);
+    }
+});
+
+//initialize_save_button();
+//$(&#39;.datepicker&#39;).datepicker();
+//tiny_mce_initializer();
+//bind_org_select();
+//bind_membership_select();
+//bind_grade_select();
+//bind_flags_select();
+
+//bind_grade_all_select();
+
+//bind_grade_filter_display();
+//bind_membership_filter_display();
+//bind_flags_filter_display();
+//bind_select_ajax(&quot;picture_priority&quot;);
+//bind_select_ajax(&quot;picture_status&quot;);
+
+//current_notice = $(&quot;#picture-id&quot;).text();
+//set_before_edit(current_notice);
+// tinyMCE.init({&quot;selector&quot;:&quot;textarea.tinymce&quot;});
+$(&quot;.best_in_place&quot;).best_in_place();
+ui_ajax_select();
+//bind_file_upload_to_upload_form();
+//$(&quot;button.ui-dialog-titlebar-close&quot;).hide();
+
+//initialize_add_organization();
+//select_subject_field();
+//initialize_select_all_button();
+//initialize_select_none_button();
+//initilize_filter_buttons();</pre>
+
+<p>}</p>
+
+<p>function activate_buttons() {</p>
+
+<pre>$(&quot;div.ui-button a&quot;).button();</pre>
+
+<p>}</p>
+
+<p>function bind_mouseover() {</p>
+
+<pre>$(&quot;div.file-block&quot;)
+        .unbind(&quot;mouseenter&quot;).mouseenter(function () {
+    $(this).parent().find(&quot;div.hover-block&quot;).fadeIn();
+    // console.log(&quot;fadeIn&quot;);
+})
+        .unbind(&quot;mouseleave&quot;).mouseleave(function () {
+    $(this).parent().find(&quot;div.hover-block&quot;).fadeOut();
+    //   console.log(&quot;fadeOut&quot;);
+});</pre>
+
+<p>}</p>
+
+<p>function wait(msecs) {</p>
+
+<pre>var start = new Date().getTime();
+var cur = start
+while (cur - start &lt; msecs)
+{
+    cur = new Date().getTime();
+}</pre>
+
+<p>}</p>
+
+<p>function buildproductDetailsListTable() {</p>
+
+<pre>var $product_id = $(&quot;div#attr-products div#product-id&quot;).text();
+
+productDetailsTable = $(&#39;#product-detail-list-table&#39;).DataTable({
+    pageLength: 25,
+    lengthMenu: [[25, 50, 100], [25, 50, 100]],
+    stateSave: true,
+    stateDuration: 0,
+    stateSaveCallback: function (settings, data) {
+        localStorage.setItem(&#39;DataTables_product_details_&#39; + window.location.pathname, JSON.stringify(data));
+    },
+    stateLoadCallback: function (settings) {
+        return JSON.parse(localStorage.getItem(&#39;DataTables_product_details_&#39; + window.location.pathname));
+    },
+    processing: true,
+    order: [[0, &quot;asc&quot;]],
+    serverSide: true,
+    searchDelay: 500,
+    ajax: {
+        url: &quot;/product_details/product_details_table&quot;,
+        data: {
+            product_id: $product_id
+        },
+        type: &quot;post&quot;
+    },
+    rowCallback: function (row, data, index) {
+        $(row).addClass(&#39;product-row&#39;);
+        $(row).addClass(&#39;gradeA&#39;);
+        //return row;
+    },
+    initComplete: function () {
+        // $(&quot;.best_in_place&quot;).best_in_place(); 
+
+    },
+    drawCallback: function (settings) {
+        $(&quot;.best_in_place &quot;).best_in_place();
+        $(&quot;.combobox&quot;).combobox();</pre>
+
+<p>//            $(“#toggle”).click(function () { //               
+$(“#combobox”).toggle(); //            });</p>
+
+<pre>    // $(&quot;.combobox&quot;).combobox();
+    bindChangeCombobox();
+    ui_ajax_select();
+    bindDeleteProductDetail();
+    bindDuplicateProductDetail();
+
+    //bindClicktoProductTableRow();
+    $(&quot;td.dataTables_empty&quot;).attr(&quot;colspan&quot;, &quot;20&quot;)
+
+}
+,
+columns: [
+    {width: &#39;25&#39;},
+    {width: &#39;200&#39;},
+    {width: &#39;200&#39;},
+    {width: &#39;300&#39;},
+    {width: &#39;100&#39;},
+    {width: &#39;100&#39;},
+    {width: &#39;50&#39;}
+]</pre>
+
+<p>//        ,“iDisplayLength”: 25, //        “aLengthMenu”: [[25, 50, 100],
+[25, 50, 100]], //        “bStateSave”: true, //        “bProcessing”:
+true, //        “bServerSide”: true, //        “sAjaxSource”:
+“/product_details/product_details_table” + “?” + “product_id=” +
+$product_id, //        “fnRowCallback”: function (nRow, aData,
+iDisplayIndex, iDisplayIndexFull) { //            // 
+$(nRow).addClass(&#39;product-row&#39;); //            //
+$(nRow).addClass(&#39;gradeA&#39;); // //            return nRow; //       
+}, //        “aoColumns”: //                [ //                    { //   
+“sWidth”: “25” //                    }, //                    { //         
+“sWidth”: “200” //                    }, //                    { //        
+“sWidth”: “200” //                    }, //                    { //        
+“sWidth”: “300” //                    }, //                    { //        
+“sWidth”: “100” //                    }, //                    { //        
+“sWidth”: “100” //                    }, //                    { //        
+“sWidth”: “50” //                    } //                ] //        , //  
+“fnDrawCallback”: function () { //            $(“.best_in_place
+”).best_in_place(); //            $(“.combobox”).combobox(); ////          
+$(“#toggle”).click(function () { ////               
+$(“#combobox”).toggle(); ////            }); // //            //
+$(“.combobox”).combobox(); //            bindChangeCombobox(); //          
+ui_ajax_select(); //            bindDeleteProductDetail(); //           
+bindDuplicateProductDetail(); // // //           
+//bindClicktoProductTableRow(); //        }</p>
+
+<pre>});
+
+// $(&quot;#product-detail-list-table&quot;).css(&quot;width&quot;,&quot;100%&quot;)</pre>
+
+<p>}</p>
+
+<p>//function setUpPurrNotifier(headline, message) //{ //    var notice =
+&#39;&lt;div class=“notice”&gt;&#39; //    + &#39;&lt;div
+class=“notice-body”&gt;&#39; //    + &#39;&lt;img
+src=“/images/interface/info.png” /&gt;&#39; //    + &#39;&lt;h3&gt;&#39; +
+headline + &#39;&lt;/h3&gt;&#39; //    + &#39;&lt;p&gt;&#39; + message +
+&#39;&lt;/p&gt;&#39; //    + &#39;&lt;/div&gt;&#39; //    + &#39;&lt;div
+class=“notice-bottom”&gt;&#39; //    + &#39;&lt;/div&gt;&#39; //    +
+&#39;&lt;/div&gt;&#39;; // //    $( notice ).purr(); //   
+alert(“testing”); //};</p>
+
+<p>function buildproductDetailsListTableOLD() {</p>
+
+<pre>// NOTE: NOT USED.
+productDetailsTable = $(&#39;#product-detail-list-table&#39;).DataTable({
+    &quot;aLengthMenu&quot;: [[-1, 10, 25, 50], [&quot;All&quot;, 10, 25, 50]],
+    &quot;fnDrawCallback&quot;: function () {
+        $(&quot;.best_in_place &quot;).best_in_place();
+        $(&quot;.combobox&quot;).combobox();
+        $(&quot;#toggle&quot;).click(function () {
+            $(&quot;#combobox&quot;).toggle();
+        });
+        bindChangeCombobox();
+
+    }
+});</pre>
+
+<p>}</p>
+
+<p>$.extend({</p>
+
+<pre>getUrlVars: function () {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf(&#39;?&#39;) + 1).split(&#39;&amp;&#39;);
+    for (var i = 0; i &lt; hashes.length; i++)
+    {
+        hash = hashes[i].split(&#39;=&#39;);
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+},
+getUrlVar: function (name) {
+    return $.getUrlVars()[name];
+}</pre>
+
+<p>});</p>
+
+<p>function bindImageChage() {</p>
+
+<pre class="ruby"><span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span> <span class="ruby-identifier">image</span> <span class="ruby-keyword">class</span> <span class="ruby-identifier">bindings</span>
+<span class="ruby-regexp">//</span>
+
+$(<span class="ruby-string">&#39;input#image&#39;</span>).<span class="ruby-identifier">bind</span>(<span class="ruby-string">&quot;change&quot;</span>, <span class="ruby-identifier">function</span> () {
+    <span class="ruby-regexp">//</span><span class="ruby-identifier">alert</span>(<span class="ruby-string">&quot;changed&quot;</span>);
+    <span class="ruby-identifier">toggleLoading</span>();
+    <span class="ruby-identifier">toggleAddButton</span>();
+    $(<span class="ruby-identifier">this</span>).<span class="ruby-identifier">closest</span>(<span class="ruby-string">&quot;form&quot;</span>).<span class="ruby-identifier">trigger</span>(<span class="ruby-string">&quot;submit&quot;</span>);
+    $(<span class="ruby-string">&quot;.imageSingle .best_in_place&quot;</span>).<span class="ruby-identifier">best_in_place</span>();
+    <span class="ruby-identifier">disableSelectOptionsSeperators</span>();
+
+});
+</pre>
+
+<p>}</p>
+
+<p>function updateBestinplaceImageTitles() {</p>
+
+<pre>$(&quot;.imageSingle .best_in_place&quot;).best_in_place();</pre>
+
+<p>}</p>
+
+<p>function refreshProductDetails() {</p>
+
+<pre>productDetailsTable.draw(true);
+$(&quot;body&quot;).css(&quot;cursor&quot;, &quot;default&quot;);
+
+//   $(&quot;#loader_progress&quot;).hide();</pre>
+
+<p>//    var $product_id = $(“#product-id”).text(); //   
+$(“#loader_progress”).hide(); // //   
+$.post(&#39;/products/show_detail/&#39; + $product_id, function(data) //   
+{ //        $(&#39;#product-detail-list&#39;).html(data); //       
+$(“#loader_progress”).hide(); //        buildproductDetailsListTable(); // 
+$(“.details-row .best_in_place”).best_in_place(); //       
+$(“.combobox”).combobox(); // //    });</p>
+
+<p>}</p>
+
+<p>function bindProductDetailNew() {</p>
+
+<pre>$(&#39;#new-product-detail-item&#39;).on(&#39;ajax:success&#39;, function (xhr, data, status) {
+    refreshProductDetails();
+
+}).on(&#39;ajax:beforeSend&#39;, function (e, xhr, settings) {
+    xhr.setRequestHeader(&#39;accept&#39;, &#39;*  ;q=0.5, text/html, &#39; + settings.accepts.html);
+    $(&quot;#loader_progress&quot;).show();
+
+});</pre>
+
+<p>} ;</p>
+
+<p>function bindDeleteProductDetail() {</p>
+
+<pre>$(&#39;.delete-product_detail&#39;).on(&#39;ajax:success&#39;, function (xhr, data, status) {
+    refreshProductDetails();
+    // $(&quot;#loader_progress&quot;).show();</pre>
+
+<p>//        theTarget = this.parentNode.parentNode; //        var aPos =
+productDetailsTable.fnGetPosition(theTarget); //       
+productDetailsTable.fnDeleteRow(aPos);</p>
+
+<pre>    //  $(&quot;#loader_progress&quot;).hide();
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;default&quot;);
+
+}).on(&#39;ajax:beforeSend&#39;, function (e, xhr, settings) {
+    //xhr.setRequestHeader(&#39;accept&#39;, &#39;  *;q=0.5, text/html, &#39; + settings.accepts.html);
+    // $(&quot;#loader_progress&quot;).show();
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;progress&quot;);
+
+});
+;</pre>
+
+<p>}</p>
+
+<p>function bindDuplicateProductDetail() {</p>
+
+<pre>$(&#39;.duplicate-product_detail&#39;).on(&#39;ajax:success&#39;, function (xhr, data, status) {
+    refreshProductDetails();
+    // alert(&quot;duplicated&quot;);
+
+}).on(&#39;ajax:beforeSend&#39;, function (e, xhr, settings) {
+    //xhr.setRequestHeader(&#39;accept&#39;, &#39;*/*;q=0.5, text/html, &#39; + settings.accepts.html);
+    // $(&quot;#loader_progress&quot;).show();
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;progress&quot;);
+
+});</pre>
+
+<p>}</p>
+
+<p>function bindBlurToDepartmentPopup() {</p>
+
+<pre>$(&#39;#product_department_id&#39;).off(&quot;change&quot;).on(&quot;change&quot;, function () {
+
+    var $product_id = $(&quot;#current-product-id&quot;).text();
+    // $(&quot;#product_department_id&quot;).val()
+    setTimeout(function () {
+
+        $.post(&#39;/products/render_category_div?id=&#39; + $product_id, function (data)
+        {
+            $(&#39;#category-div&#39;).html(data);
+            // $(&quot;#loader_progress&quot;).hide();
+            //bindBlurToDepartmentPopup();
+            setupCheckboxes(&quot;.category-check&quot;);
+        });
+    }, 100);
+    //alert(&#39;Handler for .blur() called.&#39;);
+});
+$(&#39;.department-check&#39;).off(&quot;change&quot;).on(&quot;change&quot;, function () {
+
+    var $product_id = $(&quot;#current-product-id&quot;).text();
+    // $(&quot;#product_department_id&quot;).val()
+    setTimeout(function () {
+
+        $.post(&#39;/products/render_category_div?id=&#39; + $product_id, function (data)
+        {
+            $(&#39;#category-div&#39;).html(data);
+            // $(&quot;#loader_progress&quot;).hide();
+            //bindBlurToDepartmentPopup();
+            setupCheckboxes(&quot;.category-check&quot;);
+        });
+    }, 100);
+    //alert(&#39;Handler for .blur() called.&#39;);
+});</pre>
+
+<p>}</p>
+
+<p>function updateImages() {</p>
+
+<pre>//  alert(&quot;color changed&quot;);
+var $product_id = $(&quot;#current-product-id&quot;).text();
+// $(&quot;#loader_progress&quot;).show();
+$(&quot;body&quot;).css(&quot;cursor&quot;, &quot;progress&quot;);
+
+$.post(&#39;/products/render_image_section/&#39; + $product_id, function (data)
+{
+    $(&#39;.imagesection&#39;).html(data);
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;default&quot;);
+
+    //  $(&quot;#loader_progress&quot;).hide();
+    styleizefilebutton();
+    bindImageChage();
+    disableSelectOptionsSeperators();
+
+});</pre>
+
+<p>}</p>
+
+<p>function BestInPlaceCallBack(input) {</p>
+
+<pre>//    if(input.data.indexOf(&quot;product_detail[color]&quot;) != -1)
+if (input.attributeName.indexOf(&quot;color&quot;) != -1)
+{
+    //  alert(&quot;color changed&quot;);
+    var $product_id = $(&quot;#current-product-id&quot;).text();
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;progress&quot;);</pre>
+
+<p>//$(“#loader_progress”).show();</p>
+
+<pre>    $.post(&#39;/products/render_image_section/&#39; + $product_id, function (data)
+    {
+        $(&#39;.imagesection&#39;).html(data);
+        $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;default&quot;);
+        // $(&quot;#loader_progress&quot;).hide();
+        styleizefilebutton();
+        bindImageChage();
+
+    });
+}</pre>
+
+<p>} ;</p>
+
+<p>function ajaxSave() {</p>
+
+<pre>tinyMCE.triggerSave();
+
+$(&quot;#product_product_description_save&quot;).closest(&quot;form&quot;).trigger(&quot;submit&quot;);</pre>
+
+<p>}</p>
+
+<p>function bindChangeCombobox() {</p>
+
+<pre>$(&#39;.combobox&#39;).combobox({
+    select: function (event, ui) {
+        console.log(&quot;a change occured&quot;);
+        console.log($(this).attr(&quot;name&quot;));
+        var fieldToUpdate = $(this).attr(&quot;name&quot;).split(&quot;[&quot;)[1].split(&quot;]&quot;)[0];
+        var objectToUpdate = $(this).attr(&quot;name&quot;).split(&quot;[&quot;)[0];
+        var dataObj = {};
+
+        console.log($(this).attr(&quot;data-id&quot;));
+
+        // var $detail_id = $(this).parent().parent().find(&quot;#detail-id&quot;).text();
+        detail_id = $(this).attr(&quot;data-id&quot;);
+        var value = $(this).val();
+        dataObj[objectToUpdate] = {};
+        dataObj[objectToUpdate][fieldToUpdate] = value;
+
+        console.log(detail_id);
+        //   &quot;/products/update_ajax/1?field=color&amp;pointer_class=ProductDetail&quot;
+        $.ajax({
+            url: &#39;/&#39; + objectToUpdate + &#39;s/&#39; + detail_id,
+            data: dataObj, //{objectToUpdate: { fieldToUpdate: value}},
+            method: &quot;put&quot;,
+            dataType: &quot;json&quot;,
+            success: function (data) {
+                // $(this).html(data);
+                // updateImages();
+
+            }
+        });
+    }});</pre>
+
+<p>//    $(&#39;.combobox&#39;).change(function () { //        var $detail_id
+= $(this).parent().parent().find(“#detail-id”).text(); //        var value
+= $(this).val(); //        console.log($detail_id); //        //  
+“/products/update_ajax/1?field=color&amp;pointer_class=ProductDetail” //   
+$.ajax({ //            url: &#39;/product_details/&#39; + $detail_id, //   
+data: {“product_detail”: {“color”: value}}, //            method: “put”, //
+dataType: “json”, //            success: function (data) { //              
+$(this).html(data); //                updateImages(); // //            } //
+}) //    }); }</p>
+
+<p>function test() {</p>
+
+<pre>$(&#39;#details_color&#39;).bind(&quot;change&quot;, function () {
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;progress&quot;);
+
+    // $(&quot;#loader_progress&quot;).show();
+
+    wait(5000);
+    updateImages();
+    alert(&quot;images updated&quot;);
+    //alert(&quot;changed&quot;);
+
+}).on(&#39;ajax:success&#39;, function (xhr, data, status) {
+    alert(&quot;changed&quot;);
+
+});</pre>
+
+<p>}</p>
+
+<p>function bindDivDepartmentUpdate() {</p>
+
+<pre>$(&#39;.div-department form&#39;).bind(&#39;ajax:beforeSend&#39;, function () {
+    // show spinner
+    // alert(&quot;ajax:before&quot;);  
+}).bind(&#39;ajax:success&#39;, function () {
+    updateCategoryDiv();
+    //alert(&quot;ajax:success&quot;);  
+}).bind(&#39;ajax:failure&#39;, function () {
+    //  alert(&quot;ajax:failure&quot;);    
+}).bind(&#39;ajax:complete&#39;, function () {
+    //hide spinner
+    // alert(&quot;ajax:complete&quot;);  
+
+});</pre>
+
+<p>}</p>
+
+<p>function updateCategoryDiv() {</p>
+
+<pre>var $product_id = $(&quot;#current-product-id&quot;).text();
+// $(&quot;#product_department_id&quot;).val()
+
+$.post(&#39;/products/render_category_div?id=&#39; + $product_id, function (data)
+{
+    $(&#39;#category-div&#39;).html(data);
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;default&quot;);
+    setupCheckboxes(&quot;.category-check&quot;);</pre>
+
+<p>// $(“#loader_progress”).hide();</p>
+
+<pre>    // setupCheckboxes(&quot;.category-check&quot;);
+});</pre>
+
+<p>}</p>
+
+<p>function mysave() {</p>
+
+<pre>console.log(&quot;trigger save&quot;);
+tinymce.triggerSave();
+// $(&quot;#page-body-save&quot;).closest(&quot;form&quot;).trigger(&quot;submit&quot;);
+$(&quot;#product_product_description&quot;).parent().parent().closest(&quot;form&quot;).trigger(&quot;submit&quot;);</pre>
+
+<p>}</p>
+
+<p>function set_up_save_callback() {</p>
+
+<pre>$(&quot;form.edit_product&quot;)
+        .on(&quot;ajax:success&quot;, function (event, data, status, xhr) {
+            //   console.log(event);
+            //   console.log(data[&quot;notice&quot;]);
+            //  console.log(status);
+            //   console.log(xhr);
+            setUpPurrNotifier(&quot;Attention&quot;, data[&quot;notice&quot;]);
+            $(&#39;iframe.preview&#39;).attr(&quot;src&quot;, $(&#39;iframe.preview&#39;).attr(&quot;src&quot;));
+
+        });</pre>
+
+<p>}</p>
+
+<p>function bindRelatedSort() {</p>
+
+<pre>$(&#39;div#related-products&#39;).sortable({
+    dropOnEmpty: false,
+    handle: &#39;div.related-product-item&#39;,
+    cursor: &#39;-webkit-grabbing&#39;,
+    items: &#39;div.product-list-item&#39;,
+    opacity: 0.4,
+    scroll: true,
+    tolerance: &quot;pointer&quot;,
+    update: function () {
+        console.log($(this));
+        $.ajax({
+            url: &#39;/products/update_related_order&#39;,
+            type: &#39;post&#39;,
+            data: $(this).sortable(&#39;serialize&#39;),
+            dataType: &#39;json&#39;,
+            complete: function (request) {
+            }
+        });
+    }
+});</pre>
+
+<p>}</p>
+
+<p>function bindDeleteRelated() {</p>
+
+<pre>$(&#39;a.related-delete&#39;).unbind().bind(&#39;ajax:beforeSend&#39;, function () {
+    // alert(&quot;ajax:before&quot;);  
+}).bind(&#39;ajax:success&#39;, function () {
+    console.log($(this).parent().parent());
+    $(this).parent().parent().remove();
+    // alert(&quot;ajax:success&quot;);  
+}).bind(&#39;ajax:failure&#39;, function () {
+    //  alert(&quot;ajax:failure&quot;);    
+}).bind(&#39;ajax:complete&#39;, function () {
+    //  alert(&quot;ajax:complete&quot;); 
+});</pre>
+
+<p>}</p>
+
+<p>function bindRelatedProductSearch() {</p>
+
+<pre>if ($(&quot;#product-search&quot;).length &gt; 0)
+{
+    $(&quot;#product-search&quot;).autocomplete({
+        source: &quot;/products/product_search.json&quot;,
+        minLength: 2,
+        select: function (event, ui) {
+
+            var product_id = $(&quot;div#attr-products div#product-id&quot;).text();
+            // update_job_site(job_id, ui.item.id);
+            add_product_to_related(product_id, ui.item.id)
+            console.log(ui);
+            console.log(ui.item ?
+                    &quot;Selected: &quot; + ui + &quot; aka &quot; + ui.item.id :
+                    &quot;Nothing selected, input was &quot; + this.value);
+            console.log(this);
+
+            $(this).val(&quot;&quot;);
+        }
+    });
+}</pre>
+
+<p>}</p>
+
+<p>function add_product_to_related(product_id, related_product_id) {</p>
+
+<pre>$.ajax({
+    url: &quot;/products/update_related_list&quot;,
+    dataType: &quot;json&quot;,
+    type: &quot;POST&quot;,
+    data: &quot;id=&quot; + product_id + &quot;&amp;related_id=&quot; + related_product_id,
+    success: function (data)
+    {
+        //alert(data);
+        if (data === undefined || data === null || data === &quot;&quot;)
+        {
+            //display warning
+        } else
+        {
+            console.log(&quot;product added!&quot;);
+            //  updateJobSiteInformation(job_id, false);
+            if (data.success == true) {
+                setUpPurrNotifier(&quot;Success&quot;, data.alert);
+            } else
+            {
+                setUpPurrNotifier(&quot;Failed&quot;, data.alert);
+            }
+            updateRelated();
+            //jobs_material_table.fnDraw();
+            //jobs_material_trans_table.fnDraw();
+            //  console.log(data);
+        }
+    }
+});</pre>
+
+<p>}</p>
+
+<p>function updateRelated() {</p>
+
+<pre>//  alert(&quot;color changed&quot;);
+var product_id = $(&quot;div#attr-products div#product-id&quot;).text();
+$(&quot;body&quot;).css(&quot;cursor&quot;, &quot;progress&quot;);</pre>
+
+<p>// $(“#loader_progress”).show();</p>
+
+<pre>$.post(&#39;/products/render_related_section?id=&#39; + product_id, function (data)
+{
+    $(&#39;div#product-related&#39;).html(data);
+    $(&quot;body&quot;).css(&quot;cursor&quot;, &quot;default&quot;);
+
+    // $(&quot;#loader_progress&quot;).hide();
+    bindRelatedSort();
+    bindDeleteRelated();
+    bindRelatedProductSearch();
+
+});</pre>
+
+<p>}</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

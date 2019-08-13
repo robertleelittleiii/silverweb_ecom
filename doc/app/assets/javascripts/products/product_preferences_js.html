@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>product_preferences.js - RDoc Documentation</title>
+
+<link href="../../../../fonts.css" rel="stylesheet">
+<link href="../../../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../../";
+</script>
+
+<script src="../../../../js/jquery.js"></script>
+<script src="../../../../js/navigation.js"></script>
+<script src="../../../../js/search_index.js"></script>
+<script src="../../../../js/search.js"></script>
+<script src="../../../../js/searcher.js"></script>
+<script src="../../../../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../../LICENSE.html">LICENSE</a>
+  
+    <li><a href="../../../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../../../README_rdoc.html">README</a>
+  
+    <li><a href="../../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../../app/assets/javascripts/coupons/edit_js.html">edit.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/coupons/index__js.html">index_.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/coupons/shared_js.html">shared.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/imgpreview_full_jquery_js.html">imgpreview.full.jquery.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/jquery_jqzoom-core_js.html">jquery.jqzoom-core.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/jquery_serialize-object_js.html">jquery.serialize-object.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/menus/show_products_type_js.html">show_products_type.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/enter_order_js.html">enter_order.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/index__js.html">index_.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/order_success_js.html">order_success.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/orders/user_orders_js.html">user_orders.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/product_related_products_js.html">product_related_products.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/coupon_settings_js.html">coupon_settings.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/edit_js.html">edit.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/index__js.html">index_.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/product_preferences_js.html">product_preferences.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/products/shared_js.html">shared.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/silverweb_ecom_js.html">silverweb_ecom.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/check_out_js.html">check_out.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/live_search_js.html">live_search.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/product_detail_js.html">product_detail.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/show_products_js.html">show_products.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/show_products_with_page_js.html">show_products_with_page.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/site/store_locator_js.html">store_locator.js</a>
+  
+    <li><a href="../../../../app/assets/javascripts/vendors/vendor_list_js.html">vendor_list.js</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/customers_css.html">customers.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/jquery_jqzoom_scss.html">jquery.jqzoom.scss</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/orders_css.html">orders.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/orders/index__css.html">index_.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/orders/user_orders_css.html">user_orders.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/product_related_products_css.html">product_related_products.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/products_css.html">products.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/products/edit_css.html">edit.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/products/product_list_scss.html">product_list.scss</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/retailers_css.html">retailers.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/scaffold_css.html">scaffold.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/silverweb_ecom_css.html">silverweb_ecom.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/check_out_css.html">check_out.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/product_detail-horizontal_css.html">product_detail-horizontal.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/product_detail_css.html">product_detail.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/show_products_css.html">show_products.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/show_products_with_page_css.html">show_products_with_page.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/show_products_with_page_mm_css.html">show_products_with_page_mm.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/site/store_locator_css.html">store_locator.css</a>
+  
+    <li><a href="../../../../app/assets/stylesheets/vendors_css.html">vendors.css</a>
+  
+    <li><a href="../../../../app/mailers/user_notifier_old_rb_orig.html">user_notifier_old.rb.orig</a>
+  
+    <li><a href="../../../../app/views/products/delete_image_rjs.html">delete_image.rjs</a>
+  
+    <li><a href="../../../../app/views/site/product_index_feed_atom_builder.html">product_index_feed.atom.builder</a>
+  
+    <li><a href="../../../../lib/tasks/image_tasks_rake.html">image_tasks.rake</a>
+  
+    <li><a href="../../../../lib/tasks/silverweb_ecom_tasks_rake.html">silverweb_ecom_tasks.rake</a>
+  
+    <li><a href="../../../../nbproject/private/config_properties.html">config.properties</a>
+  
+    <li><a href="../../../../nbproject/private/private_properties.html">private.properties</a>
+  
+    <li><a href="../../../../nbproject/private/private_xml.html">private.xml</a>
+  
+    <li><a href="../../../../nbproject/private/rake-d_txt.html">rake-d</a>
+  
+    <li><a href="../../../../nbproject/project_properties.html">project.properties</a>
+  
+    <li><a href="../../../../nbproject/project_xml.html">project.xml</a>
+  
+    <li><a href="../../../../silverweb_ecom_gemspec.html">silverweb_ecom.gemspec</a>
+  
+    <li><a href="../../../../test/dummy/README_rdoc.html">README</a>
+  
+    <li><a href="../../../../test/dummy/Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../../test/dummy/app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../../test/dummy/app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li><a href="../../../../test/dummy/config_ru.html">config.ru</a>
+  
+    <li><a href="../../../../test/dummy/public/404_html.html">404.html</a>
+  
+    <li><a href="../../../../test/dummy/public/422_html.html">422.html</a>
+  
+    <li><a href="../../../../test/dummy/public/500_html.html">500.html</a>
+  
+    <li><a href="../../../../test/dummy/public/favicon_ico.html">favicon.ico</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/assets/javascripts/products/product_preferences.js">
+
+<pre>To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.</pre>
+
+<p>var product_preferences_callDocumentReady_called = false;</p>
+
+<p>$(document).ready(function () {</p>
+
+<pre>if (!product_preferences_callDocumentReady_called)
+{
+    product_preferences_callDocumentReady_called = true;
+    if ($(&quot;#as_window&quot;).text() == &quot;true&quot;)
+    {
+        //  alert(&quot;it is a window&quot;);
+    }
+    else
+    {
+        product_preferences_callDocumentReady();
+    }
+}</pre>
+
+<p>});</p>
+
+<p>function product_preferences_callDocumentReady() {</p>
+
+<pre>$(&quot;#product-settings-tabs&quot;).tabs();
+$(&quot;.best_in_place&quot;).best_in_place();
+ui_ajax_select();
+ui_ajax_settings_select();
+$(&quot;a.button-link&quot;).button();
+
+requireCss(&quot;image_libraries/image_list.css&quot;);</pre>
+
+<p>bind_file_upload_to_upload_form();</p>
+
+<pre>bindImageChage();
+bind_download_to_files();
+bindPicturesSort();
+bindDeleteImage();
+bind_mouseover();
+activate_buttons();
+initialize_edit_button();
+$(&quot;a.button-link&quot;).button();</pre>
+
+<p>}</p>
+
+<p>//  Picture management routines</p>
+
+<p>function initialize_edit_button() {</p>
+
+<pre>$(&quot;a.edit-picture-product&quot;).unbind()
+        .bind(&quot;ajax:beforeSend&quot;, function (evt, xhr, settings) {
+            //alert(&quot;ajax:beforeSend&quot;);
+        })
+        .bind(&quot;ajax:success&quot;, function (evt, data, status, xhr) {
+            // alert(&quot;ajax:success&quot;);
+            edit_picture_dialog(data);
+        })
+        .bind(&#39;ajax:complete&#39;, function (evt, xhr, status) {
+            //alert(&quot;ajax:complete&quot;);
+        })
+        .bind(&quot;ajax:error&quot;, function (evt, xhr, status, error) {
+            //  alert(&quot;ajax:error&quot;);
+
+            var $form = $(this),
+                    errors,
+                    errorText;
+
+            try {
+                // Populate errorText with the comment errors
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+
+                errors = $.parseJSON(xhr.responseText);
+                console.log(errors);
+
+            } catch (err) {
+                // If the responseText is not valid JSON (like if a 500 exception was thrown), populate errors with a generic error message.
+                errors = {
+                    message: &quot;Please reload the page and try again&quot;
+                };
+            }
+            var errorText;
+            // Build an unordered list from the list of errors
+            errorText = &quot;&lt;ul&gt;&quot;;
+
+            for (error in errors) {
+                console.log(error);
+                console.log(errors[error][0]);
+                errorText += &quot;&lt;li&gt;&quot; + error + &#39;: &#39; + errors[error][0] + &quot;&lt;/li&gt; &quot;;
+                console.log(errorText);
+            }
+
+            errorText += &quot;&lt;/ul&gt;&quot;;
+            console.log(errorText);
+
+            // Insert error list into form
+            setUpNotifier(&quot;error.png&quot;, &quot;Warning&quot;, errorText);
+        });</pre>
+
+<p>}</p>
+
+<p>function edit_picture_dialog(data) {</p>
+
+<pre>// alert(&quot;ajax:success&quot;);
+picture_edit_dialog = createAppDialog(data, &quot;edit-picture&quot;, {}, &quot;&quot;);
+
+picture_edit_dialog.dialog({
+    close: function (event, ui) {
+        picture_id = $(&quot;div#picture-id&quot;).text().trim();
+        value = $(&quot;select#picture_title&quot;).val();
+        $(&quot;div#picture_&quot; + picture_id + &quot; div.picture-info&quot;).text(value);
+    }
+});
+
+//initialize_save_button();
+//$(&#39;.datepicker&#39;).datepicker();
+//tiny_mce_initializer();
+//bind_org_select();
+//bind_membership_select();
+//bind_grade_select();
+//bind_flags_select();
+
+//bind_grade_all_select();
+
+//bind_grade_filter_display();
+//bind_membership_filter_display();
+//bind_flags_filter_display();
+//bind_select_ajax(&quot;picture_priority&quot;);
+//bind_select_ajax(&quot;picture_status&quot;);
+
+//current_notice = $(&quot;#picture-id&quot;).text();
+//set_before_edit(current_notice);
+// tinyMCE.init({&quot;selector&quot;:&quot;textarea.tinymce&quot;});
+$(&quot;.best_in_place&quot;).best_in_place();
+ui_ajax_select();
+//bind_file_upload_to_upload_form();
+//$(&quot;button.ui-dialog-titlebar-close&quot;).hide();
+
+//initialize_add_organization();
+//select_subject_field();
+//initialize_select_all_button();
+//initialize_select_none_button();
+//initilize_filter_buttons();</pre>
+
+<p>}</p>
+
+<p>function activate_buttons() {</p>
+
+<pre>$(&quot;div.ui-button a&quot;).button();</pre>
+
+<p>}</p>
+
+<p>function bind_mouseover() {</p>
+
+<pre>$(&quot;div.file-block&quot;)
+        .unbind(&quot;mouseenter&quot;).mouseenter(function () {
+    $(this).parent().find(&quot;div.hover-block&quot;).fadeIn();
+    // console.log(&quot;fadeIn&quot;);
+})
+        .unbind(&quot;mouseleave&quot;).mouseleave(function () {
+    $(this).parent().find(&quot;div.hover-block&quot;).fadeOut();
+    //   console.log(&quot;fadeOut&quot;);
+});</pre>
+
+<p>}</p>
+
+<p>function bindImageChage() {</p>
+
+<pre class="ruby"><span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span> <span class="ruby-identifier">image</span> <span class="ruby-keyword">class</span> <span class="ruby-identifier">bindings</span>
+<span class="ruby-regexp">//</span>
+
+$(<span class="ruby-string">&#39;input#image&#39;</span>).<span class="ruby-identifier">bind</span>(<span class="ruby-string">&quot;change&quot;</span>, <span class="ruby-identifier">function</span> () {
+    <span class="ruby-regexp">//</span><span class="ruby-identifier">alert</span>(<span class="ruby-string">&quot;changed&quot;</span>);
+    <span class="ruby-identifier">toggleLoading</span>();
+    <span class="ruby-identifier">toggleAddButton</span>();
+    $(<span class="ruby-identifier">this</span>).<span class="ruby-identifier">closest</span>(<span class="ruby-string">&quot;form&quot;</span>).<span class="ruby-identifier">trigger</span>(<span class="ruby-string">&quot;submit&quot;</span>);
+    $(<span class="ruby-string">&quot;.imageSingle .best_in_place&quot;</span>).<span class="ruby-identifier">best_in_place</span>();
+    <span class="ruby-identifier">disableSelectOptionsSeperators</span>();
+
+});
+</pre>
+
+<p>}</p>
+
+<p>function updateImages() {</p>
+
+<pre>//  alert(&quot;color changed&quot;);
+var $product_id = $(&quot;#product-id&quot;).text();
+$(&quot;#loader_progress&quot;).show();
+
+$.post(&#39;/products/render_image_section/&#39; + $product_id, function (data)
+{
+    $(&#39;.imagesection&#39;).html(data);
+    $(&quot;#loader_progress&quot;).hide();
+    styleizefilebutton();
+    bindImageChage();
+    disableSelectOptionsSeperators();
+
+});</pre>
+
+<p>}</p>
+
+<p>function bindImageChage() {</p>
+
+<pre class="ruby"><span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span>
+<span class="ruby-regexp">//</span> <span class="ruby-identifier">image</span> <span class="ruby-keyword">class</span> <span class="ruby-identifier">bindings</span>
+<span class="ruby-regexp">//</span>
+
+$(<span class="ruby-string">&#39;input#image&#39;</span>).<span class="ruby-identifier">bind</span>(<span class="ruby-string">&quot;change&quot;</span>, <span class="ruby-identifier">function</span> () {
+    <span class="ruby-regexp">//</span><span class="ruby-identifier">alert</span>(<span class="ruby-string">&quot;changed&quot;</span>);
+    <span class="ruby-identifier">toggleLoading</span>();
+    <span class="ruby-identifier">toggleAddButton</span>();
+    $(<span class="ruby-identifier">this</span>).<span class="ruby-identifier">closest</span>(<span class="ruby-string">&quot;form&quot;</span>).<span class="ruby-identifier">trigger</span>(<span class="ruby-string">&quot;submit&quot;</span>);
+    $(<span class="ruby-string">&quot;.imageSingle .best_in_place&quot;</span>).<span class="ruby-identifier">best_in_place</span>();
+    <span class="ruby-identifier">disableSelectOptionsSeperators</span>();
+
+});
+</pre>
+
+<p>}</p>
+
+<p>function updateBestinplaceImageTitles() {</p>
+
+<pre>$(&quot;.imageSingle .best_in_place&quot;).best_in_place();</pre>
+
+<p>}</p>
+
+<p>function updateImages() {</p>
+
+<pre>//  alert(&quot;color changed&quot;);
+var $product_id = $(&quot;#product-id&quot;).text();
+$(&quot;#loader_progress&quot;).show();
+
+$.post(&#39;/products/render_image_section/&#39; + $product_id, function (data)
+{
+    $(&#39;.imagesection&#39;).html(data);
+    $(&quot;#loader_progress&quot;).hide();
+    styleizefilebutton();
+    bindImageChage();
+    disableSelectOptionsSeperators();
+
+});</pre>
+
+<p>}</p>
+
+<p>function bind_file_upload_to_upload_form() {</p>
+
+<pre>$(&quot;form.upload-form&quot;).fileupload({
+    dataType: &quot;json&quot;,
+    add: function (e, data) {
+        file = data.files[0];
+        data.context = $(tmpl(&quot;template-upload&quot;, file));
+        // $(&quot;div.progress&quot;).progressbar();
+        $(&#39;#images&#39;).fadeIn();
+        $(&#39;#images&#39;).prepend(data.context);
+        var jqXHR = data.submit()
+                .success(function (result, statusText, jqXHR) {
+
+                    // console.log(&quot;------ - fileupload: Success - -------&quot;);
+                    // console.log(result);
+                    // console.log(statusText);
+                    // console.log(jqXHR);
+
+                    // console.log(JSON.stringify(jqXHR.responseJSON[&quot;attachment&quot;]));
+
+                    // console.log(typeof(jqXHR.responseText));</pre>
+
+<p>// specifically for IE8.</p>
+
+<pre>    if (typeof (jqXHR.responseText) == &quot;undefined&quot;) {
+        setUpPurrNotifier(&quot;info.png&quot;, &quot;Notice&quot;, jqXHR.responseJSON[&quot;attachment&quot;][0]);
+        data.context.remove();
+    }
+    else
+    {
+        render_swatch_picture(result.id);
+    }
+
+})
+.error(function (jqXHR, statusText, errorThrown) {
+    console.log(&quot;------ - fileupload: Error - -------&quot;);
+    console.log(jqXHR.status);
+    console.log(statusText);
+    console.log(errorThrown);
+    console.log(jqXHR.responseText);
+    if (jqXHR.status == &quot;200&quot;)
+    {
+        render_swatch_picture(result.id);
+    }
+    else
+    {
+        var obj = jQuery.parseJSON(jqXHR.responseText);
+        // console.log(typeof obj[&quot;attachment&quot;][0])
+        setUpPurrNotifier(&quot;info.png&quot;, &quot;Notice&quot;, obj[&quot;attachment&quot;][0]);
+        data.context.remove();
+    }</pre>
+
+<p>//                        if (jqXHR.statusText == “success”) { //          
+render_pictures(); //                            // It succeeded and we
+need to update the file list. //                        } //               
+else { //                            var obj =
+jQuery.parseJSON(jqXHR.responseText); //                           
+setUpPurrNotifier(“info.png”, “Notice”, <a href=""attachment"">obj</a>[0]);
+//                            data.context.remove(); //                    
+}</p>
+
+<pre>                })
+                .complete(function (result, textStatus, jqXHR) {
+                    // console.log(&quot;------ - fileupload: Complete - -------&quot;);
+                    // console.log(result);
+                    // console.log(textStatus);
+                    // console.log(jqXHR);
+                });
+    },
+    progress: function (e, data) {
+        if (data.context)
+        {
+            progress = parseInt(data.loaded / data.total * 100, 10);
+            data.context.find(&#39;.bar&#39;).css(&#39;width&#39;, progress + &#39;%&#39;);
+        }
+    },
+    done: function (e, data) {
+        // console.log(e);
+        // console.log(data);
+        data.context.text(&#39;&#39;);
+    }
+}).bind(&#39;fileuploaddone&#39;, function (e, data) {
+    // console.log(e);
+    // console.log(data);
+    data.context.remove();
+    //data.context.text(&#39;&#39;);
+});</pre>
+
+<p>}</p>
+
+<p>function bind_download_to_files() {</p>
+
+<pre>$(&quot;div.file-item div#logo-links&quot;).unbind(&quot;click&quot;);
+$(&quot;div.file-item div#logo-links&quot;).bind(&quot;click&quot;,
+        function () {
+            var href = $($(this)[0]).find(&#39;a&#39;).attr(&#39;href&#39;);
+            window.location.href = href
+        });</pre>
+
+<p>}</p>
+
+<p>function render_swatch_pictures(product_id) {</p>
+
+<pre>$.ajax({
+    dataType: &quot;html&quot;,
+    url: &#39;/pictures/render_pictures&#39;,
+    cache: false,
+    data: &quot;class_name=product&amp;id=&quot; + product_id,
+    success: function (data)
+    {
+        $(&quot;div#images&quot;).html(data).hide().fadeIn();
+
+        max_images = $(&#39;#max-images&#39;).text();
+
+        if (max_images.length &gt; 0)
+        {
+            total_images = $(&quot;div.file-list-item&quot;).size();
+            if (total_images &gt;= max_images) {
+                $(&quot;div#imagebutton&quot;).fadeOut();
+            }
+
+        }
+        bind_file_upload_to_upload_form();
+
+    }
+});</pre>
+
+<p>}</p>
+
+<p>function render_swatch_picture(picture_id) {</p>
+
+<pre>$.ajax({
+    dataType: &quot;html&quot;,
+    url: &#39;/products/render_swatch_picture&#39;,
+    cache: false,
+    data: &quot;class_name=product&amp;id=&quot; + picture_id,
+    success: function (data)
+    {
+        $(&quot;div#images&quot;).prepend(data).hide().fadeIn();
+
+        max_images = $(&#39;#max-images&#39;).text();
+
+        if (max_images.length &gt; 0)
+        {
+            total_images = $(&quot;div.file-list-item&quot;).size();
+            if (total_images &gt;= max_images) {
+                $(&quot;div#imagebutton&quot;).fadeOut();
+            }
+
+        }
+
+        bind_file_upload_to_upload_form();
+        bindDeleteImage();
+        bind_mouseover();
+        activate_buttons();
+        initialize_edit_button();
+        bind_download_to_files();
+        $(&quot;a.button-link&quot;).button();
+        $(&quot;.best_in_place&quot;).best_in_place();
+
+    }
+});</pre>
+
+<p>}</p>
+
+<p>function bind_download_to_files() {</p>
+
+<pre>$(&quot;div.file-item div#logo-links&quot;).unbind(&quot;click&quot;);
+$(&quot;div.file-item div#logo-links&quot;).bind(&quot;click&quot;,
+        function () {
+            var href = $($(this)[0]).find(&#39;a&#39;).attr(&#39;href&#39;);
+            window.location.href = href
+        });</pre>
+
+<p>} function bindPicturesSort() {</p>
+
+<pre>  $(&#39;div#images&#39;).sortable({
+  dropOnEmpty: false,
+  handle: &#39;div.file-item&#39;,
+  cursor: &#39;-webkit-grabbing&#39;,
+  items: &#39;div.file-list-item&#39;,
+  opacity: 0.4,
+  scroll: true,
+  tolerance: &quot;pointer&quot;,
+  update: function(){
+      console.log($(this));
+    $.ajax({
+      url: &#39;/products/update_image_order&#39;,
+      type: &#39;post&#39;,
+      data: $(this).sortable(&#39;serialize&#39;),
+      dataType: &#39;json&#39;,
+      complete: function(request){
+      }
+    });
+  }
+});
+
+}
+
+function bindDeleteImage() {
+  $(&#39;a.picture-delete&#39;).unbind().bind(&#39;ajax:beforeSend&#39;, function () {
+       // alert(&quot;ajax:before&quot;);  
+  }).bind(&#39;ajax:success&#39;, function () {
+      console.log($(this).parent().parent());
+     $(this).parent().parent().remove();
+     //  alert(&quot;ajax:success&quot;);  
+  }).bind(&#39;ajax:failure&#39;, function () {
+    //    alert(&quot;ajax:failure&quot;);    
+  }).bind(&#39;ajax:complete&#39;, function () {
+    //   alert(&quot;ajax:complete&quot;); 
+  });</pre>
+
+<p>}</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

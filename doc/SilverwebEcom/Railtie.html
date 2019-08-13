@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class SilverwebEcom::Railtie - RDoc Documentation</title>
+
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Rails::Railtie
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="../SilverwebEcomHelper.html">SilverwebEcomHelper</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-inventory_alert">#inventory_alert</a>
+    
+    <li ><a href="#method-i-order_notification">#order_notification</a>
+    
+    <li ><a href="#method-i-order_notification_as_invoice">#order_notification_as_invoice</a>
+    
+    <li ><a href="#method-i-shipment_notification">#shipment_notification</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-SilverwebEcom::Railtie">
+  <h1 id="class-SilverwebEcom::Railtie" class="class">
+    class SilverwebEcom::Railtie
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-inventory_alert" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inventory_alert</span><span
+            class="method-args">(product_detail, host)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inventory_alert-source">
+            <pre><span class="ruby-comment"># File lib/silverweb_ecom/raility.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inventory_alert</span>(<span class="ruby-identifier">product_detail</span>, <span class="ruby-identifier">host</span>)
+  <span class="ruby-identifier">set_up_images</span>
+  <span class="ruby-ivar">@hostfull</span> = <span class="ruby-identifier">host</span>
+  <span class="ruby-ivar">@host</span> = <span class="ruby-identifier">host</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">inventory_email</span>
+  <span class="ruby-ivar">@admin_email</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">admin_email</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">default_params</span>[<span class="ruby-value">:from</span>]
+  <span class="ruby-ivar">@product_detail</span> = <span class="ruby-constant">ProductDetail</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@cc_emai_address</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">cc_email_address</span> <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+
+  <span class="ruby-identifier">mail</span>(<span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">cc</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@cc_emai_address</span>, <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;Inventory Warning for #{@product_detail.inventory_key}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-order_notification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">order_notification</span><span
+            class="method-args">(order, user, host)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="order_notification-source">
+            <pre><span class="ruby-comment"># File lib/silverweb_ecom/raility.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">order_notification</span>(<span class="ruby-identifier">order</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">host</span>)
+  <span class="ruby-identifier">set_up_images</span>
+
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">order</span>
+  <span class="ruby-ivar">@hostfull</span> = <span class="ruby-identifier">host</span>
+  <span class="ruby-ivar">@site_slogan</span> = <span class="ruby-keyword">begin</span>
+    <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">site_slogan</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@site_name</span> = <span class="ruby-keyword">begin</span>
+    <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">site_name</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    <span class="ruby-string">&#39;Our Site&#39;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@admin_email</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">admin_email</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">default_params</span>[<span class="ruby-value">:from</span>]
+  <span class="ruby-ivar">@cc_emai_address</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">cc_email_address</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@admin_email</span>
+
+  <span class="ruby-identifier">mail</span>(<span class="ruby-identifier">from</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@admin_email</span>, <span class="ruby-identifier">cc</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@cc_emai_address</span>, <span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{begin
+    user.user_attribute.first_name
+    rescue StandardError
+    &#39;&#39;
+    end} #{begin
+    user.user_attribute.last_name
+    rescue StandardError
+    &#39;&#39;
+    end}&lt;#{user.name}&gt;&quot;</span>, <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Thank you for your order !!&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-order_notification_as_invoice" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">order_notification_as_invoice</span><span
+            class="method-args">(order, user, host)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="order_notification_as_invoice-source">
+            <pre><span class="ruby-comment"># File lib/silverweb_ecom/raility.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">order_notification_as_invoice</span>(<span class="ruby-identifier">order</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">host</span>)
+  <span class="ruby-identifier">set_up_images</span>
+
+  <span class="ruby-ivar">@page_title</span> = <span class="ruby-string">&#39;order success&#39;</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_title</span> <span class="ruby-ivar">@page_title</span>.<span class="ruby-identifier">first</span>
+
+  <span class="ruby-ivar">@company_name</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_name</span>
+  <span class="ruby-ivar">@company_address</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_address</span>
+  <span class="ruby-ivar">@company_phone</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_phone</span>
+  <span class="ruby-ivar">@company_fax</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_fax</span>
+
+  <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">user</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-identifier">order</span>
+
+  <span class="ruby-comment">#    @order.order_items.each do |order_item|</span>
+  <span class="ruby-comment">#       attachments.inline[&quot;#{order_item.id}.png&quot;] = (File.read(Rails.root.to_s + &quot;/public/&quot; + order_item.product_detail.thumb.to_s) rescue &quot;blank.png&quot;)</span>
+  <span class="ruby-comment">#     end</span>
+
+  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">order_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">order_item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">image_path</span> = <span class="ruby-identifier">order_item</span>.<span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">thumb</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">attachments</span>.<span class="ruby-identifier">inline</span>[<span class="ruby-node">&quot;#{order_item.id}.#{image_path.split(&#39;.&#39;).last}&quot;</span>] = (<span class="ruby-keyword">begin</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">Rails</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;/public/&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">image_path</span>)
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+        <span class="ruby-string">&#39;blank.png&#39;</span>
+      <span class="ruby-keyword">end</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@hostfull</span> = <span class="ruby-identifier">host</span>
+  <span class="ruby-ivar">@site_slogan</span> = <span class="ruby-keyword">begin</span>
+    <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">site_slogan</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@site_name</span> = <span class="ruby-keyword">begin</span>
+    <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">site_name</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    <span class="ruby-string">&#39;Our Site&#39;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@admin_email</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">admin_email</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">default_params</span>[<span class="ruby-value">:from</span>]
+  <span class="ruby-ivar">@cc_emai_address</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">cc_email_address</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@admin_email</span>
+
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;@hostfull: #{@hostfull}&quot;</span>)
+
+  <span class="ruby-identifier">mail</span>(<span class="ruby-identifier">from</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@admin_email</span>, <span class="ruby-identifier">cc</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@cc_emai_address</span>, <span class="ruby-identifier">to</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{begin
+    user.user_attribute.first_name
+    rescue StandardError
+    &#39;&#39;
+    end} #{begin
+    user.user_attribute.last_name
+    rescue StandardError
+    &#39;&#39;
+    end}&lt;#{user.name}&gt;&quot;</span>, <span class="ruby-identifier">subject</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Thank you for your order !!&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-shipment_notification" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shipment_notification</span><span
+            class="method-args">(order, user, _message, host)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="shipment_notification-source">
+            <pre><span class="ruby-comment"># File lib/silverweb_ecom/raility.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shipment_notification</span>(<span class="ruby-identifier">order</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">_message</span>, <span class="ruby-identifier">host</span>)
+  <span class="ruby-identifier">set_up_images</span>
+  <span class="ruby-ivar">@site_name</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_url</span>
+  <span class="ruby-ivar">@hostfull</span> = <span class="ruby-identifier">host</span>
+
+  <span class="ruby-identifier">setup_email</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">subject</span> <span class="ruby-string">&#39;Your shipment has been sent&#39;</span>
+  <span class="ruby-identifier">body</span>(<span class="ruby-identifier">order</span><span class="ruby-operator">:</span> <span class="ruby-identifier">order</span>, <span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-identifier">user</span>, <span class="ruby-identifier">url_base</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;http://locathost:3000/grants/show&#39;</span>)
+  <span class="ruby-identifier">content_type</span> <span class="ruby-string">&#39;text/html&#39;</span> <span class="ruby-comment"># Here&#39;s where the magic happens</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

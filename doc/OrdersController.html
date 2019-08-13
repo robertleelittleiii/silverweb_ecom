@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class OrdersController - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-create">#create</a>
+    
+    <li ><a href="#method-i-create_empty_record">#create_empty_record</a>
+    
+    <li ><a href="#method-i-customer_sales_report">#customer_sales_report</a>
+    
+    <li ><a href="#method-i-destroy">#destroy</a>
+    
+    <li ><a href="#method-i-edit">#edit</a>
+    
+    <li ><a href="#method-i-empty_cart_no_redirect">#empty_cart_no_redirect</a>
+    
+    <li ><a href="#method-i-enter_order">#enter_order</a>
+    
+    <li ><a href="#method-i-enter_order_square">#enter_order_square</a>
+    
+    <li ><a href="#method-i-express">#express</a>
+    
+    <li ><a href="#method-i-express_purchase">#express_purchase</a>
+    
+    <li ><a href="#method-i-find_cart">#find_cart</a>
+    
+    <li ><a href="#method-i-force_ssl">#force_ssl</a>
+    
+    <li ><a href="#method-i-index">#index</a>
+    
+    <li ><a href="#method-i-invoice_list_report">#invoice_list_report</a>
+    
+    <li ><a href="#method-i-invoice_slip">#invoice_slip</a>
+    
+    <li ><a href="#method-i-new">#new</a>
+    
+    <li ><a href="#method-i-order_success">#order_success</a>
+    
+    <li ><a href="#method-i-order_table">#order_table</a>
+    
+    <li ><a href="#method-i-product_list_report">#product_list_report</a>
+    
+    <li ><a href="#method-i-receipt_list_report">#receipt_list_report</a>
+    
+    <li ><a href="#method-i-resend_invoice">#resend_invoice</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-update">#update</a>
+    
+    <li ><a href="#method-i-user_order_table">#user_order_table</a>
+    
+    <li ><a href="#method-i-user_orders">#user_orders</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-OrdersController">
+  <h1 id="class-OrdersController" class="class">
+    class OrdersController
+  </h1>
+
+  <section class="description">
+    
+<p>frozen_string_literal: true</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>POST /orders POST /orders.json</p>
+          
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">order_params</span>)
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@order</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Order was successfully created.&#39;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;new&#39;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entry</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create_empty_record" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_empty_record</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>CREATE_EMPTY_RECORD /orders/1 CREATE_EMPTY_RECORD /orders/1.json</p>
+          
+          
+
+          
+          <div class="method-source-code" id="create_empty_record-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_empty_record</span>
+  <span class="ruby-identifier">$hostfull</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">host_with_port</span>
+
+  <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+
+  <span class="ruby-ivar">@cart</span> = <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">get_cart</span>(<span class="ruby-string">&#39;cart&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_id</span>], <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)
+
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">add_line_items_from_cart</span>(<span class="ruby-ivar">@cart</span>, <span class="ruby-identifier">$hostfull</span>)
+  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ip_address</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>
+  <span class="ruby-comment"># @order.email = @order.user.name</span>
+  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">save</span>
+
+  <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">controller</span><span class="ruby-operator">:</span> <span class="ruby-value">:orders</span>, <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-value">:edit</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-customer_sales_report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">customer_sales_report</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="customer_sales_report-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 520</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">customer_sales_report</span>
+  <span class="ruby-ivar">@start_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_start_date</span>).<span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@end_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_end_date</span>).<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-identifier">cat_list</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">category_group</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+
+  <span class="ruby-ivar">@orders_ids</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:transactions</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">order_transactions</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">success</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> }).<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;orders.created_at &gt;= &#39;#{@start_date}&#39; and orders.created_at &lt;= &#39;#{Date.parse(@end_date)}&#39;&quot;</span>).<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:id</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">cat_list</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:user</span>).<span class="ruby-identifier">includes</span>(<span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-value">:user_attribute</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;user_attributes.last_name&#39;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:user</span>).<span class="ruby-identifier">includes</span>(<span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-value">:user_attribute</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-value">:order_items</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-identifier">order_items</span><span class="ruby-operator">:</span> <span class="ruby-value">:product</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-identifier">order_items</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">product</span><span class="ruby-operator">:</span> <span class="ruby-value">:category</span> }).<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;tags.name in (?)&#39;</span>, <span class="ruby-identifier">cat_list</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;user_attributes.last_name&#39;</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;customer_sales_report.html&#39;</span>, <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;print_landscape.html&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-destroy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroy</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>DELETE /orders/1 DELETE /orders/1.json</p>
+          
+          
+
+          
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">destroy</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">orders_url</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /orders/1/edit</p>
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-empty_cart_no_redirect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">empty_cart_no_redirect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="empty_cart_no_redirect-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty_cart_no_redirect</span>
+  <span class="ruby-identifier">find_cart</span>
+  <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">delete</span>
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:cart</span>] = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">find_cart</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-enter_order" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enter_order</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="enter_order-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 241</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">enter_order</span>
+  <span class="ruby-identifier">$hostfull</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">host_with_port</span>
+
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@page_title</span> = <span class="ruby-string">&#39;order success&#39;</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_title</span> <span class="ruby-ivar">@page_title</span>.<span class="ruby-identifier">first</span>
+
+  <span class="ruby-identifier">cart_is_empty</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">purchase_success</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">false</span>
+
+  <span class="ruby-identifier">redirect_controller</span> = <span class="ruby-value">:site</span>
+  <span class="ruby-identifier">redirect_action</span> = <span class="ruby-value">:index</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;params.inspect : #{params.inspect}&quot;</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;params[:nonce] : #{params[:nonce]}&quot;</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>].<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** New order from cart ************&#39;</span>)
+    <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">express_token</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>])
+    <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">else</span>
+
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;params[cc_expires(1i)]#{params[:order][&#39;cc_expires(1i)&#39;].inspect}&quot;</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;params[cc_expires(2i)]#{params[:order][&#39;cc_expires(2i)&#39;].inspect}&quot;</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;params[cc_expires(3i)]#{params[:order][&#39;cc_expires(3i)&#39;].inspect}&quot;</span>)
+
+    <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+
+    <span class="ruby-ivar">@cart</span> = <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">get_cart</span>(<span class="ruby-string">&#39;cart&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_id</span>], <span class="ruby-identifier">user</span>.<span class="ruby-identifier">id</span>)
+
+    <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">order_params</span>)
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">add_line_items_from_cart</span>(<span class="ruby-ivar">@cart</span>, <span class="ruby-identifier">$hostfull</span>)
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">shipping_method</span> = <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">shipping_type</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">sales_tax</span> = <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">calc_tax</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">shipping_cost</span> = <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">calc_shipping</span>[<span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">shipping_type</span>]
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ip_address</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">coupon_description</span> = <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_description</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">coupon_value</span> = <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_value</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">coupon_code</span> = <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_code</span>
+
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">store_wide_sale</span> = <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">calc_store_wide_sale</span>
+
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">cc_expires</span> = <span class="ruby-keyword">begin</span>
+                          <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>][<span class="ruby-string">&#39;cc_expires(1i)&#39;</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>][<span class="ruby-string">&#39;cc_expires(2i)&#39;</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>][<span class="ruby-string">&#39;cc_expires(2i)&#39;</span>].<span class="ruby-identifier">to_i</span>)
+                        <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+                          <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">cc_number</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>][<span class="ruby-value">:cc_number</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">cc_verification</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>][<span class="ruby-value">:cc_verification</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">nonce</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:nonce</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;-=-=-=-=-=-=-=-=-=-=-=-=-=-&gt;&gt;&gt;&gt; #{@order.inspect}&quot;</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:save_billing_addresses</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;1&#39;</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">billing_address</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_street_1</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">billing_city</span> =  <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_city</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">billing_state</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_state</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">billing_zip_code</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">bill_zip</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:save_shipping_addresses</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;1&#39;</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">shipping_address</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_street_1</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">shipping_city</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_city</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">shipping_state</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_state</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">shipping_zip_code</span> = <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">ship_zip</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">user_attribute</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">total_price</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">save</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-ivar">@cart</span>)
+          <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">reduce_inventory</span>(<span class="ruby-identifier">$hostfull</span>)
+
+          <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">Settings</span>.<span class="ruby-identifier">order_notification</span>
+            <span class="ruby-constant">UserNotifier</span>.<span class="ruby-identifier">order_notification</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">$hostfull</span>).<span class="ruby-identifier">deliver</span>
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-constant">UserNotifier</span>.<span class="ruby-identifier">order_notification_as_invoice</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">$hostfull</span>).<span class="ruby-identifier">deliver</span>
+          <span class="ruby-keyword">end</span>
+
+          <span class="ruby-comment">#  if there is a coupon, make a record that it was used.</span>
+          <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_code</span>.<span class="ruby-identifier">blank?</span>
+            <span class="ruby-ivar">@coupon</span> = <span class="ruby-constant">Coupon</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">coupon_code</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_code</span>).<span class="ruby-identifier">first</span>
+            <span class="ruby-ivar">@coupon_used</span> = <span class="ruby-constant">CouponUsage</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">coupon_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">id</span>)
+            <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">save</span>
+          <span class="ruby-keyword">end</span>
+
+          <span class="ruby-identifier">empty_cart_no_redirect</span>
+
+          <span class="ruby-identifier">redirect_controller</span> = <span class="ruby-value">:orders</span>
+          <span class="ruby-identifier">redirect_action</span> = <span class="ruby-value">:order_success</span>
+          <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** Purchase Success  ************&#39;</span>)
+
+          <span class="ruby-identifier">purchase_success</span> = <span class="ruby-keyword">true</span> <span class="ruby-comment"># return</span>
+          <span class="ruby-comment"># format.html {render :action =&gt; &quot;order_success&quot;}</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-constant">SystemNotifier</span>.<span class="ruby-identifier">purchase_fail_notification</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">$hostfull</span>).<span class="ruby-identifier">deliver</span>
+          <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment">#  format.html { redirect_to @order, :notice=&gt;&quot;Order was successfully created.&quot; }</span>
+        <span class="ruby-comment">#  format.json { render :json=&gt;@order, :status=&gt;:created, :location=&gt;@order }</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** Cart is empty (redirect to /site/index) ************&#39;</span>)
+
+      <span class="ruby-identifier">redirect_controller</span> = <span class="ruby-value">:site</span>
+      <span class="ruby-identifier">redirect_action</span> = <span class="ruby-value">:index</span>
+
+      <span class="ruby-comment"># cart_is_empty = true</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">error_occured</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** ERROR OCCURED ************&#39;</span>)
+      <span class="ruby-identifier">puts</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">to_s</span>)
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;enter_order&#39;</span>, <span class="ruby-identifier">params</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>] }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entry</span> }
+    <span class="ruby-keyword">else</span>
+
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** Redirct occured   ************&#39;</span>)
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">controller</span><span class="ruby-operator">:</span> <span class="ruby-identifier">redirect_controller</span>, <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-identifier">redirect_action</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">return</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-enter_order_square" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enter_order_square</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="enter_order_square-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">enter_order_square</span>
+  <span class="ruby-identifier">$hostfull</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">host_with_port</span>
+
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@page_title</span> = <span class="ruby-string">&#39;order success&#39;</span>
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_title</span> <span class="ruby-ivar">@page_title</span>.<span class="ruby-identifier">first</span>
+
+  <span class="ruby-identifier">cart_is_empty</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">purchase_success</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">false</span>
+
+  <span class="ruby-identifier">redirect_controller</span> = <span class="ruby-value">:site</span>
+  <span class="ruby-identifier">redirect_action</span> = <span class="ruby-value">:index</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>].<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** New order from cart ************&#39;</span>)
+    <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">express_token</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:token</span>])
+    <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">total_price</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">save</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-ivar">@cart</span>)
+          <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">reduce_inventory</span>(<span class="ruby-identifier">$hostfull</span>)
+
+          <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">Settings</span>.<span class="ruby-identifier">order_notification</span>
+            <span class="ruby-constant">UserNotifier</span>.<span class="ruby-identifier">order_notification</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">$hostfull</span>).<span class="ruby-identifier">deliver</span>
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-constant">UserNotifier</span>.<span class="ruby-identifier">order_notification_as_invoice</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">$hostfull</span>).<span class="ruby-identifier">deliver</span>
+          <span class="ruby-keyword">end</span>
+
+          <span class="ruby-comment">#  if there is a coupon, make a record that it was used.</span>
+          <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_code</span>.<span class="ruby-identifier">blank?</span>
+            <span class="ruby-ivar">@coupon</span> = <span class="ruby-constant">Coupon</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">coupon_code</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_code</span>).<span class="ruby-identifier">first</span>
+            <span class="ruby-ivar">@coupon_used</span> = <span class="ruby-constant">CouponUsage</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">user_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">coupon_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">id</span>)
+            <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">save</span>
+          <span class="ruby-keyword">end</span>
+
+          <span class="ruby-identifier">empty_cart_no_redirect</span>
+
+          <span class="ruby-identifier">redirect_controller</span> = <span class="ruby-value">:orders</span>
+          <span class="ruby-identifier">redirect_action</span> = <span class="ruby-value">:order_success</span>
+          <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** Purchase Success  ************&#39;</span>)
+
+          <span class="ruby-identifier">purchase_success</span> = <span class="ruby-keyword">true</span> <span class="ruby-comment"># return</span>
+          <span class="ruby-comment"># format.html {render :action =&gt; &quot;order_success&quot;}</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-constant">SystemNotifier</span>.<span class="ruby-identifier">purchase_fail_notification</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@user</span>, <span class="ruby-identifier">$hostfull</span>).<span class="ruby-identifier">deliver</span>
+          <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment">#  format.html { redirect_to @order, :notice=&gt;&quot;Order was successfully created.&quot; }</span>
+        <span class="ruby-comment">#  format.json { render :json=&gt;@order, :status=&gt;:created, :location=&gt;@order }</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">error_occured</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** Cart is empty (redirect to /site/index) ************&#39;</span>)
+
+      <span class="ruby-identifier">redirect_controller</span> = <span class="ruby-value">:site</span>
+      <span class="ruby-identifier">redirect_action</span> = <span class="ruby-value">:index</span>
+
+      <span class="ruby-comment"># cart_is_empty = true</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">error_occured</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** ERROR OCCURED ************&#39;</span>)
+      <span class="ruby-identifier">puts</span>(<span class="ruby-ivar">@order</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">inspect</span>.<span class="ruby-identifier">to_s</span>)
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;enter_order_square&#39;</span>, <span class="ruby-identifier">params</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:order</span>] }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entry</span> }
+    <span class="ruby-keyword">else</span>
+
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;****************** Redirct occured   ************&#39;</span>)
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">controller</span><span class="ruby-operator">:</span> <span class="ruby-identifier">redirect_controller</span>, <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-identifier">redirect_action</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">return</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-express" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">express</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="express-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 491</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">express</span>
+  <span class="ruby-identifier">response</span> = <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">setup_purchase</span>(<span class="ruby-identifier">current_cart</span>.<span class="ruby-identifier">build_order</span>.<span class="ruby-identifier">price_in_cents</span>,
+                                            <span class="ruby-identifier">ip</span><span class="ruby-operator">:</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>,
+                                            <span class="ruby-identifier">return_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">new_order_url</span>,
+                                            <span class="ruby-identifier">cancel_return_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">products_url</span>)
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-constant">EXPRESS_GATEWAY</span>.<span class="ruby-identifier">redirect_url_for</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">token</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-express_purchase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">express_purchase</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="express_purchase-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 473</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">express_purchase</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;Paypal Epress Gateway Activated&#39;</span>)
+  <span class="ruby-ivar">@cart</span> = <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">get_cart</span>(<span class="ruby-string">&#39;cart&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_id</span>], <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+
+  <span class="ruby-identifier">gateway</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">get_express_gateway</span>
+
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;request.remote_ip #{request.remote_ip.class}&quot;</span>)
+
+  <span class="ruby-identifier">response</span> = <span class="ruby-identifier">gateway</span>.<span class="ruby-identifier">setup_purchase</span>(<span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">grand_total_price</span>(<span class="ruby-string">&#39;NJ&#39;</span>),
+                                    <span class="ruby-identifier">ip</span><span class="ruby-operator">:</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">remote_ip</span>,
+                                    <span class="ruby-identifier">return_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">enter_order_orders_url</span>,
+                                    <span class="ruby-identifier">cancel_return_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">site_check_out_url</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;response.token: #{response.token}&quot;</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;response: #{response.inspect}&quot;</span>)
+
+  <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">gateway</span>.<span class="ruby-identifier">redirect_url_for</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">token</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-find_cart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find_cart</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="find_cart-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find_cart</span>
+  <span class="ruby-comment">#  @cart = (session[:cart] ||= Cart.new)</span>
+  <span class="ruby-comment"># user =  User.find_by_id(session[:user_id])</span>
+
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:create</span>] = <span class="ruby-keyword">true</span>
+
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_id</span>] = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">session_options</span>[<span class="ruby-value">:id</span>]
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-ivar">@cart</span> = <span class="ruby-keyword">begin</span>
+              <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">get_cart</span>(<span class="ruby-string">&#39;cart&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_id</span>], <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+              <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">write</span>(<span class="ruby-string">&#39;cart&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:session_id</span>], {}, <span class="ruby-identifier">expires_in</span><span class="ruby-operator">:</span> <span class="ruby-value">15</span>.<span class="ruby-identifier">minutes</span>)
+            <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    <span class="ruby-identifier">cart</span> = <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;@cart in find_cart: #{@cart}&quot;</span>)
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:coupon_code</span>].<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;Coupon Code Found&#39;</span>)
+    <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">coupon_code</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:coupon_code</span>]
+    <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment">#   @cart = Cart.get_cart(session[:cart])</span>
+  <span class="ruby-comment">#    session[:cart] = @cart.id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-force_ssl" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">force_ssl</span><span
+            class="method-args">(options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="force_ssl-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">force_ssl</span>(<span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">host</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:host</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">ssl?</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">env</span>.<span class="ruby-identifier">development?</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">redirect_options</span> = { <span class="ruby-identifier">protocol</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;https://&#39;</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:moved_permanently</span> }
+    <span class="ruby-identifier">redirect_options</span>[<span class="ruby-value">:host</span>] = <span class="ruby-identifier">host</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">host</span>
+    <span class="ruby-identifier">flash</span>.<span class="ruby-identifier">keep</span>
+    <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">redirect_options</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /orders GET /orders.json</p>
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;id DESC&#39;</span>).<span class="ruby-identifier">all</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-invoice_list_report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">invoice_list_report</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="invoice_list_report-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 397</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">invoice_list_report</span>
+  <span class="ruby-ivar">@start_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_start_date</span>).<span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@end_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_end_date</span>).<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-identifier">cat_list</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">category_group</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+  <span class="ruby-ivar">@orders_ids</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:transactions</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">order_transactions</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">success</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> }).<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;orders.created_at &gt;= &#39;#{@start_date}&#39; and orders.created_at &lt;= &#39;#{Date.parse(@end_date)}&#39;&quot;</span>).<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:id</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">cat_list</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:user</span>).<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-value">:user_attribute</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;user_attributes.last_name&#39;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:user</span>).<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-value">:user_attribute</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-value">:order_items</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-identifier">order_items</span><span class="ruby-operator">:</span> <span class="ruby-value">:product</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-identifier">order_items</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">product</span><span class="ruby-operator">:</span> <span class="ruby-value">:category</span> }).<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;tags.name in (?)&#39;</span>, <span class="ruby-identifier">cat_list</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;user_attributes.last_name&#39;</span>)
+
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;invoice_list_report.html&#39;</span>, <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;default_pdf.html&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-invoice_slip" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">invoice_slip</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="invoice_slip-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 383</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">invoice_slip</span>
+  <span class="ruby-ivar">@page_title</span> = <span class="ruby-string">&#39;order success&#39;</span>
+
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_title</span> <span class="ruby-ivar">@page_title</span>.<span class="ruby-identifier">first</span>
+  <span class="ruby-ivar">@company_name</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_name</span>
+  <span class="ruby-ivar">@company_address</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_address</span>
+  <span class="ruby-ivar">@company_phone</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_phone</span>
+  <span class="ruby-ivar">@company_fax</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_fax</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">partial</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;invoice_report.html&#39;</span>, <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;default_pdf.html&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /orders/new GET /orders/new.json</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># new.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-order_success" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">order_success</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="order_success-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 371</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">order_success</span>
+  <span class="ruby-ivar">@page_title</span> = <span class="ruby-string">&#39;order success&#39;</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">title</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@page_title</span>).<span class="ruby-identifier">first</span>
+  <span class="ruby-comment">#  @page = Page.find_by_title (@page_title).first</span>
+  <span class="ruby-ivar">@company_name</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_name</span>
+  <span class="ruby-ivar">@company_address</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_address</span>
+  <span class="ruby-ivar">@company_phone</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_phone</span>
+  <span class="ruby-ivar">@company_fax</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">company_fax</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-order_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">order_table</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="order_table-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 467</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">order_table</span>
+  <span class="ruby-ivar">@objects</span> = <span class="ruby-identifier">current_objects</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-ivar">@total_objects</span> = <span class="ruby-identifier">total_objects</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-product_list_report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">product_list_report</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="product_list_report-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 499</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">product_list_report</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+
+  <span class="ruby-ivar">@start_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_start_date</span>).<span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@end_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_end_date</span>).<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-identifier">cat_list</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">category_group</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+  <span class="ruby-ivar">@orders_ids</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:transactions</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">order_transactions</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">success</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> }).<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;orders.created_at &gt;= &#39;#{@start_date}&#39; and orders.created_at &lt;= &#39;#{Date.parse(@end_date)}&#39;&quot;</span>).<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:id</span>)
+  <span class="ruby-comment"># @order_items = OrderItem.where(:id=&gt;@orders_ids)</span>
+  <span class="ruby-comment"># @order_items = OrderItem.where(:order_id=&gt;@orders_ids).select(:product_detail_id, :product_id, &quot;SUM(quantity) as sum_product_count&quot;, &quot;SUM(price) as sum_price&quot;).group(:product_detail_id).order(&quot;sum_product_count DESC&quot;)</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">cat_list</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-ivar">@order_items</span> = <span class="ruby-constant">OrderItem</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">order_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">select</span>(<span class="ruby-value">:product_detail_id</span>, <span class="ruby-value">:product_id</span>, <span class="ruby-value">:color</span>, <span class="ruby-value">:size</span>, <span class="ruby-string">&#39;SUM(quantity) as sum_product_count&#39;</span>, <span class="ruby-string">&#39;SUM(price) as sum_price&#39;</span>).<span class="ruby-identifier">group</span>(<span class="ruby-value">:product_detail_id</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;sum_product_count DESC&#39;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@order_items</span> = <span class="ruby-constant">OrderItem</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:product</span>).<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">product</span><span class="ruby-operator">:</span> <span class="ruby-value">:category</span>).<span class="ruby-identifier">select</span>(<span class="ruby-value">:product_detail_id</span>, <span class="ruby-value">:product_id</span>, <span class="ruby-value">:color</span>, <span class="ruby-value">:size</span>, <span class="ruby-string">&#39;SUM(order_items.quantity) as sum_product_count&#39;</span>, <span class="ruby-string">&#39;SUM(order_items.price) as sum_price&#39;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;tags.name in (?)&#39;</span>, <span class="ruby-identifier">cat_list</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">order_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">group</span>(<span class="ruby-value">:product_detail_id</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;sum_product_count DESC&#39;</span>)
+
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;product_list_report.html&#39;</span>, <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;print_landscape.html&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-receipt_list_report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">receipt_list_report</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="receipt_list_report-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 414</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">receipt_list_report</span>
+  <span class="ruby-ivar">@start_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_start_date</span>).<span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@end_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">report_end_date</span>).<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-identifier">cat_list</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">category_group</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+  <span class="ruby-ivar">@orders_ids</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:transactions</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">order_transactions</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">success</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> }).<span class="ruby-identifier">where</span>(<span class="ruby-node">&quot;orders.created_at &gt;= &#39;#{@start_date}&#39; and orders.created_at &lt;= &#39;#{Date.parse(@end_date)}&#39;&quot;</span>).<span class="ruby-identifier">pluck</span>(<span class="ruby-value">:id</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">cat_list</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:user</span>).<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-value">:user_attribute</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;user_attributes.last_name&#39;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@orders</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:user</span>).<span class="ruby-identifier">joins</span>(<span class="ruby-identifier">user</span><span class="ruby-operator">:</span> <span class="ruby-value">:user_attribute</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-value">:order_items</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-identifier">order_items</span><span class="ruby-operator">:</span> <span class="ruby-value">:product</span>).<span class="ruby-identifier">eager_load</span>(<span class="ruby-identifier">order_items</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">product</span><span class="ruby-operator">:</span> <span class="ruby-value">:category</span> }).<span class="ruby-identifier">where</span>(<span class="ruby-string">&#39;tags.name in (?)&#39;</span>, <span class="ruby-identifier">cat_list</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders_ids</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&#39;user_attributes.last_name&#39;</span>)
+
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;receipt_list_report.html&#39;</span>, <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;default_pdf.html&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-resend_invoice" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resend_invoice</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="resend_invoice-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 431</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resend_invoice</span>
+  <span class="ruby-ivar">@hostfull</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">protocol</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">host_with_port</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:order_id</span>])
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">order_notification</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;true&#39;</span>
+    <span class="ruby-constant">UserNotifier</span>.<span class="ruby-identifier">order_notification</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">user</span>, <span class="ruby-ivar">@hostfull</span>).<span class="ruby-identifier">deliver</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">UserNotifier</span>.<span class="ruby-identifier">order_notification_as_invoice</span>(<span class="ruby-ivar">@order</span>, <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">user</span>, <span class="ruby-ivar">@hostfull</span>).<span class="ruby-identifier">deliver</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-node">&quot;Invoice receipt resent to user #{@order.user.full_name}.&quot;</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># redirect_back_or_default(request.referer)</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>GET /orders/1 GET /orders/1.json</p>
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>PUT /orders/1 PUT /orders/1.json</p>
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@order</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">order_params</span>)
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@order</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Order was successfully updated.&#39;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;edit&#39;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@order</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;unprocessable_entry&#39;</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user_order_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_order_table</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="user_order_table-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 461</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_order_table</span>
+  <span class="ruby-ivar">@objects</span> = <span class="ruby-identifier">current_objects_user</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-ivar">@total_objects</span> = <span class="ruby-identifier">total_objects_user</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user_orders" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_orders</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="user_orders-source">
+            <pre><span class="ruby-comment"># File app/controllers/orders_controller.rb, line 452</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_orders</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+  <span class="ruby-ivar">@orders</span> = <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">orders</span>.<span class="ruby-identifier">joins</span>(<span class="ruby-value">:transactions</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">order_transactions</span><span class="ruby-operator">:</span> { <span class="ruby-identifier">success</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span> })
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@orders</span> }
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

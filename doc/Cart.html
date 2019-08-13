@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Cart - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">ActiveModel::Conversion</span>
+  
+  
+  </ul>
+</div>
+
+    <div id="extends-section" class="nav-section">
+  <h3>Extended With Modules</h3>
+
+  <ul class="link-list">
+    
+  
+    <li><span class="extend">ActiveModel::Naming</span>
+  
+  
+  </ul>
+</div>
+
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-get_cart">::get_cart</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-5B-5D">#[]</a>
+    
+    <li ><a href="#method-i-add_product">#add_product</a>
+    
+    <li ><a href="#method-i-calc_shipping">#calc_shipping</a>
+    
+    <li ><a href="#method-i-calc_store_wide_sale">#calc_store_wide_sale</a>
+    
+    <li ><a href="#method-i-calc_tax">#calc_tax</a>
+    
+    <li ><a href="#method-i-calc_total_on_product">#calc_total_on_product</a>
+    
+    <li ><a href="#method-i-coupon_description">#coupon_description</a>
+    
+    <li ><a href="#method-i-coupon_type">#coupon_type</a>
+    
+    <li ><a href="#method-i-coupon_valid-3F">#coupon_valid?</a>
+    
+    <li ><a href="#method-i-coupon_value">#coupon_value</a>
+    
+    <li ><a href="#method-i-delete">#delete</a>
+    
+    <li ><a href="#method-i-get_cart_item_color_size_product">#get_cart_item_color_size_product</a>
+    
+    <li ><a href="#method-i-get_cart_items">#get_cart_items</a>
+    
+    <li ><a href="#method-i-get_cart_products">#get_cart_products</a>
+    
+    <li ><a href="#method-i-grand_total_price">#grand_total_price</a>
+    
+    <li ><a href="#method-i-hide">#hide</a>
+    
+    <li ><a href="#method-i-id-3D">#id=</a>
+    
+    <li ><a href="#method-i-item_with_largest_price">#item_with_largest_price</a>
+    
+    <li ><a href="#method-i-items-3D">#items=</a>
+    
+    <li ><a href="#method-i-persisted-3F">#persisted?</a>
+    
+    <li ><a href="#method-i-price_in_cents">#price_in_cents</a>
+    
+    <li ><a href="#method-i-save">#save</a>
+    
+    <li ><a href="#method-i-set_shipping">#set_shipping</a>
+    
+    <li ><a href="#method-i-shipping_cost">#shipping_cost</a>
+    
+    <li ><a href="#method-i-shipping_type-3D">#shipping_type=</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
+    <li ><a href="#method-i-special_calc">#special_calc</a>
+    
+    <li ><a href="#method-i-standard_checkout">#standard_checkout</a>
+    
+    <li ><a href="#method-i-total_coupon_price">#total_coupon_price</a>
+    
+    <li ><a href="#method-i-total_items">#total_items</a>
+    
+    <li ><a href="#method-i-total_items_product">#total_items_product</a>
+    
+    <li ><a href="#method-i-total_price">#total_price</a>
+    
+    <li ><a href="#method-i-total_price_product">#total_price_product</a>
+    
+    <li ><a href="#method-i-update_product">#update_product</a>
+    
+    <li ><a href="#method-i-user_id-3D">#user_id=</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Cart">
+  <h1 id="class-Cart" class="class">
+    class Cart
+  </h1>
+
+  <section class="description">
+    
+<p>frozen_string_literal: true</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-coupon_code" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">coupon_code</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-items" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">items</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-shipping_type" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">shipping_type</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-user_id" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">user_id</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-visable" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">visable</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-get_cart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_cart</span><span
+            class="method-args">(cart_object_id, user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_cart-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_cart</span>(<span class="ruby-identifier">cart_object_id</span>, <span class="ruby-identifier">user_id</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;cart initialized with id:#{cart_object_id}&quot;</span>)
+  <span class="ruby-ivar">@cart_object</span> = <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">cart_object_id</span>, <span class="ruby-identifier">expires_in</span><span class="ruby-operator">:</span> <span class="ruby-value">24</span>.<span class="ruby-identifier">hours</span>) { <span class="ruby-constant">Cart</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cart_object_id</span>, <span class="ruby-identifier">user_id</span>) }
+  <span class="ruby-ivar">@cart_items</span>  = <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">cart_object_id</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;items&#39;</span>, <span class="ruby-identifier">expires_in</span><span class="ruby-operator">:</span> <span class="ruby-value">24</span>.<span class="ruby-identifier">hours</span>) { [] }
+  <span class="ruby-ivar">@cart_object</span>.<span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">user_id</span>
+
+  <span class="ruby-ivar">@cart</span> = <span class="ruby-ivar">@cart_object</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-ivar">@cart</span>.<span class="ruby-identifier">items</span>.<span class="ruby-identifier">replace</span> <span class="ruby-ivar">@cart_items</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    []
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment">#   puts(&quot;Before: #{cart_object_id}&quot;)</span>
+  <span class="ruby-comment">#   begin</span>
+  <span class="ruby-comment">#     @cart_object = ObjectSpace._id2ref(cart_object_id)</span>
+  <span class="ruby-comment">#    puts(&quot;cart_object.id #{@cart_object.id}&quot;)</span>
+  <span class="ruby-comment">#    puts(&quot;cart_object.class #{@cart_object.class == Cart}&quot;)</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment">#     if not @cart_object.class.to_s == &quot;Cart&quot; then</span>
+  <span class="ruby-comment">#       @cart_object = Cart.new</span>
+  <span class="ruby-comment">#     end</span>
+  <span class="ruby-comment">#   rescue</span>
+  <span class="ruby-comment">#     @cart_object = Cart.new</span>
+  <span class="ruby-comment">#   end</span>
+  <span class="ruby-comment">#      puts(&quot;After: #{@cart_object.id}&quot;)</span>
+
+  <span class="ruby-ivar">@cart</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(cart_id, user_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">cart_id</span>, <span class="ruby-identifier">user_id</span>)
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">cart_id</span>
+  <span class="ruby-ivar">@items</span> = []
+  <span class="ruby-ivar">@visable</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@shipping</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@shipping_type</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@user_id</span> = <span class="ruby-identifier">user_id</span>
+  <span class="ruby-ivar">@coupon_code</span> = <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-5B-5D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]</span><span
+            class="method-args">(code)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>def self.model_name</p>
+
+<pre>&quot;Cart&quot;</pre>
+
+<p>end</p>
+          
+          
+
+          
+          <div class="method-source-code" id="5B-5D-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 271</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-identifier">eval</span>(<span class="ruby-string">&#39;@&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_s</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-add_product" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_product</span><span
+            class="method-args">(product, product_detail, quantity)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">add_product</span>(<span class="ruby-identifier">inventory_item</span>)
+  <span class="ruby-ivar">@items</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">inventory_item</span>
+</pre>
+
+<p>end</p>
+          
+          
+
+          
+          <div class="method-source-code" id="add_product-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_product</span>(<span class="ruby-identifier">product</span>, <span class="ruby-identifier">product_detail</span>, <span class="ruby-identifier">quantity</span>)
+  <span class="ruby-identifier">current_item</span> = <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">id</span> }
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">current_item</span> = <span class="ruby-constant">CartItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">product</span>, <span class="ruby-identifier">product_detail</span>, <span class="ruby-identifier">quantity</span>)
+
+    <span class="ruby-ivar">@items</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">current_item</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">quantity</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">units_in_stock</span>
+      <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> = <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">units_in_stock</span>
+      <span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-string">&#39;Exceeded inventory.&#39;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">projected_quantity</span> = <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">quantity</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">increment_quantity</span>(<span class="ruby-identifier">quantity</span>.<span class="ruby-identifier">to_i</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">projected_quantity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">units_in_stock</span>
+      <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> = <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">units_in_stock</span>
+      <span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-string">&#39;Exceeded inventory.&#39;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">save</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;current_item=&gt; #{current_item.inspect}&quot;</span>)
+  <span class="ruby-identifier">current_item</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-calc_shipping" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calc_shipping</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calc_shipping-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calc_shipping</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">total_price</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">49.99</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">shipping_level_1</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+      [<span class="ruby-value">5</span>, <span class="ruby-value">10</span>, <span class="ruby-value">15</span>, <span class="ruby-value">0</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">50</span><span class="ruby-operator">..</span><span class="ruby-value">99.99</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">shipping_level_2</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+      [<span class="ruby-value">7</span>, <span class="ruby-value">15</span>, <span class="ruby-value">20</span>, <span class="ruby-value">0</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">100</span><span class="ruby-operator">..</span><span class="ruby-value">149.99</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">shipping_level_3</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+      [<span class="ruby-value">10</span>, <span class="ruby-value">17</span>, <span class="ruby-value">22</span>, <span class="ruby-value">0</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">150</span><span class="ruby-operator">..</span><span class="ruby-value">1999.99</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">shipping_level_4</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+      [<span class="ruby-value">0</span>, <span class="ruby-value">20</span>, <span class="ruby-value">25</span>, <span class="ruby-value">0</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    [<span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-calc_store_wide_sale" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calc_store_wide_sale</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calc_store_wide_sale-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calc_store_wide_sale</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">store_wide_sale_start</span>.<span class="ruby-identifier">blank?</span>
+
+  <span class="ruby-identifier">start_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">store_wide_sale_start</span>
+  <span class="ruby-identifier">end_date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">store_wide_sale_end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">total_price</span> <span class="ruby-operator">*</span> (<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">store_wide_sale</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>) <span class="ruby-keyword">if</span> (<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">store_wide_sale</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">start_date</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">end_date</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>)
+
+  <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-calc_tax" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calc_tax</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calc_tax-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 191</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calc_tax</span>
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">sum</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">tax</span>(<span class="ruby-value">0.06875</span>) }
+  <span class="ruby-comment"># total_price * 0.07</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-calc_total_on_product" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calc_total_on_product</span><span
+            class="method-args">(collection_name, coupon_value)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calc_total_on_product-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 339</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calc_total_on_product</span>(<span class="ruby-identifier">collection_name</span>, <span class="ruby-identifier">coupon_value</span>)
+  <span class="ruby-identifier">total_discount</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">the_item</span>, <span class="ruby-identifier">_item_index</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;     ++++++++++++++++ +++++++++++++++ +++++++++++++++++ &#39;</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;&#39;</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;the_item.product.id: #{the_item.product.id}&quot;</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;the_item.product.category_list: #{the_item.product.category_list}&quot;</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;Collection_name: #{collection_name}&quot;</span>)
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">the_item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">category_list</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">collection_name</span>)
+      <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;item #{the_item.product.id} is in collection #{collection_name}.&quot;</span>)
+      <span class="ruby-identifier">total_discount</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">the_item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">msrp</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> (<span class="ruby-identifier">coupon_value</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>))
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;    ++++++++++++++++ +++++++++++++++ +++++++++++++++++ &#39;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">total_discount</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coupon_description" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">coupon_description</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="coupon_description-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 293</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">coupon_description</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-ivar">@user_id</span>)
+
+  <span class="ruby-ivar">@coupon</span> = <span class="ruby-constant">Coupon</span>.<span class="ruby-identifier">find_coupon</span>(<span class="ruby-ivar">@coupon_code</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@coupon_code</span>.<span class="ruby-identifier">blank?</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">return_value</span> = <span class="ruby-string">&quot;&lt;div style=&#39;color:red;&#39;&gt;INVALID COUPON CODE!!&lt;/div&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">one_time_only</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@user_id</span>.<span class="ruby-identifier">blank?</span>
+      <span class="ruby-identifier">return_value</span> = <span class="ruby-string">&quot;&lt;div style=&#39;color:red;&#39;&gt;ONE TIME COUPON, LOGIN TO SEE VALUE.&lt;/div&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">coupon_valid?</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-identifier">item_with_largest_price</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">no_coupon</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">coupon_type</span> <span class="ruby-operator">!=</span> <span class="ruby-value">5</span>)
+        <span class="ruby-identifier">return_value</span> = <span class="ruby-string">&quot;&lt;div style=&#39;color:red;&#39;&gt;COUPON CODE DOES NOT APPLY TO ITEMS IN CART !!&lt;/div&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_price</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">min_amount</span>.<span class="ruby-identifier">to_i</span>
+          <span class="ruby-identifier">largest_valued_item_name</span> = <span class="ruby-keyword">begin</span>
+                                       (<span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">only_most_expensive_item</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39; on &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">item_with_largest_price</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">product_name</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>)
+                                     <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+                                       <span class="ruby-string">&#39;n/a&#39;</span>
+                                     <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">return_value</span> =  (<span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">description</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">largest_valued_item_name</span>).<span class="ruby-identifier">truncate</span>(<span class="ruby-value">50</span>)
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">return_value</span> =  <span class="ruby-node">&quot;&lt;div style=&#39;color:red;&#39;&gt;CART MUST BE GREATER THAN #{@coupon.min_amount}&lt;/div&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">return_value</span> = <span class="ruby-string">&quot;&lt;div style=&#39;color:red;&#39;&gt;COUPON CODE ALREADY USED!!&lt;/div&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">return_value</span>
+
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coupon_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">coupon_type</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="coupon_type-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 329</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">coupon_type</span>
+  <span class="ruby-ivar">@coupon</span> = <span class="ruby-constant">Coupon</span>.<span class="ruby-identifier">find_coupon</span>(<span class="ruby-ivar">@coupon_code</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">type</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">coupon_valid?</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;&lt;div style=&#39;color:red;&#39;&gt;INVALID COUPON CODE!!&lt;/div&gt;&quot;</span>.<span class="ruby-identifier">html_safe</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coupon_valid-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">coupon_valid?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="coupon_valid-3F-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 275</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">coupon_valid?</span>
+  <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-ivar">@user_id</span>)
+
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;--COUPON VALID CHECK ------------ &gt; USERID+&gt; #{@user_id}&quot;</span>)
+
+  <span class="ruby-ivar">@coupon</span> = <span class="ruby-constant">Coupon</span>.<span class="ruby-identifier">find_coupon</span>(<span class="ruby-ivar">@coupon_code</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">blank?</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">one_time_only</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">one_time_only</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@user</span>.<span class="ruby-identifier">coupon_usages</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">coupon_id</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">id</span>).<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-coupon_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">coupon_value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="coupon_value-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 396</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">coupon_value</span>
+  <span class="ruby-ivar">@coupon</span> = <span class="ruby-constant">Coupon</span>.<span class="ruby-identifier">find_coupon</span>(<span class="ruby-ivar">@coupon_code</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">blank?</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-value">0</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">coupon_valid?</span>
+
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;coupon type: &#39;#{@coupon.coupon_type}&#39; total price: #{total_price}&quot;</span>)
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">coupon_type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-comment"># $$$ amount off</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_price</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">min_amount</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">value</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-comment"># %%% amount off</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_price</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">min_amount</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">only_most_expensive_item</span>
+          <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">item_with_largest_price</span>.<span class="ruby-identifier">inspect</span>)
+          <span class="ruby-keyword">return</span> (<span class="ruby-identifier">item_with_largest_price</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">no_coupon</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">item_with_largest_price</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">msrp</span> <span class="ruby-operator">*</span> (<span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>))
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-identifier">total_coupon_price</span> <span class="ruby-operator">*</span> (<span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>)
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">3</span>  <span class="ruby-comment"># 000 Shipping credit</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">4</span>  <span class="ruby-comment"># 000 Free Shipping</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;@shipping_type: #{@shipping_type}, calc_shipping[@shipping_type]: #{calc_shipping[@shipping_type]} &quot;</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">calc_shipping</span>[<span class="ruby-ivar">@shipping_type</span>].<span class="ruby-identifier">to_f</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">5</span>
+
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">special_calc</span>(<span class="ruby-ivar">@coupon</span>)
+
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">id</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;items&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_cart_item_color_size_product" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_cart_item_color_size_product</span><span
+            class="method-args">(product, color, size)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_cart_item_color_size_product-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 488</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_cart_item_color_size_product</span>(<span class="ruby-identifier">product</span>, <span class="ruby-identifier">color</span>, <span class="ruby-identifier">size</span>)
+  <span class="ruby-identifier">cart_items</span> = <span class="ruby-identifier">get_cart_items</span>(<span class="ruby-identifier">product</span>)
+  <span class="ruby-identifier">cart_items</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> ((<span class="ruby-identifier">item</span>.<span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">color</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">color</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">size</span>)) }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_cart_items" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_cart_items</span><span
+            class="method-args">(product)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_cart_items-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 479</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_cart_items</span>(<span class="ruby-identifier">product</span>)
+  <span class="ruby-identifier">product_detail_list</span> = []
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">product</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-identifier">product_detail_list</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product_detail</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_cart_products" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_cart_products</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_cart_products-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 475</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_cart_products</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:product</span>).<span class="ruby-identifier">uniq</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-grand_total_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grand_total_price</span><span
+            class="method-args">(state_local = ''.dup)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="grand_total_price-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">grand_total_price</span>(<span class="ruby-identifier">state_local</span> = <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">state_local</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;NJ&#39;</span>
+    <span class="ruby-identifier">total_price</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">calc_shipping</span>[<span class="ruby-identifier">shipping_type</span>.<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">calc_tax</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">coupon_value</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">calc_store_wide_sale</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">total_price</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">calc_shipping</span>[<span class="ruby-identifier">shipping_type</span>.<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">coupon_value</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">calc_store_wide_sale</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hide" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hide</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="hide-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 441</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hide</span>
+  <span class="ruby-ivar">@visable</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-id-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">id=</span><span
+            class="method-args">(identifier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="id-3D-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 247</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">id=</span>(<span class="ruby-identifier">identifier</span>)
+  <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">identifier</span>
+  <span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-item_with_largest_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">item_with_largest_price</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="item_with_largest_price-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">item_with_largest_price</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;************************ item_with_largest_price First item  ***********************&#39;</span>)
+
+  <span class="ruby-identifier">puts</span>(<span class="ruby-ivar">@items</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">inspect</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;************************ *********************************** ***********************&#39;</span>)
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-ivar">@found_item</span> = <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">max_by</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
+      <span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">element</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">no_coupon</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">element</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">msrp</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;************************ item_with_largest_price found item  ***********************&#39;</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-ivar">@found_item</span>.<span class="ruby-identifier">inspect</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;************************ *********************************** ***********************&#39;</span>)
+  <span class="ruby-ivar">@found_item</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-items-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">items=</span><span
+            class="method-args">(items)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="items-3D-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 257</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">items=</span>(<span class="ruby-identifier">items</span>)
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-identifier">items</span>.<span class="ruby-identifier">dup</span>)
+  <span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-persisted-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">persisted?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="persisted-3F-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">persisted?</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-price_in_cents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">price_in_cents</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="price_in_cents-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">price_in_cents</span>
+  (<span class="ruby-identifier">grand_total_price</span> <span class="ruby-operator">*</span> <span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-save" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">save</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="save-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save</span>
+  <span class="ruby-identifier">saved_cart</span> = <span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">saved_cart_items</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">dup</span>
+
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">id</span>, <span class="ruby-identifier">saved_cart</span>, <span class="ruby-identifier">expires_in</span><span class="ruby-operator">:</span> <span class="ruby-value">24</span>.<span class="ruby-identifier">hours</span>)
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">id</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;items&#39;</span>, <span class="ruby-identifier">saved_cart_items</span>, <span class="ruby-identifier">expires_in</span><span class="ruby-operator">:</span> <span class="ruby-value">24</span>.<span class="ruby-identifier">hours</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-set_shipping" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_shipping</span><span
+            class="method-args">(shipping_cost)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_shipping-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 212</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_shipping</span>(<span class="ruby-identifier">shipping_cost</span>)
+  <span class="ruby-ivar">@shipping</span> = <span class="ruby-identifier">shipping_cost</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-shipping_cost" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shipping_cost</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="shipping_cost-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shipping_cost</span>
+  (<span class="ruby-ivar">@shipping</span> <span class="ruby-operator">||=</span> <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-shipping_type-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shipping_type=</span><span
+            class="method-args">(type = 0)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="shipping_type-3D-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shipping_type=</span>(<span class="ruby-identifier">type</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-ivar">@shipping_type</span> = <span class="ruby-identifier">type</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 445</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@visable</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-special_calc" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">special_calc</span><span
+            class="method-args">(coupon)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="special_calc-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 358</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">special_calc</span>(<span class="ruby-identifier">coupon</span>)
+  <span class="ruby-ivar">@coupon</span> = <span class="ruby-identifier">coupon</span>
+  <span class="ruby-identifier">total_discount</span> = <span class="ruby-value">0.0</span>
+  <span class="ruby-identifier">coupon_list</span> = <span class="ruby-ivar">@coupon</span>.<span class="ruby-identifier">coupon_calc</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;;&#39;</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;--------------- --------------- ---------------- ---------------- &#39;</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;coupon_list: #{coupon_list.inspect}, count:#{coupon_list.length} &quot;</span>)
+  <span class="ruby-comment"># for coupon_index in 0..coupon_list.length do</span>
+  <span class="ruby-identifier">coupon_list</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">coupon_item</span>, <span class="ruby-identifier">coupon_index</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">coupon_item_list</span> = <span class="ruby-identifier">coupon_item</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;:&#39;</span>)
+    <span class="ruby-identifier">collection_name</span> = <span class="ruby-identifier">coupon_item_list</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">coupon_value</span> = <span class="ruby-identifier">coupon_item_list</span>[<span class="ruby-value">1</span>]
+
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;--------------- --------------- ---------------- ---------------- &#39;</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;#{coupon_index}: coupon_value #{coupon_value}, coupon_item: #{coupon_item.inspect}, collection_name: #{collection_name} &quot;</span>)
+
+    <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">the_item</span>, <span class="ruby-identifier">_item_index</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;     ++++++++++++++++ +++++++++++++++ +++++++++++++++++ &#39;</span>)
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;&#39;</span>)
+      <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;the_item.product.id: #{the_item.product.id}&quot;</span>)
+      <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;the_item.product.category_list: #{the_item.product.category_list}&quot;</span>)
+      <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;Collection_name: #{collection_name}&quot;</span>)
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">the_item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">category_list</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">collection_name</span>)
+        <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;item #{the_item.product.id} is in collection #{collection_name}.&quot;</span>)
+        <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;the_item.product.msrp.to_f* (coupon_value.to_f/100): #{the_item.product.msrp.to_f * (coupon_value.to_f / 100)}&quot;</span>)
+
+        <span class="ruby-identifier">total_discount</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">the_item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">msrp</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> (<span class="ruby-identifier">coupon_value</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>))
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;    ++++++++++++++++ +++++++++++++++ +++++++++++++++++ &#39;</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;--------------- --------------- ---------------- ---------------- &#39;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;total_discount: #{total_discount}&quot;</span>)
+  <span class="ruby-identifier">total_discount</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-standard_checkout" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">standard_checkout</span><span
+            class="method-args">(return_url, success_url)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="standard_checkout-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 451</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">standard_checkout</span>(<span class="ruby-identifier">return_url</span>, <span class="ruby-identifier">success_url</span>)
+  <span class="ruby-identifier">values</span> = {
+    <span class="ruby-identifier">business</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;sales@squirtinibikini.com&#39;</span>,
+    <span class="ruby-identifier">cmd</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;_cart&#39;</span>,
+    <span class="ruby-identifier">upload</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>,
+    <span class="ruby-keyword">return</span><span class="ruby-operator">:</span> <span class="ruby-identifier">success_url</span>,
+    <span class="ruby-identifier">cancel</span><span class="ruby-operator">:</span> <span class="ruby-identifier">return_url</span>,
+    <span class="ruby-identifier">rm</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span>,
+    <span class="ruby-identifier">notify_url</span><span class="ruby-operator">:</span> <span class="ruby-identifier">success_url</span>,
+    <span class="ruby-identifier">handling_cart</span><span class="ruby-operator">:</span> <span class="ruby-identifier">calc_shipping</span>,
+    <span class="ruby-identifier">invoice</span><span class="ruby-operator">:</span> <span class="ruby-identifier">id</span>
+  }
+
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">values</span>.<span class="ruby-identifier">merge!</span>(
+      <span class="ruby-node">&quot;amount_#{index + 1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">price</span>,
+      <span class="ruby-node">&quot;item_name_#{index + 1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">title</span>,
+      <span class="ruby-node">&quot;item_number_#{index + 1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>,
+      <span class="ruby-node">&quot;quantity_#{index + 1}&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span>
+    )
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-string">&#39;https://sandbox.paypal.com/cgi-bin/webscr?&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">to_query</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-total_coupon_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_coupon_price</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_coupon_price-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_coupon_price</span>
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">sum</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> (<span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">no_coupon</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">price</span>) }
+
+  <span class="ruby-comment">#  @items.sum { |item| item.price } + (@shipping ||= 0)</span>
+  <span class="ruby-comment">#    @items.sum { |item| item.price } + (self.calc_shipping ||= 0)</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-total_items" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_items</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_items-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_items</span>
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:quantity</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-total_items_product" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_items_product</span><span
+            class="method-args">(product)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_items_product-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_items_product</span>(<span class="ruby-identifier">product</span>)
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">sum</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">product</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">product</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span> <span class="ruby-operator">:</span> <span class="ruby-value">0</span>) }
+  <span class="ruby-comment"># total_items = get_cart_items(product)</span>
+  <span class="ruby-comment">#  puts(&quot;------- in cart total_items_product ------&quot;)</span>
+  <span class="ruby-comment"># puts(total_items.length)</span>
+  <span class="ruby-comment"># puts(total_items.inspect)</span>
+  <span class="ruby-comment"># total_items.length</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-total_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_price</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_price-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_price</span>
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:price</span>)
+
+  <span class="ruby-comment">#  @items.sum { |item| item.price } + (@shipping ||= 0)</span>
+  <span class="ruby-comment">#    @items.sum { |item| item.price } + (self.calc_shipping ||= 0)</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-total_price_product" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_price_product</span><span
+            class="method-args">(product)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_price_product-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 152</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_price_product</span>(<span class="ruby-identifier">product</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;------- in cart total_price_product ------&#39;</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">product</span>.<span class="ruby-identifier">inspect</span>)
+  <span class="ruby-identifier">total_items_product</span>(<span class="ruby-identifier">product</span>) <span class="ruby-operator">*</span> <span class="ruby-identifier">product</span>.<span class="ruby-identifier">price</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-update_product" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_product</span><span
+            class="method-args">(product_detail, quantity)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_product-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_product</span>(<span class="ruby-identifier">product_detail</span>, <span class="ruby-identifier">quantity</span>)
+  <span class="ruby-identifier">current_item</span> = <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">id</span> }
+
+  <span class="ruby-identifier">error_string</span> = { <span class="ruby-identifier">message</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Exceeded Inventory&#39;</span>, <span class="ruby-identifier">max_value</span><span class="ruby-operator">:</span> <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">units_in_stock</span> }.<span class="ruby-identifier">to_json</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-comment"># do nothing</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">projected_quantity</span> =  <span class="ruby-identifier">quantity</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> = <span class="ruby-identifier">quantity</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">projected_quantity</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">units_in_stock</span>
+      <span class="ruby-identifier">current_item</span>.<span class="ruby-identifier">quantity</span> = <span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">units_in_stock</span>
+      <span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-identifier">error_string</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">save</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;current_item=&gt; #{current_item.inspect}&quot;</span>)
+  <span class="ruby-identifier">current_item</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user_id-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_id=</span><span
+            class="method-args">(identifier)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="user_id-3D-source">
+            <pre><span class="ruby-comment"># File app/models/cart.rb, line 252</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_id=</span>(<span class="ruby-identifier">identifier</span>)
+  <span class="ruby-ivar">@user_id</span> = <span class="ruby-identifier">identifier</span>
+  <span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

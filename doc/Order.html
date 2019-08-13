@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Order - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">ActiveRecord::Base
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-get_express_gateway">::get_express_gateway</a>
+    
+    <li ><a href="#method-c-get_gateway">::get_gateway</a>
+    
+    <li ><a href="#method-i-add_line_items_from_cart">#add_line_items_from_cart</a>
+    
+    <li ><a href="#method-i-check_double_purchase">#check_double_purchase</a>
+    
+    <li ><a href="#method-i-credit_card">#credit_card</a>
+    
+    <li ><a href="#method-i-express_purchase_options">#express_purchase_options</a>
+    
+    <li ><a href="#method-i-express_token-3D">#express_token=</a>
+    
+    <li ><a href="#method-i-full_billing_name">#full_billing_name</a>
+    
+    <li ><a href="#method-i-full_billing_street">#full_billing_street</a>
+    
+    <li ><a href="#method-i-full_shipping_name">#full_shipping_name</a>
+    
+    <li ><a href="#method-i-full_shipping_street">#full_shipping_street</a>
+    
+    <li ><a href="#method-i-full_tax">#full_tax</a>
+    
+    <li ><a href="#method-i-generate_order_items">#generate_order_items</a>
+    
+    <li ><a href="#method-i-grand_total_price">#grand_total_price</a>
+    
+    <li ><a href="#method-i-not_using_square-3F">#not_using_square?</a>
+    
+    <li ><a href="#method-i-paid_with_card-3F">#paid_with_card?</a>
+    
+    <li ><a href="#method-i-price_in_cents">#price_in_cents</a>
+    
+    <li ><a href="#method-i-purchase">#purchase</a>
+    
+    <li ><a href="#method-i-reduce_inventory">#reduce_inventory</a>
+    
+    <li ><a href="#method-i-shipped_via">#shipped_via</a>
+    
+    <li ><a href="#method-i-total_price">#total_price</a>
+    
+    <li ><a href="#method-i-validate_card">#validate_card</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Order">
+  <h1 id="class-Order" class="class">
+    class Order
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="CC_STATES">CC_STATES
+        
+        <dd>
+        
+      
+        <dt id="CC_TYPES">CC_TYPES
+        
+        <dd><pre>composed_of :cc_expires,</pre>
+
+<p>:class_name =&gt; &#39;DateTime&#39;, :mapping =&gt; %w(DateTime to_s),
+:constructor =&gt; Proc.new { |date| (date &amp;&amp; date.to_date) ||
+Date.today }, :converter =&gt; Proc.new { |value| value.to_s.to_date }</p>
+        
+      
+        <dt id="SHIPPING_TYPES">SHIPPING_TYPES
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-cc_expires" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cc_expires</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-cc_number" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cc_number</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-cc_verification" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cc_verification</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nonce" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nonce</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-get_express_gateway" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_express_gateway</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_express_gateway-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 284</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_express_gateway</span>
+  <span class="ruby-ivar">@gateway_login</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">express_gateway_login</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@gateway_login</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;Paypal Express Gatway Activated&#39;</span>)
+
+    <span class="ruby-identifier">gateway</span> = <span class="ruby-constant">ActiveMerchant</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span><span class="ruby-operator">::</span><span class="ruby-constant">PaypalExpressGateway</span>.<span class="ruby-identifier">new</span>(
+      <span class="ruby-identifier">login</span><span class="ruby-operator">:</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">express_gateway_login</span>,
+      <span class="ruby-identifier">password</span><span class="ruby-operator">:</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">express_gateway_password</span>,
+      <span class="ruby-identifier">signature</span><span class="ruby-operator">:</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">express_gateway_signature</span>
+    )
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">gateway</span> = <span class="ruby-operator">::</span><span class="ruby-constant">EXPRESS_GATEWAY</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">gateway</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-get_gateway" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_gateway</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_gateway-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 302</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_gateway</span>
+  <span class="ruby-ivar">@gateway_signature</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_signature</span>
+  <span class="ruby-ivar">@gateway_login</span> = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_login</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@gateway_login</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;&#39;#{@gateway_login}&#39; Default Gatway Activated&quot;</span>)
+    <span class="ruby-identifier">gateway</span> = <span class="ruby-constant">GATEWAY</span>
+  <span class="ruby-keyword">else</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@gateway_signature</span>.<span class="ruby-identifier">blank?</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;Application Defined Gatway Activated&#39;</span>)
+
+      <span class="ruby-constant">GATEWAY</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:login</span>] = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_login</span>
+      <span class="ruby-constant">GATEWAY</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:password</span>] = <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_password</span>
+
+      <span class="ruby-identifier">gateway</span> = <span class="ruby-constant">GATEWAY</span>
+
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span>(<span class="ruby-string">&#39;Paypal Gateway Activated&#39;</span>)
+      <span class="ruby-identifier">gateway</span> = <span class="ruby-constant">ActiveMerchant</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span><span class="ruby-operator">::</span><span class="ruby-constant">PaypalGateway</span>.<span class="ruby-identifier">new</span>(
+        <span class="ruby-identifier">login</span><span class="ruby-operator">:</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_login</span>,
+        <span class="ruby-identifier">password</span><span class="ruby-operator">:</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_password</span>,
+        <span class="ruby-identifier">signature</span><span class="ruby-operator">:</span> <span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_signature</span>
+      )
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-add_line_items_from_cart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_line_items_from_cart</span><span
+            class="method-args">(cart, _host)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_line_items_from_cart-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_line_items_from_cart</span>(<span class="ruby-identifier">cart</span>, <span class="ruby-identifier">_host</span>)
+  <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">li</span> = <span class="ruby-constant">OrderItem</span>.<span class="ruby-identifier">from_cart_item</span>(<span class="ruby-identifier">item</span>)
+    <span class="ruby-comment">#      if (not li.product_detail.nil?) then</span>
+    <span class="ruby-comment">#        li.product_detail.reduce_inventory(item.quantity, host)</span>
+    <span class="ruby-comment">#      end</span>
+    <span class="ruby-identifier">order_items</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">li</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">li</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment">#  self.shipping_price= cart.shipping_cost</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-check_double_purchase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_double_purchase</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_double_purchase-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_double_purchase</span>
+  <span class="ruby-identifier">current_user</span> = <span class="ruby-identifier">user</span>
+
+  <span class="ruby-identifier">last_user_purchase</span> = (<span class="ruby-keyword">begin</span>
+                              <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">orders</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">created_at</span>
+                            <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+                              (<span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-value">60</span>.<span class="ruby-identifier">seconds</span>)
+                            <span class="ruby-keyword">end</span>)
+
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">last_user_purchase</span> <span class="ruby-operator">&gt;=</span> (<span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-value">30</span>.<span class="ruby-identifier">seconds</span>)) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">orders</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>)
+
+    <span class="ruby-comment"># save fails becuase usesr purchased within the past 30 seconds</span>
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-string">&#39;Your order is being processed.  Please wait at least 30 seconds between purchases&#39;</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-credit_card" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">credit_card</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>def <a href="Order.html#method-i-validate_card">#validate_card</a></p>
+
+<pre class="ruby"><span class="ruby-keyword">unless</span> <span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">valid?</span>
+  <span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-identifier">message</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>end</p>
+          
+          
+
+          
+          <div class="method-source-code" id="credit_card-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 405</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">credit_card</span>
+  <span class="ruby-ivar">@credit_card</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">ActiveMerchant</span><span class="ruby-operator">::</span><span class="ruby-constant">Billing</span><span class="ruby-operator">::</span><span class="ruby-constant">CreditCard</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">type</span><span class="ruby-operator">:</span> <span class="ruby-identifier">credit_card_type</span>,
+    <span class="ruby-identifier">number</span><span class="ruby-operator">:</span> <span class="ruby-identifier">cc_number</span>,
+    <span class="ruby-identifier">verification_value</span><span class="ruby-operator">:</span> <span class="ruby-identifier">cc_verification</span>,
+    <span class="ruby-identifier">month</span><span class="ruby-operator">:</span> <span class="ruby-identifier">cc_expires</span>.<span class="ruby-identifier">month</span>,
+    <span class="ruby-identifier">year</span><span class="ruby-operator">:</span> <span class="ruby-identifier">cc_expires</span>.<span class="ruby-identifier">year</span>,
+    <span class="ruby-identifier">first_name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">bill_first_name</span>,
+    <span class="ruby-identifier">last_name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">bill_last_name</span>
+  )
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-express_purchase_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">express_purchase_options</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="express_purchase_options-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 381</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">express_purchase_options</span>
+  {
+    <span class="ruby-identifier">ip</span><span class="ruby-operator">:</span> <span class="ruby-identifier">ip_address</span>,
+    <span class="ruby-identifier">token</span><span class="ruby-operator">:</span> <span class="ruby-identifier">express_token</span>,
+    <span class="ruby-identifier">payer_id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">express_payer_id</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-express_token-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">express_token=</span><span
+            class="method-args">(token)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>paypal express</p>
+          
+          
+
+          
+          <div class="method-source-code" id="express_token-3D-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 368</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">express_token=</span>(<span class="ruby-identifier">token</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;**************** &gt;&gt; token: #{token}&quot;</span>)
+  <span class="ruby-identifier">write_attribute</span>(<span class="ruby-value">:express_token</span>, <span class="ruby-identifier">token</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">new_record?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">token</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">details</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">get_express_gateway</span>.<span class="ruby-identifier">details_for</span>(<span class="ruby-identifier">token</span>)
+    <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;Details:  #{details.inspect}&quot;</span>)
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">express_payer_id</span> = <span class="ruby-identifier">details</span>.<span class="ruby-identifier">payer_id</span>
+    <span class="ruby-identifier">get_paypal_info</span>(<span class="ruby-identifier">details</span>.<span class="ruby-identifier">params</span>)
+    <span class="ruby-comment"># self.first_name = details.params[&quot;first_name&quot;]</span>
+    <span class="ruby-comment"># self.last_name = details.params[&quot;last_name&quot;]</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-full_billing_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_billing_name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="full_billing_name-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 338</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_billing_name</span>
+  <span class="ruby-identifier">bill_first_name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">bill_last_name</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-full_billing_street" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_billing_street</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="full_billing_street-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 346</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_billing_street</span>
+  <span class="ruby-identifier">bill_street_1</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">bill_street_2</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-full_shipping_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_shipping_name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="full_shipping_name-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 334</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_shipping_name</span>
+  <span class="ruby-identifier">ship_first_name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ship_last_name</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-full_shipping_street" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_shipping_street</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="full_shipping_street-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 342</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_shipping_street</span>
+  <span class="ruby-identifier">ship_street_1</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ship_street_2</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-full_tax" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_tax</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="full_tax-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 354</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_tax</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">bill_state</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;NJ&#39;</span>
+    <span class="ruby-identifier">sales_tax</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-generate_order_items" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generate_order_items</span><span
+            class="method-args">(cart)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="generate_order_items-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_order_items</span>(<span class="ruby-identifier">cart</span>)
+  <span class="ruby-identifier">cart</span>.<span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">li</span> = <span class="ruby-constant">LineItem</span>.<span class="ruby-identifier">from_cart_item</span>(<span class="ruby-identifier">item</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-grand_total_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grand_total_price</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="grand_total_price-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 362</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">grand_total_price</span>
+  (<span class="ruby-identifier">total_price</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">full_tax</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>) <span class="ruby-operator">+</span> (<span class="ruby-identifier">shipping_cost</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">coupon_value</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">store_wide_sale</span> <span class="ruby-operator">||</span> <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-not_using_square-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">not_using_square?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="not_using_square-3F-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">not_using_square?</span>
+  <span class="ruby-identifier">nonce</span>.<span class="ruby-identifier">blank?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-paid_with_card-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">paid_with_card?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="paid_with_card-3F-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">paid_with_card?</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;express_token.blank?:  #{express_token.blank?}&quot;</span>)
+  (<span class="ruby-identifier">credit_card_type</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;PayPalExpress&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nonce</span>.<span class="ruby-identifier">blank?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-price_in_cents" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">price_in_cents</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="price_in_cents-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 330</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">price_in_cents</span>
+  (<span class="ruby-identifier">grand_total_price</span> <span class="ruby-operator">*</span> <span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-purchase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">purchase</span><span
+            class="method-args">(cart)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="purchase-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 170</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">cart</span>)
+  <span class="ruby-ivar">@cart</span> = <span class="ruby-identifier">cart</span>
+  <span class="ruby-identifier">puts</span>(<span class="ruby-node">&quot;nonce: #{nonce}&quot;</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">nonce</span>.<span class="ruby-identifier">blank?</span>
+
+    <span class="ruby-identifier">transaction_api</span> = <span class="ruby-constant">SquareConnect</span><span class="ruby-operator">::</span><span class="ruby-constant">TransactionApi</span>.<span class="ruby-identifier">new</span>
+
+    <span class="ruby-identifier">amount</span> = <span class="ruby-identifier">price_in_cents</span>
+    <span class="ruby-identifier">request_body</span> = {
+      <span class="ruby-identifier">card_nonce</span><span class="ruby-operator">:</span> <span class="ruby-identifier">nonce</span>,
+      <span class="ruby-identifier">amount_money</span><span class="ruby-operator">:</span> {
+        <span class="ruby-identifier">amount</span><span class="ruby-operator">:</span> <span class="ruby-identifier">amount</span>,
+        <span class="ruby-identifier">currency</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;USD&#39;</span>
+      },
+      <span class="ruby-identifier">idempotency_key</span><span class="ruby-operator">:</span> <span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">uuid</span>
+    }
+
+    <span class="ruby-comment"># The SDK throws an exception if a Connect endpoint responds with anything besides 200 (success).</span>
+    <span class="ruby-comment"># This block catches any exceptions that occur from the request.</span>
+    <span class="ruby-constant">SquareConnect</span><span class="ruby-operator">::</span><span class="ruby-constant">Configuration</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>
+
+    <span class="ruby-identifier">locationApi</span> = <span class="ruby-constant">SquareConnect</span><span class="ruby-operator">::</span><span class="ruby-constant">LocationApi</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">locations</span> = <span class="ruby-identifier">locationApi</span>.<span class="ruby-identifier">list_locations</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_access_token</span>)
+
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">response</span> = <span class="ruby-identifier">transaction_api</span>.<span class="ruby-identifier">charge</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">gateway_access_token</span>, <span class="ruby-identifier">locations</span>.<span class="ruby-identifier">locations</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">id</span>, <span class="ruby-identifier">request_body</span>)
+
+      <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">inspect</span>)
+      <span class="ruby-keyword">begin</span>
+            <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">response</span>[<span class="ruby-value">:transaction</span>].<span class="ruby-identifier">inspect</span>)
+          <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+            <span class="ruby-string">&quot;don&#39;t work&quot;</span>
+          <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">begin</span>
+            <span class="ruby-identifier">puts</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">inspect</span>)
+          <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+            <span class="ruby-string">&quot;don&#39;t work&quot;</span>
+          <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">success</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;purchase&#39;</span>, <span class="ruby-identifier">amount</span><span class="ruby-operator">:</span> <span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">success</span><span class="ruby-operator">:</span> <span class="ruby-identifier">success</span>, <span class="ruby-identifier">message</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;This transaction has been approved&#39;</span>, <span class="ruby-identifier">authorization</span><span class="ruby-operator">:</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">transaction</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">params</span><span class="ruby-operator">:</span> <span class="ruby-identifier">response</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SquareConnect</span><span class="ruby-operator">::</span><span class="ruby-constant">ApiError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;Error encountered while charging card:&#39;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>.<span class="ruby-identifier">inspect</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">eval</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>).<span class="ruby-identifier">class</span>
+
+      <span class="ruby-keyword">begin</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;e.message.code : #{eval(e.message)[:code]}&quot;</span>
+          <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+            <span class="ruby-string">&#39;none&#39;</span>
+          <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">begin</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;e.message.response_body.detail : #{eval(e.message)[:response_body]}&quot;</span>
+          <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+            <span class="ruby-string">&#39;none&#39;</span>
+          <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">success</span> = <span class="ruby-keyword">false</span>
+
+      <span class="ruby-identifier">error_message_json</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">eval</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>)[<span class="ruby-value">:response_body</span>])
+      <span class="ruby-identifier">error_message</span> = <span class="ruby-string">&#39;Tranaction Failed&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39; [&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">error_message_json</span>[<span class="ruby-string">&#39;errors&#39;</span>][<span class="ruby-value">0</span>][<span class="ruby-string">&#39;category&#39;</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&#39;] : &#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">error_message_json</span>[<span class="ruby-string">&#39;errors&#39;</span>][<span class="ruby-value">0</span>][<span class="ruby-string">&#39;detail&#39;</span>]
+
+      <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-identifier">error_message</span>
+
+      <span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;purchase&#39;</span>, <span class="ruby-identifier">amount</span><span class="ruby-operator">:</span> <span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">success</span><span class="ruby-operator">:</span> <span class="ruby-identifier">success</span>, <span class="ruby-identifier">message</span><span class="ruby-operator">:</span> <span class="ruby-identifier">error_message</span>, <span class="ruby-identifier">params</span><span class="ruby-operator">:</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment">#  test = &quot;:response_body=&gt;\&quot;{\\\&quot;errors\\\&quot;:[{\\\&quot;category\\\&quot;:\\\&quot;PAYMENT_METHOD_ERROR\\\&quot;,\\\&quot;code\\\&quot;:\\\&quot;CARD_DECLINED\\\&quot;,\\\&quot;detail\\\&quot;:\\\&quot;Card declined.\\\&quot;}]}\&quot;}&quot;</span>
+
+    <span class="ruby-comment">#    data = {</span>
+    <span class="ruby-comment">#      amount: amount,</span>
+    <span class="ruby-comment">#      user: {</span>
+    <span class="ruby-comment">#        name: params[:name],</span>
+    <span class="ruby-comment">#        street_address_1: params[:street_address_1],</span>
+    <span class="ruby-comment">#        street_address_2: params[:street_address_2],</span>
+    <span class="ruby-comment">#        state: params[:state],</span>
+    <span class="ruby-comment">#        zip: params[:zip],</span>
+    <span class="ruby-comment">#        city: params[:city]</span>
+    <span class="ruby-comment">#      },</span>
+    <span class="ruby-comment">#      card: resp.transaction.tenders[0].card_details.card</span>
+    <span class="ruby-comment">#    }</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment">#    # send receipt email to user</span>
+    <span class="ruby-comment">#    ReceiptMailer.charge_email(params[:email],data).deliver_now if Rails.env == &quot;development&quot;</span>
+    <span class="ruby-comment">#</span>
+
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">express_token</span>.<span class="ruby-identifier">blank?</span>
+      <span class="ruby-identifier">gateway</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">get_gateway</span>
+      <span class="ruby-identifier">response</span> = <span class="ruby-identifier">gateway</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">credit_card</span>, <span class="ruby-identifier">purchase_options</span>)
+
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">gateway</span> = <span class="ruby-constant">Order</span>.<span class="ruby-identifier">get_express_gateway</span>
+      <span class="ruby-identifier">response</span> = <span class="ruby-identifier">gateway</span>.<span class="ruby-identifier">purchase</span>(<span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">express_purchase_options</span>)
+
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">transactions</span>.<span class="ruby-identifier">create!</span>(<span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;purchase&#39;</span>, <span class="ruby-identifier">amount</span><span class="ruby-operator">:</span> <span class="ruby-identifier">price_in_cents</span>, <span class="ruby-identifier">response</span><span class="ruby-operator">:</span> <span class="ruby-identifier">response</span>)
+
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span>
+      <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span> <span class="ruby-value">:base</span>, <span class="ruby-identifier">response</span>.<span class="ruby-identifier">message</span>
+
+      <span class="ruby-comment"># errors.add_to_base(response.message)</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">success</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">success?</span>
+
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># cart.update_attribute(:purchased_at, Time.now) if response.success?</span>
+
+  <span class="ruby-identifier">success</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-reduce_inventory" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reduce_inventory</span><span
+            class="method-args">(host)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="reduce_inventory-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 152</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reduce_inventory</span>(<span class="ruby-identifier">host</span>)
+  <span class="ruby-identifier">order_items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">item</span>.<span class="ruby-identifier">product_detail</span>.<span class="ruby-identifier">reduce_inventory</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">quantity</span>, <span class="ruby-identifier">host</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-shipped_via" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">shipped_via</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="shipped_via-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">shipped_via</span>
+  <span class="ruby-constant">SHIPPING_TYPES</span>[<span class="ruby-identifier">shipping_method</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-total_price" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_price</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_price-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 350</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_price</span>
+  <span class="ruby-identifier">order_items</span>.<span class="ruby-identifier">sum</span>(<span class="ruby-value">:price</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validate_card" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validate_card</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="validate_card-source">
+            <pre><span class="ruby-comment"># File app/models/order.rb, line 389</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validate_card</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">express_token</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">valid?</span>
+    <span class="ruby-identifier">credit_card</span>.<span class="ruby-identifier">errors</span>.<span class="ruby-identifier">full_messages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">message</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add_to_base</span> <span class="ruby-identifier">message</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

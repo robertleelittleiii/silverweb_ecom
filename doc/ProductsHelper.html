@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module ProductsHelper - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-create_group_checks_live">#create_group_checks_live</a>
+    
+    <li ><a href="#method-i-get_share_code_product">#get_share_code_product</a>
+    
+    <li ><a href="#method-i-main_image_preview">#main_image_preview</a>
+    
+    <li ><a href="#method-i-product_edit_div">#product_edit_div</a>
+    
+    <li ><a href="#method-i-product_info">#product_info</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-ProductsHelper">
+  <h1 id="module-ProductsHelper" class="module">
+    module ProductsHelper
+  </h1>
+
+  <section class="description">
+    
+<p>frozen_string_literal: true</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-create_group_checks_live" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_group_checks_live</span><span
+            class="method-args">(_field_name, field_pointer, value_list, tag_list_name, html_options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_group_checks_live-source">
+            <pre><span class="ruby-comment"># File app/helpers/products_helper.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_group_checks_live</span>(<span class="ruby-identifier">_field_name</span>, <span class="ruby-identifier">field_pointer</span>, <span class="ruby-identifier">value_list</span>, <span class="ruby-identifier">tag_list_name</span>, <span class="ruby-identifier">html_options</span> = {})
+  <span class="ruby-identifier">return_value</span> = <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+
+  <span class="ruby-identifier">value_list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">return_value</span> = <span class="ruby-identifier">return_value</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;&lt;div class=&#39;div-#{tag_list_name}&#39;&gt;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">editablecheckboxtag2</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">field_pointer</span>, <span class="ruby-identifier">item</span>, <span class="ruby-identifier">tag_list_name</span>, <span class="ruby-identifier">html_options</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&#39;&lt;/div&gt;&#39;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">return_value</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_share_code_product" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_share_code_product</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_share_code_product-source">
+            <pre><span class="ruby-comment"># File app/helpers/products_helper.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_share_code_product</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">Settings</span>.<span class="ruby-identifier">product_javascript_social_share</span>.<span class="ruby-identifier">blank?</span>
+    (<span class="ruby-constant">CGI</span>.<span class="ruby-identifier">unescapeHTML</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">product_javascript_social_share</span>) <span class="ruby-operator">+</span> <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">unescapeHTML</span>(<span class="ruby-constant">Settings</span>.<span class="ruby-identifier">product_button_block_social_share</span>)).<span class="ruby-identifier">html_safe</span>
+    <span class="ruby-comment">#+ Settings.blog_button_block_social_share.html_safe</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-main_image_preview" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">main_image_preview</span><span
+            class="method-args">(picture)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="main_image_preview-source">
+            <pre><span class="ruby-comment"># File app/helpers/products_helper.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">main_image_preview</span>(<span class="ruby-identifier">picture</span>)
+  <span class="ruby-identifier">thumb_picture</span> = <span class="ruby-identifier">picture</span>.<span class="ruby-identifier">file_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;.pdf&#39;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">image_tag</span>(<span class="ruby-identifier">picture</span>.<span class="ruby-identifier">image_url</span>(<span class="ruby-value">:pdf_thumb</span>).<span class="ruby-identifier">to_s</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">image_tag</span>(<span class="ruby-identifier">picture</span>.<span class="ruby-identifier">image_url</span>(<span class="ruby-value">:thumb</span>).<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-identifier">preview_picture</span> = <span class="ruby-identifier">picture</span>.<span class="ruby-identifier">file_type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;.pdf&#39;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">picture</span>.<span class="ruby-identifier">image_url</span>(<span class="ruby-value">:pdf_preview</span>).<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">picture</span>.<span class="ruby-identifier">image_url</span>(<span class="ruby-value">:large</span>).<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">return</span>(<span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">thumb_picture</span>, <span class="ruby-identifier">preview_picture</span>, <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;zoom-image&#39;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\|&quot;/</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;\\#{c}&quot;</span> }.<span class="ruby-identifier">html_safe</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+    <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+  <span class="ruby-string">&#39;&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-product_edit_div" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">product_edit_div</span><span
+            class="method-args">(product)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="product_edit_div-source">
+            <pre><span class="ruby-comment"># File app/helpers/products_helper.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">product_edit_div</span>(<span class="ruby-identifier">product</span>)
+  <span class="ruby-identifier">returnval</span> = <span class="ruby-string">&#39;&#39;</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>]
+    <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">roles</span>.<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">role</span><span class="ruby-operator">|</span> ((<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Admin&#39;</span>) <span class="ruby-operator">|</span> (<span class="ruby-identifier">role</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Site Owner&#39;</span>)) }
+      <span class="ruby-identifier">returnval</span> = <span class="ruby-string">&#39;&lt;div id=&quot;edit-product&quot; class=&quot;edit-product&quot;&gt;&#39;</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">returnval</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;&lt;div id=&#39;product-id&#39; class=&#39;hidden-item&#39;&gt;#{product.id}&lt;/div&gt;&quot;</span>
+      <span class="ruby-identifier">returnval</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">image_tag</span>(<span class="ruby-string">&#39;interface/edit.png&#39;</span>, <span class="ruby-identifier">border</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;0&#39;</span>, <span class="ruby-identifier">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;imagebutton&#39;</span>, <span class="ruby-identifier">title</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Edit this Product&#39;</span>)
+      <span class="ruby-identifier">returnval</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39;&lt;/div&gt;&#39;</span>
+
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">returnval</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-product_info" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">product_info</span><span
+            class="method-args">(product)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="product_info-source">
+            <pre><span class="ruby-comment"># File app/helpers/products_helper.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">product_info</span>(<span class="ruby-identifier">product</span>)
+  <span class="ruby-identifier">returnval</span> = <span class="ruby-string">&#39;&lt;div id=&quot;attr-products&quot; class=&quot;hidden-item&quot;&gt;&#39;</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">returnval</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;div id=&quot;product-id&quot;&gt;&#39;</span> <span class="ruby-operator">+</span> (<span class="ruby-keyword">begin</span>
+                                            <span class="ruby-identifier">product</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">to_s</span>
+                                          <span class="ruby-keyword">rescue</span> <span class="ruby-constant">StandardError</span>
+                                            <span class="ruby-string">&#39;-1&#39;</span>
+                                          <span class="ruby-keyword">end</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&#39;&lt;/div&gt;&#39;</span>
+
+  <span class="ruby-identifier">returnval</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39;&lt;/div&gt;&#39;</span>
+  <span class="ruby-identifier">returnval</span>.<span class="ruby-identifier">html_safe</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

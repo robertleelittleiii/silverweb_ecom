@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>jquery.jqzoom-core.js - RDoc Documentation</title>
+
+<link href="../../../fonts.css" rel="stylesheet">
+<link href="../../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../../";
+</script>
+
+<script src="../../../js/jquery.js"></script>
+<script src="../../../js/navigation.js"></script>
+<script src="../../../js/search_index.js"></script>
+<script src="../../../js/search.js"></script>
+<script src="../../../js/searcher.js"></script>
+<script src="../../../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../../table_of_contents.html#pages">Pages</a>
+    <a href="../../../table_of_contents.html#classes">Classes</a>
+    <a href="../../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../../Gemfile.html">Gemfile</a>
+  
+    <li><a href="../../../Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="../../../LICENSE.html">LICENSE</a>
+  
+    <li><a href="../../../MIT-LICENSE.html">MIT-LICENSE</a>
+  
+    <li><a href="../../../README_rdoc.html">README</a>
+  
+    <li><a href="../../../Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../app/assets/javascripts/coupons/edit_js.html">edit.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/coupons/index__js.html">index_.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/coupons/shared_js.html">shared.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/imgpreview_full_jquery_js.html">imgpreview.full.jquery.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/jquery_jqzoom-core_js.html">jquery.jqzoom-core.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/jquery_serialize-object_js.html">jquery.serialize-object.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/menus/show_products_type_js.html">show_products_type.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/orders/enter_order_js.html">enter_order.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/orders/index__js.html">index_.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/orders/order_success_js.html">order_success.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/orders/user_orders_js.html">user_orders.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/product_related_products_js.html">product_related_products.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/products/coupon_settings_js.html">coupon_settings.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/products/edit_js.html">edit.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/products/index__js.html">index_.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/products/product_preferences_js.html">product_preferences.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/products/shared_js.html">shared.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/silverweb_ecom_js.html">silverweb_ecom.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/site/check_out_js.html">check_out.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/site/live_search_js.html">live_search.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/site/product_detail_js.html">product_detail.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/site/show_products_js.html">show_products.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/site/show_products_with_page_js.html">show_products_with_page.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/site/store_locator_js.html">store_locator.js</a>
+  
+    <li><a href="../../../app/assets/javascripts/vendors/vendor_list_js.html">vendor_list.js</a>
+  
+    <li><a href="../../../app/assets/stylesheets/customers_css.html">customers.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/jquery_jqzoom_scss.html">jquery.jqzoom.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/orders_css.html">orders.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/orders/index__css.html">index_.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/orders/user_orders_css.html">user_orders.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/product_related_products_css.html">product_related_products.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/products_css.html">products.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/products/edit_css.html">edit.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/products/product_list_scss.html">product_list.scss</a>
+  
+    <li><a href="../../../app/assets/stylesheets/retailers_css.html">retailers.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/scaffold_css.html">scaffold.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/silverweb_ecom_css.html">silverweb_ecom.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/site/check_out_css.html">check_out.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/site/product_detail-horizontal_css.html">product_detail-horizontal.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/site/product_detail_css.html">product_detail.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/site/show_products_css.html">show_products.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/site/show_products_with_page_css.html">show_products_with_page.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/site/show_products_with_page_mm_css.html">show_products_with_page_mm.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/site/store_locator_css.html">store_locator.css</a>
+  
+    <li><a href="../../../app/assets/stylesheets/vendors_css.html">vendors.css</a>
+  
+    <li><a href="../../../app/mailers/user_notifier_old_rb_orig.html">user_notifier_old.rb.orig</a>
+  
+    <li><a href="../../../app/views/products/delete_image_rjs.html">delete_image.rjs</a>
+  
+    <li><a href="../../../app/views/site/product_index_feed_atom_builder.html">product_index_feed.atom.builder</a>
+  
+    <li><a href="../../../lib/tasks/image_tasks_rake.html">image_tasks.rake</a>
+  
+    <li><a href="../../../lib/tasks/silverweb_ecom_tasks_rake.html">silverweb_ecom_tasks.rake</a>
+  
+    <li><a href="../../../nbproject/private/config_properties.html">config.properties</a>
+  
+    <li><a href="../../../nbproject/private/private_properties.html">private.properties</a>
+  
+    <li><a href="../../../nbproject/private/private_xml.html">private.xml</a>
+  
+    <li><a href="../../../nbproject/private/rake-d_txt.html">rake-d</a>
+  
+    <li><a href="../../../nbproject/project_properties.html">project.properties</a>
+  
+    <li><a href="../../../nbproject/project_xml.html">project.xml</a>
+  
+    <li><a href="../../../silverweb_ecom_gemspec.html">silverweb_ecom.gemspec</a>
+  
+    <li><a href="../../../test/dummy/README_rdoc.html">README</a>
+  
+    <li><a href="../../../test/dummy/Rakefile.html">Rakefile</a>
+  
+    <li><a href="../../../test/dummy/app/assets/javascripts/application_js.html">application.js</a>
+  
+    <li><a href="../../../test/dummy/app/assets/stylesheets/application_css.html">application.css</a>
+  
+    <li><a href="../../../test/dummy/config_ru.html">config.ru</a>
+  
+    <li><a href="../../../test/dummy/public/404_html.html">404.html</a>
+  
+    <li><a href="../../../test/dummy/public/422_html.html">422.html</a>
+  
+    <li><a href="../../../test/dummy/public/500_html.html">500.html</a>
+  
+    <li><a href="../../../test/dummy/public/favicon_ico.html">favicon.ico</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page app/assets/javascripts/jquery.jqzoom-core.js">
+
+<pre>!
+ jQzoom Evolution Library v2.3  - Javascript Image magnifier
+ http://www.mind-projects.it
+
+ Copyright 2011, Engineer Marco Renzi
+ Licensed under the BSD license.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+       Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+       Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+       Neither the name of the organization nor the
+       names of its contributors may be used to endorse or promote products
+       derived from this software without specific prior written permission.
+
+ Date: 03 May 2011 22:16:00</pre>
+
+<p>(function ($) {</p>
+
+<pre>  //GLOBAL VARIABLES
+  var isIE6 = true;//($.browser.msie &amp;&amp; $.browser.version &lt; 7);
+  var body = $(document.body);
+  var window = $(window);
+  var jqzoompluging_disabled = false; //disabilita globalmente il plugin
+  $.fn.jqzoom = function (options) {
+      return this.each(function () {
+          var node = this.nodeName.toLowerCase();
+          if (node == &#39;a&#39;) {
+              new jqzoom(this, options);
+          }
+      });
+  };
+  jqzoom = function (el, options) {
+      var api = null;
+      api = $(el).data(&quot;jqzoom&quot;);
+      if (api) return api;
+      var obj = this;
+      var settings = $.extend({}, $.jqzoom.defaults, options || {});
+      obj.el = el;
+      el.rel = $(el).attr(&#39;rel&#39;);
+      //ANCHOR ELEMENT
+      el.zoom_active = false;
+      el.zoom_disabled = false; //to disable single zoom instance
+      el.largeimageloading = false; //tell us if large image is loading
+      el.largeimageloaded = false; //tell us if large image is loaded
+      el.scale = {};
+      el.timer = null;
+      el.mousepos = {};
+      el.mouseDown = false;
+      $(el).css({
+          &#39;outline-style&#39;: &#39;none&#39;,
+          &#39;text-decoration&#39;: &#39;none&#39;
+      });
+      //BASE IMAGE
+      var img = $(&quot;img:eq(0)&quot;, el);
+      el.title = $(el).attr(&#39;title&#39;);
+      el.imagetitle = img.attr(&#39;title&#39;);
+      var zoomtitle = ($.trim(el.title).length &gt; 0) ? el.title : el.imagetitle;
+      var smallimage = new Smallimage(img);
+      var lens = new Lens();
+      var stage = new Stage();
+      var largeimage = new Largeimage();
+      var loader = new Loader();
+      //preventing default click,allowing the onclick event [exmple: lightbox]
+      $(el).bind(&#39;click&#39;, function (e) {
+          e.preventDefault();
+          return false;
+      });
+      //setting the default zoomType if not in settings
+      var zoomtypes = [&#39;standard&#39;, &#39;drag&#39;, &#39;innerzoom&#39;, &#39;reverse&#39;];
+      if ($.inArray($.trim(settings.zoomType), zoomtypes) &lt; 0) {
+          settings.zoomType = &#39;standard&#39;;
+      }
+      $.extend(obj, {
+          create: function () { //create the main objects
+              //create ZoomPad
+              if ($(&quot;.zoomPad&quot;, el).length == 0) {
+                  el.zoomPad = $(&#39;&lt;div/&gt;&#39;).addClass(&#39;zoomPad&#39;);
+                  img.wrap(el.zoomPad);
+              }
+              if(settings.zoomType == &#39;innerzoom&#39;){
+                  settings.zoomWidth  = smallimage.w;
+                  settings.zoomHeight  =   smallimage.h;
+              }
+              //creating ZoomPup
+              if ($(&quot;.zoomPup&quot;, el).length == 0) {
+                  lens.append();
+              }
+              //creating zoomWindow
+              if ($(&quot;.zoomWindow&quot;, el).length == 0) {
+                  stage.append();
+              }
+              //creating Preload
+              if ($(&quot;.zoomPreload&quot;, el).length == 0) {
+                  loader.append();
+              }
+              //preloading images
+              if (settings.preloadImages || settings.zoomType == &#39;drag&#39; || settings.alwaysOn) {
+                  obj.load();
+              }
+              obj.init();
+          },
+          init: function () {
+              //drag option
+              if (settings.zoomType == &#39;drag&#39;) {
+                  $(&quot;.zoomPad&quot;, el).mousedown(function () {
+                      el.mouseDown = true;
+                  });
+                  $(&quot;.zoomPad&quot;, el).mouseup(function () {
+                      el.mouseDown = false;
+                  });
+                  document.body.ondragstart = function () {
+                      return false;
+                  };
+                  $(&quot;.zoomPad&quot;, el).css({
+                      cursor: &#39;default&#39;
+                  });
+                  $(&quot;.zoomPup&quot;, el).css({
+                      cursor: &#39;move&#39;
+                  });
+              }
+              if (settings.zoomType == &#39;innerzoom&#39;) {
+                  $(&quot;.zoomWrapper&quot;, el).css({
+                      cursor: &#39;crosshair&#39;
+                  });
+              }
+              $(&quot;.zoomPad&quot;, el).bind(&#39;mouseenter mouseover&#39;, function (event) {
+                  img.attr(&#39;title&#39;, &#39;&#39;);
+                  $(el).attr(&#39;title&#39;, &#39;&#39;);
+                  el.zoom_active = true;
+                  //if loaded then activate else load large image
+                  smallimage.fetchdata();
+                  if (el.largeimageloaded) {
+                      obj.activate(event);
+                  } else {
+                      obj.load();
+                  }
+              });
+              $(&quot;.zoomPad&quot;, el).bind(&#39;mouseleave&#39;, function (event) {
+                  obj.deactivate();
+              });
+              $(&quot;.zoomPad&quot;, el).bind(&#39;mousemove&#39;, function (e) {
+
+                  //prevent fast mouse mevements not to fire the mouseout event
+                  if (e.pageX &gt; smallimage.pos.r || e.pageX &lt; smallimage.pos.l || e.pageY &lt; smallimage.pos.t || e.pageY &gt; smallimage.pos.b) {
+                      lens.setcenter();
+                      return false;
+                  }
+                  el.zoom_active = true;
+                  if (el.largeimageloaded &amp;&amp; !$(&#39;.zoomWindow&#39;, el).is(&#39;:visible&#39;)) {
+                      obj.activate(e);
+                  }
+                  if (el.largeimageloaded &amp;&amp; (settings.zoomType != &#39;drag&#39; || (settings.zoomType == &#39;drag&#39; &amp;&amp; el.mouseDown))) {
+                      lens.setposition(e);
+                  }
+              });
+              var thumb_preload = new Array();
+              var i = 0;
+              //binding click event on thumbnails
+              var thumblist = new Array();
+              thumblist = $(&#39;a&#39;).filter(function () {
+                  var regex = new RegExp(&quot;gallery[\\s]*:[\\s]*&#39;&quot; + $.trim(el.rel) + &quot;&#39;&quot;, &quot;i&quot;);
+                  var rel = $(this).attr(&#39;rel&#39;);
+                  if (regex.test(rel)) {
+                      return this;
+                  }
+              });
+              if (thumblist.length &gt; 0) {
+                  //getting the first to the last
+                  var first = thumblist.splice(0, 1);
+                  thumblist.push(first);
+              }
+              thumblist.each(function () {
+                  //preloading thumbs
+                  if (settings.preloadImages) {
+                      var thumb_options = $.extend({}, eval(&quot;(&quot; + $.trim($(this).attr(&#39;rel&#39;)) + &quot;)&quot;));
+                      thumb_preload[i] = new Image();
+                      thumb_preload[i].src = thumb_options.largeimage;
+                      i++;
+                  }
+                  $(this).click(function (e) {
+                      if($(this).hasClass(&#39;zoomThumbActive&#39;)){
+                        return false;
+                      }
+                      thumblist.each(function () {
+                          $(this).removeClass(&#39;zoomThumbActive&#39;);
+                      });
+                      e.preventDefault();
+                      obj.swapimage(this);
+                      return false;
+                  });
+              });
+          },
+          load: function () {
+              if (el.largeimageloaded == false &amp;&amp; el.largeimageloading == false) {
+                  var url = $(el).attr(&#39;href&#39;);
+                  el.largeimageloading = true;
+                  largeimage.loadimage(url);
+              }
+          },
+          activate: function (e) {
+              clearTimeout(el.timer);
+              //show lens and zoomWindow
+              lens.show();
+              stage.show();
+          },
+          deactivate: function (e) {
+              switch (settings.zoomType) {
+              case &#39;drag&#39;:
+                  //nothing or lens.setcenter();
+                  break;
+              default:
+                  img.attr(&#39;title&#39;, el.imagetitle);
+                  $(el).attr(&#39;title&#39;, el.title);
+                  if (settings.alwaysOn) {
+                      lens.setcenter();
+                  } else {
+                      stage.hide();
+                      lens.hide();
+                  }
+                  break;
+              }
+              el.zoom_active = false;
+          },
+          swapimage: function (link) {
+              el.largeimageloading = false;
+              el.largeimageloaded = false;
+              var options = new Object();
+              options = $.extend({}, eval(&quot;(&quot; + $.trim($(link).attr(&#39;rel&#39;)) + &quot;)&quot;));
+              if (options.smallimage &amp;&amp; options.largeimage) {
+                  var smallimage = options.smallimage;
+                  var largeimage = options.largeimage;
+                  $(link).addClass(&#39;zoomThumbActive&#39;);
+                  $(el).attr(&#39;href&#39;, largeimage);
+                  img.attr(&#39;src&#39;, smallimage);
+                  lens.hide();
+                  stage.hide();
+                  obj.load();
+              } else {
+                  alert(&#39;ERROR :: Missing parameter for largeimage or smallimage.&#39;);
+                  throw &#39;ERROR :: Missing parameter for largeimage or smallimage.&#39;;
+              }
+              return false;
+          }
+      });
+      //sometimes image is already loaded and onload will not fire
+      if (img[0].complete) {
+          //fetching data from sallimage if was previously loaded
+          smallimage.fetchdata();
+          if ($(&quot;.zoomPad&quot;, el).length == 0) obj.create();
+      }
+========================================================,</pre>
+
+<p>|   Smallimage |———————————————————: |   Base image into the anchor element
+`========================================================</p>
+
+<pre>function Smallimage(image) {
+    var $obj = this;
+    this.node = image[0];
+    this.findborder = function () {
+        var bordertop = 0;
+        bordertop = image.css(&#39;border-top-width&#39;);
+        btop = &#39;&#39;;
+        var borderleft = 0;
+        borderleft = image.css(&#39;border-left-width&#39;);
+        bleft = &#39;&#39;;
+        if (bordertop) {
+            for (i = 0; i &lt; 3; i++) {
+                var x = [];
+                x = bordertop.substr(i, 1);
+                if (isNaN(x) == false) {
+                    btop = btop + &#39;&#39; + bordertop.substr(i, 1);
+                } else {
+                    break;
+                }
+            }
+        }
+        if (borderleft) {
+            for (i = 0; i &lt; 3; i++) {
+                if (!isNaN(borderleft.substr(i, 1))) {
+                    bleft = bleft + borderleft.substr(i, 1)
+                } else {
+                    break;
+                }
+            }
+        }
+        $obj.btop = (btop.length &gt; 0) ? eval(btop) : 0;
+        $obj.bleft = (bleft.length &gt; 0) ? eval(bleft) : 0;
+    };
+    this.fetchdata = function () {
+        $obj.findborder();
+        $obj.w = image.width();
+        $obj.h = image.height();
+        $obj.ow = image.outerWidth();
+        $obj.oh = image.outerHeight();
+        $obj.pos = image.offset();
+        $obj.pos.l = image.offset().left + $obj.bleft;
+        $obj.pos.t = image.offset().top + $obj.btop;
+        $obj.pos.r = $obj.w + $obj.pos.l;
+        $obj.pos.b = $obj.h + $obj.pos.t;
+        $obj.rightlimit = image.offset().left + $obj.ow;
+        $obj.bottomlimit = image.offset().top + $obj.oh;
+
+    };
+    this.node.onerror = function () {
+        alert(&#39;Problems while loading image.&#39;);
+        throw &#39;Problems while loading image.&#39;;
+    };
+    this.node.onload = function () {
+        $obj.fetchdata();
+        if ($(&quot;.zoomPad&quot;, el).length == 0) obj.create();
+    };
+    return $obj;
+};</pre>
+
+<p>/*========================================================, |  Loader
+|———————————————————: |  Show that the large image is loading
+`========================================================*/</p>
+
+<pre>function Loader() {
+    var $obj = this;
+    this.append = function () {
+        this.node = $(&#39;&lt;div/&gt;&#39;).addClass(&#39;zoomPreload&#39;).css(&#39;visibility&#39;, &#39;hidden&#39;).html(settings.preloadText);
+        $(&#39;.zoomPad&#39;, el).append(this.node);
+    };
+    this.show = function () {
+        this.node.top = (smallimage.oh - this.node.height()) / 2;
+        this.node.left = (smallimage.ow - this.node.width()) / 2;
+        //setting position
+        this.node.css({
+            top: this.node.top,
+            left: this.node.left,
+            position: &#39;absolute&#39;,
+            visibility: &#39;visible&#39;
+        });
+    };
+    this.hide = function () {
+        this.node.css(&#39;visibility&#39;, &#39;hidden&#39;);
+    };
+    return this;
+}</pre>
+
+<p>/*========================================================, |   Lens
+|———————————————————: |   Lens over the image
+`========================================================*/</p>
+
+<pre>function Lens() {
+    var $obj = this;
+    this.node = $(&#39;&lt;div/&gt;&#39;).addClass(&#39;zoomPup&#39;);
+    //this.nodeimgwrapper = $(&quot;&lt;div/&gt;&quot;).addClass(&#39;zoomPupImgWrapper&#39;);
+    this.append = function () {
+        $(&#39;.zoomPad&#39;, el).append($(this.node).hide());
+        if (settings.zoomType == &#39;reverse&#39;) {
+            this.image = new Image();
+            this.image.src = smallimage.node.src; // fires off async
+            $(this.node).empty().append(this.image);
+        }
+    };
+    this.setdimensions = function () {
+        this.node.w = (parseInt((settings.zoomWidth) / el.scale.x) &gt; smallimage.w ) ? smallimage.w : (parseInt(settings.zoomWidth / el.scale.x)); 
+        this.node.h = (parseInt((settings.zoomHeight) / el.scale.y) &gt; smallimage.h ) ? smallimage.h : (parseInt(settings.zoomHeight / el.scale.y)); 
+        this.node.top = (smallimage.oh - this.node.h - 2) / 2;
+        this.node.left = (smallimage.ow - this.node.w - 2) / 2;
+        //centering lens
+        this.node.css({
+            top: 0,
+            left: 0,
+            width: this.node.w + &#39;px&#39;,
+            height: this.node.h + &#39;px&#39;,
+            position: &#39;absolute&#39;,
+            display: &#39;none&#39;,
+            borderWidth: 1 + &#39;px&#39;
+        });
+
+        if (settings.zoomType == &#39;reverse&#39;) {
+            this.image.src = smallimage.node.src;
+            $(this.node).css({
+                &#39;opacity&#39;: 1
+            });
+
+            $(this.image).css({
+                position: &#39;absolute&#39;,
+                display: &#39;block&#39;,
+                left: -(this.node.left + 1 - smallimage.bleft) + &#39;px&#39;,
+                top: -(this.node.top + 1 - smallimage.btop) + &#39;px&#39;
+            });
+
+        }
+    };
+    this.setcenter = function () {
+        //calculating center position
+        this.node.top = (smallimage.oh - this.node.h - 2) / 2;
+        this.node.left = (smallimage.ow - this.node.w - 2) / 2;
+        //centering lens
+        this.node.css({
+            top: this.node.top,
+            left: this.node.left
+        });
+        if (settings.zoomType == &#39;reverse&#39;) {
+            $(this.image).css({
+                position: &#39;absolute&#39;,
+                display: &#39;block&#39;,
+                left: -(this.node.left + 1 - smallimage.bleft) + &#39;px&#39;,
+                top: -(this.node.top + 1 - smallimage.btop) + &#39;px&#39;
+            });
+
+        }
+        //centering large image
+        largeimage.setposition();
+    };
+    this.setposition = function (e) {
+        el.mousepos.x = e.pageX;
+        el.mousepos.y = e.pageY;
+        var lensleft = 0;
+        var lenstop = 0;
+
+        function overleft(lens) {
+            return el.mousepos.x - (lens.w) / 2 &lt; smallimage.pos.l; 
+        }
+
+        function overright(lens) {
+            return el.mousepos.x + (lens.w) / 2 &gt; smallimage.pos.r; 
+
+        }
+
+        function overtop(lens) {
+            return el.mousepos.y - (lens.h) / 2 &lt; smallimage.pos.t; 
+        }
+
+        function overbottom(lens) {
+            return el.mousepos.y + (lens.h) / 2 &gt; smallimage.pos.b; 
+        }
+
+        lensleft = el.mousepos.x + smallimage.bleft - smallimage.pos.l - (this.node.w + 2) / 2;
+        lenstop = el.mousepos.y + smallimage.btop - smallimage.pos.t - (this.node.h + 2) / 2;
+        if (overleft(this.node)) {
+            lensleft = smallimage.bleft - 1;
+        } else if (overright(this.node)) {
+            lensleft = smallimage.w + smallimage.bleft - this.node.w - 1;
+        }
+        if (overtop(this.node)) {
+            lenstop = smallimage.btop - 1;
+        } else if (overbottom(this.node)) {
+            lenstop = smallimage.h + smallimage.btop - this.node.h - 1;
+        }
+
+        this.node.left = lensleft;
+        this.node.top = lenstop;
+        this.node.css({
+            &#39;left&#39;: lensleft + &#39;px&#39;,
+            &#39;top&#39;: lenstop + &#39;px&#39;
+        });
+        if (settings.zoomType == &#39;reverse&#39;) {
+            if ($.browser.msie &amp;&amp; $.browser.version &gt; 7) {
+                $(this.node).empty().append(this.image);
+            }
+
+            $(this.image).css({
+                position: &#39;absolute&#39;,
+                display: &#39;block&#39;,
+                left: -(this.node.left + 1 - smallimage.bleft) + &#39;px&#39;,
+                top: -(this.node.top + 1 - smallimage.btop) + &#39;px&#39;
+            });
+        }
+
+        largeimage.setposition();
+    };
+    this.hide = function () {
+        img.css({
+            &#39;opacity&#39;: 1
+        });
+        this.node.hide();
+    };
+    this.show = function () {  
+
+        if (settings.zoomType != &#39;innerzoom&#39; &amp;&amp; (settings.lens || settings.zoomType == &#39;drag&#39;)) {
+            this.node.show();
+        }       
+
+        if (settings.zoomType == &#39;reverse&#39;) {
+            img.css({
+                &#39;opacity&#39;: settings.imageOpacity
+            });
+        }
+    };
+    this.getoffset = function () {
+        var o = {};
+        o.left = $obj.node.left;
+        o.top = $obj.node.top;
+        return o;
+    };
+    return this;
+};</pre>
+
+<p>/*========================================================, |   Stage
+|———————————————————: |   Window area that contains the large image
+`========================================================*/</p>
+
+<pre>function Stage() {
+    var $obj = this;
+    this.node = $(&quot;&lt;div class=&#39;zoomWindow&#39;&gt;&lt;div class=&#39;zoomWrapper&#39;&gt;&lt;div class=&#39;zoomWrapperTitle&#39;&gt;&lt;/div&gt;&lt;div class=&#39;zoomWrapperImage&#39;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&quot;);
+    this.ieframe = $(&#39;&lt;iframe class=&quot;zoomIframe&quot; src=&quot;javascript:\&#39;\&#39;;&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; align=&quot;bottom&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; &gt;&lt;/iframe&gt;&#39;);
+    this.setposition = function () {
+        this.node.leftpos = 0;
+        this.node.toppos = 0;
+        if (settings.zoomType != &#39;innerzoom&#39;) {
+            //positioning
+            switch (settings.position) {
+            case &quot;left&quot;:
+                this.node.leftpos = (smallimage.pos.l - smallimage.bleft - Math.abs(settings.xOffset) - settings.zoomWidth &gt; 0) ? (0 - settings.zoomWidth - Math.abs(settings.xOffset)) : (smallimage.ow + Math.abs(settings.xOffset));
+                this.node.toppos = Math.abs(settings.yOffset);
+                break;
+            case &quot;top&quot;:
+                this.node.leftpos = Math.abs(settings.xOffset);
+                this.node.toppos = (smallimage.pos.t - smallimage.btop - Math.abs(settings.yOffset) - settings.zoomHeight &gt; 0) ? (0 - settings.zoomHeight - Math.abs(settings.yOffset)) : (smallimage.oh + Math.abs(settings.yOffset));
+                break;
+            case &quot;bottom&quot;:
+                this.node.leftpos = Math.abs(settings.xOffset);
+                this.node.toppos = (smallimage.pos.t - smallimage.btop + smallimage.oh + Math.abs(settings.yOffset) + settings.zoomHeight &lt; screen.height) ? (smallimage.oh + Math.abs(settings.yOffset)) : (0 - settings.zoomHeight - Math.abs(settings.yOffset));
+                break;
+            default:
+                this.node.leftpos = (smallimage.rightlimit + Math.abs(settings.xOffset) + settings.zoomWidth &lt; screen.width) ? (smallimage.ow + Math.abs(settings.xOffset)) : (0 - settings.zoomWidth - Math.abs(settings.xOffset));
+                this.node.toppos = Math.abs(settings.yOffset);
+                break;
+            }
+        }
+        this.node.css({
+            &#39;left&#39;: this.node.leftpos + &#39;px&#39;,
+            &#39;top&#39;: this.node.toppos + &#39;px&#39;
+        });
+        return this;
+    };
+    this.append = function () {
+        $(&#39;.zoomPad&#39;, el).append(this.node);
+        this.node.css({
+            position: &#39;absolute&#39;,
+            display: &#39;none&#39;,
+            zIndex: 5001
+        });
+        if (settings.zoomType == &#39;innerzoom&#39;) {
+            this.node.css({
+                cursor: &#39;default&#39;
+            });
+            var thickness = (smallimage.bleft == 0) ? 1 : smallimage.bleft;
+            $(&#39;.zoomWrapper&#39;, this.node).css({
+                borderWidth: thickness + &#39;px&#39;
+            });    
+        }
+
+          $(&#39;.zoomWrapper&#39;, this.node).css({
+              width: Math.round(settings.zoomWidth) + &#39;px&#39; ,
+              borderWidth: thickness + &#39;px&#39;
+          });
+          $(&#39;.zoomWrapperImage&#39;, this.node).css({
+              width: &#39;100%&#39;,
+              height: Math.round(settings.zoomHeight) + &#39;px&#39;
+          });
+          //zoom title
+         $(&#39;.zoomWrapperTitle&#39;, this.node).css({
+                width: &#39;100%&#39;,
+                position: &#39;absolute&#39;
+          });  
+
+        $(&#39;.zoomWrapperTitle&#39;, this.node).hide();
+        if (settings.title &amp;&amp; zoomtitle.length &gt; 0) {
+            $(&#39;.zoomWrapperTitle&#39;, this.node).html(zoomtitle).show();
+        }
+        $obj.setposition();
+    };
+    this.hide = function () {
+        switch (settings.hideEffect) {
+        case &#39;fadeout&#39;:
+            this.node.fadeOut(settings.fadeoutSpeed, function () {});
+            break;
+        default:
+            this.node.hide();
+            break;
+        }
+        this.ieframe.hide();
+    };
+    this.show = function () {
+        switch (settings.showEffect) {
+        case &#39;fadein&#39;:
+            this.node.fadeIn();
+            this.node.fadeIn(settings.fadeinSpeed, function () {});
+            break;
+        default:
+            this.node.show();
+            break;
+        }
+        if (isIE6 &amp;&amp; settings.zoomType != &#39;innerzoom&#39;) {
+            this.ieframe.width = this.node.width();
+            this.ieframe.height = this.node.height();
+            this.ieframe.left = this.node.leftpos;
+            this.ieframe.top = this.node.toppos;
+            this.ieframe.css({
+                display: &#39;block&#39;,
+                position: &quot;absolute&quot;,
+                left: this.ieframe.left,
+                top: this.ieframe.top,
+                zIndex: 99,
+                width: this.ieframe.width + &#39;px&#39;,
+                height: this.ieframe.height + &#39;px&#39;
+            });
+            $(&#39;.zoomPad&#39;, el).append(this.ieframe);
+            this.ieframe.show();
+        };
+    };
+};</pre>
+
+<p>/*========================================================, |   LargeImage
+|———————————————————: |   The large detailed image
+`========================================================*/</p>
+
+<pre>    function Largeimage() {
+        var $obj = this;
+        this.node = new Image();
+        this.loadimage = function (url) {
+            //showing preload
+            loader.show();
+            this.url = url;
+            this.node.style.position = &#39;absolute&#39;;
+            this.node.style.border = &#39;0px&#39;;
+            this.node.style.display = &#39;none&#39;;
+            this.node.style.left = &#39;-5000px&#39;;
+            this.node.style.top = &#39;0px&#39;;
+            document.body.appendChild(this.node);
+            this.node.src = url; // fires off async
+        };
+        this.fetchdata = function () {
+            var image = $(this.node);
+            var scale = {};
+            this.node.style.display = &#39;block&#39;;
+            $obj.w = image.width();
+            $obj.h = image.height();
+            $obj.pos = image.offset();
+            $obj.pos.l = image.offset().left;
+            $obj.pos.t = image.offset().top;
+            $obj.pos.r = $obj.w + $obj.pos.l;
+            $obj.pos.b = $obj.h + $obj.pos.t;
+            scale.x = ($obj.w / smallimage.w);
+            scale.y = ($obj.h / smallimage.h);
+            el.scale = scale;
+            document.body.removeChild(this.node);
+            $(&#39;.zoomWrapperImage&#39;, el).empty().append(this.node);
+            //setting lens dimensions;
+            lens.setdimensions();
+        };
+        this.node.onerror = function () {
+            alert(&#39;Problems while loading the big image.&#39;);
+            throw &#39;Problems while loading the big image.&#39;;
+        };
+        this.node.onload = function () {
+            //fetching data
+            $obj.fetchdata();
+            loader.hide();
+            el.largeimageloading = false;
+            el.largeimageloaded = true;
+            if (settings.zoomType == &#39;drag&#39; || settings.alwaysOn) {
+                lens.show();
+                stage.show();
+                lens.setcenter();
+            }
+        };
+        this.setposition = function () {
+            var left = -el.scale.x * (lens.getoffset().left - smallimage.bleft + 1);
+            var top = -el.scale.y * (lens.getoffset().top - smallimage.btop + 1);
+            $(this.node).css({
+                &#39;left&#39;: left + &#39;px&#39;,
+                &#39;top&#39;: top + &#39;px&#39;
+            });
+        };
+        return this;
+    };
+    $(el).data(&quot;jqzoom&quot;, obj);
+};
+//es. $.jqzoom.disable(&#39;#jqzoom1&#39;);
+$.jqzoom = {
+    defaults: {
+        zoomType: &#39;standard&#39;,
+        //innerzoom/standard/reverse/drag
+        zoomWidth: 300,
+        //zoomWindow  default width
+        zoomHeight: 300,
+        //zoomWindow  default height
+        xOffset: 10,
+        //zoomWindow x offset, can be negative(more on the left) or positive(more on the right)
+        yOffset: 0,
+        //zoomWindow y offset, can be negative(more on the left) or positive(more on the right)
+        position: &quot;right&quot;,
+        //zoomWindow default position
+        preloadImages: true,
+        //image preload
+        preloadText: &#39;Loading zoom&#39;,
+        title: true,
+        lens: true,
+        imageOpacity: 0.4,
+        alwaysOn: false,
+        showEffect: &#39;show&#39;,
+        //show/fadein
+        hideEffect: &#39;hide&#39;,
+        //hide/fadeout
+        fadeinSpeed: &#39;slow&#39;,
+        //fast/slow/number
+        fadeoutSpeed: &#39;2000&#39; //fast/slow/number
+    },
+    disable: function (el) {
+        var api = $(el).data(&#39;jqzoom&#39;);
+        api.disable();
+        return false;
+    },
+    enable: function (el) {
+        var api = $(el).data(&#39;jqzoom&#39;);
+        api.enable();
+        return false;
+    },
+    disableAll: function (el) {
+        jqzoompluging_disabled = true;
+    },
+    enableAll: function (el) {
+        jqzoompluging_disabled = false;
+    }
+};</pre>
+
+<p>})(jQuery);</p>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
