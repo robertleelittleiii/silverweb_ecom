@@ -1,3 +1,10 @@
+<div class="hidden-item">
+    <div id="as_window"><%=params[:request_type]=="window"%></div>
+    <div id="dialog-height">650</div>
+    <div id="dialog-width">1050</div>
+    <div id="dialog-name">Retailers</div>
+</div>
+
 <div class="myaccountblock">
   <div align="center">
     <!-- START:flash -->
@@ -8,10 +15,8 @@
   </div>
 
   <div id="site-pref-list">
-    <h1  class="myaccountheader">Retailer</h1>
-
     <p>
-    <center><%= link_to 'New Retailer', {:action=>:create_empty_record,:typeofrecord=>"retailer"}, :class=>"button-link"%></center>
+    <center><%= link_to 'New Retailer', {:action=>:create_empty_record,:typeofrecord=>"Retailer"}, :class=>"button-link", :id=>"new-retailer", :remote=>true%></center>
     </br>
   </p>
   

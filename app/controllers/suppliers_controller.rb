@@ -92,4 +92,5 @@ class SuppliersController < ApplicationController
 
     redirect_to(controller: :suppliers, action: :edit, id: @supplier)
   end
+
 end

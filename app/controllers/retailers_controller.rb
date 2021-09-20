@@ -42,7 +42,7 @@ class RetailersController < ApplicationController
   # POST /retailers
   # POST /retailers.json
   def create
-    @retailer = Retailer.new(params[:retailer])
+    @retailer = Retailer.new(retailer_params)
 
     respond_to do |format|
       if @retailer.save
@@ -61,7 +61,7 @@ class RetailersController < ApplicationController
     @retailer = Retailer.find(params[:id])
 
     respond_to do |format|
-      if @retailer.update_attributes(params[:retailer])
+      if @retailer.update_attributes(retailer_params)
         format.html { redirect_to @retailer, notice: 'Retailer was successfully updated.' }
         format.json { head :ok }
       else
@@ -88,6 +88,7 @@ class RetailersController < ApplicationController
 
   def create_empty_record
     @retailer = Retailer.new
+    @retailer.company_name = "New Company"
     @retailer.save
 
     redirect_to(controller: :retailers, action: :edit, id: @retailer)
@@ -114,10 +115,10 @@ class RetailersController < ApplicationController
                     rescue StandardError
                       0
                     end) + 1
-    @current_objects = Retailer.paginate page: current_page,
-                                         order: "#{datatable_columns(params[:order]['0'][:column])} #{params[:order]['0'][:dir] || 'DESC'}",
-                                         conditions: conditions,
-                                         per_page: params[:length]
+                  
+    @current_objects = Retailer.page(current_page).per(params[:length])
+    .order("#{datatable_columns(params[:order]['0'][:column])} #{params[:order]['0'][:dir] || 'DESC'}")
+    .where(conditions)
 
     # @current_objects = Retailer.select("retailers.*").
     #   where(conditions).
@@ -125,7 +126,7 @@ class RetailersController < ApplicationController
   end
 
   def total_objects(_params = {})
-    @total_objects = Retailer.count
+    @total_objects = Retailer.where(conditions).count
   end
 
   def datatable_columns(column_id)
@@ -160,4 +161,13 @@ class RetailersController < ApplicationController
     conditions << "(retailers.company_name LIKE '%#{params[:search][:value]}%' OR retailers.company_street_1 LIKE '%#{params[:search][:value]}%' OR retailers.company_street_2 LIKE '%#{params[:search][:value]}%' OR retailers.company_city LIKE '%#{params[:search][:value]}%' OR retailers.company_state LIKE '%#{params[:search][:value]}%' OR retailers.company_zip LIKE '%#{params[:search][:value]}%' OR retailers.company_phone LIKE '%#{params[:search][:value]}%' OR retailers.company_website LIKE '%#{params[:search][:value]}%' OR retailers.company_hours_1 LIKE '%#{params[:search][:value]}%' OR retailers.company_hours_2 LIKE '%#{params[:search][:value]}%' OR retailers.company_hours_3 LIKE '%#{params[:search][:value]}%')" if params[:search][:value]
     conditions.join(' AND ')
   end
+  
+    
+  private
+  
+   def retailer_params
+    params[:retailer].permit(["id", "company_name", "company_street_1", "company_street_2", "company_city", "company_state", "company_zip", "company_phone", "company_website", "company_hours_1", "company_hours_2", "company_hours_3", "latitude", "longitude", "created_at", "updated_at"])
+  end
+  
+   
 end

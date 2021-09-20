@@ -4,12 +4,12 @@
  "data":[
 <% @objects.each do |retailer| %>
   [
-   "<%= retailer.company_name%> <div id='retailer-id' class='hidden-item'> <%= retailer.id%></div> ",
-   "<%= retailer.company_street_1 %>",
-   "<%= retailer.company_city %>",
-   "<%= retailer.company_state %>",
-   "<%= retailer.company_zip %>",
-   "<%=link_to(image_tag('interface/delete.png', :border=>"0", :class=>"delete-image"),{ :action=>:delete_ajax, :id=>retailer.id},{  :confirm => "Are you sure?", :id=>"delete-retailer-item", :remote=>true}).gsub(/\\|"/) { |c| "\\#{c}" } %>"
-  ] <% if @objects.last != retailer then %> , <% end %>
+   "<%=editablefieldcreate('company_name', retailer,"name").gsub("\"", "'").html_safe() %> <div id='retailer-id' class='hidden-item'> <%= retailer.id%></div> ",
+   "<%=editablefieldcreate('company_street_1', retailer,"name").gsub("\"", "'").html_safe() %>",
+   "<%=editablefieldcreate('company_city', retailer,"name").gsub("\"", "'").html_safe() %>",
+   "<%=editablefieldcreate('company_state', retailer,"name").gsub("\"", "'").html_safe() %>",
+   "<%=editablefieldcreate('company_zip', retailer,"name").gsub("\"", "'").html_safe() %>",
+   "<center><div class='delete-retail-item'><%=image_tag('interface/delete.png', :border=>'0').gsub("\"", "'").html_safe() %></div> </center>"
+] <% if @objects.last != retailer then %> , <% end %>
 <% end %>
 ]}

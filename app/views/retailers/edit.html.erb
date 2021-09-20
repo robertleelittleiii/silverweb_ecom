@@ -1,3 +1,11 @@
+<div class="hidden-item">
+    <div id="as_window"><%=params[:request_type]=="window"%></div>
+    <div id="dialog-height">650</div>
+    <div id="dialog-width">1050</div>
+    <div id="dialog-name">Edit Retailer(<%=@retailer.id.to_s%>)</div>
+</div>
+
+
 <div class="myaccountblock" Align="Left">
     <div align="center">
     <!-- START:flash -->
@@ -20,20 +28,10 @@
     
   </div>
 
-  <div class="myaccountheader">Edit Retailer</div>
-  <div class="myaccountsection">
-    <div class="myaccountheading">Information for retailer</div>
     <div class="myaccountcontent">
 
       <%= render 'form' %>
 
          </div>
-    </p>
-  </div>
-  
-<%= link_to 'Show', @retailer %> |
-<%= link_to 'Back', retailers_path %>
-   
-
 </div>
 

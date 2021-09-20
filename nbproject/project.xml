@@ -3,17 +3,19 @@
     <type>org.netbeans.modules.ruby.rubyproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/ruby-project/1">
-            <name>silverweb_ecom</name>
+            <name>silverweb_ecom git</name>
             <source-roots>
                 <root id="src.db.dir"/>
-                <root id="src.dir"/>
-                <root id="controllers.dir"/>
-                <root id="helpers.dir"/>
-                <root id="mailers.dir"/>
-                <root id="models.dir"/>
-                <root id="views.dir"/>
-                <root id="config.dir"/>
-                <root id="lib.dir"/>
+                <root id="src.assets.dir"/>
+                <root id="src.controllers.dir"/>
+                <root id="src.helpers.dir"/>
+                <root id="src.mailers.dir"/>
+                <root id="src.models.dir"/>
+                <root id="src.views.dir"/>
+                <root id="src.bin.dir"/>
+                <root id="src.config.dir"/>
+                <root id="src.db.dir"/>
+                <root id="src.lib.dir"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>
