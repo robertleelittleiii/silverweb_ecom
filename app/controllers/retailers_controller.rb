@@ -110,6 +110,7 @@ class RetailersController < ApplicationController
   def geocode_addresses
     Retailer.all.each do |retailer|
       retailer.geocode
+      puts(retailer.id, retailer.latitude, retailer.longitude)
     end
     
     head :ok
