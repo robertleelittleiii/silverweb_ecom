@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'create_empty_record'
       get 'delete_ajax'
       post 'retailer_table'
+      get 'geocode_addresses'
     end
   end
 

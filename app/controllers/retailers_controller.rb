@@ -107,6 +107,14 @@ class RetailersController < ApplicationController
     render layout: false
   end
 
+  def geocode_addresses
+    Retailer.all.each do |retailer|
+      retailer.geocode
+    end
+    
+    head :ok
+  end
+  
   private
 
   def current_objects(params = {})
