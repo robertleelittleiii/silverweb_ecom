@@ -109,8 +109,18 @@ class RetailersController < ApplicationController
 
   def geocode_addresses
     Retailer.all.each do |retailer|
+      puts("*** *** *** *** ")     
       retailer.geocode
-      puts(retailer.id, retailer.latitude, retailer.longitude)
+      retailer.save
+      puts(retailer.id, retailer.company_state, retailer.latitude, retailer.longitude)
+
+      #      hold =   retailer.company_state
+      #      retailer.company_state = ""
+      #      retailer.save
+      #      puts(retailer.id, retailer.company_state, retailer.latitude, retailer.longitude)
+      #      retailer.company_state = hold
+      #      retailer.save
+      #      puts(retailer.id, retailer.company_state, retailer.latitude, retailer.longitude)
     end
     
     head :ok
@@ -120,10 +130,10 @@ class RetailersController < ApplicationController
 
   def current_objects(params = {})
     current_page = (begin
-                      params[:start].to_i / params[:length].to_i
-                    rescue StandardError
-                      0
-                    end) + 1
+        params[:start].to_i / params[:length].to_i
+      rescue StandardError
+        0
+      end) + 1
                   
     @current_objects = Retailer.page(current_page).per(params[:length])
     .order("#{datatable_columns(params[:order]['0'][:column])} #{params[:order]['0'][:dir] || 'DESC'}")
@@ -174,7 +184,7 @@ class RetailersController < ApplicationController
     
   private
   
-   def retailer_params
+  def retailer_params
     params[:retailer].permit(["id", "company_name", "company_street_1", "company_street_2", "company_city", "company_state", "company_zip", "company_phone", "company_website", "company_hours_1", "company_hours_2", "company_hours_3", "latitude", "longitude", "created_at", "updated_at"])
   end
   
